@@ -88,7 +88,7 @@ async function getCardData(colorsArrayForAPICall, dispatch, actionType) {
                 [
                     {
                     name: "No Cards Found",
-                    image_uris: { normal: "https://i.imgur.com/Qx6AMQQ.jpg" },
+                    image_uris: { border_crop: "https://i.imgur.com/Qx6AMQQ.jpg" },
                     }
                 ]
             // console.log('image object test:');
