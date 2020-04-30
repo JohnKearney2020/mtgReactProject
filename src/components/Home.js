@@ -19,7 +19,7 @@ class Home extends Component {
         // *** Make sure to update the no response object that gets sent here on no results ***
 
         let filteredCards = this.props.cardsFromAPI.map((eachCardObj,index) => {
-            return <img className="card" key={index} src={eachCardObj.image_uris.border_crop} alt=""></img>
+            return <img className="card" key={index} src={eachCardObj.image_uris.border_crop} title={eachCardObj.name} alt=""></img>
 
         })
 
