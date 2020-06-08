@@ -1,3 +1,4 @@
+
 #jumbotron {
 	/* height: 500px; */
 	height: 50vh;
@@ -88,6 +89,7 @@ body {
 	background-position: 0% 0%;
 	padding: 0px;
 	margin: 0px;
+	will-change: transform;
 }
 
 /* .switch{
