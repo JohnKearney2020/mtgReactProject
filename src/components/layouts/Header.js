@@ -139,7 +139,7 @@ class Header extends Component {
             <Jumbotron fluid id="jumbotron" className="position-relative overflow-hidden d-none d-sm-block"></Jumbotron>
             {/* ---------------------------------------------------- End of Header ----------------------------------------------------- --> */}
 
-            <Navbar collapseOnSelect id="mainNavbar" expand="md" sticky="top" variant="dark">
+            <Navbar collapseOnSelect id="mainNavbar" expand="lg" sticky="top" variant="dark">
                 {/* <Navbar.Brand href="#home"> */}
                 <Navbar.Brand href="#home">
                     <img 

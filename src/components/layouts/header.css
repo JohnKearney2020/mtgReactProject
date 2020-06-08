@@ -74,22 +74,32 @@
 	color: rgb(22, 161, 74);
 	/* background: warning; */
 }
-body {
+/* body {
 	background: url('../images/background/indexBackground.png');
-	/* background-size: 100%; */
-	/* background-position: 0% 110%; */
-	/* background-repeat: repeat-y; */
 	background-attachment: fixed;
-	/* background: url(../images/banner/therosBanner1.png) no-repeat 100% 5%; */
-	/* background: url(../images/banner/therosBanner1.png) no-repeat 100%; */
-	/* -webkit-background-size: cover; */
-	/* -moz-background-size: cover; */
-	/* -o-background-size: cover; */
 	background-size: cover;
 	background-position: 0% 0%;
 	padding: 0px;
 	margin: 0px;
+
+	-webkit-transform: translateZ(0);
+    transform: translateZ(0);
 	will-change: transform;
+	display: table;
+} */
+body {
+	background: url('../images/background/indexBackground.png');
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+    /* iOS specific styling */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+    display: table;
 }
 
 /* .switch{

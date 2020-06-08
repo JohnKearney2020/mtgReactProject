@@ -1,26 +1,28 @@
 .card {
-    padding: 0;
+    /* padding: 0; */
     border: 0;
-    margin: 5px 5px; /* top and bottom margin: 2px, left and right margin: 5px */
+    /* margin: 5px 5px; top and bottom margin: 2px, left and right margin: 5px */
     /* margin: 10px 10px; top and bottom margin: 2px, left and right margin: 5px */
-    max-width: 250px;
+    /* max-width: 250px; */
+    max-width: 345px;
     height: auto;
+    /* height: auto; */
     /* height: 60%; */
     /* border-bottom-right-radius: 5% 3.75%; */ /*this eliminates the white space around card corners if needed*/
 }
 
 /* For width 400px and larger: */
-@media only screen and (min-width: 400px) {
+/* @media only screen and (min-width: 400px) {
     .card {
         max-width: 305px;
         height: auto;
     }
-}
+} */
 
 
 /* .imgDiv {
     width: 55%;
 } */
-.container {
+/* .container {
     width: 100vw;
-}
+} */
