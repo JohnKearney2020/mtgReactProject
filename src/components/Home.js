@@ -18,10 +18,19 @@ class Home extends Component {
         // more info w/ examples at https://scryfall.com/docs/api/images
         // *** Make sure to update the no response object that gets sent here on no results ***
 
+        // const [cardIsClicked, setCardIsClicked] = useState(false);
+
+        // const openCardInfo = () => {
+        //     setCardIsClicked(true);
+        //     console.log('card clicked!');
+        // } 
+
+        // const closeCardInfo = () => {
+        //     setCardIsClicked(false);
+        // } 
         let filteredCards = this.props.cardsFromAPI.map((eachCardObj,index) => {
             return <img className="card my-2 my-lg-3 mx-1 mx-lg-2 img-fluid" key={index} src={eachCardObj.image_uris.border_crop} title={eachCardObj.name} alt=""></img>
-
-        })
+        });
 
         return (
             <>
