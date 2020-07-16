@@ -1,9 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Backdrop from './layouts/Backdrop';
 import './cardLayout.css'
 
 class Home extends Component {
     
+    constructor(props){
+        super(props)
+        this.state = {
+            cardClicked: false,
+        }
+    }
+
+
+
+
+    onCardClick = () => {
+        console.log('card is clicked!');
+        
+        if(this.state.cardClicked === true ){
+            this.setState({ cardClicked:false });
+        } else {
+            this.setState({ cardClicked: true})
+        }
+        // setTimeout(
+        //     console.log(`card clicked status: ${this.state.cardClicked}`),
+        //     5000
+        // );
+        
+    }
+
     render() {
 
         //=======================================================================
@@ -29,7 +55,7 @@ class Home extends Component {
         //     setCardIsClicked(false);
         // } 
         let filteredCards = this.props.cardsFromAPI.map((eachCardObj,index) => {
-            return <img className="card my-2 my-lg-3 mx-1 mx-lg-2 img-fluid" key={index} src={eachCardObj.image_uris.border_crop} title={eachCardObj.name} alt=""></img>
+            return <img className="card my-2 my-lg-3 mx-1 mx-lg-2 img-fluid" key={index} src={eachCardObj.image_uris.border_crop} title={eachCardObj.name} alt="" onClick={this.onCardClick}></img>
         });
 
         return (
@@ -50,6 +76,7 @@ class Home extends Component {
             
             <div className="container-fluid m-0 p-0">
                 <div className="row justify-content-center mx-2 mx-md-3 my-1 my-md-2 my-lg-4">
+                    {this.state.cardClicked && <Backdrop />}
                     {filteredCards}
                 </div>
             </div>
