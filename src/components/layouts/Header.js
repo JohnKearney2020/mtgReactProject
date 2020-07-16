@@ -1,8 +1,10 @@
 import './header.css';
 // import {Jumbotron, Navbar, Nav, Form, Button, FormControl, NavDropdown, Row, Col, ToggleButton } from 'react-bootstrap';
-import {Jumbotron, Navbar, Nav, Form, Button, Row, Col } from 'react-bootstrap';
+import { Navbar, Nav, Form, Button, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
+// import ReactDom from 'react-dom';
+import HeaderBackground from './HeaderBackground';
 
 import * as actionCreators from '../../store/actions/masterActionExporter';
 
@@ -131,14 +133,19 @@ class Header extends Component {
         }
     }
 
+    //===========================================================================================================
+    //                                      Portal for Jumbotron
+    //===========================================================================================================
+
+
     render() {
 
         return (
         <>
             {/* ---------------------------------- HEADER -------------------------------------------------------------------------- */}
-            <Jumbotron fluid id="jumbotron" className="position-relative overflow-hidden d-none d-sm-block"></Jumbotron>
+            {/* <Jumbotron fluid id="jumbotron" className="position-relative overflow-hidden d-none d-sm-block"></Jumbotron> */}
             {/* ---------------------------------------------------- End of Header ----------------------------------------------------- --> */}
-
+            <HeaderBackground></HeaderBackground>
             <Navbar collapseOnSelect id="mainNavbar" expand="lg" sticky="top" variant="dark">
                 {/* <Navbar.Brand href="#home"> */}
                 <Navbar.Brand href="#home">

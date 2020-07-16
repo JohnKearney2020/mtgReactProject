@@ -1,21 +1,4 @@
 
-#jumbotron {
-	/* height: 500px; */
-	height: 50vh;
-	/* height: 30vh; */
-	width: 100%;
-	/* <img class="center" src="/images/banner/therosBanner1.png" alt=""> */
-	background: url(../images/banner/therosBanner1.png) no-repeat 100% 5%;
-	/* background: url(../images/banner/therosBanner1.png) no-repeat 100%; */
-	/* -webkit-background-size: cover; */
-	/* -moz-background-size: cover; */
-	/* -o-background-size: cover; */
-	background-size: cover;
-	background-position: center center;
-	padding: 0px;
-	margin: 0px;
-}
-
 .childPosition {
 	top: 0px;
 	left: 0px;
