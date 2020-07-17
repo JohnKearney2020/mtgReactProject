@@ -9,6 +9,7 @@ class Home extends Component {
         super(props)
         this.state = {
             cardClicked: false,
+            yOffset: 0
         }
     }
 
@@ -17,11 +18,14 @@ class Home extends Component {
 
     onCardClick = () => {
         console.log('card is clicked!');
+        // find out how far the user has scrolled down in the Y direction
+        let yAmountScrolled = window.scrollY;
+        console.log(`Amount scrolled in Y direction: ${yAmountScrolled}`);
         
         if(this.state.cardClicked === true ){
             this.setState({ cardClicked:false });
         } else {
-            this.setState({ cardClicked: true})
+            this.setState({ cardClicked: true, yOffset: yAmountScrolled})
         }
         // setTimeout(
         //     console.log(`card clicked status: ${this.state.cardClicked}`),
@@ -76,7 +80,7 @@ class Home extends Component {
             
             <div className="container-fluid m-0 p-0">
                 <div className="row justify-content-center mx-2 mx-md-3 my-1 my-md-2 my-lg-4">
-                    {this.state.cardClicked && <Backdrop />}
+                    {this.state.cardClicked && <Backdrop yOffSetValue={this.state.yOffset}/>}
                     {filteredCards}
                 </div>
             </div>
