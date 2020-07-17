@@ -10,10 +10,12 @@
     /* position: absolute; */
     /* position: sticky; */
     /* top: var(--yOffset-val); */
-    /* top: 0; */
     /* left: 0; */
     width: 100%;
     height: 100vh;
     background: rgba(0, 0, 0, 0.75);
     z-index: 100;
+}
+.backdrop::after {
+    top: var(yOffsetValue);
 }
