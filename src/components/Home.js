@@ -6,36 +6,33 @@ import './cardLayout.css'
 class Home extends Component {
     
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             cardClicked: false,
-        }
+            yOffset: 0
+        };
     }
 
-
+    changeScroll = () => { 
+        let style = document.body.style.overflow; 
+        document.body.style.overflow = (style === 'hidden') ? 'auto':'hidden';
+    }
 
 
     onCardClick = () => {
         console.log('card is clicked!');
-        // const changeScroll = () => { 
-        //     let style = document.body.style.overflow 
-        //     document.body.style.overflow = (style === 'hidden') ? 'auto':'hidden'
-        // } 
-        
-        if(this.state.cardClicked === true ){
-            this.setState({ cardClicked:false });
-            // changeScroll();
-        } else {
-            this.setState({ cardClicked: true});
-            // document.body.style.overflowY === "hidden";​
-            // changeScroll();
-        }
-        // setTimeout(
-        //     console.log(`card clicked status: ${this.state.cardClicked}`),
-        //     5000
-        // );
-        
+        // find out how far the user has scrolled down in the Y direction
+        let yAmountScrolled = window.scrollY;
+        console.log(`Amount scrolled in Y direction: ${yAmountScrolled}`);
+        this.setState({ cardClicked: true, yOffset: yAmountScrolled});
+        this.changeScroll(); //stop mouse scrolling
     }
+
+    closeCardInfo = () => {
+        console.log('close overlay clicked!');
+        this.setState({ cardClicked: false});
+        this.changeScroll(); // re-enable mouse scrollinh
+    }    
 
     render() {
 
@@ -83,7 +80,7 @@ class Home extends Component {
             
             <div className="container-fluid m-0 p-0">
                 <div className="row justify-content-center mx-2 mx-md-3 my-1 my-md-2 my-lg-4">
-                    {this.state.cardClicked && <Backdrop />}
+                    {this.state.cardClicked && <Backdrop yOffSetValue={this.state.yOffset} onClick={this.closeCardInfo}/>}
                     {filteredCards}
                 </div>
             </div>

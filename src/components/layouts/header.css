@@ -17,6 +17,7 @@
 	background-color: rgb(24, 24, 24);
 	border-color: rgb(24, 24, 24);
 	top: -2px; /* fixes the very small gap between the navbar and top of page on Chrome */
+	z-index: 10;
 }
 	/* For width 400px and larger: */
 	@media only screen and (min-width: 400px) {
