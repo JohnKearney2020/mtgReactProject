@@ -17,11 +17,18 @@ class Home extends Component {
 
     onCardClick = () => {
         console.log('card is clicked!');
+        // const changeScroll = () => { 
+        //     let style = document.body.style.overflow 
+        //     document.body.style.overflow = (style === 'hidden') ? 'auto':'hidden'
+        // } 
         
         if(this.state.cardClicked === true ){
             this.setState({ cardClicked:false });
+            // changeScroll();
         } else {
-            this.setState({ cardClicked: true})
+            this.setState({ cardClicked: true});
+            // document.body.style.overflowY === "hidden";​
+            // changeScroll();
         }
         // setTimeout(
         //     console.log(`card clicked status: ${this.state.cardClicked}`),
