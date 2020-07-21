@@ -27,8 +27,13 @@ const ModalOverlay = (props) => {
 
 const Modal = (props) => {
     // Animation Library - npm install --save react-transition-group
+    // we want to offset the top of our modal by whatever the current y-offset is from scrolling + X% of the window height so it is
+    // roughly centered in the screen
+    console.log(`Height of the window is ${window.innerHeight}`);
+    const yOffsetForModal = props.yOffSetValue + 0.18*window.innerHeight;
+    console.log(`Y offset for Modal is: ${yOffsetForModal}`);
     const styleTop = {
-        top: props.yOffSetValue
+        top: yOffsetForModal
     }
     return (
         <React.Fragment>

@@ -26,9 +26,14 @@ class Home extends Component {
         console.log('card is clicked!');
         // find out how far the user has scrolled down in the Y direction
         const yAmountScrolled = window.scrollY;
-        const cardName = event.target.title;
+        // const cardName = event.target.title;
         console.log(`Amount scrolled in Y direction: ${yAmountScrolled}`);
-        this.setState({ cardClicked: true, yOffset: yAmountScrolled, cardName: cardName});
+        this.setState({ 
+            cardClicked: true, 
+            yOffset: yAmountScrolled, 
+            cardName: event.target.title,
+            imgURL: event.target.src
+        });
         this.changeScroll(); //stop mouse scrolling
     }
 
@@ -63,7 +68,15 @@ class Home extends Component {
         //     setCardIsClicked(false);
         // } 
         let filteredCards = this.props.cardsFromAPI.map((eachCardObj,index) => {
-            return <img className="card my-2 my-lg-3 mx-1 mx-lg-2 img-fluid" key={index} src={eachCardObj.image_uris.border_crop} title={eachCardObj.name} alt="" onClick={this.onCardClick} loading="lazy"></img>
+            return <img 
+                className="card my-2 my-lg-3 mx-1 mx-lg-2 img-fluid" 
+                key={index} 
+                src={eachCardObj.image_uris.border_crop} 
+                title={eachCardObj.name} 
+                alt="" 
+                onClick={this.onCardClick}
+                loading="lazy">
+            </img>
         });
 
         return (
@@ -95,9 +108,11 @@ class Home extends Component {
                                 footerClass="card-item__modal-actions"
                                 footer={<button onClick={this.closeCardInfo}>CLOSE</button>}
                                 yOffSetValue={this.state.yOffset}
+                                imgURL={this.state.imgURL}
                             >
                                 <div className="card-container">
                                     <h2>THE CARD AND INFO</h2>
+                                    <img src={this.state.imgURL} alt=""></img>
                                 </div>
                             </Modal>
                         </React.Fragment>
