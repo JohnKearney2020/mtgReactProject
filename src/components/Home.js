@@ -13,17 +13,24 @@ class Home extends Component {
         }
     }
 
+    changeScroll = () => { 
+        let style = document.body.style.overflow; 
+        document.body.style.overflow = (style === 'hidden') ? 'auto':'hidden'
+    } 
     onCardClick = () => {
         console.log('card is clicked!');
         // find out how far the user has scrolled down in the Y direction
         let yAmountScrolled = window.scrollY;
         console.log(`Amount scrolled in Y direction: ${yAmountScrolled}`);
-        this.setState({ cardClicked: true, yOffset: yAmountScrolled})
+        this.setState({ cardClicked: true, yOffset: yAmountScrolled});
+        this.changeScroll(); //turn off scrolling
+
     }
 
     closeCardInfo = () => {
         console.log('close overlay clicked!');
-        this.setState({ cardClicked: false})
+        this.setState({ cardClicked: false});
+        this.changeScroll(); //turn scrolling back on
     }    
 
     render() {
@@ -51,7 +58,7 @@ class Home extends Component {
         //     setCardIsClicked(false);
         // } 
         let filteredCards = this.props.cardsFromAPI.map((eachCardObj,index) => {
-            return <img className="card my-2 my-lg-3 mx-1 mx-lg-2 img-fluid" key={index} src={eachCardObj.image_uris.border_crop} title={eachCardObj.name} alt="" onClick={this.onCardClick}></img>
+            return <img className="card my-2 my-lg-3 mx-1 mx-lg-2 img-fluid" key={index} src={eachCardObj.image_uris.border_crop} title={eachCardObj.name} alt="" onClick={this.onCardClick} loading="lazy"></img>
         });
 
         return (
