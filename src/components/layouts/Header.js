@@ -1,4 +1,3 @@
-import './Header.css';
 // import {Jumbotron, Navbar, Nav, Form, Button, FormControl, NavDropdown, Row, Col, ToggleButton } from 'react-bootstrap';
 import { Navbar, Nav, Form, Button, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -7,6 +6,7 @@ import React, { Component } from 'react';
 import HeaderBackground from './HeaderBackground';
 
 import * as actionCreators from '../../store/actions/masterActionExporter';
+import './Header.css';
 
 class Header extends Component {
     
