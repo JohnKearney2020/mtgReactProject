@@ -6,31 +6,32 @@ import './cardLayout.css'
 class Home extends Component {
     
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             cardClicked: false,
             yOffset: 0
-        }
+        };
     }
 
     changeScroll = () => { 
         let style = document.body.style.overflow; 
-        document.body.style.overflow = (style === 'hidden') ? 'auto':'hidden'
-    } 
+        document.body.style.overflow = (style === 'hidden') ? 'auto':'hidden';
+    }
+
+
     onCardClick = () => {
         console.log('card is clicked!');
         // find out how far the user has scrolled down in the Y direction
         let yAmountScrolled = window.scrollY;
         console.log(`Amount scrolled in Y direction: ${yAmountScrolled}`);
         this.setState({ cardClicked: true, yOffset: yAmountScrolled});
-        this.changeScroll(); //turn off scrolling
-
+        this.changeScroll(); //stop mouse scrolling
     }
 
     closeCardInfo = () => {
         console.log('close overlay clicked!');
         this.setState({ cardClicked: false});
-        this.changeScroll(); //turn scrolling back on
+        this.changeScroll(); // re-enable mouse scrollinh
     }    
 
     render() {
