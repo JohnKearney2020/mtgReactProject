@@ -1,4 +1,4 @@
-import './header.css';
+import './Header.css';
 // import {Jumbotron, Navbar, Nav, Form, Button, FormControl, NavDropdown, Row, Col, ToggleButton } from 'react-bootstrap';
 import { Navbar, Nav, Form, Button, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -145,7 +145,7 @@ class Header extends Component {
             {/* ---------------------------------- HEADER -------------------------------------------------------------------------- */}
             {/* <Jumbotron fluid id="jumbotron" className="position-relative overflow-hidden d-none d-sm-block"></Jumbotron> */}
             {/* ---------------------------------------------------- End of Header ----------------------------------------------------- --> */}
-            <HeaderBackground></HeaderBackground>
+            <HeaderBackground />
             <Navbar collapseOnSelect id="mainNavbar" expand="lg" sticky="top" variant="dark">
                 {/* <Navbar.Brand href="#home"> */}
                 <Navbar.Brand href="#home">
