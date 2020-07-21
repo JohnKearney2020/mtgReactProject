@@ -15,6 +15,22 @@
     transform: scale(1.05);
 }
 
+.card-item__modal-content {
+    padding: 0;
+}
+
+.card-item__modal-actions {
+text-align: right;
+}
+
+.card-container {
+    height: 20rem;
+    width: 100%;
+}
+
+
+
+
 /* For width 400px and larger: */
 /* @media only screen and (min-width: 400px) {
     .card {

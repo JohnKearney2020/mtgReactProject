@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Backdrop from './layouts/Backdrop';
+
+import Backdrop from './layouts/Modals/Backdrop';
+import Modal from './layouts/Modals/Modal';
 import './cardLayout.css'
 
 class Home extends Component {
@@ -9,22 +11,24 @@ class Home extends Component {
         super(props);
         this.state = {
             cardClicked: false,
-            yOffset: 0
+            yOffset: 0,
+            cardName: ""
         };
     }
 
     changeScroll = () => { 
-        let style = document.body.style.overflow; 
+        const style = document.body.style.overflow; 
         document.body.style.overflow = (style === 'hidden') ? 'auto':'hidden';
     }
 
 
-    onCardClick = () => {
+    onCardClick = (event) => {
         console.log('card is clicked!');
         // find out how far the user has scrolled down in the Y direction
-        let yAmountScrolled = window.scrollY;
+        const yAmountScrolled = window.scrollY;
+        const cardName = event.target.title;
         console.log(`Amount scrolled in Y direction: ${yAmountScrolled}`);
-        this.setState({ cardClicked: true, yOffset: yAmountScrolled});
+        this.setState({ cardClicked: true, yOffset: yAmountScrolled, cardName: cardName});
         this.changeScroll(); //stop mouse scrolling
     }
 
@@ -80,7 +84,24 @@ class Home extends Component {
             
             <div className="container-fluid m-0 p-0">
                 <div className="row justify-content-center mx-2 mx-md-3 my-1 my-md-2 my-lg-4">
-                    {this.state.cardClicked && <Backdrop yOffSetValue={this.state.yOffset} onClick={this.closeCardInfo}/>}
+                    {this.state.cardClicked && 
+                        <React.Fragment>
+                            <Backdrop yOffSetValue={this.state.yOffset} onClick={this.closeCardInfo}/>
+                            <Modal 
+                                show={this.state.cardClicked}
+                                onCancel={this.closeCardInfo}
+                                header={this.state.cardName}
+                                contentClass="card-item__modal-content"
+                                footerClass="card-item__modal-actions"
+                                footer={<button onClick={this.closeCardInfo}>CLOSE</button>}
+                                yOffSetValue={this.state.yOffset}
+                            >
+                                <div className="card-container">
+                                    <h2>THE CARD AND INFO</h2>
+                                </div>
+                            </Modal>
+                        </React.Fragment>
+                    }
                     {filteredCards}
                 </div>
             </div>
