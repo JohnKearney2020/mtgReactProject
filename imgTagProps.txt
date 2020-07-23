@@ -1,0 +1,58 @@
+JSON Data to put in each image tag
+
+artist
+cmc
+flavor_text
+mana_cost
+oracle_text
+rarity
+set_name
+power
+toughness
+related_uris.edhrec
+related_uris.gatherer
+type_line
+
+
+
+                key={index} 
+                src={eachCardObj.image_uris.border_crop} 
+                title={eachCardObj.name} 
+                alt=""
+                artist={eachCardObj.artist}
+                cmc={eachCardObj.cmc}
+                flavor_text={eachCardObj.flavor_text}
+                mana_cost={eachCardObj.mana_cost}
+                oracle_text={eachCardObj.oracle_text}
+                rarity={eachCardObj.rarity}
+                set_name={eachCardObj.set_name}
+                power={eachCardObj.power}
+                toughness={eachCardObj.toughness}
+                edh_rec_link={eachCardObj.related_uris.edhrec}
+                gatherer_link={eachCardObj.related_uris.gatherer}
+                card_type_line={eachCardObj.type_line}
+                onClick={this.onCardClick}
+				
+Image component attributes:
+
+                className="card my-2 my-lg-3 mx-1 mx-lg-2 img-fluid" 
+                key={index} 
+                src={eachCardObj.image_uris.border_crop} 
+                title={eachCardObj.name} 
+                alt=""
+                artist={eachCardObj.artist}
+                cmc={eachCardObj.cmc}
+                flavor_text={eachCardObj.flavor_text}
+                image_url={eachCardObj.image_uris.border_crop}
+                mana_cost={eachCardObj.mana_cost}
+                card_name={eachCardObj.name}
+                oracle_text={eachCardObj.oracle_text}
+                rarity={eachCardObj.rarity}
+                set_name={eachCardObj.set_name}
+                power={eachCardObj.power}
+                toughness={eachCardObj.toughness}
+                edh_rec_link={eachCardObj.related_uris.edhrec}
+                gatherer_link={eachCardObj.related_uris.gatherer}
+                card_type_line={eachCardObj.type_line}
+                onClick={this.onCardClick}
+                loading="lazy">
