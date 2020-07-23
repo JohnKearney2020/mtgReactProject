@@ -12,7 +12,20 @@ class Home extends Component {
         this.state = {
             cardClicked: false,
             yOffset: 0,
-            cardName: ""
+            artist: "",
+            card_name: "",
+            cmc: "",
+            flavor_text: "",
+            image_url: "",
+            mana_cost: "",
+            oracle_text: "",
+            rarity: "",
+            set_name: "",
+            power: "",
+            toughness: "",
+            edh_rec_link: "",
+            gatherer_link: "",
+            card_type_line: ""
         };
     }
 
@@ -26,20 +39,49 @@ class Home extends Component {
         console.log('card is clicked!');
         // find out how far the user has scrolled down in the Y direction
         const yAmountScrolled = window.scrollY;
-        // const cardName = event.target.title;
+        // const card_name = event.target.title;
         console.log(`Amount scrolled in Y direction: ${yAmountScrolled}`);
         this.setState({ 
             cardClicked: true, 
             yOffset: yAmountScrolled, 
-            cardName: event.target.title,
-            imgURL: event.target.src
+            artist: event.target.artist,
+            card_name: event.target.card_name,
+            cmc: event.target.cmc,
+            flavor_text: event.target.flavor_text,
+            image_url: event.target.image_url,
+            mana_cost: event.target.mana_cost,
+            oracle_text: event.target.oracle_text,
+            rarity: event.target.rarity,
+            set_name: event.target.set_name,
+            power: event.target.power,
+            toughness: event.target.toughness,
+            edh_rec_link: event.target.edh_rec_link,
+            gatherer_link: event.target.gatherer_link,
+            card_type_line: event.target.card_type_line
         });
         this.changeScroll(); //stop mouse scrolling
     }
 
-    closeCardInfo = () => {
+    closeCardInfo = (event) => {
+        event.preventDefault();
         console.log('close overlay clicked!');
-        this.setState({ cardClicked: false});
+        this.setState({ 
+            cardClicked: false,
+            card_name: "",
+            artist: "",
+            cmc: "",
+            flavor_text: "",
+            image_url: "",
+            mana_cost: "",
+            oracle_text: "",
+            rarity: "",
+            set_name: "",
+            power: "",
+            toughness: "",
+            edh_rec_link: "",
+            gatherer_link: "",
+            card_type_line: ""
+        });
         this.changeScroll(); // re-enable mouse scrollinh
     }    
 
@@ -73,7 +115,21 @@ class Home extends Component {
                 key={index} 
                 src={eachCardObj.image_uris.border_crop} 
                 title={eachCardObj.name} 
-                alt="" 
+                alt=""
+                artist={eachCardObj.artist}
+                cmc={eachCardObj.cmc}
+                flavor_text={eachCardObj.flavor_text}
+                image_url={eachCardObj.image_uris.border_crop}
+                mana_cost={eachCardObj.mana_cost}
+                card_name={eachCardObj.name}
+                oracle_text={eachCardObj.oracle_text}
+                rarity={eachCardObj.rarity}
+                set_name={eachCardObj.set_name}
+                power={eachCardObj.power}
+                toughness={eachCardObj.toughness}
+                edh_rec_link={eachCardObj.related_uris.edhrec}
+                gatherer_link={eachCardObj.related_uris.gatherer}
+                card_type_line={eachCardObj.type_line}
                 onClick={this.onCardClick}
                 loading="lazy">
             </img>
@@ -103,16 +159,16 @@ class Home extends Component {
                             <Modal 
                                 show={this.state.cardClicked}
                                 onCancel={this.closeCardInfo}
-                                header={this.state.cardName}
+                                header={this.state.card_name}
                                 contentClass="card-item__modal-content"
                                 footerClass="card-item__modal-actions"
                                 footer={<button onClick={this.closeCardInfo}>CLOSE</button>}
                                 yOffSetValue={this.state.yOffset}
-                                imgURL={this.state.imgURL}
+                                image_url__for_card_modal={this.state.image_url}
                             >
                                 <div className="card-container">
                                     <h2>THE CARD AND INFO</h2>
-                                    <img src={this.state.imgURL} alt=""></img>
+                                    <img src={this.state.image_url} alt=""></img>
                                 </div>
                             </Modal>
                         </React.Fragment>
