@@ -152,8 +152,8 @@ class Home extends Component {
 		    </div> */}
             
             
-            <div className="container-fluid m-0 p-0">
-                <div className="row justify-content-center mx-2 mx-md-3 my-1 my-md-2 my-lg-4">
+            {/* <div className="container-fluid m-0 p-0"> */}
+                {/* <div className="row justify-content-center mx-2 mx-md-3 my-1 my-md-2 my-lg-4"> */}
                     {this.state.cardClicked && 
                         <React.Fragment>
                             <Backdrop yOffSetValue={this.state.yOffset} onClick={this.closeCardInfo}/>
@@ -174,9 +174,11 @@ class Home extends Component {
                             </Modal>
                         </React.Fragment>
                     }
-                    {filteredCards}
-                </div>
-            </div>
+                    <div class="flex-container">
+                        {filteredCards}
+                    </div> {/* end of flex-container */}
+                {/* </div> */}
+            {/* </div> */}
             </>
         )
     }
