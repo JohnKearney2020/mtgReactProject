@@ -27,14 +27,19 @@ const ModalOverlay = (props) => {
 
 const Modal = (props) => {
     // Animation Library - npm install --save react-transition-group
+    // we want to offset the top of our modal by whatever the current y-offset is from scrolling + X% of the window height so it is
+    // roughly centered in the screen
+    console.log(`Height of the window is ${window.innerHeight}`);
+    const yOffsetForModal = props.yOffSetValue + 0.18*window.innerHeight;
+    console.log(`Y offset for Modal is: ${yOffsetForModal}`);
     const styleTop = {
-        top: props.yOffSetValue
+        top: yOffsetForModal
     }
     return (
         <React.Fragment>
             {/* {props.show && <Backdrop onClick={props.onCancel} />} */}
             {/* remember the CSSTransition component takes classNames, plural, instead of className */}
-            <CSSTransition in={props.show} mountOnEnter unmountOnExit timeout={200} classNames="modal">
+            <CSSTransition in={props.show} mountOnEnter unmountOnExit timeout={5000} classNames="modal-test">
                 {/* the ...props forwards all props sent to our exported component, Modal, to the ModalOverlay */}
                 {/* the spread operator takes all the key: value pairs on the props object and puts them as attributes on ModalOverlay */}
                 <ModalOverlay {...props} style={styleTop}/>
