@@ -34,35 +34,6 @@ class Home extends Component {
         document.body.style.overflow = (style === 'hidden') ? 'auto':'hidden';
     }
 
-
-    onCardClick = (event) => {
-        console.log('card is clicked!');
-        // find out how far the user has scrolled down in the Y direction
-        const yAmountScrolled = window.scrollY;
-        // const card_name = event.target.title;
-        console.log(`Amount scrolled in Y direction: ${yAmountScrolled}`);
-        this.setState({ 
-            cardClicked: true, 
-            yOffset: yAmountScrolled, 
-            artist: event.target.artist,
-            card_name: event.target.card_name,
-            cmc: event.target.cmc,
-            flavor_text: event.target.flavor_text,
-            // image_url: event.target.image_url,
-            image_url: event.target.src,
-            mana_cost: event.target.mana_cost,
-            oracle_text: event.target.oracle_text,
-            rarity: event.target.rarity,
-            set_name: event.target.set_name,
-            power: event.target.power,
-            toughness: event.target.toughness,
-            edh_rec_link: event.target.edh_rec_link,
-            gatherer_link: event.target.gatherer_link,
-            card_type_line: event.target.card_type_line
-        });
-        this.changeScroll(); //stop mouse scrolling
-    }
-
     closeCardInfo = (event) => {
         event.preventDefault();
         console.log('close overlay clicked!');
@@ -84,7 +55,40 @@ class Home extends Component {
             card_type_line: ""
         });
         this.changeScroll(); // re-enable mouse scrollinh
-    }    
+    }
+
+    onCardClick = (event) => {
+        console.log('card is clicked!');
+        // find out how far the user has scrolled down in the Y direction
+        const yAmountScrolled = window.scrollY;
+        // const card_name = event.target.title;
+        console.log(`Amount scrolled in Y direction: ${yAmountScrolled}`);
+        console.log(`Card name pulled from the card image element is ${event.target.dataset.card_name}`);
+        this.setState({  
+            cardClicked: true,
+            yOffset: yAmountScrolled, 
+            artist: event.target.dataset.artist,
+            card_name: event.target.dataset.card_name,
+            cmc: event.target.dataset.cmc,
+            flavor_text: event.target.dataset.flavor_text,
+            // image_url: event.target.image_url,
+            image_url: event.target.src,
+            mana_cost: event.target.dataset.mana_cost,
+            oracle_text: event.target.dataset.oracle_text,
+            rarity: event.target.dataset.rarity,
+            set_name: event.target.dataset.set_name,
+            power: event.target.dataset.power,
+            toughness: event.target.dataset.toughness,
+            edh_rec_link: event.target.dataset.edh_rec_link,
+            gatherer_link: event.target.dataset.gatherer_link,
+            card_type_line: event.target.dataset.card_type_line,
+
+        });
+        console.log(`Card Name is: ${this.state.card_name}`)
+        this.changeScroll(); //stop mouse scrolling
+    }
+
+    
 
     render() {
 
@@ -117,20 +121,21 @@ class Home extends Component {
                 src={eachCardObj.image_uris.border_crop} 
                 title={eachCardObj.name} 
                 alt=""
-                artist={eachCardObj.artist}
-                cmc={eachCardObj.cmc}
-                flavor_text={eachCardObj.flavor_text}
-                image_url={eachCardObj.image_uris.border_crop}
-                mana_cost={eachCardObj.mana_cost}
-                card_name={eachCardObj.name}
-                oracle_text={eachCardObj.oracle_text}
-                rarity={eachCardObj.rarity}
-                set_name={eachCardObj.set_name}
-                power={eachCardObj.power}
-                toughness={eachCardObj.toughness}
-                edh_rec_link={eachCardObj.related_uris.edhrec}
-                gatherer_link={eachCardObj.related_uris.gatherer}
-                card_type_line={eachCardObj.type_line}
+                data-artist={eachCardObj.artist}
+                data-card_name={eachCardObj.name}
+                data-cmc={eachCardObj.cmc}
+                data-flavor_text={eachCardObj.flavor_text}
+                data-image_url={eachCardObj.image_uris.border_crop}
+                data-mana_cost={eachCardObj.mana_cost}
+                data-data-card_name={eachCardObj.name}
+                data-oracle_text={eachCardObj.oracle_text}
+                data-rarity={eachCardObj.rarity}
+                data-set_name={eachCardObj.set_name}
+                data-power={eachCardObj.power}
+                data-toughness={eachCardObj.toughness}
+                data-edh_rec_link={eachCardObj.related_uris.edhrec}
+                data-gatherer_link={eachCardObj.related_uris.gatherer}
+                data-card_type_line={eachCardObj.type_line}
                 onClick={this.onCardClick}
                 loading="lazy">
             </img>
@@ -167,16 +172,16 @@ class Home extends Component {
                                 yOffSetValue={this.state.yOffset}
                                 image_url__for_card_modal={this.state.image_url}
                             >
-                                <div className="card-container">
+                                {/* <div className="card-container">
                                     <h2>THE CARD AND INFO</h2>
                                     <img src={this.state.image_url} alt=""></img>
-                                </div>
+                                </div> */}
                             </Modal>
                         </React.Fragment>
                     }
-                    <div class="flex-container">
+                    <div className="flex-container">
                         {filteredCards}
-                    </div> {/* end of flex-container */}
+                    </div>
                 {/* </div> */}
             {/* </div> */}
             </>
