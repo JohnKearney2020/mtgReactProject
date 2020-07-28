@@ -136,9 +136,12 @@ class Home extends Component {
                 data-edh_rec_link={eachCardObj.related_uris.edhrec}
                 data-gatherer_link={eachCardObj.related_uris.gatherer}
                 data-card_type_line={eachCardObj.type_line}
+                
                 onClick={this.onCardClick}
                 loading="lazy">
             </img>
+
+            
         });
 
         return (
@@ -171,6 +174,7 @@ class Home extends Component {
                                 footer={<button onClick={this.closeCardInfo}>CLOSE</button>}
                                 yOffSetValue={this.state.yOffset}
                                 image_url__for_card_modal={this.state.image_url}
+                                cardFlavorText={this.state.oracle_text}
                             >
                                 {/* <div className="card-container">
                                     <h2>THE CARD AND INFO</h2>
