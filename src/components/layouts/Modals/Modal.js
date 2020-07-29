@@ -7,6 +7,10 @@ import { Row, Col, Container } from 'react-bootstrap';
 import './Modal.css';
 
 const ModalOverlay = (props) => {
+
+    const rarityCapitalized = props.card_rarity.charAt(0).toUpperCase() + props.card_rarity.slice(1);
+
+    // name.charAt(0).toUpperCase() + name.slice(1)
     const content = (
         // we've set up this modal so we can pass down dynamic class names and in-line styles if need be
         // <div className={`modal ${props.className}`} style={props.style}>
@@ -52,19 +56,20 @@ const ModalOverlay = (props) => {
         //         </Col>
         //     </Row>
         // </Container>
-        <div id="modal-container2" style={props.style}>
+        <div id="modal-container" style={props.style}>
             <div id="heading-container">
-                <h3>{props.header}</h3>
+                <h3>{props.header} - {rarityCapitalized}</h3>
+                <hr />
                 <div id="content-container">
                     <div>
                         <img src={props.image_url__for_card_modal} alt="" id="modal-image"/>
                     </div>
                     <div id="text-container">
-                        <h5>{props.cardFlavorText}</h5>
+                        <h5><span className="modal-span">Oracle Text: </span>{props.cardFlavorText}</h5>
                         <hr />
-                        <h5>{props.cardFlavorText}</h5>
+                        {/* <h5>{props.cardFlavorText}</h5>
                         <hr />
-                        <h5>{props.cardFlavorText}</h5>
+                        <h5>{props.cardFlavorText}</h5> */}
                     </div>
                 </div>
             </div> {/* end of heading-container */}
@@ -80,7 +85,7 @@ const Modal = (props) => {
     // we want to offset the top of our modal by whatever the current y-offset is from scrolling + X% of the window height so it is
     // roughly centered in the screen
     console.log(`Height of the window is ${window.innerHeight}`);
-    const yOffsetForModal = props.yOffSetValue + 0.18*window.innerHeight;
+    const yOffsetForModal = props.yOffSetValue + 0.10*window.innerHeight;
     console.log(`Y offset for Modal is: ${yOffsetForModal}`);
     const styleTop = {
         top: yOffsetForModal

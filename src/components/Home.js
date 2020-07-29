@@ -175,6 +175,7 @@ class Home extends Component {
                                 yOffSetValue={this.state.yOffset}
                                 image_url__for_card_modal={this.state.image_url}
                                 cardFlavorText={this.state.oracle_text}
+                                card_rarity={this.state.rarity}
                             >
                                 {/* <div className="card-container">
                                     <h2>THE CARD AND INFO</h2>
