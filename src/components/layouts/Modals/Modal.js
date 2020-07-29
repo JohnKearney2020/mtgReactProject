@@ -39,19 +39,37 @@ const ModalOverlay = (props) => {
         //     </div>
         // </div>
 
-        <Container style={props.style} id="modal-container">
-            <Row>
+        // <Container style={props.style} id="modal-container">
+        //     <Row>
+        //         <h3>{props.header}</h3>
+        //     </Row>
+        //     <Row>
+        //         <Col>
+        //             <img src={props.image_url__for_card_modal} alt=""/>
+        //         </Col>
+        //         <Col>
+        //             <h5>{props.cardFlavorText}</h5>
+        //         </Col>
+        //     </Row>
+        // </Container>
+        <div id="modal-container2" style={props.style}>
+            <div id="heading-container">
                 <h3>{props.header}</h3>
-            </Row>
-            <Row>
-                <Col>
-                    <img src={props.image_url__for_card_modal} alt=""/>
-                </Col>
-                <Col>
-                    <h5>{props.cardFlavorText}</h5>
-                </Col>
-            </Row>
-        </Container>
+                <div id="content-container">
+                    <div>
+                        <img src={props.image_url__for_card_modal} alt="" id="modal-image"/>
+                    </div>
+                    <div id="text-container">
+                        <h5>{props.cardFlavorText}</h5>
+                        <hr />
+                        <h5>{props.cardFlavorText}</h5>
+                        <hr />
+                        <h5>{props.cardFlavorText}</h5>
+                    </div>
+                </div>
+            </div> {/* end of heading-container */}
+            
+        </div>
 
     );
     return ReactDOM.createPortal(content, document.getElementById('modal-hook'));

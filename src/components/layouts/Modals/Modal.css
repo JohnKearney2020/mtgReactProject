@@ -1,4 +1,4 @@
-#modal-container {
+#modal-container2 {
   z-index: 100;
   position: fixed;
   left: 50%!important;
@@ -7,7 +7,61 @@
   /* justify-content: center; */
   color: white;
   background-color: black;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(12, 12, 12, 0.9);
+  border-radius: 15px!important;
 }
+
+#heading-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  /* background-color: blue; */
+  border-radius: 25px!important;
+}
+
+#content-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  /* background-color: blueviolet; */
+  justify-content: center;
+  align-items: center;
+}
+
+#modal-image {
+  padding: 2rem;
+}
+
+#text-container {
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  /* background-color: grey; */
+  padding: 2rem;
+}
+
+#text-container hr {
+  border: 0;
+  height: 2px;
+  /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); */
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255,215,0,0.75), rgba(0, 0, 0, 0));
+}
+
+/* #modal-container {
+  z-index: 100;
+  position: fixed;
+  left: 50%!important;
+  transform: translate(-50%)!important; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* color: white;
+  background-color: black;
+} */
+
 .modal-image {
   max-width: 100%;
   height: auto;
