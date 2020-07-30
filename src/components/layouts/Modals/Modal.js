@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
-import { Row, Col, Container } from 'react-bootstrap';
+// import { Row, Col, Container } from 'react-bootstrap';
 
 // import BackDrop from './Backdrop';
 import './Modal.css';
