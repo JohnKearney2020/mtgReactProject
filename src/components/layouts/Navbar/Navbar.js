@@ -8,38 +8,43 @@ const Navbar = () => {
     return (
         <nav>
             <div className="logo">
-                <h4>The Nav</h4>
+                <img src="/images/setSymbol/THB.png" alt="" height="42" width="42"></img>
+                <h4 id="setName">Theros - Beyond Death</h4>
             </div>
             <ul className="nav-links">
                 <li>
-                    <div>White</div>
+                    <div className="selectorText">White</div>
                     <Switch />
                 </li>
                 <li>
-                    <div>Blue</div>
+                    <div className="selectorText">Blue</div>
                     <Switch />
                 </li>
                 <li>
-                    <div>Black</div>
+                    <div className="selectorText">Black</div>
                     <Switch />
                 </li>
                 <li>
-                    <div>Red</div>
+                    <div className="selectorText">Red</div>
                     <Switch />
                 </li>
                 <li>
-                    <div>Red</div>
+                    <div className="selectorText">Green</div>
                     <Switch />
                 </li>
                 <li>
-                    <div>Colorless</div>
+                    <div className="selectorText">Colorless</div>
                     <Switch />
                 </li>
                 <li>
-                    <div>Lands</div>
+                    <div className="selectorText">Lands</div>
                     <Switch />
+                </li>
+                <li>
+                    <button id="submitButton" type="submit" value="Find Cards" >Find Cards</button>
                 </li>
             </ul>
+            {/* <Button variant="john" as="input" type="submit" value="Find Cards" readOnly onClick={(event) => this.handleSubmit(event)}></Button> */}
             <div className="burger">
                 <div className="line1"></div>
                 <div className="line2"></div>
