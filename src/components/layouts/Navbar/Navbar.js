@@ -1,12 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import { NavLink } from 'react-router-dom';
 
 import Switch from './Switch';
 import './navbar.css';
 
 const Navbar = () => {
+
+    const [navbarIsExpanded, setNavbarIsExpanded] = useState(false);
+
+    // const burgerRef = React.createRef();
+    // const burger = document.querySelector('.burger');
+    // const nav = document.querySelector('.nav-links');
+    // const nav = ReactDOM.findDOMNode('.nav-links');
+    // const navLinks = document.querySelectorAll('.nav-links li');
+
+    const expandNavbarHandler = (event) => {
+        console.log('onclick called');
+        // burgerRef.classList.add('test-class');
+        if(navbarIsExpanded ? setNavbarIsExpanded(false) : setNavbarIsExpanded(true));
+
+        // nav.classList.toggle('nav-active');
+        // // Animate Links
+        // navLinks.forEach((link,index) => {
+        //     // the larger the number we divide by, the longer the delay
+        //     // index 0 would have no delay, hence the + 0.3s
+        //     if(link.style.animation){
+        //         link.style.animation = '';
+        //     } else {
+        //         link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`
+        //         console.log(index/7 + 1);
+        //     }
+        // });
+        // // Burger Animation
+        // burger.classList.toggle('toggle');
+
+        // event.target.classList.toggle('selected');
+
+    }
+
     return (
-        <nav>
+        <nav className={navbarIsExpanded ? "nav-active" : ""}>
             <div className="logo">
                 <img src="/images/setSymbol/THB.png" alt="" height="42" width="42"></img>
                 <h4 id="setName">Theros - Beyond Death</h4>
@@ -45,7 +78,7 @@ const Navbar = () => {
                 </li>
             </ul>
             {/* <Button variant="john" as="input" type="submit" value="Find Cards" readOnly onClick={(event) => this.handleSubmit(event)}></Button> */}
-            <div className="burger">
+            <div onClick={expandNavbarHandler} className={navbarIsExpanded ? "burger toggle" : "burger"}>
                 <div className="line1"></div>
                 <div className="line2"></div>
                 <div className="line3"></div>
