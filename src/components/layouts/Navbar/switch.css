@@ -9,7 +9,7 @@
     width: 35px;
     /* height: 34px; */
     height: 16px;
-    z-index: 100;
+    /* z-index: 100; */
 }
 /* Hide default HTML checkbox */
 .switch input {
@@ -48,8 +48,8 @@ transition: .2s;
     height: 12px;
     /* width: 26px; */
     width: 12px;
-    left: 4px;
-    bottom: 2px;
+    left: 2px;
+    bottom: 1px;
     /* ================================================ */
     /* this is the color of the 'ball' before clicking */
     /* ================================================ */
