@@ -6,7 +6,7 @@ import NavLinks from './NavLinks';
 import SideDrawer from './SideDrawer';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = (props) => {
 
     const [navbarIsExpanded, setNavbarIsExpanded] = useState(false);
 
@@ -18,7 +18,7 @@ const Navbar = () => {
         <React.Fragment>
             <SideDrawer show={navbarIsExpanded} onClick={expandNavbarHandler}>
                 <nav className="main-navigation__drawer-nav">
-                    <NavLinks />
+                    <NavLinks onSubmit={props.onSubmit}/>
                     {/* <h1>Test</h1> */}
                 </nav>
             </SideDrawer>
@@ -30,7 +30,7 @@ const Navbar = () => {
                 </div>
 
                 <div className="mainNavLinks">
-                    <NavLinks />
+                    <NavLinks onSubmit={props.onSubmit}/>
                 </div>
                     {/* <NavLinks /> */}
 

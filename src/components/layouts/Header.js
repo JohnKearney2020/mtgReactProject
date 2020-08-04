@@ -7,7 +7,7 @@ import HeaderBackground from './HeaderBackground';
 import Navbar from './Navbar/Navbar';
 
 import * as actionCreators from '../../store/actions/masterActionExporter';
-import './header.css';
+import './Header.css';
 
 class Header extends Component {
     
@@ -126,12 +126,15 @@ class Header extends Component {
     //                                      Dispatch on Submit
     //===========================================================================================================
     handleSubmit = (e) => {
+        // This gets passed down via props to:
+        // 1. <Navbar />
+        //      a. <Navlinks />
         e.preventDefault(); //prefent default behavior of a form navigating somewhere else
         console.log('form submitted');
         //send out a dispatch if the user has made any selections, otherwise do nothing
-        if(this.state.colorsForAPI.length > 0){
-            this.props.findCards(this.state.colorsForAPI)
-        }
+        // if(this.state.colorsForAPI.length > 0){
+        //     this.props.findCards(this.state.colorsForAPI)
+        // }
     }
 
     //===========================================================================================================
@@ -147,7 +150,7 @@ class Header extends Component {
             {/* <Jumbotron fluid id="jumbotron" className="position-relative overflow-hidden d-none d-sm-block"></Jumbotron> */}
             {/* ---------------------------------------------------- End of Header ----------------------------------------------------- --> */}
             <HeaderBackground />
-            <Navbar />
+            <Navbar onSubmit={this.handleSubmit}/>
         </>                
         )
     }

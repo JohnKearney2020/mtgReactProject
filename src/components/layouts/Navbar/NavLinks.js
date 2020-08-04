@@ -3,7 +3,7 @@ import React from 'react';
 import Switch from './Switch';
 import './NavLinks.css';
 
-const NavLinks = () => {
+const NavLinks = (props) => {
     return (
         <ul className="nav-links">
         <li>
@@ -35,7 +35,7 @@ const NavLinks = () => {
             <Switch />
         </li>
         <li>
-            <button id="submitButton" type="submit" value="Find Cards" >Find Cards</button>
+            <button id="submitButton" type="submit" value="Find Cards" onClick={props.onSubmit} >Find Cards</button>
         </li>
     </ul>
     )
