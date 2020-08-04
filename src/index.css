@@ -35,3 +35,47 @@ code {
   opacity: 0;
   transition: all 200ms;
 }
+
+
+
+/* .slide-in-right-enter {
+  transform: translateX(100%)!important;
+  opacity: 0
+}
+
+.slide-in-right-enter-active {
+  transform: translateX(0)!important;
+  opacity: 1!important;
+  transition: all 200ms;
+}
+
+.slide-in-right-exit {
+  transform: translateX(0%)!important;
+  opacity: 1!important;
+}
+
+.slide-in-right-exit-active {
+  transform: translateX(100%)!important;
+  opacity: 0!important;
+  transition: all 200ms;
+} */
+/* .slide-in-right-enter {
+  opacity: 0;
+  transform: scale(2.0);
+}
+
+.slide-in-right-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.slide-in-right-exit {
+  opacity: 1;
+}
+
+.slide-in-right-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+} */

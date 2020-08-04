@@ -1,6 +1,7 @@
 .side-drawer {
     position: fixed;
-    right: 0;
+    /* right: 0; */
+    left: 0;
     top: 8vh;
     /* z-index: 1000; */
     height: 92vh;
@@ -11,5 +12,5 @@
 }
 .main-navigation__drawer-nav {
     height: 100%;
-    /* z-index: 0; */
+    z-index: 100;
 }

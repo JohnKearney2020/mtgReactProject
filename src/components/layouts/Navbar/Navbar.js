@@ -22,7 +22,8 @@ const Navbar = () => {
                     {/* <h1>Test</h1> */}
                 </nav>
             </SideDrawer>
-            <nav className={navbarIsExpanded ? "nav-active" : ""}>
+            {/* <nav className={navbarIsExpanded ? "nav-active" : ""}> */}
+            <nav>
                 <div className="logo">
                     <img src="/images/setSymbol/THB.png" alt="" height="42" width="42"></img>
                     <h4 id="setName">Theros - Beyond Death</h4>

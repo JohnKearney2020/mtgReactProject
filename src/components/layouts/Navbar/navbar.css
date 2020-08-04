@@ -78,10 +78,11 @@ nav * {
     body {
         /* when we do the translate x below, this prevents getting a horizontal scroll bar */
         /* overflow-x: hidden; */
-        display: hidden;
+        /* display: hidden; */
     }
     .mainNavLinks {
         display: none;
+        /* opacity: 0; */
     }
     .burger {
         display: block;
@@ -89,11 +90,11 @@ nav * {
 }
 
 /* This needs to be down here below the media query or else the media query will take precedence on mobile */
-.nav-active {
+/* .nav-active {
     transform: translateX(0%);
-}
+} */
 
-@keyframes navLinkFade {
+/* @keyframes navLinkFade {
     from{
         opacity: 0;
         transform: translateX(50px);
@@ -102,7 +103,7 @@ nav * {
         opacity: 1;
         transform: translateX(0px);
     }
-}
+} */
 
 .toggle .line1 {
     transform: rotate(-45deg) translate(-5px,6px);
