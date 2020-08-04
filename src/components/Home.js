@@ -151,7 +151,7 @@ class Home extends Component {
                     loading="lazy">
                 </img>
             } else {
-                return <img src={eachCardObj.image_uris.border_crop} alt=""></img>;
+                return <img className="card" src={eachCardObj.image_uris.border_crop} alt=""></img>;
             }
 
             
