@@ -18,7 +18,7 @@ const Navbar = (props) => {
         <React.Fragment>
             <SideDrawer show={navbarIsExpanded} onClick={expandNavbarHandler}>
                 <nav className="main-navigation__drawer-nav">
-                    <NavLinks onSubmit={props.onSubmit}/>
+                    <NavLinks onSubmit={props.onSubmit} onColorSelection={props.onColorSelection} {...props}/>
                     {/* <h1>Test</h1> */}
                 </nav>
             </SideDrawer>
@@ -30,7 +30,7 @@ const Navbar = (props) => {
                 </div>
 
                 <div className="mainNavLinks">
-                    <NavLinks onSubmit={props.onSubmit}/>
+                    <NavLinks onSubmit={props.onSubmit} onColorSelection={props.onColorSelection} {...props}/>
                 </div>
                     {/* <NavLinks /> */}
 

@@ -32,12 +32,15 @@ class Header extends Component {
         //Checkbox uncheck 4-17
         let oldColors = [...this.state.colorsForAPI];
         let targetCheckedState = e.target.checked;
+        console.log(`target checked state ${targetCheckedState}`);
         let switchName = e.target.name;
+        console.log(`switchname ${switchName}`);
         let targetValue = e.target.value;
+        console.log(`User checked: ${targetValue}`);
         //=============================
         //If the user clicked a color
         //=============================
-        //Check to see if lands or colorless have been selected previously. If they have, unselect them
+        // Check to see if lands or colorless have been selected previously. If they have, unselect them
         if(e.target.value !== 'C' && e.target.value !== 'L'){
             if(this.state.colorlessSwitch.checked === true || this.state.landsSwitch.checked === true) {
                 this.setState({
@@ -59,6 +62,8 @@ class Header extends Component {
                     this.setState({
                         colorsForAPI: oldColors
                     }, () => {
+                        console.log('current local state in Header.js:');
+                        console.log(this.state);
                         console.log(this.state.colorsForAPI);
                     })
                 } else { //if the switched is turned 'off'
@@ -70,6 +75,8 @@ class Header extends Component {
                     this.setState({
                         colorsForAPI: filteredColors
                     }, () => {
+                        console.log('current local state in Header.js:');
+                        console.log(this.state);
                         console.log(this.state.colorsForAPI);
                     })
                 }
@@ -94,7 +101,7 @@ class Header extends Component {
                     greenSwitch: { checked: false },
                     colorsForAPI: oldColors
                 },() => {
-                    console.log('current local state:');
+                    console.log('current local state in Header.js:');
                     console.log(this.state);
                     console.log(this.state.colorsForAPI);
                 });
@@ -114,7 +121,7 @@ class Header extends Component {
                     greenSwitch: { checked: false },
                     colorsForAPI: oldColors
                 },() => {
-                    console.log('current local state:');
+                    console.log('current local state in Header.js:');
                     console.log(this.state);
                     console.log(this.state.colorsForAPI);
                 });
@@ -132,9 +139,9 @@ class Header extends Component {
         e.preventDefault(); //prefent default behavior of a form navigating somewhere else
         console.log('form submitted');
         //send out a dispatch if the user has made any selections, otherwise do nothing
-        // if(this.state.colorsForAPI.length > 0){
-        //     this.props.findCards(this.state.colorsForAPI)
-        // }
+        if(this.state.colorsForAPI.length > 0){
+            this.props.findCards(this.state.colorsForAPI)
+        }
     }
 
     //===========================================================================================================
@@ -150,7 +157,9 @@ class Header extends Component {
             {/* <Jumbotron fluid id="jumbotron" className="position-relative overflow-hidden d-none d-sm-block"></Jumbotron> */}
             {/* ---------------------------------------------------- End of Header ----------------------------------------------------- --> */}
             <HeaderBackground />
-            <Navbar onSubmit={this.handleSubmit}/>
+            {/* <Navbar onSubmit={this.handleSubmit} onColorSelection={this.handleCheckBoxClick} checkedState={...this.state}/> */}
+            <Navbar onSubmit={this.handleSubmit} onColorSelection={this.handleCheckBoxClick} {...this.state}/>
+
         </>                
         )
     }
@@ -175,3 +184,15 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(null, mapDispatchToProps)(Header);
+
+            // {/* <Navbar 
+            // onSubmit={this.handleSubmit} 
+            // onColorSelection={this.handleCheckBoxClick} 
+            // whiteState={this.state.whiteSwitch}
+            // blueState={this.state.blueSwitch}
+            // blackState={this.state.blackSwitch}
+            // redState={this.state.redSwitch}
+            // greenState={this.state.greenSwitch}
+            // colorlessState={this.state.colorlessSwitch}
+            // landsState={this.state.landsSwitch}
+            // /> */}
