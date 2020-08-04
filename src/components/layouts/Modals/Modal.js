@@ -94,7 +94,7 @@ const Modal = (props) => {
         <React.Fragment>
             {/* {props.show && <Backdrop onClick={props.onCancel} />} */}
             {/* remember the CSSTransition component takes classNames, plural, instead of className */}
-            <CSSTransition in={props.show} mountOnEnter unmountOnExit timeout={5000} classNames="modal-test">
+            <CSSTransition in={props.show} mountOnEnter unmountOnExit timeout={5000} classNames="modal">
                 {/* the ...props forwards all props sent to our exported component, Modal, to the ModalOverlay */}
                 {/* the spread operator takes all the key: value pairs on the props object and puts them as attributes on ModalOverlay */}
                 <ModalOverlay {...props} style={styleTop}/>
