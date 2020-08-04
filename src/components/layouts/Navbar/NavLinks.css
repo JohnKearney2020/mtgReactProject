@@ -9,7 +9,7 @@
     width: 100%;
     list-style: none;
     margin: 0;
-    /* z-index: 1000!important; */
+    z-index: 1000!important;
     /* align-items: center; */
 }
 
@@ -116,24 +116,24 @@
         /* position it on the right-hand side */
         right: 0px;
         /* this will make it full-screen since we made our nav 8vh height */
-        height: 92vh;
+        height: 100vh;
         /* this will have the links show up under the main navbar */
-        top: 8vh;
+        /* top: 8vh; */
         /* background-color: #5d4954; */
-        background-color: black;
+        /* background-color: black; */
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 50%;
         /* move the nav links off the page in conjuction with 'overflow-x above */
-        transform: translateX(100%);
-        transition: transform 0.5s ease-in;
-        /* color: lime!important; */
-        /* z-index: 1000; */
+        /* transform: translateX(100%); */
+        /* transition: transform 0.5s ease-in; */
+        color: lime!important;
+        z-index: 1000;
     }
     /* the navlinks will fade in to their full color, but start at 0 */
     .nav-links li{
-        opacity: 0;
+        /* opacity: 0; */
         
         /* z-index: 1000; */
     }

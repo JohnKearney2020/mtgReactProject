@@ -18,8 +18,8 @@ const Navbar = () => {
         <React.Fragment>
             <SideDrawer show={navbarIsExpanded} onClick={expandNavbarHandler}>
                 <nav className="main-navigation__drawer-nav">
-                    <h1>TEST</h1>
                     <NavLinks />
+                    {/* <h1>Test</h1> */}
                 </nav>
             </SideDrawer>
             <nav className={navbarIsExpanded ? "nav-active" : ""}>
@@ -31,6 +31,8 @@ const Navbar = () => {
                 <div className="mainNavLinks">
                     <NavLinks />
                 </div>
+                    {/* <NavLinks /> */}
+
                 <div onClick={expandNavbarHandler} className={navbarIsExpanded ? "burger toggle" : "burger"}>
                     <div className="line1"></div>
                     <div className="line2"></div>

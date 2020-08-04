@@ -12,9 +12,10 @@ const SideDrawer = (props) => {
     // the mount and unmount properties tell it to add or remove the <aside> element from the DOM when it should be
     // visible or not, otherwise it's only animated
     const content = (
-        <CSSTransition in={props.show} timeout={200} classNames="slide-in-right" mountOnEnter unmountOnExit>
+        <CSSTransition in={props.show} timeout={200} classNames="slide-in-left" mountOnEnter unmountOnExit>
             {/* we pass the aside an onClick function from the MainNavigation.js file */}
             <aside className="side-drawer" onClick={props.onClick}>{props.children}</aside>
+            {/* <aside className="side-drawer" onClick={props.onClick}><h1>TEST</h1></aside> */}
         </CSSTransition>
     );
     
