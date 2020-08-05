@@ -45,30 +45,33 @@ class Home extends Component {
     closeCardInfo = (event) => {
         event.preventDefault();
         console.log('close overlay clicked!');
-        this.setState({ 
-            cardClicked: false,
-            card_name: "",
-            artist: "",
-            cmc: "",
-            flavor_text: "",
-            image_url: "",
-            mana_cost: "",
-            oracle_text: "",
-            rarity: "",
-            set_name: "",
-            power: "",
-            toughness: "",
-            edh_rec_link: "",
-            gatherer_link: "",
-            card_type_line: ""
-        });
+        this.setState({
+            cardClicked: false
+        })
+        // this.setState({ 
+        //     cardClicked: false,
+        //     card_name: "",
+        //     artist: "",
+        //     cmc: "",
+        //     flavor_text: "",
+        //     image_url: "",
+        //     mana_cost: "",
+        //     oracle_text: "",
+        //     rarity: "",
+        //     set_name: "",
+        //     power: "",
+        //     toughness: "",
+        //     edh_rec_link: "",
+        //     gatherer_link: "",
+        //     card_type_line: ""
+        // });
         this.changeScroll(); // re-enable mouse scrollinh
     }
 
-    animateCloseCardInfo = (event) => {
-        setTimeout(
-            function(){this.closeCardInfo(event)}, 300); //Scryfall API documentation asks for 100 ms break between calls
-    }
+    // animateCloseCardInfo = (event) => {
+    //     setTimeout(
+    //         function(){this.closeCardInfo(event)}, 300); //Scryfall API documentation asks for 100 ms break between calls
+    // }
     onCardClick = (event) => {
         console.log('card is clicked!');
         // find out how far the user has scrolled down in the Y direction
@@ -94,8 +97,14 @@ class Home extends Component {
             edh_rec_link: event.target.dataset.edh_rec_link,
             gatherer_link: event.target.dataset.gatherer_link,
             card_type_line: event.target.dataset.card_type_line,
-
         });
+
+        // let rarity = event.target.dataset.rarity;
+        // let imgURL = event.target.src;
+        // let card_name = event.target.dataset.card_name;
+        // // let flavorText = event.target.dataset.flavor_text;
+        // let OracleText = event.target.dataset.oracle_text;
+
         // console.log(`Card Name is: ${this.state.card_name}`)
         // console.log(`state after clicking card: ${this.state.cardClicked}`);
         this.changeScroll(); //stop mouse scrolling
@@ -169,6 +178,12 @@ class Home extends Component {
             
         });
 
+        // let rarity = this.state.rarity;
+        // let imgURL = this.state.image_url;
+        // let card_name = this.state.card_name;
+        // // let flavorText = event.target.dataset.flavor_text;
+        // let OracleText = this.state.oracle_text;
+
         return (
             <>
             {/* API Call Test <br /> */}
@@ -189,7 +204,7 @@ class Home extends Component {
                 {/* <div className="row justify-content-center mx-2 mx-md-3 my-1 my-md-2 my-lg-4"> */}
                     {this.state.cardClicked && 
                         <React.Fragment>
-                            <Backdrop yOffSetValue={this.state.yOffset} onClick={this.animateCloseCardInfo}/>    
+                            <Backdrop yOffSetValue={this.state.yOffset} onClick={this.closeCardInfo}/>    
                         </React.Fragment>
                     }
                     <CSSTransition in={this.state.cardClicked} mountOnEnter unmountOnExit timeout={500} classNames="card-modal-animate">
@@ -208,11 +223,29 @@ class Home extends Component {
                             // cardFlavorText="Test for modal animation"
                             card_rarity={this.state.rarity}
                         >
-                            {/* <div className="card-container">
+                            <div className="card-container">
                                 <h2>THE CARD AND INFO</h2>
                                 <img src={this.state.image_url} alt=""></img>
-                            </div> */}
+                            </div>
                         </Modal>
+                        {/* <Modal 
+                            show={this.state.cardClicked}
+                            onCancel={this.closeCardInfo}
+                            header={card_name}
+                            contentClass="card-item__modal-content"
+                            footerClass="card-item__modal-actions"
+                            footer={<button onClick={this.closeCardInfo}>CLOSE</button>}
+                            yOffSetValue={this.state.yOffset}
+                            image_url__for_card_modal={imgURL}
+                            cardFlavorText={OracleText}
+                            cardFlavorText="Test for modal animation"
+                            card_rarity={rarity}
+                        >
+                            <div className="card-container">
+                                <h2>THE CARD AND INFO</h2>
+                                <img src={this.state.image_url} alt=""></img>
+                            </div>
+                        </Modal> */}
                     </CSSTransition>
                     <div className="flex-container">
                         {filteredCards}

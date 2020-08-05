@@ -21,9 +21,9 @@ const ModalOverlay = (props) => {
                     <div id="text-container">
                         <h5><span className="modal-span">Oracle Text: </span>{props.cardFlavorText}</h5>
                         <hr />
-                        {/* <h5>{props.cardFlavorText}</h5>
+                        <h5>{props.cardFlavorText}</h5>
                         <hr />
-                        <h5>{props.cardFlavorText}</h5> */}
+                        <h5>{props.cardFlavorText}</h5>
                     </div>
                 </div>
             </div> {/* end of heading-container */}
