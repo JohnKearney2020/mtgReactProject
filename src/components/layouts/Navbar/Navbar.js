@@ -13,12 +13,20 @@ const Navbar = (props) => {
     const expandNavbarHandler = (event) => {
         if(navbarIsExpanded ? setNavbarIsExpanded(false) : setNavbarIsExpanded(true));
     }
+    //Here, we want to call two functions with the onSubmit of the "Find Cards" button, but only on mobile
+    //So, we wrap them both into a new function and pass it via the onSubmit below
+    const mobileSubmit = (e) => {
+        props.onSubmit(e); //first function call, expects 'e' as an argument b/c it's first line it e.preventDefault();
+        expandNavbarHandler(); //second function call
+    }
 
     return (
         <React.Fragment>
-            <SideDrawer show={navbarIsExpanded} onClick={expandNavbarHandler}>
+            {/* <SideDrawer show={navbarIsExpanded} onClick={expandNavbarHandler}> */}
+            <SideDrawer show={navbarIsExpanded}>
                 <nav className="main-navigation__drawer-nav">
-                    <NavLinks onSubmit={props.onSubmit} onColorSelection={props.onColorSelection} {...props}/>
+                    {/* <NavLinks onSubmit={props.onSubmit} onColorSelection={props.onColorSelection} {...props}/> */}
+                    <NavLinks onSubmit={props.onSubmit} onMobileSubmit={mobileSubmit} onColorSelection={props.onColorSelection} show={navbarIsExpanded} {...props}/>
                     {/* <h1>Test</h1> */}
                 </nav>
             </SideDrawer>
@@ -30,7 +38,7 @@ const Navbar = (props) => {
                 </div>
 
                 <div className="mainNavLinks">
-                    <NavLinks onSubmit={props.onSubmit} onColorSelection={props.onColorSelection} {...props}/>
+                    <NavLinks onSubmit={props.onSubmit} onMobileSubmit={mobileSubmit} onColorSelection={props.onColorSelection} show={navbarIsExpanded} {...props}/>
                 </div>
                     {/* <NavLinks /> */}
 

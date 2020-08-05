@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Switch from './Switch';
 import './NavLinks.css';
 
 const NavLinks = (props) => {
+    // if we are on mobile, we want to run mobileSubmit which does exactly what props.onSubmit does PLUS it closes the
+    // navbar after a user hits sumbit
+    let localOnSubmit = "";
+    // if(props.mobileSubmit){
+    //     localOnSubmit = props.mobileSubmit;
+    //     console.log(`for mobile the submit is:`);
+    //     console.log(localOnSubmit);
+    // } else {
+    //     localOnSubmit = props.onSubmit;
+    //     console.log(`for non-mobile the submit is:`);
+    //     console.log(localOnSubmit);
+    // }
+    if(props.show === true){
+        
+        localOnSubmit = props.onMobileSubmit;
+        // console.log(`for mobile the submit is:`);
+        // console.log(localOnSubmit);
+    } else {
+        localOnSubmit = props.onSubmit;
+        // console.log(`for non-mobile the submit is:`);
+        // console.log(localOnSubmit);
+    }
+
+    // const [whichSubmitFunction, SetWhichSubmitFunction] = useState(props.onSubmit);
+
+    // if(props.mobileSubmit){
+    //     SetWhichSubmitFunction(props.mobileSubmit)
+    // } else {
+    //     SetWhichSubmitFunction(props.onSubmit)
+    // }
     return (
         <ul className="nav-links">
         <li>
@@ -35,7 +65,10 @@ const NavLinks = (props) => {
             <Switch onColorSelection={props.onColorSelection} color="L" checkedState={props.landsSwitch.checked} nameForName="landsSwitch"/>
         </li>
         <li>
-            <button id="submitButton" type="submit" value="Find Cards" onClick={props.onSubmit} >Find Cards</button>
+            {/* <button id="submitButton" type="submit" value="Find Cards" onClick={props.onSubmit} >Find Cards</button> */}
+            
+            {/* <button id="submitButton" type="submit" value="Find Cards" onClick={props.onSubmit} >Find Cards</button> */}
+            <button id="submitButton" type="submit" value="Find Cards" onClick={localOnSubmit} >Find Cards</button>
         </li>
     </ul>
     )

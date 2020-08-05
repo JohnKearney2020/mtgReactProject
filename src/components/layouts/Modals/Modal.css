@@ -1,3 +1,28 @@
+  /* ======================================================================================================
+                                          /* CSSTransitions Animations  */
+  /* ====================================================================================================== */
+  card-modal-animate-enter {
+    transform: translateY(-10rem);
+    opacity: 0;
+  }
+  
+  card-modal-animate-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 200ms;
+  }
+  
+  card-modal-animate-exit {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  card-modal-animate-exit-active {
+    transform: translateY(-10rem);
+    opacity: 0;
+    transition: all 200ms;
+  }
+
 #modal-container {
   z-index: 100;
   position: fixed;

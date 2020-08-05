@@ -34,8 +34,8 @@ background-color: white;
 /* ===================================================================== */
 /* This is the transition speed of the 'track' and 'ball' changing color */
 /* ===================================================================== */
-/* -webkit-transition: .2s; */
-/* transition: .2s; */
+-webkit-transition: .2s;
+transition: .2s;
 }
 
 .slider:before {
@@ -63,8 +63,8 @@ background-color: white;
     /* ==================================================================== */
     /* This is the transition speed of the 'ball' moving from right to left */
     /* ==================================================================== */
-    /* -webkit-transition: .1s; */
-    /* transition: .1s; */
+    -webkit-transition: .1s;
+    transition: .1s;
 }
 input:checked + .slider {
     /* ================================================ */
