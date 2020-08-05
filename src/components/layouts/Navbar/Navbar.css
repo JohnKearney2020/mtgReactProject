@@ -2,32 +2,6 @@
 /* #f1e50d */
 /* rgb(65, 65, 65) */
 
-/* ======================================================== */
-/* CSSTransitions Animation for the Navbar on Mobile */
-/* ======================================================== */
-.slide-in-left-enter {
-    transform: translateX(-100%);
-}
-
-.slide-in-left-enter-active {
-transform: translateX(0);
-opacity: 1;
-transition: all 200ms;
-}
-
-.slide-in-left-exit {
-transform: translateX(0%);
-opacity: 1;
-}
-
-.slide-in-left-exit-active {
-transform: translateX(-100%);
-opacity: 0;
-transition: all 200ms;
-}
-
-
-
 nav {
     display: flex;
     justify-content: space-around;
@@ -79,7 +53,7 @@ nav * {
     height: 3px;
     background-color: rgb(226, 226, 226);
     margin: 5px;
-    /* transition: all 0.3s ease; */
+    transition: all 0.3s ease;
 }
 
 .burger {
