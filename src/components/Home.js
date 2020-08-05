@@ -85,6 +85,7 @@ class Home extends Component {
 
         });
         console.log(`Card Name is: ${this.state.card_name}`)
+        console.log(`state after clicking card: ${this.state.cardClicked}`);
         this.changeScroll(); //stop mouse scrolling
     }
 

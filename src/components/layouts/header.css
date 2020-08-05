@@ -1,63 +1,5 @@
 
-.childPosition {
-	top: 0px;
-	left: 0px;
-}
 
-.center {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 100%;
-}
-
-#mainNavbar {
-	font-size: 1rem;
-	font-weight: 400;
-	background-color: rgb(24, 24, 24);
-	border-color: rgb(24, 24, 24);
-	top: -2px; /* fixes the very small gap between the navbar and top of page on Chrome */
-	z-index: 10;
-}
-	/* For width 400px and larger: */
-	@media only screen and (min-width: 400px) {
-		#mainNavbar{
-			font-size: 1.5rem;
-			}
-	}
-
-#mainNavbar .navbar-brand {
-	/* color: black; */
-	font-size: 1rem;
-	/* color: rgb(217, 231, 14); */
-	color: rgb(241, 229, 13);
-}
-	/* For width 400px and larger: */
-	@media only screen and (min-width: 400px) {
-		#mainNavbar .navbar-brand {
-			font-size: 1.5rem;
-			}
-	}
-
-
-
-
-/* #mainNavbar .navbar-brand:hover {
-	font-size: 1.5rem;
-	color: rgb(0, 230, 31);
-} */
-
-#mainNavbar .nav-link {
-	/* color: black; */
-	/* color: rgb(217, 231, 14); */
-	color: rgb(241, 229, 13);
-}
-/* below we change the color when we hover over the nav links */
-#mainNavbar .nav-link:hover {
-	/* color: rgb(0, 230, 31); */
-	color: rgb(22, 161, 74);
-	/* background: warning; */
-}
 /* body {
 	background: url('../images/background/indexBackground.png');
 	background-attachment: fixed;
@@ -86,26 +28,5 @@ body {
     display: table;
 }
 
-/* .switch{
-	color: rgb(22, 161, 74);
-} */
-.btn-john {
-	background-color: rgb(22, 161, 154);
-	color: rgb(241, 229, 13);
-	font-size: 24px;
-	font-weight: normal;
-	/* padding: 10px; */
-	height: 40px;
-	width: 140px;
-	/* -webkit-text-stroke-width: 2px; */
-	/* -webkit-text-stroke-color:rgb(24, 24, 24); */
-	text-shadow: -1px 1px 0 rgb(24, 24, 24),
-				1px 1px 0 rgb(24, 24, 24),
-				1px -1px 0 rgb(24, 24, 24),
-				-1px -1px 0 rgb(24, 24, 24);
-}
-.btn-john:hover {
-	/* color: rgb(0, 230, 31); */
-	color: rgb(24, 24, 24);
-	/* background: warning; */
-}
+
+

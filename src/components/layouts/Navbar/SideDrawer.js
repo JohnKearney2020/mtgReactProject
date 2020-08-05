@@ -13,7 +13,7 @@ const SideDrawer = (props) => {
     // visible or not, otherwise it's only animated
     console.log(`props.show is ${props.show}`);
     const content = (
-        <CSSTransition in={props.show} timeout={1000} classNames="slide-in-left" mountOnEnter unmountOnExit>
+        <CSSTransition in={props.show} timeout={200} classNames="slide-in-left" mountOnEnter unmountOnExit>
             {/* we pass the aside an onClick function from the MainNavigation.js file */}
             <aside className="side-drawer" onClick={props.onClick}>{props.children}</aside>
             {/* <aside className="side-drawer" onClick={props.onClick}><h1>TEST</h1></aside> */}

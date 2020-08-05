@@ -53,7 +53,7 @@ nav * {
     height: 3px;
     background-color: rgb(226, 226, 226);
     margin: 5px;
-    transition: all 0.3s ease;
+    /* transition: all 0.3s ease; */
 }
 
 .burger {
@@ -61,20 +61,20 @@ nav * {
     cursor: pointer;
 }
 
-@media screen and (max-width: 1200px){
+@media only screen and (max-width: 1200px){
     #setName {
         font-size: 1rem;
         /* color: red; */
     }
 }
 
-@media screen and (max-width: 992px){
+@media only screen and (max-width: 992px){
     .mainNavLinks {
         width: 80%;
     }
 }
 
-@media screen and (max-width: 768px){
+@media only screen and (max-width: 768px){
     body {
         /* when we do the translate x below, this prevents getting a horizontal scroll bar */
         /* overflow-x: hidden; */

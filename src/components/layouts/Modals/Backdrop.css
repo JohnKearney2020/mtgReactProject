@@ -16,6 +16,6 @@
     background: rgba(0, 0, 0, 0.75);
     z-index: 100;
 }
-.backdrop::after {
+/* .backdrop::after {
     top: var(yOffsetValue);
-}
+} */

@@ -26,7 +26,7 @@
     letter-spacing: 3px;
     font-size: 1.5rem;
     /* font-weight: 700; */
-    transition: color 0.3s ease;
+    /* transition: color 0.3s ease; */
     /* color: lightsteelblue; */
     /* color: #bfcfe4; */
     color: #d0d0d0;
@@ -53,7 +53,7 @@
     border: 3px solid #d0d0d0;
     /* border: 3px solid rgb(22, 161, 154); */
     letter-spacing: 1.2px;
-    transition: all .3s ease;
+    /* transition: all .3s ease; */
     /* border-radius: 6px 10px; */
     border-radius: 6px 6px;
     margin-top: auto;
@@ -70,10 +70,10 @@
     outline: 0;
     -webkit-appearance: none;
     box-shadow: none;
-    transition: all .6s ease;
+    /* transition: all .6s ease; */
 }
 
-@media screen and (max-width: 1200px){
+@media only screen and (max-width: 1200px){
 
     .nav-links .selectorText{
         letter-spacing: 3px;
@@ -91,7 +91,7 @@
     }
 }
 
-@media screen and (max-width: 992px){
+@media only screen and (max-width: 992px){
 
     #submitButton {
         height: 35px;
@@ -104,12 +104,12 @@
     }
 }
 
-@media screen and (max-width: 768px){
-    body {
-        /* when we do the translate x below, this prevents getting a horizontal scroll bar */
-        /* overflow-x: hidden; */
-        /* display: hidden; */
-    }
+@media only screen and (max-width: 768px){
+    /* body {
+        when we do the translate x below, this prevents getting a horizontal scroll bar
+        overflow-x: hidden;
+        display: hidden;
+    } */
     
     .nav-links {
         /* position: absolute; */

@@ -15,6 +15,37 @@ code {
 /* body {
   font-family: 'Nunito'!important, sans-serif;
 } */
+
+  /* ====================================================================================================== */
+                                          /* CSSTransitions Animations  */
+  /* ====================================================================================================== */
+  card-modal-animate-enter {
+    transform: translateY(-10rem);
+    opacity: 0;
+  }
+  
+  card-modal-animate-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 200ms;
+  }
+  
+  card-modal-animate-exit {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  card-modal-animate-exit-active {
+    transform: translateY(-10rem);
+    opacity: 0;
+    transition: all 200ms;
+  }
+  
+
+
+
+
+
 .slide-in-left-enter {
   transform: translateX(-100%);
 }
