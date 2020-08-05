@@ -32,11 +32,11 @@ class Header extends Component {
         //Checkbox uncheck 4-17
         let oldColors = [...this.state.colorsForAPI];
         let targetCheckedState = e.target.checked;
-        console.log(`target checked state ${targetCheckedState}`);
+        // console.log(`target checked state ${targetCheckedState}`);
         let switchName = e.target.name;
-        console.log(`switchname ${switchName}`);
+        // console.log(`switchname ${switchName}`);
         let targetValue = e.target.value;
-        console.log(`User checked: ${targetValue}`);
+        // console.log(`User checked: ${targetValue}`);
         //=============================
         //If the user clicked a color
         //=============================
@@ -62,9 +62,9 @@ class Header extends Component {
                     this.setState({
                         colorsForAPI: oldColors
                     }, () => {
-                        console.log('current local state in Header.js:');
-                        console.log(this.state);
-                        console.log(this.state.colorsForAPI);
+                        // console.log('current local state in Header.js:');
+                        // console.log(this.state);
+                        // console.log(this.state.colorsForAPI);
                     })
                 } else { //if the switched is turned 'off'
                     let filteredColors = oldColors.filter((eachColor) => {
@@ -75,9 +75,9 @@ class Header extends Component {
                     this.setState({
                         colorsForAPI: filteredColors
                     }, () => {
-                        console.log('current local state in Header.js:');
-                        console.log(this.state);
-                        console.log(this.state.colorsForAPI);
+                        // console.log('current local state in Header.js:');
+                        // console.log(this.state);
+                        // console.log(this.state.colorsForAPI);
                     })
                 }
             });
@@ -101,9 +101,9 @@ class Header extends Component {
                     greenSwitch: { checked: false },
                     colorsForAPI: oldColors
                 },() => {
-                    console.log('current local state in Header.js:');
-                    console.log(this.state);
-                    console.log(this.state.colorsForAPI);
+                    // console.log('current local state in Header.js:');
+                    // console.log(this.state);
+                    // console.log(this.state.colorsForAPI);
                 });
             } else {
                 if(e.target.checked === true){
@@ -121,9 +121,9 @@ class Header extends Component {
                     greenSwitch: { checked: false },
                     colorsForAPI: oldColors
                 },() => {
-                    console.log('current local state in Header.js:');
-                    console.log(this.state);
-                    console.log(this.state.colorsForAPI);
+                    // console.log('current local state in Header.js:');
+                    // console.log(this.state);
+                    // console.log(this.state.colorsForAPI);
                 });
             }
         }
@@ -137,7 +137,7 @@ class Header extends Component {
         // 1. <Navbar />
         //      a. <Navlinks />
         e.preventDefault(); //prefent default behavior of a form navigating somewhere else
-        console.log('form submitted');
+        // console.log('form submitted');
         //send out a dispatch if the user has made any selections, otherwise do nothing
         if(this.state.colorsForAPI.length > 0){
             this.props.findCards(this.state.colorsForAPI)

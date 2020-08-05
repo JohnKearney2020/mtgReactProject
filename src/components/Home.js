@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 
 import Backdrop from './layouts/Modals/Backdrop';
 import Modal from './layouts/Modals/Modal';
@@ -34,6 +35,13 @@ class Home extends Component {
         document.body.style.overflow = (style === 'hidden') ? 'auto':'hidden';
     }
 
+    // function animateCloseCardInfo() {
+
+    // }
+    
+
+    
+
     closeCardInfo = (event) => {
         event.preventDefault();
         console.log('close overlay clicked!');
@@ -57,13 +65,17 @@ class Home extends Component {
         this.changeScroll(); // re-enable mouse scrollinh
     }
 
+    animateCloseCardInfo = (event) => {
+        setTimeout(
+            function(){this.closeCardInfo(event)}, 300); //Scryfall API documentation asks for 100 ms break between calls
+    }
     onCardClick = (event) => {
         console.log('card is clicked!');
         // find out how far the user has scrolled down in the Y direction
         const yAmountScrolled = window.scrollY;
         // const card_name = event.target.title;
-        console.log(`Amount scrolled in Y direction: ${yAmountScrolled}`);
-        console.log(`Card name pulled from the card image element is ${event.target.dataset.card_name}`);
+        // console.log(`Amount scrolled in Y direction: ${yAmountScrolled}`);
+        // console.log(`Card name pulled from the card image element is ${event.target.dataset.card_name}`);
         this.setState({  
             cardClicked: true,
             yOffset: yAmountScrolled, 
@@ -84,8 +96,8 @@ class Home extends Component {
             card_type_line: event.target.dataset.card_type_line,
 
         });
-        console.log(`Card Name is: ${this.state.card_name}`)
-        console.log(`state after clicking card: ${this.state.cardClicked}`);
+        // console.log(`Card Name is: ${this.state.card_name}`)
+        // console.log(`state after clicking card: ${this.state.cardClicked}`);
         this.changeScroll(); //stop mouse scrolling
     }
 
@@ -177,26 +189,31 @@ class Home extends Component {
                 {/* <div className="row justify-content-center mx-2 mx-md-3 my-1 my-md-2 my-lg-4"> */}
                     {this.state.cardClicked && 
                         <React.Fragment>
-                            <Backdrop yOffSetValue={this.state.yOffset} onClick={this.closeCardInfo}/>
-                            <Modal 
-                                show={this.state.cardClicked}
-                                onCancel={this.closeCardInfo}
-                                header={this.state.card_name}
-                                contentClass="card-item__modal-content"
-                                footerClass="card-item__modal-actions"
-                                footer={<button onClick={this.closeCardInfo}>CLOSE</button>}
-                                yOffSetValue={this.state.yOffset}
-                                image_url__for_card_modal={this.state.image_url}
-                                cardFlavorText={this.state.oracle_text}
-                                card_rarity={this.state.rarity}
-                            >
-                                {/* <div className="card-container">
-                                    <h2>THE CARD AND INFO</h2>
-                                    <img src={this.state.image_url} alt=""></img>
-                                </div> */}
-                            </Modal>
+                            <Backdrop yOffSetValue={this.state.yOffset} onClick={this.animateCloseCardInfo}/>    
                         </React.Fragment>
                     }
+                    <CSSTransition in={this.state.cardClicked} mountOnEnter unmountOnExit timeout={500} classNames="card-modal-animate">
+                        {/* the ...props forwards all props sent to our exported component, Modal, to the ModalOverlay */}
+                        {/* the spread operator takes all the key: value pairs on the props object and puts them as attributes on ModalOverlay */}  
+                        <Modal 
+                            show={this.state.cardClicked}
+                            onCancel={this.closeCardInfo}
+                            header={this.state.card_name}
+                            contentClass="card-item__modal-content"
+                            footerClass="card-item__modal-actions"
+                            footer={<button onClick={this.closeCardInfo}>CLOSE</button>}
+                            yOffSetValue={this.state.yOffset}
+                            image_url__for_card_modal={this.state.image_url}
+                            cardFlavorText={this.state.oracle_text}
+                            // cardFlavorText="Test for modal animation"
+                            card_rarity={this.state.rarity}
+                        >
+                            {/* <div className="card-container">
+                                <h2>THE CARD AND INFO</h2>
+                                <img src={this.state.image_url} alt=""></img>
+                            </div> */}
+                        </Modal>
+                    </CSSTransition>
                     <div className="flex-container">
                         {filteredCards}
                     </div>
