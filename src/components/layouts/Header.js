@@ -7,7 +7,7 @@ import HeaderBackground from './HeaderBackground';
 import Navbar from './Navbar/Navbar';
 
 import * as actionCreators from '../../store/actions/masterActionExporter';
-import './Header.css';
+import './header.css';
 
 class Header extends Component {
     

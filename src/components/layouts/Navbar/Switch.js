@@ -1,7 +1,7 @@
 // import React from 'react';
-import React, { useState } from 'react';
+import React from 'react';
 
-import './Switch.css';
+import './switch.css';
 
 const Switch = (props) => {
     // console.log(`state passed down through props:`);

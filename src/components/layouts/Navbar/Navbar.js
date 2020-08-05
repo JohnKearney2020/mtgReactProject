@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 // import Switch from './Switch';
 import NavLinks from './NavLinks';
 import SideDrawer from './SideDrawer';
-import './Navbar.css';
+import './navbar.css';
 
 const Navbar = (props) => {
 

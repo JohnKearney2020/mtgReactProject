@@ -115,7 +115,6 @@ class Home extends Component {
         //     setCardIsClicked(false);
         // } 
 
-        let noCards = false;
         let filteredCards = this.props.cardsFromAPI.map((eachCardObj,index) => {
             // console.log(`cardsFromApi Object is: ${this.props.cardsFromAPI}`);
             // console.log(`cardsFromApi Object is: ${eachCardObj}`);
@@ -124,7 +123,7 @@ class Home extends Component {
             //     noCards = true;
             //     return <img src={eachCardObj.image_uris.border_crop} alt=""></img>;
             // }
-            if(eachCardObj.name != "No Cards Found"){
+            if(eachCardObj.name !== "No Cards Found"){
                 return <img 
                     className="card" 
                     key={index} 
