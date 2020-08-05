@@ -46,7 +46,7 @@ code {
   /* ======================================================================================================
                                           /* CSSTransitions Animations  */
   /* ====================================================================================================== */
-  card-modal-animate-enter {
+  /* card-modal-animate-enter {
     transform: translateY(-10rem);
     opacity: 0;
   }
@@ -66,7 +66,7 @@ code {
     transform: translateY(-10rem);
     opacity: 0;
     transition: all 200ms;
-  }
+  } */
   
   /* body {
     background: url('../public/images/background/indexBackground.png');
