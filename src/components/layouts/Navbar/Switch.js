@@ -1,7 +1,7 @@
 // import React from 'react';
 import React from 'react';
 
-import './switch.css';
+import './Switch.css';
 
 const Switch = (props) => {
     // console.log(`state passed down through props:`);
