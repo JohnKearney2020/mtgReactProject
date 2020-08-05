@@ -63,7 +63,7 @@ let setsForApiPull = 'set%3Athb';
 async function getCardData(colorsArrayForAPICall, dispatch, actionType) {
     console.log('colorsArrayForAPICall from click:');
     console.log(colorsArrayForAPICall);
-    let apiURLInsert = createApiURL(colorsArrayForAPICall)
+    let apiURLInsert = createApiURL(colorsArrayForAPICall);
     try{
         let response = await fetch(`https://api.scryfall.com/cards/search?&q=${setsForApiPull}+${apiURLInsert}`);
         // let response = await fetch(`https://api.scryfall.com/cards/search?&q=set%3Athb+${apiURLInsert}`);

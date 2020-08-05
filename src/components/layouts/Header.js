@@ -1,9 +1,10 @@
 // import {Jumbotron, Navbar, Nav, Form, Button, FormControl, NavDropdown, Row, Col, ToggleButton } from 'react-bootstrap';
-import { Navbar, Nav, Form, Button, Row, Col } from 'react-bootstrap';
+// import { Navbar, Nav, Form, Button, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 // import ReactDom from 'react-dom';
 import HeaderBackground from './HeaderBackground';
+import Navbar from './Navbar/Navbar';
 
 import * as actionCreators from '../../store/actions/masterActionExporter';
 import './header.css';
@@ -31,12 +32,15 @@ class Header extends Component {
         //Checkbox uncheck 4-17
         let oldColors = [...this.state.colorsForAPI];
         let targetCheckedState = e.target.checked;
+        console.log(`target checked state ${targetCheckedState}`);
         let switchName = e.target.name;
+        console.log(`switchname ${switchName}`);
         let targetValue = e.target.value;
+        console.log(`User checked: ${targetValue}`);
         //=============================
         //If the user clicked a color
         //=============================
-        //Check to see if lands or colorless have been selected previously. If they have, unselect them
+        // Check to see if lands or colorless have been selected previously. If they have, unselect them
         if(e.target.value !== 'C' && e.target.value !== 'L'){
             if(this.state.colorlessSwitch.checked === true || this.state.landsSwitch.checked === true) {
                 this.setState({
@@ -58,6 +62,8 @@ class Header extends Component {
                     this.setState({
                         colorsForAPI: oldColors
                     }, () => {
+                        console.log('current local state in Header.js:');
+                        console.log(this.state);
                         console.log(this.state.colorsForAPI);
                     })
                 } else { //if the switched is turned 'off'
@@ -69,6 +75,8 @@ class Header extends Component {
                     this.setState({
                         colorsForAPI: filteredColors
                     }, () => {
+                        console.log('current local state in Header.js:');
+                        console.log(this.state);
                         console.log(this.state.colorsForAPI);
                     })
                 }
@@ -93,7 +101,7 @@ class Header extends Component {
                     greenSwitch: { checked: false },
                     colorsForAPI: oldColors
                 },() => {
-                    console.log('current local state:');
+                    console.log('current local state in Header.js:');
                     console.log(this.state);
                     console.log(this.state.colorsForAPI);
                 });
@@ -113,7 +121,7 @@ class Header extends Component {
                     greenSwitch: { checked: false },
                     colorsForAPI: oldColors
                 },() => {
-                    console.log('current local state:');
+                    console.log('current local state in Header.js:');
                     console.log(this.state);
                     console.log(this.state.colorsForAPI);
                 });
@@ -125,6 +133,9 @@ class Header extends Component {
     //                                      Dispatch on Submit
     //===========================================================================================================
     handleSubmit = (e) => {
+        // This gets passed down via props to:
+        // 1. <Navbar />
+        //      a. <Navlinks />
         e.preventDefault(); //prefent default behavior of a form navigating somewhere else
         console.log('form submitted');
         //send out a dispatch if the user has made any selections, otherwise do nothing
@@ -146,88 +157,9 @@ class Header extends Component {
             {/* <Jumbotron fluid id="jumbotron" className="position-relative overflow-hidden d-none d-sm-block"></Jumbotron> */}
             {/* ---------------------------------------------------- End of Header ----------------------------------------------------- --> */}
             <HeaderBackground />
-            <Navbar collapseOnSelect id="mainNavbar" expand="lg" sticky="top" variant="dark">
-                {/* <Navbar.Brand href="#home"> */}
-                <Navbar.Brand href="#home">
-                    <img 
-                        src="/images/setSymbol/THB.png" alt="" height="42" width="42">
-                    </img>
-                    Theros - Beyond Death
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="m-auto">
-                        <Form onSubmit={this.handleSubmit}>
-                            <Row >
-                                <Col className="justify-content-center text-center">
-                                    <Nav.Link value={'1'}>White</Nav.Link>
-                                    {/* <ToggleButton type="radio" name="radio" defaultChecked value="1">White</ToggleButton> */}
-                                    <Form.Check className="switch" type="switch" id="custom-switch1" name="whiteSwitch" label="" value="W" onChange={this.handleCheckBoxClick} checked={this.state.whiteSwitch.checked}/>
-                                </Col>
-                                <Col className="justify-content-center text-center">
-                                    <Nav.Link value={'2'}>Blue</Nav.Link>
-                                    <Form.Check className="switch" type="switch" id="custom-switch2" name="blueSwitch" label="" value="U" onChange={this.handleCheckBoxClick} checked={this.state.blueSwitch.checked}/>
-                                </Col>  
-                                <Col className="justify-content-center text-center">
-                                    <Nav.Link value={'3'}>Black</Nav.Link>
-                                    <Form.Check className="switch" type="switch" id="custom-switch3" name="blackSwitch" label="" value="B" onChange={this.handleCheckBoxClick} checked={this.state.blackSwitch.checked}/>
-                                </Col>                                
-                                <Col className="justify-content-center text-center">
-                                    <Nav.Link value={'4'}>Red</Nav.Link>
-                                    <Form.Check className="switch" type="switch" id="custom-switch4" name="redSwitch" label="" value="R" onChange={this.handleCheckBoxClick} checked={this.state.redSwitch.checked}/>
-                                </Col>                                
-                                <Col className="justify-content-center text-center">
-                                    <Nav.Link value={'5'}>Green</Nav.Link>
-                                    <Form.Check className="switch" type="switch" id="custom-switch5" name="greenSwitch" label="" value="G" onChange={this.handleCheckBoxClick} checked={this.state.greenSwitch.checked}/>
-                                </Col>                                
-                                <Col className="justify-content-center text-center">
-                                    <Nav.Link value={'6'}>Colorless</Nav.Link>
-                                    <Form.Check className="switch" type="switch" id="custom-switch6" name="colorlessSwitch" label="" value="C" onChange={this.handleCheckBoxClick} checked={this.state.colorlessSwitch.checked}/>
-                                </Col>                               
-                                <Col className="justify-content-center text-center">
-                                    <Nav.Link value={'7'}>Lands</Nav.Link>
-                                    <Form.Check className="switch" type="switch" id="custom-switch7" name="landsSwitch" label="" value="L" onChange={this.handleCheckBoxClick} 
-                                    checked={this.state.landsSwitch.checked}/>
-                                </Col>
-                                {/* <Col className="m-auto">
-                                    <Button variant="john" as="input" type="submit" value="Find Cards" readOnly onClick={() => this.props.findCards(this.state.colorsForAPI)}></Button>
-                                </Col> */}
-                                <Col className="m-auto">
-                                    <Button variant="john" as="input" type="submit" value="Find Cards" readOnly onClick={(event) => this.handleSubmit(event)}></Button>
-                                </Col>
-                            </Row>
-                        </Form>                        
+            {/* <Navbar onSubmit={this.handleSubmit} onColorSelection={this.handleCheckBoxClick} checkedState={...this.state}/> */}
+            <Navbar onSubmit={this.handleSubmit} onColorSelection={this.handleCheckBoxClick} {...this.state}/>
 
-
-
-
-                        {/* <Nav.Link href="" onClick={this.colorClickHandler} value={'1'}>White</Nav.Link> */}
-                        {/* <Nav.Link href="" onClick={this.props.selectWhite}>White</Nav.Link> */}
-                        {/* <Nav.Link href="" onClick={this.props.selectBlue} value={this.props.colorsSelectedByUser.push('blue')}>Blue</Nav.Link> */}
-                        {/* <Nav.Link href="" onClick={this.colorClickHandler} value ={'2'}>Blue</Nav.Link>
-                        <Nav.Link href="" onClick={this.colorClickHandler} value ={'3'}>Black</Nav.Link>
-                        <Nav.Link href="" onClick={this.colorClickHandler} value ={'4'}>Red</Nav.Link>
-                        <Nav.Link href="" onClick={this.colorClickHandler} value ={'5'}>Green</Nav.Link>
-                        <Nav.Link href="" onClick={this.colorClickHandler} value ={'6'}>Multi</Nav.Link>
-                        <Nav.Link href="" onClick={this.colorClickHandler} value ={'7'}>Colorless</Nav.Link>
-                        <Nav.Link href="" onClick={this.colorClickHandler} value ={'8'}>Lands</Nav.Link>
-                        <Button as="input" type="submit" value="submit"></Button> */}
-                        {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                        </NavDropdown> */}
-                    </Nav>
-                    {/* <Nav>
-                        <Nav.Link href="#deets">More deets</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
-                        </Nav.Link>
-                    </Nav> */}
-                </Navbar.Collapse>
-            </Navbar>
         </>                
         )
     }
@@ -253,3 +185,14 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(null, mapDispatchToProps)(Header);
 
+            // {/* <Navbar 
+            // onSubmit={this.handleSubmit} 
+            // onColorSelection={this.handleCheckBoxClick} 
+            // whiteState={this.state.whiteSwitch}
+            // blueState={this.state.blueSwitch}
+            // blackState={this.state.blackSwitch}
+            // redState={this.state.redSwitch}
+            // greenState={this.state.greenSwitch}
+            // colorlessState={this.state.colorlessSwitch}
+            // landsState={this.state.landsSwitch}
+            // /> */}

@@ -114,32 +114,44 @@ class Home extends Component {
         // const closeCardInfo = () => {
         //     setCardIsClicked(false);
         // } 
+
         let filteredCards = this.props.cardsFromAPI.map((eachCardObj,index) => {
-            return <img 
-                className="card my-2 my-lg-3 mx-1 mx-lg-2 img-fluid" 
-                key={index} 
-                src={eachCardObj.image_uris.border_crop} 
-                title={eachCardObj.name} 
-                alt=""
-                data-artist={eachCardObj.artist}
-                data-card_name={eachCardObj.name}
-                data-cmc={eachCardObj.cmc}
-                data-flavor_text={eachCardObj.flavor_text}
-                data-image_url={eachCardObj.image_uris.border_crop}
-                data-mana_cost={eachCardObj.mana_cost}
-                data-data-card_name={eachCardObj.name}
-                data-oracle_text={eachCardObj.oracle_text}
-                data-rarity={eachCardObj.rarity}
-                data-set_name={eachCardObj.set_name}
-                data-power={eachCardObj.power}
-                data-toughness={eachCardObj.toughness}
-                data-edh_rec_link={eachCardObj.related_uris.edhrec}
-                data-gatherer_link={eachCardObj.related_uris.gatherer}
-                data-card_type_line={eachCardObj.type_line}
-                
-                onClick={this.onCardClick}
-                loading="lazy">
-            </img>
+            // console.log(`cardsFromApi Object is: ${this.props.cardsFromAPI}`);
+            // console.log(`cardsFromApi Object is: ${eachCardObj}`);
+            // if(noCards === true) break;
+            // if(eachCardObj.name === "No Cards Found"){
+            //     noCards = true;
+            //     return <img src={eachCardObj.image_uris.border_crop} alt=""></img>;
+            // }
+            if(eachCardObj.name !== "No Cards Found"){
+                return <img 
+                    className="card" 
+                    key={index} 
+                    src={eachCardObj.image_uris.border_crop} 
+                    title={eachCardObj.name} 
+                    alt=""
+                    data-artist={eachCardObj.artist}
+                    data-card_name={eachCardObj.name}
+                    data-cmc={eachCardObj.cmc}
+                    data-flavor_text={eachCardObj.flavor_text}
+                    data-image_url={eachCardObj.image_uris.border_crop}
+                    data-mana_cost={eachCardObj.mana_cost}
+                    data-data-card_name={eachCardObj.name}
+                    data-oracle_text={eachCardObj.oracle_text}
+                    data-rarity={eachCardObj.rarity}
+                    data-set_name={eachCardObj.set_name}
+                    data-power={eachCardObj.power}
+                    data-toughness={eachCardObj.toughness}
+                    data-edh_rec_link={eachCardObj.related_uris.edhrec}
+                    data-gatherer_link={eachCardObj.related_uris.gatherer}
+                    data-card_type_line={eachCardObj.type_line}
+                    
+                    onClick={this.onCardClick}
+                    loading="lazy">
+                </img>
+            } else {
+                return <img className="card" src={eachCardObj.image_uris.border_crop} alt=""></img>;
+            }
 
             
         });
