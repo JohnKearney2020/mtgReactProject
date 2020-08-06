@@ -96,8 +96,8 @@ async function getCardData(colorsArrayForAPICall, dispatch, actionType) {
             // console.log(errorCardObject[0].image_uris.normal);
             dispatch(noResultsDispatch(errorCardObject, actionType))
         } else {
-            console.log('card objects sucessfully pulled from API:');
-            console.log(cardObjects);
+            // console.log('card objects sucessfully pulled from API:');
+            // console.log(cardObjects);
             cards = cardObjects.data
             if(cardObjects.has_more === true) { //if there are more than 175 results
                 setTimeout(() => {
@@ -105,8 +105,8 @@ async function getCardData(colorsArrayForAPICall, dispatch, actionType) {
                     getCardDataPagination(colorsArrayForAPICall, dispatch, actionType, pagURL) //call the API fetch() function 
                 }, 100); //Scryfall API documentation asks for 100 ms break between calls
             } else {
-                console.log('cards before final dispatch:');
-                console.log(cards);
+                // console.log('cards before final dispatch:');
+                // console.log(cards);
                 dispatch(executeDispatch(colorsArrayForAPICall, cards, actionType));
                 return cardObjects;
             }
@@ -125,8 +125,8 @@ async function getCardDataPagination(colorsArrayForAPICall, dispatch, actionType
     try{
         let response = await fetch(pagURL);
         let cardObjects = await response.json();
-        console.log('card objects sucessfully pulled from API:');
-        console.log(cardObjects);
+        // console.log('card objects sucessfully pulled from API:');
+        // console.log(cardObjects);
         cards = cards.concat(cardObjects.data); //this is at minimum our 2nd call for cards so we need to concat onto earlier array
         if(cardObjects.has_more === true) {
             setTimeout(() => {
@@ -134,8 +134,8 @@ async function getCardDataPagination(colorsArrayForAPICall, dispatch, actionType
             getCardDataPagination(colorsArrayForAPICall, dispatch, actionType, pagURL) //call the API fetch() function 
             }, 100);
         } else {
-            console.log('cards before final dispatch:');
-            console.log(cards);
+            // console.log('cards before final dispatch:');
+            // console.log(cards);
             dispatch(executeDispatch(colorsArrayForAPICall, cards, actionType));
             return cardObjects;
         }
@@ -189,7 +189,7 @@ function createApiURL(arrayOfColors){
         // console.log('stringForAPIURL after additions we made to it: ', stringForAPIURL);
     }
 
-    console.log('Final string sent for API call: ', stringForAPIURL)
+    // console.log('Final string sent for API call: ', stringForAPIURL)
     return stringForAPIURL;
 }
 

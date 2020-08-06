@@ -1,25 +1,3 @@
-card-modal-animate-enter {
-    transform: translateY(-10rem);
-    opacity: 0;
-  }
-  
-  card-modal-animate-enter-active {
-    transform: translateY(0);
-    opacity: 1;
-    transition: all 200ms;
-  }
-  
-  card-modal-animate-exit {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  
-  card-modal-animate-exit-active {
-    transform: translateY(-10rem);
-    opacity: 0;
-    transition: all 200ms;
-  }
-
 .card {
     /* padding: 0; */
     border: 0;
@@ -64,19 +42,3 @@ text-align: right;
         margin: 0.3rem 0.5rem; /*top and bottom margin: 2px, left and right margin: 5px */
     }
 }
-
-/* For width 400px and larger: */
-/* @media only screen and (min-width: 400px) {
-    .card {
-        max-width: 305px;
-        height: auto;
-    }
-} */
-
-
-/* .imgDiv {
-    width: 55%;
-} */
-/* .container {
-    width: 100vw;
-} */

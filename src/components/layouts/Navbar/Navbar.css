@@ -2,6 +2,30 @@
 /* #f1e50d */
 /* rgb(65, 65, 65) */
 
+/* ======================================================== */
+/* CSSTransitions Animation for the Navbar on Mobile */
+/* ======================================================== */
+.slide-in-left-enter {
+    transform: translateX(-100%);
+}
+
+.slide-in-left-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 200ms;
+}
+
+.slide-in-left-exit {
+    transform: translateX(0%);
+    opacity: 1;
+}
+
+.slide-in-left-exit-active {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all 200ms;
+}
+
 nav {
     display: flex;
     justify-content: space-around;
@@ -10,7 +34,7 @@ nav {
     /* font-family: 'Poppins', sans-serif; */
     background-color: rgb(24, 24, 24);
     /* font-family: 'Poppins', sans-serif; */
-    font-family: 'Nunito', sans-serif;
+    /* font-family: 'Nunito', sans-serif; */
     /* font-family: 'Lato', sans-serif; */
 }
 
@@ -75,42 +99,24 @@ nav * {
 }
 
 @media only screen and (max-width: 768px){
-    body {
-        /* when we do the translate x below, this prevents getting a horizontal scroll bar */
-        /* overflow-x: hidden; */
-        /* display: hidden; */
-    }
     .mainNavLinks {
         display: none;
         /* opacity: 0; */
     }
+
     .burger {
         display: block;
     }
 }
 
-/* This needs to be down here below the media query or else the media query will take precedence on mobile */
-/* .nav-active {
-    transform: translateX(0%);
-} */
-
-/* @keyframes navLinkFade {
-    from{
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to{
-        opacity: 1;
-        transform: translateX(0px);
-    }
-} */
-
+/* ================================================================== */
+/* Burger Animations - trigger when users click the burger on mobile */
+/* ================================================================== */
 .toggle .line1 {
     transform: rotate(-45deg) translate(-5px,6px);
 }
 
 .toggle .line2 {
-    /* transform: rotate(-45deg translate(-5px,6px)); */
     opacity: 0;
 }
 
