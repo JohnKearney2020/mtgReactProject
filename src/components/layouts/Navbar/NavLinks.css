@@ -2,15 +2,12 @@
 /* #f1e50d */
 /* rgb(65, 65, 65) */
 
-
 .nav-links {
     display: flex;
     justify-content: space-around;
     width: 100%;
     list-style: none;
     margin: 0;
-    /* z-index: 1000!important; */
-    /* align-items: center; */
 }
 
 .nav-links li {
@@ -20,45 +17,32 @@
 }
 
 .nav-links .selectorText{
-    /* color: rgb(241, 229, 13); */
-    /* color: white; */
     text-decoration: none;
     letter-spacing: 3px;
     font-size: 1.5rem;
-    /* font-weight: 700; */
     transition: color 0.3s ease;
-    /* color: lightsteelblue; */
-    /* color: #bfcfe4; */
     color: #d0d0d0;
     padding-bottom: 3px;
 }
 
 .nav-links .selectorText:hover {
     color: rgb(143, 148, 145);
-    /* color: red; */
 }
-
-
 
 #submitButton {
     height: 50px;
     width: 120px;
-    /* background-color: red; */
     background-color: rgb(24, 24, 24);
-    /* background-color: rgba(255,215,0,0.75); */
-    /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255,215,0,0.75), rgba(0, 0, 0, 0)); */
-    /* color: white; */
     color: #d0d0d0;
     font-size: 1.2rem;
     border: 3px solid #d0d0d0;
-    /* border: 3px solid rgb(22, 161, 154); */
     letter-spacing: 1.2px;
     transition: all .3s ease;
-    /* border-radius: 6px 10px; */
     border-radius: 6px 6px;
     margin-top: auto;
     margin-bottom: auto;
 }
+
 #submitButton:hover {
     background-color: #d0d0d0;
     border: 3px solid rgb(24, 24, 24);
@@ -85,7 +69,6 @@
         width: 90px;
         font-size: 0.9rem;
         border: 1.5px solid #d0d0d0;
-        /* border: 3px solid rgb(22, 161, 154); */
         letter-spacing: 1.2px;
         border-radius: 6px 6px;
     }
@@ -98,50 +81,23 @@
         width: 80px;
         font-size: 0.7rem;
         border: 1.5px solid #d0d0d0;
-        /* border: 3px solid rgb(22, 161, 154); */
         letter-spacing: 1px;
         border-radius: 6px 6px;
     }
 }
 
 @media only screen and (max-width: 768px){
-    /* body {
-        when we do the translate x below, this prevents getting a horizontal scroll bar
-        overflow-x: hidden;
-        display: hidden;
-    } */
-    
+
     .nav-links {
-        /* position: absolute; */
-        /* position it on the right-hand side */
         right: 0px;
-        /* this will make it full-screen since we made our nav 8vh height */
         height: 100%;
-        /* this will have the links show up under the main navbar */
-        /* top: 8vh; */
-        /* background-color: #5d4954; */
-        /* background-color: black; */
         display: flex;
         flex-direction: column;
-        /* align-items: center; */
         width: 50%;
-        /* move the nav links off the page in conjuction with 'overflow-x above */
-        /* transform: translateX(100%); */
-        /* transition: transform 0.5s ease-in; */
-
-        /* z-index: 1000; */
         align-items: flex-end;
-        /* align-items: center; */
-        /* margin: auto; */
-        /* justify-content: space-evenly; */
         justify-content: space-around;
     }
-    /* the navlinks will fade in to their full color, but start at 0 */
-    /* .nav-links li{
-        opacity: 0;
-        
-        z-index: 1000;
-    } */
+
     .nav-links li {
         display: flex;
         flex-direction: row;
@@ -150,6 +106,7 @@
         margin-right: 1rem;
         /* opacity: 0; */
     }
+
     .nav-links .selectorText{
         /* letter-spacing: 3px; */
         /* font-size: 1.5rem; */

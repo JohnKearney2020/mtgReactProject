@@ -1,4 +1,30 @@
 
+/* ====================================================================================================== */
+                                        /* CSSTransitions Animations  */
+/* ====================================================================================================== */
+.card-modal-animate-enter {
+  transform: translateY(-10rem);
+  opacity: 0;
+}
+
+.card-modal-animate-enter-active {
+transform: translateY(0);
+opacity: 1;
+transition: all 200ms;
+}
+
+.card-modal-animate-exit {
+transform: translateY(0);
+opacity: 1;
+}
+
+.card-modal-animate-exit-active {
+transform: translateY(-10rem);
+opacity: 0;
+transition: all 200ms;
+}
+
+
 #modal-container {
   z-index: 100;
   position: fixed;
@@ -64,101 +90,27 @@
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255,215,0,0.75), rgba(0, 0, 0, 0));
 }
 
-/* #modal-container {
-  z-index: 100;
-  position: fixed;
-  left: 50%!important;
-  transform: translate(-50%)!important; */
-  /* display: flex; */
-  /* justify-content: center; */
-  /* color: white;
-  background-color: black;
-} */
-
 .modal-image {
   max-width: 100%;
   height: auto;
 }
-/* .modal-row {
 
-} */
+.modal__header {
+  width: 100%;
+  padding: 1rem 0.5rem;
+  background: #2a006e;
+  color: white;
+}
 
+.modal__header h2 {
+  margin: 0.5rem;
+}
 
-/* .card-modal {
-    z-index: 100;
-    position: fixed;
-    position: absolute;
-    top: 22vh;
-    left: 50%!important;
-    transform: translate(-50%)!important;
-    right: auto!important;
-    left: 10%;
-    width: 50%!important;
-    height: 80vh;
-    background: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    border-radius: 8px;
-    the default Bootstrap CSS seems to place a "display: none" value on the modal, so below is necessary
-    display: block;
-    display: flex!important;
-    justify-content: center!important;
-    align-items: center!important;
-    margin: auto;
-    margin: 0 auto!important;
-  } */
+.modal__content {
+  padding: 1rem 0.5rem;
+}
 
-  
+.modal__footer {
+  padding: 1rem 0.5rem;
+}
 
-  /* .modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  } */
-  
-  .modal__header {
-    width: 100%;
-    padding: 1rem 0.5rem;
-    background: #2a006e;
-    color: white;
-  }
-  
-  .modal__header h2 {
-    margin: 0.5rem;
-  }
-  
-  .modal__content {
-    padding: 1rem 0.5rem;
-  }
-  
-  .modal__footer {
-    padding: 1rem 0.5rem;
-  }
-  
-
-  /* ====================================================================================================== */
-                                          /* CSSTransitions Animations  */
-  /* ====================================================================================================== */
-  /* NOTE: Moved to index.css */
-  /* card-modal-animate-enter {
-    transform: translateY(-10rem);
-    opacity: 0;
-  }
-  
-  card-modal-animate-enter-active {
-    transform: translateY(0);
-    opacity: 1;
-    transition: all 200ms;
-  }
-  
-  card-modal-animate-exit {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  
-  card-modal-animate-exit-active {
-    transform: translateY(-10rem);
-    opacity: 0;
-    transition: all 200ms;
-  } */
-  

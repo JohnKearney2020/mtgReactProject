@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { CSSTransition } from 'react-transition-group';
 
 import '../../../index.css';
 import './Modal.css';
-
 
 const ModalOverlay = (props) => {
 
@@ -19,13 +19,13 @@ const ModalOverlay = (props) => {
                         <img src={props.image_url__for_card_modal} alt="" id="modal-image"/>
                     </div>
                     <div id="text-container">
-                        <h5><span className="modal-span">Oracle Text: </span>{props.cardFlavorText}</h5>
+                        <h5><span className="modal-span">Oracle Text: </span>{props.cardOracleText}</h5>
                         <hr />
                         <h5>{props.cardFlavorText}</h5>
                         <hr />
                         <h5>{props.cardFlavorText}</h5>
                     </div>
-                </div>
+                </div> {/* end of content-container */}
             </div> {/* end of heading-container */}
         </div>
     );
@@ -44,9 +44,11 @@ const Modal = (props) => {
     }
     // console.log(`props.show for Modal: ${props.show}`);
     return (
-
+        <CSSTransition in={props.show} mountOnEnter unmountOnExit timeout={500} classNames="card-modal-animate">
+        {/* the ...props forwards all props sent to our exported component, Modal, to the ModalOverlay */}
+        {/* the spread operator takes all the key: value pairs on the props object and puts them as attributes on ModalOverlay */} 
             <ModalOverlay {...props} style={styleTop} />
-
+        </CSSTransition>
     )
 }
 

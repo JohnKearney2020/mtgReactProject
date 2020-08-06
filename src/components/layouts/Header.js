@@ -1,8 +1,5 @@
-// import {Jumbotron, Navbar, Nav, Form, Button, FormControl, NavDropdown, Row, Col, ToggleButton } from 'react-bootstrap';
-// import { Navbar, Nav, Form, Button, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-// import ReactDom from 'react-dom';
 import HeaderBackground from './HeaderBackground';
 import Navbar from './Navbar/Navbar';
 
@@ -144,22 +141,12 @@ class Header extends Component {
         }
     }
 
-    //===========================================================================================================
-    //                                      Portal for Jumbotron
-    //===========================================================================================================
-
-
     render() {
 
         return (
         <>
-            {/* ---------------------------------- HEADER -------------------------------------------------------------------------- */}
-            {/* <Jumbotron fluid id="jumbotron" className="position-relative overflow-hidden d-none d-sm-block"></Jumbotron> */}
-            {/* ---------------------------------------------------- End of Header ----------------------------------------------------- --> */}
             <HeaderBackground />
-            {/* <Navbar onSubmit={this.handleSubmit} onColorSelection={this.handleCheckBoxClick} checkedState={...this.state}/> */}
             <Navbar onSubmit={this.handleSubmit} onColorSelection={this.handleCheckBoxClick} {...this.state}/>
-
         </>                
         )
     }
@@ -185,14 +172,3 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(null, mapDispatchToProps)(Header);
 
-            // {/* <Navbar 
-            // onSubmit={this.handleSubmit} 
-            // onColorSelection={this.handleCheckBoxClick} 
-            // whiteState={this.state.whiteSwitch}
-            // blueState={this.state.blueSwitch}
-            // blackState={this.state.blackSwitch}
-            // redState={this.state.redSwitch}
-            // greenState={this.state.greenSwitch}
-            // colorlessState={this.state.colorlessSwitch}
-            // landsState={this.state.landsSwitch}
-            // /> */}
