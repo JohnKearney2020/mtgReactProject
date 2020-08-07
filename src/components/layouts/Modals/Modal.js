@@ -9,21 +9,73 @@ const ModalOverlay = (props) => {
 
     const rarityCapitalized = props.card_rarity.charAt(0).toUpperCase() + props.card_rarity.slice(1);
     // console.log(`modal overlay clg`);
+    // console.log(props.cardOracleText);
+
+    let oracleText = (<>
+        <h5>
+            <span className="modal-span">Oracle Text: </span>
+            <br/>
+            {props.cardOracleText}
+        </h5>
+        <hr /></>
+    );
+    //if the card has Flavor Text
+    let flavorText = "";
+    if(props.cardFlavorText){
+        flavorText = (
+            <>
+            <h5><span className="modal-span">Flavor Text: </span><em>{props.cardFlavorText}</em></h5>
+            <hr />
+            </>
+        )
+    };
+    //if the card is a creature with power and toughness
+    let powerAndToughness = "";
+    if(props.cardPower){
+        powerAndToughness = (
+            <>
+            <h5><span className="modal-span">Power/Toughness:</span> {props.cardPower}/{props.cardToughness}</h5>
+            <hr />
+            </>
+        )
+    };
+    // Card Price
+    let price = (<>
+        <div id="price-container">
+            <h5>
+                <span className="modal-span">Price (USD): </span> 
+                <br/>
+                <em>Normal</em> - ${props.cardPriceNormal}
+                <br/>
+                <em>Foil</em> - ${props.cardPriceFoil}
+            </h5>
+
+        </div>
+        <hr />
+    </>
+    )
+
+    // All the html content we created above goes here:
     const content = (
         <div id="modal-container" style={props.style}>
             <div id="heading-container">
-                <h3>{props.header} - {rarityCapitalized}</h3>
+                <h3>{props.header} - <em>{rarityCapitalized}</em></h3>
                 <hr />
                 <div id="content-container">
                     <div>
                         <img src={props.image_url__for_card_modal} alt="" id="modal-image"/>
                     </div>
                     <div id="text-container">
-                        <h5><span className="modal-span">Oracle Text: </span>{props.cardOracleText}</h5>
-                        <hr />
-                        <h5>{props.cardFlavorText}</h5>
-                        <hr />
-                        <h5>{props.cardFlavorText}</h5>
+                        {oracleText}
+                        {flavorText}
+                        {powerAndToughness}
+                        {price}
+                        <div id="linkContainer">
+                            <button className="modalButton dark"><a href={props.edhRecLink} target="_blank" rel="noopener noreferrer"><i className="fab fa-searchengin"></i>View on EDHREC</a></button>
+                            <button className="modalButton dark"><a href={props.gathererLink} target="_blank" rel="noopener noreferrer"><i className="fab fa-wizards-of-the-coast"></i>View on Gatherer</a></button>
+                            {/* <i class="far fa-money-bill-alt"></i> */}
+                            <button className="modalButton light"><a href={props.gathererLink} target="_blank" rel="noopener noreferrer"><i className="fas fa-dollar-sign"></i>Buy on TCGPlayer</a></button>
+                        </div>
                     </div>
                 </div> {/* end of content-container */}
             </div> {/* end of heading-container */}

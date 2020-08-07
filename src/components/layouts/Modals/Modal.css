@@ -38,6 +38,11 @@ transition: all 200ms;
   flex-direction: column;
   background-color: rgba(12, 12, 12, 0.9);
   border-radius: 15px!important;
+  /* font-size: 1.2rem; */
+  /* font-weight: 700; */
+  /* this makes sure we properly render the carriage returns in our objects */
+  white-space: pre-wrap;
+  /* line-height: 1.5rem; */
 }
 
 #heading-container {
@@ -48,6 +53,8 @@ transition: all 200ms;
   border-radius: 25px!important;
   justify-content: center;
   align-items: center;
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 #heading-container h3 {
@@ -61,8 +68,12 @@ transition: all 200ms;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255,215,0,0.75), rgba(0, 0, 0, 0));
 }
 
-#modal-span {
+.modal-span {
   font-weight: 700;
+  letter-spacing: 1.5px;
+  color: white;
+  /* color: rgb(143, 148, 145); */
+  font-size: 1.2rem;
 }
 
 #content-container {
@@ -83,6 +94,16 @@ transition: all 200ms;
   height: 100%;
   width: 100%;
   padding: 2rem;
+  /* color: #b6b6b6; */
+  /* color: #cecece; */
+  /* color: #e6e6e6; */
+  color: #d0d0d0;
+  /* font-weight: 400; */
+}
+
+#text-container h5{
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 #modal-container hr {
@@ -90,29 +111,77 @@ transition: all 200ms;
   height: 2px;
   /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); */
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255,215,0,0.75), rgba(0, 0, 0, 0));
+  /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(192,192,192,0.75), rgba(0, 0, 0, 0)); */
+  /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(170,169,173,0.75), rgba(0, 0, 0, 0)); */
 }
-
-.modal-image {
-  max-width: 100%;
-  height: auto;
-}
-
-.modal__header {
+#priceContainer {
+  display: flex;
   width: 100%;
-  padding: 1rem 0.5rem;
-  background: #2a006e;
-  color: white;
+  height: 100%;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+/* .priceCenter {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:  center;
+  margin: 0 auto;
+} */
+#linkContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin: 2rem 0;
+  /* justify-content: center; */
+  align-items: center;
 }
 
-.modal__header h2 {
-  margin: 0.5rem;
+#linkContainer .modalButton {
+  /* margin: 0 auto; */
+  width: 80%;
+  /* background-color: rgb(24, 24, 24); */
+  margin-bottom: 0.5rem;
+  /* border: 2px solid #d0d0d0; */
+  padding: 0.2rem;
+  transition: transform .3s ease;
 }
 
-.modal__content {
-  padding: 1rem 0.5rem;
+#linkContainer .modalButton:hover {
+  transform: scale(0.97);
 }
 
-.modal__footer {
-  padding: 1rem 0.5rem;
+#linkContainer .modalButton a{
+  text-decoration: none;
+  /* font-family: 'Nunito', sans-serif; */
 }
+/* Font Awesome Icons */
+/* .svg-inline--fa is a class placed into the HTML by Font Awesome.  */
+#linkContainer .modalButton a .svg-inline--fa{
+  margin-right: 0.5rem;
+}
+
+#linkContainer .dark {
+  background-color: rgb(24, 24, 24);
+  border: 2px solid #d0d0d0;
+  /* color: #d0d0d0; */
+}
+#linkContainer .dark a {
+  color: #d0d0d0;
+}
+
+#linkContainer .light {
+  background-color: #d0d0d0;
+  /* border: 2px outset rgb(24, 24, 24); */
+  border: 2px outset rgb(143, 148, 145);;
+}
+#linkContainer .light a {
+  color: rgb(24, 24, 24);
+  font-weight: 700;
+}
+
+
+
 

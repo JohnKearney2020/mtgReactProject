@@ -76,6 +76,8 @@ class Home extends Component {
             image_url: event.target.src,
             mana_cost: event.target.dataset.mana_cost,
             oracle_text: event.target.dataset.oracle_text,
+            price: event.target.dataset.price,
+            price_foil: event.target.dataset.price_foil,
             rarity: event.target.dataset.rarity,
             set_name: event.target.dataset.set_name,
             power: event.target.dataset.power,
@@ -117,12 +119,14 @@ class Home extends Component {
                     data-flavor_text={eachCardObj.flavor_text}
                     data-image_url={eachCardObj.image_uris.border_crop}
                     data-mana_cost={eachCardObj.mana_cost}
-                    data-data-card_name={eachCardObj.name}
+                    // data-data-card_name={eachCardObj.name}
                     data-oracle_text={eachCardObj.oracle_text}
                     data-rarity={eachCardObj.rarity}
                     data-set_name={eachCardObj.set_name}
                     data-power={eachCardObj.power}
                     data-toughness={eachCardObj.toughness}
+                    data-price={eachCardObj.prices.usd}
+                    data-price_foil={eachCardObj.prices.usd_foil}
                     data-edh_rec_link={eachCardObj.related_uris.edhrec}
                     data-gatherer_link={eachCardObj.related_uris.gatherer}
                     data-card_type_line={eachCardObj.type_line}
@@ -153,6 +157,12 @@ class Home extends Component {
                     image_url__for_card_modal={this.state.image_url}
                     cardOracleText={this.state.oracle_text}
                     cardFlavorText={this.state.flavor_text}
+                    cardPower={this.state.power}
+                    cardToughness={this.state.toughness}
+                    cardPriceNormal={this.state.price}
+                    cardPriceFoil={this.state.price_foil}
+                    edhRecLink={this.state.edh_rec_link}
+                    gathererLink={this.state.gatherer_link}
                     card_rarity={this.state.rarity}
                 >
                 </Modal>

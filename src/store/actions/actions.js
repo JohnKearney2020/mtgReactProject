@@ -105,8 +105,8 @@ async function getCardData(colorsArrayForAPICall, dispatch, actionType) {
                     getCardDataPagination(colorsArrayForAPICall, dispatch, actionType, pagURL) //call the API fetch() function 
                 }, 100); //Scryfall API documentation asks for 100 ms break between calls
             } else {
-                // console.log('cards before final dispatch:');
-                // console.log(cards);
+                console.log('cards before final dispatch:');
+                console.log(cards);
                 dispatch(executeDispatch(colorsArrayForAPICall, cards, actionType));
                 return cardObjects;
             }
