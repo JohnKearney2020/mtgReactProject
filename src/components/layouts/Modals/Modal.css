@@ -24,6 +24,8 @@ opacity: 0;
 transition: all 200ms;
 }
 
+/* End of Modal Animations */
+
 
 #modal-container {
   z-index: 100;
