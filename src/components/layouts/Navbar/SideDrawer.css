@@ -1,7 +1,8 @@
 .side-drawer {
     position: fixed;
     /* right: 0; */
-    left: 0;
+    /* left: 0; */
+    right: 0;
     top: 8vh;
     /* z-index: 1000; */
     height: 92vh;
