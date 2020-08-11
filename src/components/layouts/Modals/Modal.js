@@ -69,13 +69,9 @@ const ModalOverlay = (props) => {
             <div id="heading-container">
                 <h3>{props.header} - <em>{rarityCapitalized}</em></h3>
                 {/* Modal Close Button */}
-                {/* <div> */}
-                {/* <a href="#" onClick={props.onCancel}><i className="fas fa-times" id="modalCloseButton"></i></a> */}
-                {/* </div> */}
-                <div onClick={props.onCancel}>
+                <div onClick={props.onCloseModal}>
                     <i className="fas fa-times" id="modalCloseButton"></i>
                 </div>
-
             </div> {/* end of heading-container */}
             <hr id="topHR"/>
             <div id="content-container">
@@ -88,10 +84,14 @@ const ModalOverlay = (props) => {
                     {powerAndToughness}
                     {price}
                     <div id="linkContainer">
-                        <button className="modalButton dark"><a href={props.edhRecLink} target="_blank" rel="noopener noreferrer"><i className="fab fa-searchengin"></i>View on EDHREC</a></button>
-                        <button className="modalButton dark"><a href={props.gathererLink} target="_blank" rel="noopener noreferrer"><i className="fab fa-wizards-of-the-coast"></i>View on Gatherer</a></button>
+                        {/* <button className="modalButton dark"><a href={props.edhRecLink} target="_blank" rel="noopener noreferrer"><i className="fab fa-searchengin"></i>View on EDHREC</a></button> */}
+                        <a href={props.edhRecLink} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-searchengin"></i>View on EDHREC</a>
+                        {/* <button className="modalButton dark"><a href={props.gathererLink} target="_blank" rel="noopener noreferrer"><i className="fab fa-wizards-of-the-coast"></i>View on Gatherer</a></button> */}
+                        <a href={props.gathererLink} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-wizards-of-the-coast"></i>View on Gatherer</a>
+                        {/* <button className="modalButton dark"><a href={props.gathererLink} target="_blank" rel="noopener noreferrer"><i className="fab fa-wizards-of-the-coast"></i>View on Gatherer</a></button> */}
                         {/* <i class="far fa-money-bill-alt"></i> */}
-                        <button className="modalButton light"><a href={props.gathererLink} target="_blank" rel="noopener noreferrer"><i className="fas fa-dollar-sign"></i>Buy on TCGPlayer</a></button>
+                        {/* <button className="modalButton light"><a href={props.tcgPlayerLink} target="_blank" rel="noopener noreferrer"><i className="fas fa-dollar-sign"></i>Buy on TCGPlayer</a></button> */}
+                        <a href={props.tcgPlayerLink} target="_blank" rel="noopener noreferrer" className="modalButton light"><i className="fas fa-dollar-sign"></i>Buy on TCGPlayer</a>
                     </div>
                 </div>
             </div> {/* end of content-container */}
@@ -105,7 +105,6 @@ const Modal = (props) => {
     // we want to offset the top of our modal by whatever the current y-offset is from scrolling + X% of the window height so it is
     // roughly centered in the screen
     // console.log(`Height of the window is ${window.innerHeight}`);
-
     let yOffsetForModal  = "";
     let currentWindowWidth = window.innerWidth;
     let pixelsFromTopOnMobile = 0;
@@ -118,7 +117,6 @@ const Modal = (props) => {
         pixelsFromTopOnMobile = 0;
         yOffsetForModal = props.yOffSetValue + pixelsFromTopOnMobile;
     }
-
     // console.log(`Y offset for Modal is: ${yOffsetForModal}`);
     const styleTop = {
         top: yOffsetForModal

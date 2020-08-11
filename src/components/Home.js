@@ -25,6 +25,7 @@ class Home extends Component {
             toughness: "",
             edh_rec_link: "",
             gatherer_link: "",
+            tcgplayer_link: "",
             card_type_line: ""
         };
     }
@@ -84,6 +85,7 @@ class Home extends Component {
             toughness: event.target.dataset.toughness,
             edh_rec_link: event.target.dataset.edh_rec_link,
             gatherer_link: event.target.dataset.gatherer_link,
+            tcg_player_link: event.target.dataset.tcg_player_link,
             card_type_line: event.target.dataset.card_type_line,
         });
         this.changeScroll(); //stop mouse scrolling
@@ -119,7 +121,6 @@ class Home extends Component {
                     data-flavor_text={eachCardObj.flavor_text}
                     data-image_url={eachCardObj.image_uris.border_crop}
                     data-mana_cost={eachCardObj.mana_cost}
-                    // data-data-card_name={eachCardObj.name}
                     data-oracle_text={eachCardObj.oracle_text}
                     data-rarity={eachCardObj.rarity}
                     data-set_name={eachCardObj.set_name}
@@ -129,8 +130,8 @@ class Home extends Component {
                     data-price_foil={eachCardObj.prices.usd_foil}
                     data-edh_rec_link={eachCardObj.related_uris.edhrec}
                     data-gatherer_link={eachCardObj.related_uris.gatherer}
+                    data-tcg_player_link={eachCardObj.purchase_uris.tcgplayer}
                     data-card_type_line={eachCardObj.type_line}
-                    
                     onClick={this.onCardClick}
                     loading="lazy">
                 </img>
@@ -148,7 +149,7 @@ class Home extends Component {
                 }
                 <Modal 
                     show={this.state.cardClicked}
-                    onCancel={this.closeCardInfo}
+                    onCloseModal={this.closeCardInfo}
                     header={this.state.card_name}
                     contentClass="card-item__modal-content"
                     footerClass="card-item__modal-actions"
@@ -163,6 +164,7 @@ class Home extends Component {
                     cardPriceFoil={this.state.price_foil}
                     edhRecLink={this.state.edh_rec_link}
                     gathererLink={this.state.gatherer_link}
+                    tcgPlayerLink={this.state.tcg_player_link}
                     card_rarity={this.state.rarity}
                 >
                 </Modal>
