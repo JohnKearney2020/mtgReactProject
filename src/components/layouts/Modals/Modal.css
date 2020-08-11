@@ -53,10 +53,10 @@ transition: all 200ms;
   font-size: 1.2rem;
   font-weight: 700;
 }
-#heading-container div { 
+/* #heading-container div { 
   display: flex;
   align-items: center;
-}
+} */
 /* The Close Button on the Heading */
 #modalCloseButton {
   position: absolute;
@@ -72,6 +72,7 @@ transition: all 200ms;
   /* color: #800020; */
   color: #9b111e;
   transition: transform .3s ease;
+  /* border: 2px solid #9b111e; */
 }
 
 #modalCloseButton:hover{
@@ -263,7 +264,7 @@ transition: all 200ms;
     margin: 0.2rem;
   }
   #modalCloseButton {
-    font-size: 1rem;
+    font-size: 1.55rem;
     right: 10px;
 
   }
