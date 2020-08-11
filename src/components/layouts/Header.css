@@ -7,10 +7,10 @@ body {
 	background-position: center center;
 	background-attachment: fixed;
     /* iOS specific styling */
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
+    /* -webkit-transform: translateZ(0); */
+    /* transform: translateZ(0);
     will-change: transform;
-    display: table;
+    display: table; */
 }
 
 
