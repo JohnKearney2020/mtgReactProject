@@ -72,7 +72,7 @@ const ModalOverlay = (props) => {
                 {/* <div onClick={props.onCloseModal}>
                     <i className="fas fa-times" id="modalCloseButton"></i>
                 </div> */}
-                <a href="#" onClick={props.onCloseModal} id="modalCloseButton"><i className="fas fa-times" ></i></a>
+                <a href="/#" onClick={props.onCloseModal} id="modalCloseButton"><i className="fas fa-times" ></i></a>
             </div> {/* end of heading-container */}
             <hr id="topHR"/>
             <div id="content-container">
