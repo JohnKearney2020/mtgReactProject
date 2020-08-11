@@ -1,14 +1,10 @@
 .side-drawer {
     position: fixed;
-    /* right: 0; */
-    /* left: 0; */
     right: 0;
     top: 8vh;
     /* z-index: 1000; */
     height: 92vh;
     width: 70%;
-    /* background: white; */
-    /* background: red; */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
 .main-navigation__drawer-nav {

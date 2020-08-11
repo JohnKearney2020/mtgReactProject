@@ -108,14 +108,21 @@ const Modal = (props) => {
     let yOffsetForModal  = "";
     let currentWindowWidth = window.innerWidth;
     let pixelsFromTopOnMobile = 0;
+    console.log(`Scrolled Value from mouse click ${props.yOffSetValue}`);
     if(currentWindowWidth > 576) {
-        yOffsetForModal = props.yOffSetValue + 0.10*window.innerHeight;
+        // yOffsetForModal = props.yOffSetValue + 0.10*window.innerHeight;
+        yOffsetForModal = 0.10*window.innerHeight;
+        console.log(`Modified Y offset for modal: ${yOffsetForModal}`);
     } else if(currentWindowWidth > 360) {
         pixelsFromTopOnMobile = 25;
-        yOffsetForModal = props.yOffSetValue + pixelsFromTopOnMobile;
+        // yOffsetForModal = props.yOffSetValue + pixelsFromTopOnMobile;
+        yOffsetForModal = pixelsFromTopOnMobile;
+        console.log(`Modified Y offset for modal: ${yOffsetForModal}`);
     } else {
-        pixelsFromTopOnMobile = 0;
-        yOffsetForModal = props.yOffSetValue + pixelsFromTopOnMobile;
+        pixelsFromTopOnMobile = 8;
+        // yOffsetForModal = props.yOffSetValue + pixelsFromTopOnMobile;
+        yOffsetForModal = pixelsFromTopOnMobile;
+        console.log(`Modified Y offset for modal: ${yOffsetForModal}`);
     }
     // console.log(`Y offset for Modal is: ${yOffsetForModal}`);
     const styleTop = {
@@ -126,7 +133,8 @@ const Modal = (props) => {
         <CSSTransition in={props.show} mountOnEnter unmountOnExit timeout={200} classNames="card-modal-animate">
         {/* the ...props forwards all props sent to our exported component, Modal, to the ModalOverlay */}
         {/* the spread operator takes all the key: value pairs on the props object and puts them as attributes on ModalOverlay */} 
-            <ModalOverlay {...props} style={styleTop} />
+            {/* <ModalOverlay {...props} style={styleTop} /> */}
+            <ModalOverlay {...props} style={styleTop}/>
         </CSSTransition>
     )
 }
