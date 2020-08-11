@@ -152,7 +152,7 @@ class Home extends Component {
                     header={this.state.card_name}
                     contentClass="card-item__modal-content"
                     footerClass="card-item__modal-actions"
-                    footer={<button onClick={this.closeCardInfo}>CLOSE</button>}
+                    // footer={<button onClick={this.closeCardInfo}>CLOSE</button>}
                     yOffSetValue={this.state.yOffset}
                     image_url__for_card_modal={this.state.image_url}
                     cardOracleText={this.state.oracle_text}
