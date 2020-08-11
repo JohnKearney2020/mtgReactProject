@@ -47,8 +47,8 @@ transition: all 200ms;
   height: 100%;
   width: 100%;
   border-radius: 25px!important;
-  justify-content: center;
-  /* margin: auto; */
+  /* justify-content: space-around; */
+  justify-content: space-between;
   align-items: center;
   font-size: 1.2rem;
   font-weight: 700;
@@ -59,20 +59,21 @@ transition: all 200ms;
 } */
 /* The Close Button on the Heading */
 #modalCloseButton {
-  position: absolute;
-  right: 20px;
+  /* position: absolute; */
+  /* right: 20px; */
   font-size: 2rem;
   /* color: red; */
   /* color: #850505; */
   /* color: #c80815; */
   /* color: rgb(255,215,0); */
-  /* color: #d0d0d0; */
+  color: #d0d0d0;
   /* color: rgb(143, 148, 145); */
   /* color: #8b0000; */
   /* color: #800020; */
-  color: #9b111e;
+  /* color: #9b111e; */
   transition: transform .3s ease;
   /* border: 2px solid #9b111e; */
+  margin-right: 0.7rem;
 }
 
 #modalCloseButton:hover{
@@ -261,11 +262,11 @@ transition: all 200ms;
     font-size: 0.8rem;
   }
   #heading-container h3 {
-    margin: 0.2rem;
+    margin: 0.2rem 0.7rem 0;
   }
   #modalCloseButton {
     font-size: 1.55rem;
-    right: 10px;
+    /* right: 10px; */
 
   }
   #modalCloseButton:hover {
