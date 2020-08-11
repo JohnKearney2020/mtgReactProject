@@ -96,8 +96,8 @@ async function getCardData(colorsArrayForAPICall, dispatch, actionType) {
             // console.log(errorCardObject[0].image_uris.normal);
             dispatch(noResultsDispatch(errorCardObject, actionType))
         } else {
-            // console.log('card objects sucessfully pulled from API:');
-            // console.log(cardObjects);
+            console.log('card objects sucessfully pulled from API:');
+            console.log(cardObjects);
             cards = cardObjects.data
             if(cardObjects.has_more === true) { //if there are more than 175 results
                 setTimeout(() => {
