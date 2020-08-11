@@ -40,5 +40,11 @@ text-align: right;
 @media screen and (max-width: 768px){
     .card {
         margin: 0.3rem 0.5rem; /*top and bottom margin: 2px, left and right margin: 5px */
+        max-width: 80vw;
+        height: auto;
     }
+    .card:hover {
+        transform: scale(1.00);
+    }
+
 }

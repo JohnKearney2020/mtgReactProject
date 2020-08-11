@@ -25,6 +25,7 @@ class Home extends Component {
             toughness: "",
             edh_rec_link: "",
             gatherer_link: "",
+            tcgplayer_link: "",
             card_type_line: ""
         };
     }
@@ -76,12 +77,15 @@ class Home extends Component {
             image_url: event.target.src,
             mana_cost: event.target.dataset.mana_cost,
             oracle_text: event.target.dataset.oracle_text,
+            price: event.target.dataset.price,
+            price_foil: event.target.dataset.price_foil,
             rarity: event.target.dataset.rarity,
             set_name: event.target.dataset.set_name,
             power: event.target.dataset.power,
             toughness: event.target.dataset.toughness,
             edh_rec_link: event.target.dataset.edh_rec_link,
             gatherer_link: event.target.dataset.gatherer_link,
+            tcg_player_link: event.target.dataset.tcg_player_link,
             card_type_line: event.target.dataset.card_type_line,
         });
         this.changeScroll(); //stop mouse scrolling
@@ -117,16 +121,17 @@ class Home extends Component {
                     data-flavor_text={eachCardObj.flavor_text}
                     data-image_url={eachCardObj.image_uris.border_crop}
                     data-mana_cost={eachCardObj.mana_cost}
-                    data-data-card_name={eachCardObj.name}
                     data-oracle_text={eachCardObj.oracle_text}
                     data-rarity={eachCardObj.rarity}
                     data-set_name={eachCardObj.set_name}
                     data-power={eachCardObj.power}
                     data-toughness={eachCardObj.toughness}
+                    data-price={eachCardObj.prices.usd}
+                    data-price_foil={eachCardObj.prices.usd_foil}
                     data-edh_rec_link={eachCardObj.related_uris.edhrec}
                     data-gatherer_link={eachCardObj.related_uris.gatherer}
+                    data-tcg_player_link={eachCardObj.purchase_uris.tcgplayer}
                     data-card_type_line={eachCardObj.type_line}
-                    
                     onClick={this.onCardClick}
                     loading="lazy">
                 </img>
@@ -144,15 +149,22 @@ class Home extends Component {
                 }
                 <Modal 
                     show={this.state.cardClicked}
-                    onCancel={this.closeCardInfo}
+                    onCloseModal={this.closeCardInfo}
                     header={this.state.card_name}
                     contentClass="card-item__modal-content"
                     footerClass="card-item__modal-actions"
-                    footer={<button onClick={this.closeCardInfo}>CLOSE</button>}
+                    // footer={<button onClick={this.closeCardInfo}>CLOSE</button>}
                     yOffSetValue={this.state.yOffset}
                     image_url__for_card_modal={this.state.image_url}
                     cardOracleText={this.state.oracle_text}
                     cardFlavorText={this.state.flavor_text}
+                    cardPower={this.state.power}
+                    cardToughness={this.state.toughness}
+                    cardPriceNormal={this.state.price}
+                    cardPriceFoil={this.state.price_foil}
+                    edhRecLink={this.state.edh_rec_link}
+                    gathererLink={this.state.gatherer_link}
+                    tcgPlayerLink={this.state.tcg_player_link}
                     card_rarity={this.state.rarity}
                 >
                 </Modal>
