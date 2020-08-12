@@ -6,52 +6,48 @@ import 'react-widgets/dist/css/react-widgets.css';
 // our css
 import './DropDown.css';
 
-
-
-// let { Multiselect } = ReactWidgets;
-// let colors = ['orange', 'red', 'blue', 'purple']
-let colors = [`Double Masters`, `Theros - Beyond Death` ]
-
 const  DropDown = () => {
 
-    const [setsForDropDown, setSetsForDropDown] = useState();
-    let setsForDropDownHolder = []; //temporarily store all of our sets for the dropdown menu
-    let filteredSets = [];
+    const [setObjectsFromAPI, setSetObjectsFromAPI] = useState([]);
+    const [setNamesOnly, setSetNamesOnly] = useState([]);
+    const [setNamesForCardFetch, setSetNamesForCardFetch] = useState("");
+    let setsForDropDownList = []; //temporarily store all of our sets for the dropdown menu
+
     const setApiCall = async () => {
         try {
             let response = await fetch(`https://api.scryfall.com/sets/`);
             // let setObjects = await response.json();
             let setObjects = await response.json();
             let setsFromApi = [];
-            console.log(`json from the set api`);
-            console.log(setObjects);
-            console.log(`type of setObjects`);
-            console.log(typeof setObjects);
-            // secondHolder = JSON.parse(setObjects.data);
+
             setsFromApi = setObjects.data;
-            // console.log(`.data added to the json`);
-            // console.log(secondHolder);
-            // console.log(`type of secondHolder`);
-            // console.log(typeof secondHolder);
-
-            // console.log(`Our Set Objects Look Like:`);
-            // console.log(setObjects);
-            // setsForDropDownHolder = JSON.parse(setObjects);
-            // console.log(`using .data on the json:`);
-            // console.log(setsForDropDownHolder);
-
-            // // secondHolder = await setsForDropDownHolder.filter((eachSetObj,index) => {
+            // ******************************************
+            //            Filter Function
+            // ******************************************
+            // this function filters the object of sets that is returned from the API. It filters out sets that are digital only sets
             const filterSetObjects = (eachSetObj, index) => {
                 return eachSetObj.digital === false;
             }
+            // here we do the filtering, then we extract the names of each set using .map()
+            // filteredSets = setsFromApi.filter(filterSetObjects).map((eachSet, index) => {
+            //     return eachSet.name;
+            // })
+            let filteredSetObjectsArray = setsFromApi.filter((eachSetObj, index) => {
+                return eachSetObj.digital === false;
+            });
+            // console.log(`our set objects after filtering digital only out:`);
+            // console.log(filteredSetObjectsArray);
 
-            filteredSets = setsFromApi.filter(filterSetObjects).map((eachSet, index) => {
-                return eachSet.name;
+            // Update our local state to contain all of our filtered sets
+            setSetObjectsFromAPI(filteredSetObjectsArray);
+
+            // Extract the set names and create an array of set names for our drop-down menu
+            setsForDropDownList = filteredSetObjectsArray.map((eachSetObj, index) => {
+                return eachSetObj.name;
             })
-            console.log(`our set objects after filtering digital only out:`);
-            console.log(filteredSets);
-
-            setSetsForDropDown(filteredSets)
+            // console.log(`Set names only:`);
+            // console.log(setsForDropDownList);
+            setSetNamesOnly(setsForDropDownList)
         } catch (error) {
             console.log(`Set API Call to Scryfall API Failed`);
             console.log(error);
@@ -62,7 +58,7 @@ const  DropDown = () => {
         <>
             <div id="reactWidgetsOverride">
             <Multiselect
-                data={setsForDropDown}
+                data={setNamesOnly}
                 // defaultValue={["orange", "blue"]}
                 // disabled={["red", "purple"]}
             />
