@@ -112,7 +112,8 @@ class Home extends Component {
                 return <img 
                     className="card" 
                     key={index} 
-                    src={eachCardObj.image_uris.border_crop} 
+                    // src={eachCardObj.image_uris.border_crop} 
+                    src={eachCardObj.image_uris.normal} 
                     title={eachCardObj.name} 
                     alt=""
                     loading="lazy"

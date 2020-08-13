@@ -11,6 +11,7 @@
     /* height: 60%; */
     /* border-bottom-right-radius: 5% 3.75%; */ /*this eliminates the white space around card corners if needed*/
     transition: transform .4s ease;
+    border-radius: 5% / 3.75%;
 }
 .card:hover {
     transform: scale(1.05);
