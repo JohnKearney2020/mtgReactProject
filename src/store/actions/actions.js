@@ -28,14 +28,15 @@ export const noResultsDispatch = (noResultsCardObject) => {
     };
 }
 
-export const getCards = (color) => {
+export const getCards = (color,sets) => {
     let actionType = actionTypes.GETCARDS;
     // console.log('action Type:');
     // console.log(actionType);
     let colorsArrayForAPICall = color;
+    let setsStringForAPICall = sets;
     // console.log(colorsArrayForAPICall);
     return (dispatch) => {
-        getCardData(colorsArrayForAPICall, dispatch, actionType);
+        getCardData(colorsArrayForAPICall, setsStringForAPICall, dispatch, actionType);
     }
 };
 
@@ -46,7 +47,7 @@ export const getCards = (color) => {
 //          Single Set
 //-----------------------------------
 //%3A = ':', equivalent to 'set:thb'
-let setsForApiPull = '(set%3Athb)';
+// let setsForApiPull = '(set%3Athb)';
 // let setsForApiPull = '(set:2xm or set:jmp or set:m21)';
 
 //-----------------------------------
@@ -62,12 +63,12 @@ let setsForApiPull = '(set%3Athb)';
 //=========================================================================================
 //                            Main API Call function
 //=========================================================================================
-async function getCardData(colorsArrayForAPICall, dispatch, actionType) {
+async function getCardData(colorsArrayForAPICall,setsStringForAPICall, dispatch, actionType) {
     console.log('colorsArrayForAPICall from click:');
     console.log(colorsArrayForAPICall);
-    let apiURLInsert = createApiURL(colorsArrayForAPICall);
+    let apiURLInsert = createApiURL(colorsArrayForAPICall, setsStringForAPICall);
     try{
-        let response = await fetch(`https://api.scryfall.com/cards/search?&q=${setsForApiPull}+${apiURLInsert}`);
+        let response = await fetch(`https://api.scryfall.com/cards/search?&q=${setsStringForAPICall}+${apiURLInsert}`);
         // let response = await fetch(`https://api.scryfall.com/cards/search?&q=set%3Athb+${apiURLInsert}`);
         // let response = await fetch(`https://api.scryfall.com/cards/search?&q=${setsForApiPull}+c%3AC+-t%3AL`);
         // let response = await fetch(`https://api.scryfall.com/cards/search?&q=c%3AC+${setsForApiPull}+-t%3Aland`);
@@ -151,7 +152,7 @@ async function getCardDataPagination(colorsArrayForAPICall, dispatch, actionType
 //                            Api call URL generator Function
 //=========================================================================================
 
-function createApiURL(arrayOfColors){
+function createApiURL(arrayOfColors, setsStringForAPICall){
     let stringForAPIURL = '';
     let wubrgArray = ['W', 'U', 'B', 'R', 'G'];
     // console.log('arrayOfColors just before creating stringForAPIURL:');

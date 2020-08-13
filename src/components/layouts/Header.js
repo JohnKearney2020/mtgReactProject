@@ -196,7 +196,7 @@ class Header extends Component {
         // console.log('form submitted');
         //send out a dispatch if the user has made any selections, otherwise do nothing
         if(this.state.colorsForAPI.length > 0){
-            this.props.findCards(this.state.colorsForAPI)
+            this.props.findCards(this.state.colorsForAPI, this.state.setsForAPI)
         }
     }
 
@@ -225,7 +225,7 @@ class Header extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         //this is called in our handleSubmit function
-        findCards: (colorArray) => dispatch(actionCreators.getCards(colorArray))
+        findCards: (colorArray, setsString) => dispatch(actionCreators.getCards(colorArray,setsString))
     }
 }
 

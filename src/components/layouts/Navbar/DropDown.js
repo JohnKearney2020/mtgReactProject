@@ -19,7 +19,7 @@ const  DropDown = (props) => {
         // code to run on component mount
         setApiCall()
         console.log(`called setApiCall() function via useEffect`);
-    }, []);
+    }, []); //leaving the second array argument blank will make this behave just like ComponentDidMount()
 
 
     
