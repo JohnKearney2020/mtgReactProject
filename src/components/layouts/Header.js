@@ -12,19 +12,24 @@ class Header extends Component {
         super(props)
         this.state = {
             colorsForAPI: [],
-            whiteSwitch: { checked: false},
-            blueSwitch: { checked: false},
-            blackSwitch: { checked: false},
-            redSwitch: { checked: false},
-            greenSwitch: { checked: false},
-            colorlessSwitch: { checked: false},
-            landsSwitch: { checked: false}
+            setsForAPI: '',
+            whiteSwitch: { checked: false },
+            blueSwitch: { checked: false },
+            blackSwitch: { checked: false },
+            redSwitch: { checked: false },
+            greenSwitch: { checked: false },
+            colorlessSwitch: { checked: false },
+            landsSwitch: { checked: false },
         }
     }
     
     //===========================================================================================================
-    //                                      Local Color State
+    //                              Local Color State / Selected Switches on Navbar
     //===========================================================================================================
+    // This method handles the navbar switches the user can select/deselect
+    // Due to the way the Scryfall API is set up, users can choose any number of colors, HOWEVER, if they choose
+    // 'Colorless' or 'Lands', those must be the only value chosen. This method automatically deselects any values that are
+    // not compatible with that ruleset
     handleCheckBoxClick = (e) => {
         //Checkbox uncheck 4-17
         let oldColors = [...this.state.colorsForAPI];
@@ -124,7 +129,61 @@ class Header extends Component {
                 });
             }
         }
+    } // End of Local Color State / Selected Switches on Navbar
+
+    //===========================================================================================================
+    //                                    User Selects a Set From Dropdown list
+    //===========================================================================================================
+    setsForAPIHandler = (sets) => { //this is passed down via props to the DropDown component
+        
+        // console.log(`User selected or deselected a set!`);
+        // console.log(`value object sent to Header component`);
+        // console.log(sets);
+        // console.log(`sets .length is:`);
+        // console.log(sets.length);
+        if(sets.length > 0){
+            // let newSetsForAPI = '(';
+            let newSetsForAPI = '(';
+            let firstSetTextCreated = false;
+            for(let eachSetObject of sets){
+                if(sets.length === 1){ //if we only have one set
+                    newSetsForAPI += 'set:' + eachSetObject.setCode;
+                }
+                else if(firstSetTextCreated === false) { //if we have multiple sets, but are working on the first of those sets
+                    // '(set:thb or set:iko)'
+                    firstSetTextCreated = true;
+                    newSetsForAPI += 'set:' + eachSetObject.setCode;
+                } else { // any sets after the first set
+                    newSetsForAPI += ' or '+ 'set:' + eachSetObject.setCode;
+                }
+            }
+            newSetsForAPI += ')'; // add the closing parenthesis
+            // console.log(`newSetsForAPI before URI: ${newSetsForAPI}`);
+            // let newSetsForAPI_URI= encodeURIComponent(newSetsForAPI);
+            // let newSetsForAPI_URI= encodeURI(newSetsForAPI);
+            // console.log(`newSetsForAPI after URI: ${newSetsForAPI_URI}`);
+            this.setState({
+                setsForAPI: newSetsForAPI
+            },() => {
+                console.log(`Local State in Header Updated with new set string for API call`);
+                console.log(this.state.setsForAPI);
+                // console.log('current local state in Header.js:');
+                // console.log(this.state);
+                // console.log(this.state.colorsForAPI);
+            });  
+            
+        }
+
     }
+
+
+    //===========================================================================================================
+    //                                    User Deselects a Set From Dropdown list
+    //===========================================================================================================
+    removeSetForAPI = (e) => {
+        console.log(`User removed a set!`);
+    }
+
 
     //===========================================================================================================
     //                                      Dispatch on Submit
@@ -146,7 +205,7 @@ class Header extends Component {
         return (
         <>
             <HeaderBackground />
-            <Navbar onSubmit={this.handleSubmit} onColorSelection={this.handleCheckBoxClick} {...this.state}/>
+            <Navbar onSubmit={this.handleSubmit} onColorSelection={this.handleCheckBoxClick} {...this.state} onSetSelection={this.setsForAPIHandler}/>
         </>                
         )
     }

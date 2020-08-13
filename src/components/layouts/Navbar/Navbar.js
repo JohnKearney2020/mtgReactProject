@@ -27,7 +27,8 @@ const Navbar = (props) => {
                 </nav>
             </SideDrawer>
             <nav>
-                <DropDown />
+                {/* ...props passes down the props we sent to <Navbar /> from <Header /> */}
+                <DropDown {...props} onSetSelection={props.onSetSelection}/>
                 {/* <div className="logo">
                     <img src="/images/setSymbol/THB.png" alt="" height="42" width="42"></img>
                     <h4 id="setName">Theros - Beyond Death</h4>
