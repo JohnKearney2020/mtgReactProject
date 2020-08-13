@@ -11,7 +11,7 @@ const  DropDown = (props) => {
     const [setObjectsFromAPI, setSetObjectsFromAPI] = useState([]);
     const [setNamesOnly, setSetNamesOnly] = useState([]);
     const [setNamesValues, setSetNamesValues] = useState([]);
-    const [setNamesForCardFetch, setSetNamesForCardFetch] = useState("");
+    // const [setNamesForCardFetch, setSetNamesForCardFetch] = useState("");
     let setsForDropDownList = []; //temporarily store all of our sets for the dropdown menu
     let filteredSetObjectsArray = [];
 
