@@ -1,4 +1,4 @@
-import React, { useState, useEffect, setApiCall } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Multiselect } from 'react-widgets';
 
 // default react widgets css
@@ -17,8 +17,9 @@ const  DropDown = (props) => {
 
     useEffect(() => {
         // code to run on component mount
-        setApiCall()
+        setApiCall();
         console.log(`called setApiCall() function via useEffect`);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []); //leaving the second array argument blank will make this behave just like ComponentDidMount()
 
 

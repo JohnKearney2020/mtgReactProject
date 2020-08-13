@@ -147,14 +147,17 @@ class Header extends Component {
             let firstSetTextCreated = false;
             for(let eachSetObject of sets){
                 if(sets.length === 1){ //if we only have one set
-                    newSetsForAPI += 'set:' + eachSetObject.setCode;
+                    // newSetsForAPI += 'set:' + eachSetObject.setCode;
+                    newSetsForAPI += `set:${eachSetObject.setCode}`;
                 }
                 else if(firstSetTextCreated === false) { //if we have multiple sets, but are working on the first of those sets
                     // '(set:thb or set:iko)'
                     firstSetTextCreated = true;
-                    newSetsForAPI += 'set:' + eachSetObject.setCode;
+                    // newSetsForAPI += 'set:' + eachSetObject.setCode;
+                    newSetsForAPI += `set:${eachSetObject.setCode}`;
                 } else { // any sets after the first set
-                    newSetsForAPI = newSetsForAPI + ' or '+ 'set:' + eachSetObject.setCode;
+                    // newSetsForAPI = newSetsForAPI + ' or ' + 'set:' + eachSetObject.setCode;
+                    newSetsForAPI = newSetsForAPI + ` or set:${eachSetObject.setCode}`;
                 }
             }
             newSetsForAPI += ')'; // add the closing parenthesis
