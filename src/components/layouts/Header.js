@@ -154,7 +154,7 @@ class Header extends Component {
                     firstSetTextCreated = true;
                     newSetsForAPI += 'set:' + eachSetObject.setCode;
                 } else { // any sets after the first set
-                    newSetsForAPI += ' or '+ 'set:' + eachSetObject.setCode;
+                    newSetsForAPI = newSetsForAPI + ' or '+ 'set:' + eachSetObject.setCode;
                 }
             }
             newSetsForAPI += ')'; // add the closing parenthesis

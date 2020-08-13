@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, setApiCall } from 'react';
 import { Multiselect } from 'react-widgets';
 
 // default react widgets css
@@ -39,9 +39,9 @@ const  DropDown = (props) => {
             //            Filter Function
             // ******************************************
             // this function filters the object of sets that is returned from the API. It filters out sets that are digital only sets
-            const filterSetObjects = (eachSetObj, index) => {
-                return eachSetObj.digital === false;
-            }
+            // const filterSetObjects = (eachSetObj, index) => {
+            //     return eachSetObj.digital === false;
+            // }
             // here we do the filtering, then we extract the names of each set using .map()
             // filteredSets = setsFromApi.filter(filterSetObjects).map((eachSet, index) => {
             //     return eachSet.name;
@@ -75,7 +75,7 @@ const  DropDown = (props) => {
 
     const onSetSelectHandler = (value) => {
         setSetNamesValues(value); //update the local state that will display in the input field
-        let setsURI = ""; //this will hold the string of set names in URI format for our get cards api call
+        // let setsURI = ""; //this will hold the string of set names in URI format for our get cards api call
 
         // const findSetShorthand = () => {
         //     console.log(`called findSetShortHand function`);
