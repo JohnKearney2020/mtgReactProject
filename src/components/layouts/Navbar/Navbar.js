@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import NavLinks from './NavLinks';
 import SideDrawer from './SideDrawer';
 import './Navbar.css';
+import DropDown from './DropDown';
 
 const Navbar = (props) => {
 
@@ -26,10 +27,12 @@ const Navbar = (props) => {
                 </nav>
             </SideDrawer>
             <nav>
-                <div className="logo">
+                {/* ...props passes down the props we sent to <Navbar /> from <Header /> */}
+                <DropDown {...props} onSetSelection={props.onSetSelection}/>
+                {/* <div className="logo">
                     <img src="/images/setSymbol/THB.png" alt="" height="42" width="42"></img>
                     <h4 id="setName">Theros - Beyond Death</h4>
-                </div>
+                </div> */}
                 <div className="mainNavLinks">
                     <NavLinks onSubmit={props.onSubmit} onMobileSubmit={mobileSubmit} onColorSelection={props.onColorSelection} show={navbarIsExpanded} {...props}/>
                 </div>

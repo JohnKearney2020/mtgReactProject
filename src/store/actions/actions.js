@@ -28,14 +28,15 @@ export const noResultsDispatch = (noResultsCardObject) => {
     };
 }
 
-export const getCards = (color) => {
+export const getCards = (color,sets) => {
     let actionType = actionTypes.GETCARDS;
     // console.log('action Type:');
     // console.log(actionType);
     let colorsArrayForAPICall = color;
+    let setsStringForAPICall = sets;
     // console.log(colorsArrayForAPICall);
     return (dispatch) => {
-        getCardData(colorsArrayForAPICall, dispatch, actionType);
+        getCardData(colorsArrayForAPICall, setsStringForAPICall, dispatch, actionType);
     }
 };
 
@@ -46,13 +47,15 @@ export const getCards = (color) => {
 //          Single Set
 //-----------------------------------
 //%3A = ':', equivalent to 'set:thb'
-let setsForApiPull = 'set%3Athb';
+// let setsForApiPull = '(set%3Athb)';
+// let setsForApiPull = '(set:2xm or set:jmp or set:m21)';
 
 //-----------------------------------
 //          Multiple Sets
 //-----------------------------------
 //need equivalent to (set:thb or set:iko)
 // %28 = '(', %20 = ' ', %29 = ')'
+// '(set:thb or set:iko)'
 // let setsForApiPull = '%28set%3Athb%20or%20set%3Aiko%29'; //thb and iko
 // let setsForApiPull = '%28set%3Athb%20or%20set%3Aiko%20or%20set%3Aaer%20or%20set%3Akld%20or%20set%3Aakh%29'; //thb and iko and aer and kld
 
@@ -60,12 +63,12 @@ let setsForApiPull = 'set%3Athb';
 //=========================================================================================
 //                            Main API Call function
 //=========================================================================================
-async function getCardData(colorsArrayForAPICall, dispatch, actionType) {
+async function getCardData(colorsArrayForAPICall,setsStringForAPICall, dispatch, actionType) {
     console.log('colorsArrayForAPICall from click:');
     console.log(colorsArrayForAPICall);
-    let apiURLInsert = createApiURL(colorsArrayForAPICall);
+    let apiURLInsert = createApiURL(colorsArrayForAPICall, setsStringForAPICall);
     try{
-        let response = await fetch(`https://api.scryfall.com/cards/search?&q=${setsForApiPull}+${apiURLInsert}`);
+        let response = await fetch(`https://api.scryfall.com/cards/search?&q=${setsStringForAPICall}+${apiURLInsert}`);
         // let response = await fetch(`https://api.scryfall.com/cards/search?&q=set%3Athb+${apiURLInsert}`);
         // let response = await fetch(`https://api.scryfall.com/cards/search?&q=${setsForApiPull}+c%3AC+-t%3AL`);
         // let response = await fetch(`https://api.scryfall.com/cards/search?&q=c%3AC+${setsForApiPull}+-t%3Aland`);
@@ -96,8 +99,8 @@ async function getCardData(colorsArrayForAPICall, dispatch, actionType) {
             // console.log(errorCardObject[0].image_uris.normal);
             dispatch(noResultsDispatch(errorCardObject, actionType))
         } else {
-            // console.log('card objects sucessfully pulled from API:');
-            // console.log(cardObjects);
+            console.log('card objects sucessfully pulled from API:');
+            console.log(cardObjects);
             cards = cardObjects.data
             if(cardObjects.has_more === true) { //if there are more than 175 results
                 setTimeout(() => {
@@ -149,7 +152,7 @@ async function getCardDataPagination(colorsArrayForAPICall, dispatch, actionType
 //                            Api call URL generator Function
 //=========================================================================================
 
-function createApiURL(arrayOfColors){
+function createApiURL(arrayOfColors, setsStringForAPICall){
     let stringForAPIURL = '';
     let wubrgArray = ['W', 'U', 'B', 'R', 'G'];
     // console.log('arrayOfColors just before creating stringForAPIURL:');

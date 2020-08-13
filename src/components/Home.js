@@ -112,9 +112,11 @@ class Home extends Component {
                 return <img 
                     className="card" 
                     key={index} 
-                    src={eachCardObj.image_uris.border_crop} 
+                    // src={eachCardObj.image_uris.border_crop} 
+                    src={eachCardObj.image_uris.normal} 
                     title={eachCardObj.name} 
                     alt=""
+                    loading="lazy"
                     data-artist={eachCardObj.artist}
                     data-card_name={eachCardObj.name}
                     data-cmc={eachCardObj.cmc}
@@ -133,7 +135,7 @@ class Home extends Component {
                     data-tcg_player_link={eachCardObj.purchase_uris.tcgplayer}
                     data-card_type_line={eachCardObj.type_line}
                     onClick={this.onCardClick}
-                    loading="lazy">
+                    >
                 </img>
             } else {
                 return <img className="card" src={eachCardObj.image_uris.border_crop} alt="" key={index}></img>;

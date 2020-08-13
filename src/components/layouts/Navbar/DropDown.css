@@ -1,0 +1,3 @@
+#reactWidgetsOverride .rw-widget>.rw-widget-container {
+    width: 400px;
+}
