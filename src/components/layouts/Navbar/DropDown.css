@@ -1,3 +1,20 @@
 #reactWidgetsOverride .rw-widget>.rw-widget-container {
     width: 400px;
 }
+
+@media screen and (max-width: 768px){
+    #reactWidgetsOverride .rw-widget>.rw-widget-container {
+        /* max-width: 200px; */
+        /* max-height: 10vh; */
+        overflow: hidden;
+        /* max-height: 90%; */
+        height: 90%;
+    }
+    .rw-widget-input { 
+        display: block; 
+        height: 45px; 
+        max-width: 200px;
+        max-height: 7.5vh !important; 
+        /* overflow-y: scroll;  */
+    }
+}
