@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import LazyLoad from 'react-lazy-load';
 
 import Backdrop from './layouts/Modals/Backdrop';
 import Modal from './layouts/Modals/Modal';
@@ -109,34 +110,43 @@ class Home extends Component {
             // console.log(`cardsFromApi Object is: ${this.props.cardsFromAPI}`);
             // console.log(`cardsFromApi Object is: ${eachCardObj}`);
             if(eachCardObj.name !== "No Cards Found"){
-                return <img 
-                    className="card" 
-                    key={index} 
-                    // src={eachCardObj.image_uris.border_crop} 
-                    src={eachCardObj.image_uris.normal} 
-                    title={eachCardObj.name} 
-                    alt=""
-                    loading="lazy"
-                    data-artist={eachCardObj.artist}
-                    data-card_name={eachCardObj.name}
-                    data-cmc={eachCardObj.cmc}
-                    data-flavor_text={eachCardObj.flavor_text}
-                    data-image_url={eachCardObj.image_uris.border_crop}
-                    data-mana_cost={eachCardObj.mana_cost}
-                    data-oracle_text={eachCardObj.oracle_text}
-                    data-rarity={eachCardObj.rarity}
-                    data-set_name={eachCardObj.set_name}
-                    data-power={eachCardObj.power}
-                    data-toughness={eachCardObj.toughness}
-                    data-price={eachCardObj.prices.usd}
-                    data-price_foil={eachCardObj.prices.usd_foil}
-                    data-edh_rec_link={eachCardObj.related_uris.edhrec}
-                    data-gatherer_link={eachCardObj.related_uris.gatherer}
-                    data-tcg_player_link={eachCardObj.purchase_uris.tcgplayer}
-                    data-card_type_line={eachCardObj.type_line}
-                    onClick={this.onCardClick}
-                    >
-                </img>
+                return (
+                    <LazyLoad
+                        offsetVertical={200}
+                        debounce={false}
+                        height={480}
+                        width={345}
+                        key={index}
+                        >
+                        <img 
+                            className="card" 
+                            key={index} 
+                            // src={eachCardObj.image_uris.border_crop} 
+                            src={eachCardObj.image_uris.normal} 
+                            title={eachCardObj.name} 
+                            alt=""
+                            data-artist={eachCardObj.artist}
+                            data-card_name={eachCardObj.name}
+                            data-cmc={eachCardObj.cmc}
+                            data-flavor_text={eachCardObj.flavor_text}
+                            data-image_url={eachCardObj.image_uris.border_crop}
+                            data-mana_cost={eachCardObj.mana_cost}
+                            data-oracle_text={eachCardObj.oracle_text}
+                            data-rarity={eachCardObj.rarity}
+                            data-set_name={eachCardObj.set_name}
+                            data-power={eachCardObj.power}
+                            data-toughness={eachCardObj.toughness}
+                            data-price={eachCardObj.prices.usd}
+                            data-price_foil={eachCardObj.prices.usd_foil}
+                            data-edh_rec_link={eachCardObj.related_uris.edhrec}
+                            data-gatherer_link={eachCardObj.related_uris.gatherer}
+                            data-tcg_player_link={eachCardObj.purchase_uris.tcgplayer}
+                            data-card_type_line={eachCardObj.type_line}
+                            onClick={this.onCardClick}
+                            >
+                        </img>
+                    </LazyLoad>
+                )
             } else {
                 return <img className="card" src={eachCardObj.image_uris.border_crop} alt="" key={index}></img>;
             }

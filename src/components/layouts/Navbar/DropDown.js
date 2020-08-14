@@ -137,6 +137,7 @@ const  DropDown = (props) => {
                     itemComponent={ListItem} //this determines what the items in the dropdown list look like
                     value={setNamesValues}
                     onChange={value => onSetSelectHandler(value)}
+                    placeholder='Select Sets'
                 />
             </div>
             {/* <button onClick={setApiCall}>API Test</button> */}
