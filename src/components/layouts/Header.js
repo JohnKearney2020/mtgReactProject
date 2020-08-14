@@ -198,8 +198,14 @@ class Header extends Component {
         e.preventDefault(); //prefent default behavior of a form navigating somewhere else
         // console.log('form submitted');
         //send out a dispatch if the user has made any selections, otherwise do nothing
-        if(this.state.colorsForAPI.length > 0){
+        // if(this.state.setsForAPI.length === 0){
+        //     console.log(`no sets selected`);
+        //     break;
+        // }
+        if(this.state.colorsForAPI.length > 0 && this.state.setsForAPI.length > 0){
             this.props.findCards(this.state.colorsForAPI, this.state.setsForAPI)
+        } else {
+            console.log(`Choose a color or set`);
         }
     }
 
