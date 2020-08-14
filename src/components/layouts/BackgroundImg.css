@@ -1,7 +1,10 @@
-body {
+/* #backgroundImg { */
 	/* background: url('../images/background/indexBackground.png'); */
 	/* background: url('../images/background/2XM.jpg'); */
-    /* position: relative;
+    /* position: relative; */
+    /* position: fixed; */
+    /* position: absolute;
+    min-height: 100vh;
     height: 100%;
     width: 100%;
     background-size: cover;
@@ -13,6 +16,3 @@ body {
     will-change: transform;
     display: table; */
 }
-
-
-

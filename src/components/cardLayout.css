@@ -39,7 +39,11 @@ text-align: right;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 1rem;
+    /* position: static; */
+    position: relative;
+    /* height: 100vh; */
     /* width: 100vw; */
+    /* z-index: 99; */
 }
 
 @media screen and (max-width: 768px){

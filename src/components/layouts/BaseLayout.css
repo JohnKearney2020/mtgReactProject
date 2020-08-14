@@ -1,18 +1,18 @@
-body {
-	/* background: url('../images/background/indexBackground.png'); */
+#backgroundImg {
+	background: url('../images/background/indexBackground.png');
 	/* background: url('../images/background/2XM.jpg'); */
-    /* position: relative;
-    height: 100%;
+    position: relative;
+    /* position: fixed; */
+    /* position: absolute; */
+    min-height: 100vh;
+    /* height: 100%; */
     width: 100%;
     background-size: cover;
 	background-position: center center;
-	background-attachment: fixed; */
+	background-attachment: fixed;
     /* iOS specific styling */
     /* -webkit-transform: translateZ(0);
     transform: translateZ(0);
     will-change: transform;
     display: table; */
 }
-
-
-
