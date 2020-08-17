@@ -1,0 +1,59 @@
+.cards-flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* margin-top: 1rem; */
+    padding-top: 1rem;
+    /* width: 100vw; */
+    /* background-color: red; */
+    min-height: 100vh;
+    /* background: url('../components/images/background/indexBackground.png'); */
+    /* height: 100%; */
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    margin: 0;
+}
+
+.LazyLoad {
+    margin: 0.5rem 0.5rem;
+}
+.card {
+    /* padding: 0; */
+    border: 0;
+    /* margin: 5px 5px; top and bottom margin: 2px, left and right margin: 5px */
+    /* margin: 1rem 0.5rem; top and bottom margin: 2px, left and right margin: 5px */
+    /* margin: 10px 10px; top and bottom margin: 2px, left and right margin: 5px */
+    /* max-width: 250px; */
+    max-width: 345px;
+    height: auto;
+    /* height: auto; */
+    /* height: 60%; */
+    /* border-bottom-right-radius: 5% 3.75%; */ /*this eliminates the white space around card corners if needed*/
+    transition: transform .4s ease;
+    border-radius: 5% / 3.75%;
+}
+.card:hover {
+    transform: scale(1.05);
+}
+
+@media screen and (max-width: 768px){
+    .LazyLoad {
+        /* margin: 0.5rem 0.5rem; */
+        margin: 0.3rem 0.5rem;
+        max-width: 80vw;
+        height: auto!important;
+    }
+    
+    .card {
+        /* margin: 0.3rem 0.5rem; top and bottom margin: 2px, left and right margin: 5px */
+        max-width: 80vw;
+        height: auto;
+    }
+    .card:hover {
+        transform: scale(1.00);
+    }
+
+}
