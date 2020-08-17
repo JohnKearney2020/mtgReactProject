@@ -23,9 +23,6 @@ const  DropDown = (props) => {
     }, []); //leaving the second array argument blank will make this behave just like ComponentDidMount()
 
 
-    
-    // componentDidMount( setApiCall() );
-    
     const setApiCall = async () => {
         try {
             let response = await fetch(`https://api.scryfall.com/sets/`);
@@ -43,15 +40,9 @@ const  DropDown = (props) => {
             // const filterSetObjects = (eachSetObj, index) => {
             //     return eachSetObj.digital === false;
             // }
-            // here we do the filtering, then we extract the names of each set using .map()
-            // filteredSets = setsFromApi.filter(filterSetObjects).map((eachSet, index) => {
-            //     return eachSet.name;
-            // })
             filteredSetObjectsArray = setsFromApi.filter((eachSetObj, index) => {
                 return eachSetObj.digital === false;
             });
-            // console.log(`our set objects after filtering digital only out:`);
-            // console.log(filteredSetObjectsArray);
 
             // Update our local state to contain all of our filtered sets
             setSetObjectsFromAPI(filteredSetObjectsArray);
@@ -65,9 +56,7 @@ const  DropDown = (props) => {
                     setCode: eachSetObj.code
                 };
             })
-            // console.log(`Set names only:`);
-            // console.log(setsForDropDownList);
-            setSetNamesOnly(setsForDropDownList)
+            setSetNamesOnly(setsForDropDownList);
         } catch (error) {
             console.log(`Set API Call to Scryfall API Failed`);
             console.log(error);
@@ -76,11 +65,12 @@ const  DropDown = (props) => {
 
     const onSetSelectHandler = (value) => {
         setSetNamesValues(value); //update the local state that will display in the input field
-        // let setsURI = ""; //this will hold the string of set names in URI format for our get cards api call
-
+        let setsURI = ""; //this will hold the string of set names in URI format for our get cards api call
+        console.log(`value from set select:`);
+        console.log(value);
         // const findSetShorthand = () => {
         //     console.log(`called findSetShortHand function`);
-        //     console.log(`setNamesValues`);
+        //     console.log(`setNamesValues:`);
         //     console.log({setNamesValues});
         //     for(let eachSetName of value) {
         //         console.log(`called outer loop`);
@@ -103,33 +93,13 @@ const  DropDown = (props) => {
 
     }
 
-    // let ListItem = ({ item }) => (
-        // <span onClick={props.addSetForAPI} value={item.name}>{item.name}</span>
-        // <span><strong>{item.name}</strong></span>
-        // <span>{item}</span>
-    // );
-
     let ListItem = ({ item }) => {
-        // let itemName = JSON.stringify(item.name);
-        // console.log(`type of item.setname`);
-        // console.log(typeof item.setName);
-    // return <span><strong>{item.setName}</strong> <span>{item.setCode}</span></span>;
-    return <span>{item.setName}</span>;
+        return <span>{item.setName}</span>;
     }
 
     return (
         <>
             <div id="reactWidgetsOverride">
-                {/* <Multiselect
-                    data={setNamesOnly}
-                    // data={setObjectsFromAPI}
-                    itemComponent={ListItem}
-
-                    // defaultValue={["orange", "blue"]}
-                    // disabled={["red", "purple"]}
-                    value={setNamesValues} //value is what is displayed in the input feild as a user selects/deselects sets.
-                    onChange={value => onSetSelectHandler(value)}
-                /> */}
                 <Multiselect
                     data={setNamesOnly} //this is the object with data we will work with to fill in our dropdown list
                     // textField={item => item.setName + ' ' + item.setCode}
@@ -140,7 +110,6 @@ const  DropDown = (props) => {
                     placeholder='Select Sets'
                 />
             </div>
-            {/* <button onClick={setApiCall}>API Test</button> */}
         </>
     )
 }

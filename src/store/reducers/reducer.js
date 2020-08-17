@@ -2,6 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const intitialState = {
     cards: [],
+    setForBackgrounds: "DEFAULT"
 }
 
 const reducer = (state = intitialState, action) => {
@@ -10,7 +11,8 @@ const reducer = (state = intitialState, action) => {
         case actionTypes.GETCARDS:
             return {
                 ...state,
-                cards: action.cardsToPassToGlobalState
+                cards: action.cardsToPassToGlobalState,
+                setForBackgrounds: action.setShorthandForBackgrounds
             }
         case actionTypes.NORESULTS:
             return {
