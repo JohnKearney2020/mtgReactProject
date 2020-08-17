@@ -4,6 +4,7 @@ import LazyLoad from 'react-lazy-load';
 
 import Backdrop from './layouts/Modals/Backdrop';
 import Modal from './layouts/Modals/Modal';
+import Cards from './layouts/Cards';
 import './cardLayout.css'
 
 class Home extends Component {
@@ -153,7 +154,8 @@ class Home extends Component {
         });
 
         return (
-            <>
+            <>  
+                {/* // Modal - Appears when users click on a card */}
                 {this.state.cardClicked && 
                     <React.Fragment>
                         <Backdrop yOffSetValue={this.state.yOffset} onClick={this.closeCardInfo}/>    
@@ -180,9 +182,11 @@ class Home extends Component {
                     card_rarity={this.state.rarity}
                 >
                 </Modal>
-                <div className="flex-container">
+                {/* End of Modal */}
+                <Cards cardsToRender={filteredCards}/>
+                {/* <div className="cards-flex-container">
                     {filteredCards}
-                </div>
+                </div> */}
             </>
         )
     }
