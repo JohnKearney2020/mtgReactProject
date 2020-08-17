@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import './Cards.css';
 
@@ -20,7 +21,9 @@ const Cards = (props) => {
 
     
     // let filename = "indexBackground.png";
-    let filename = "2XM.jpg";
+    // let filename = "2XM.jpg";
+    let filename = `${props.setForBackground}.jpg`;
+    console.log(`Set name for background from props: ${props.setForBackground}.jpg`);
 
     // let backgroundImgPath = require("../../components/images/background/indexBackground.png");
     let backgroundImgPath = require(`../../components/images/background/${filename}`);
@@ -33,4 +36,19 @@ const Cards = (props) => {
     )
 }
 
-export default Cards;
+// export default Cards;
+
+
+//========================================================
+                    //mapStateToProps
+//========================================================
+// 'state' below is the state stored in Redux
+const mapStateToProps = state => {
+    // Here we are saying "Give me the value of 'cards' stored in our global state, and store it as a property called 'cardsFromAPI' that we can then use here in the Home component"
+    return {
+        setForBackground: state.setForBackgrounds //the value after 'state.' must match the value in our reducer
+    }
+
+}
+
+export default connect(mapStateToProps, null)(Cards);

@@ -149,7 +149,17 @@ class Home extends Component {
                     </LazyLoad>
                 )
             } else {
-                return <img className="card" src={eachCardObj.image_uris.border_crop} alt="" key={index}></img>;
+                return (
+                    <LazyLoad
+                        offsetVertical={200}
+                        debounce={false}
+                        height={452}
+                        width={616}
+                        key={index}
+                        >
+                        <img id="noCardFound" src={eachCardObj.image_uris.border_crop} alt="" key={index}></img>
+                    </LazyLoad>
+                )
             }
         });
 

@@ -13,6 +13,7 @@ class Header extends Component {
         this.state = {
             colorsForAPI: [],
             setsForAPI: '',
+            setShortHandForBackgrounds: 'DEFAULT',
             whiteSwitch: { checked: false },
             blueSwitch: { checked: false },
             blackSwitch: { checked: false },
@@ -135,14 +136,30 @@ class Header extends Component {
     //                                    User Selects a Set From Dropdown list
     //===========================================================================================================
     setsForAPIHandler = (sets) => { //this is passed down via props to the DropDown component
-        
-        // console.log(`User selected or deselected a set!`);
-        // console.log(`value object sent to Header component`);
-        // console.log(sets);
-        // console.log(`sets .length is:`);
-        // console.log(sets.length);
-        if(sets.length > 0){
-            // let newSetsForAPI = '(';
+        console.log(`This is the set value but in our <Header />`);
+        console.log(sets);
+        console.log(`Number of Sets User has selected: ${sets.length}`);
+
+        if(sets.length > 0){ //if the user has selected at least one set
+            //==========================================
+            //take care of the shorthand first
+            //==========================================
+            if(sets.length === 1){
+                this.setState({
+                    setShortHandForBackgrounds: sets[0].setCode.toUpperCase()
+                },() => {
+                    console.log(`header local state for background ${this.state.setShortHandForBackgrounds}`);
+                });
+            } else {
+                this.setState({
+                    setShortHandForBackgrounds: 'DEFAULT'
+                },() => {
+                });
+            }
+
+            //==================================================
+            // Now take care os the set portion of the api URL
+            //==================================================
             let newSetsForAPI = '(';
             let firstSetTextCreated = false;
             for(let eachSetObject of sets){
@@ -153,18 +170,12 @@ class Header extends Component {
                 else if(firstSetTextCreated === false) { //if we have multiple sets, but are working on the first of those sets
                     // '(set:thb or set:iko)'
                     firstSetTextCreated = true;
-                    // newSetsForAPI += 'set:' + eachSetObject.setCode;
                     newSetsForAPI += `set:${eachSetObject.setCode}`;
                 } else { // any sets after the first set
-                    // newSetsForAPI = newSetsForAPI + ' or ' + 'set:' + eachSetObject.setCode;
                     newSetsForAPI = newSetsForAPI + ` or set:${eachSetObject.setCode}`;
                 }
             }
             newSetsForAPI += ')'; // add the closing parenthesis
-            // console.log(`newSetsForAPI before URI: ${newSetsForAPI}`);
-            // let newSetsForAPI_URI= encodeURIComponent(newSetsForAPI);
-            // let newSetsForAPI_URI= encodeURI(newSetsForAPI);
-            // console.log(`newSetsForAPI after URI: ${newSetsForAPI_URI}`);
             this.setState({
                 setsForAPI: newSetsForAPI
             },() => {
@@ -179,15 +190,6 @@ class Header extends Component {
 
     }
 
-
-    //===========================================================================================================
-    //                                    User Deselects a Set From Dropdown list
-    //===========================================================================================================
-    removeSetForAPI = (e) => {
-        console.log(`User removed a set!`);
-    }
-
-
     //===========================================================================================================
     //                                      Dispatch on Submit
     //===========================================================================================================
@@ -196,14 +198,9 @@ class Header extends Component {
         // 1. <Navbar />
         //      a. <Navlinks />
         e.preventDefault(); //prefent default behavior of a form navigating somewhere else
-        // console.log('form submitted');
         //send out a dispatch if the user has made any selections, otherwise do nothing
-        // if(this.state.setsForAPI.length === 0){
-        //     console.log(`no sets selected`);
-        //     break;
-        // }
         if(this.state.colorsForAPI.length > 0 && this.state.setsForAPI.length > 0){
-            this.props.findCards(this.state.colorsForAPI, this.state.setsForAPI)
+            this.props.findCards(this.state.colorsForAPI, this.state.setsForAPI, this.state.setShortHandForBackgrounds)
         } else {
             console.log(`Choose a color or set`);
         }
@@ -234,7 +231,7 @@ class Header extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         //this is called in our handleSubmit function
-        findCards: (colorArray, setsString) => dispatch(actionCreators.getCards(colorArray,setsString))
+        findCards: (colorArray, setsStringForApi, setShorthandForBackgrounds) => dispatch(actionCreators.getCards(colorArray,setsStringForApi, setShorthandForBackgrounds))
     }
 }
 
