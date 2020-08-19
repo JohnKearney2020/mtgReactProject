@@ -8,7 +8,7 @@ import './DropDown.css';
 
 const  DropDown = (props) => {
 
-    const [setObjectsFromAPI, setSetObjectsFromAPI] = useState([]);
+    // const [setObjectsFromAPI, setSetObjectsFromAPI] = useState([]);
     const [setNamesOnly, setSetNamesOnly] = useState([]);
     const [setNamesValues, setSetNamesValues] = useState([]);
     // const [setNamesForCardFetch, setSetNamesForCardFetch] = useState("");
@@ -45,7 +45,7 @@ const  DropDown = (props) => {
             });
 
             // Update our local state to contain all of our filtered sets
-            setSetObjectsFromAPI(filteredSetObjectsArray);
+            // setSetObjectsFromAPI(filteredSetObjectsArray);
             // console.log(`Our setObjectsFromAPI local state:`);
             // console.log(setObjectsFromAPI);
 
