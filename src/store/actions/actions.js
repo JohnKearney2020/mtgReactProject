@@ -21,7 +21,7 @@ export const executeDispatch = (actionType, cards, setStringForApiCall, setShort
 //                          Dispatch for No Results
 //==========================================================================
 export const noResultsDispatch = (noResultsCardObject) => {
-    console.log('sucessfully called no results dispatch');
+    // console.log('sucessfully called no results dispatch');
     let actionType = actionTypes.NORESULTS;
     return {
         type: actionType,
@@ -35,6 +35,8 @@ export const getCards = (colors,sets,setShorthand) => {
     let actionType = actionTypes.GETCARDS;
     let colorsArrayForAPICall = colors;
     let setsStringForAPICall = sets;
+        // Make a function call to find what the set shorthand value(s) should be
+    // let setShorthandForBackgrounds = getSetShorthand(setShorthand)
     let setShorthandForBackgrounds = setShorthand;
     return (dispatch) => {
         getCardData(colorsArrayForAPICall, setsStringForAPICall, setShorthandForBackgrounds, dispatch, actionType);
@@ -65,9 +67,9 @@ export const getCards = (colors,sets,setShorthand) => {
 //                            Main API Call function
 //=========================================================================================
 async function getCardData(colorsArrayForAPICall, setsStringForAPICall, setShortHand, dispatch, actionType) {
-    console.log('colorsArrayForAPICall from click:');
-    console.log(colorsArrayForAPICall);
-    console.log(`dispatch variable in actions.js line 75: ${dispatch}`);
+    // console.log('colorsArrayForAPICall from click:');
+    // console.log(colorsArrayForAPICall);
+    // console.log(`dispatch variable in actions.js line 75: ${dispatch}`);
     let apiURLInsert = createApiURL(colorsArrayForAPICall);
     try{
         let response = await fetch(`https://api.scryfall.com/cards/search?&q=${setsStringForAPICall}+${apiURLInsert}`);
@@ -94,7 +96,7 @@ async function getCardData(colorsArrayForAPICall, setsStringForAPICall, setShort
         //the returned object will look like below and mimics what we'd normally return so as to not cause errors with the .filter() array in the render() function of our Home.js component
         /* {object: "error", code: "not_found", status: 404, details: "Your query didn’t match any cards. Adjust your sea…ntax guide at https://scryfall.com/docs/reference"} */
         if(cardObjects.object === 'error') {
-            console.log('sucessfully triggered an error response from API');
+            // console.log('sucessfully triggered an error response from API');
             let errorCardObject =
                 [
                     {
@@ -111,8 +113,8 @@ async function getCardData(colorsArrayForAPICall, setsStringForAPICall, setShort
                     getCardDataPagination(dispatch, actionType, pagURL, setsStringForAPICall, setShortHand) //call the API fetch() function 
                 }, 100); //Scryfall API documentation asks for 100 ms break between calls
             } else {
-                console.log('cards before final dispatch:');
-                console.log(cards);
+                // console.log('cards before final dispatch:');
+                // console.log(cards);
                 //We are done calling the Api for cards, now we can look at setsStringForAPICall and determine what string we need to update 
                 //the global state with for the header and card container backgrounds.
                 dispatch(executeDispatch(actionType, cards, setsStringForAPICall, setShortHand));
@@ -188,4 +190,9 @@ function createApiURL(arrayOfColors){
     return stringForAPIURL;
 }
 
+
+// function getSetShorthand(setStringFromUsers) {
+//     console.log(`In our getSetShortHandFunction: ${setStringFromUsers}`);
+//     return setStringFromUsers;
+// }
 

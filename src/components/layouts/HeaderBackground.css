@@ -1,7 +1,7 @@
 #headerBackgroundImage {
     height: 50vh;
     width: 100%;
-    background: url(../images/banner/KLD.jpg) no-repeat 100% 5%;
+    background: no-repeat 100% 5%;
     /* background: url(../images/banner/ELDb.jpg) no-repeat 100% 5%; */
     /* background: url(../images/banner/ELDc.jpg) no-repeat 100% 5%; */
     background-size: cover;

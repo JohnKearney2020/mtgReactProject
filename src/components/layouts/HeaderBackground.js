@@ -1,23 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import './HeaderBackground.css';
 
-// const HeaderBackground = () => {
+export class HeaderBackground extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            filename: "DEFAULT"
+        }
+    }
 
-//     const headerBackground = <div id="headerBackgroundImage"></div>
-    
-//     return ReactDOM.createPortal(headerBackground, document.getElementById('headerBackground-hook'));
-// }
-
-// export default HeaderBackground;
-
-const HeaderBackground = () => {
-    return (
-        <div id="headerBackgroundImage">
-
-        </div>
-    )
+    render() {
+        let backgroundImgPath = require(`../images/banner/${this.props.setForBannerBackground}.jpg`);
+        return (
+            // <div id="headerBackgroundImage" style={{ backgroundImage: `url(${backgroundImgPath})`, height: `400px` }}>
+            <div id="headerBackgroundImage" style={{ backgroundImage: `url(${backgroundImgPath})`}}>
+            </div>
+        )
+    }
 }
 
-export default HeaderBackground;
+
+//========================================================
+                    //mapStateToProps
+//========================================================
+// 'state' below is the global state stored in Redux
+const mapStateToProps = state => {
+    // Here we are saying "Give me the value of 'cards' stored in our global state, and store it as a property called 'cardsFromAPI' that we can then use here in the Home component"
+    return {
+        setForBannerBackground: state.setForBackgrounds //the value after 'state.' must match the value in our reducer
+    }
+
+}
+
+export default connect(mapStateToProps, null)(HeaderBackground);
