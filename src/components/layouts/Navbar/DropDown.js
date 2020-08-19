@@ -18,7 +18,7 @@ const  DropDown = (props) => {
     useEffect(() => {
         // code to run on component mount
         setApiCall();
-        console.log(`called setApiCall() function via useEffect`);
+        // console.log(`called setApiCall() function via useEffect`);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []); //leaving the second array argument blank will make this behave just like ComponentDidMount()
 
@@ -31,8 +31,8 @@ const  DropDown = (props) => {
             let setsFromApi = [];
 
             setsFromApi = setObjects.data;
-            console.log(`set objects return from the API:`);
-            console.log({setsFromApi});
+            // console.log(`set objects return from the API:`);
+            // console.log({setsFromApi});
             // ******************************************
             //            Filter Function
             // ******************************************
@@ -46,8 +46,8 @@ const  DropDown = (props) => {
 
             // Update our local state to contain all of our filtered sets
             setSetObjectsFromAPI(filteredSetObjectsArray);
-            console.log(`Our setObjectsFromAPI local state:`);
-            console.log(setObjectsFromAPI);
+            // console.log(`Our setObjectsFromAPI local state:`);
+            // console.log(setObjectsFromAPI);
 
             // Extract the set names and create an array of set names for our drop-down menu
             setsForDropDownList = filteredSetObjectsArray.map((eachSetObj, index) => {
@@ -58,16 +58,16 @@ const  DropDown = (props) => {
             })
             setSetNamesOnly(setsForDropDownList);
         } catch (error) {
-            console.log(`Set API Call to Scryfall API Failed`);
-            console.log(error);
+            // console.log(`Set API Call to Scryfall API Failed`);
+            // console.log(error);
         }
     }
 
     const onSetSelectHandler = (value) => {
         setSetNamesValues(value); //update the local state that will display in the input field
-        let setsURI = ""; //this will hold the string of set names in URI format for our get cards api call
-        console.log(`value from set select:`);
-        console.log(value);
+        // let setsURI = ""; //this will hold the string of set names in URI format for our get cards api call
+        // console.log(`value from set select:`);
+        // console.log(value);
         // const findSetShorthand = () => {
         //     console.log(`called findSetShortHand function`);
         //     console.log(`setNamesValues:`);

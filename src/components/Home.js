@@ -39,7 +39,7 @@ class Home extends Component {
 
     closeCardInfo = (event) => {
         event.preventDefault();
-        console.log('close overlay clicked!');
+        // console.log('close overlay clicked!');
         this.setState({
             cardClicked: false
         })
@@ -64,7 +64,7 @@ class Home extends Component {
     }
 
     onCardClick = (event) => {
-        console.log('card is clicked!');
+        // console.log('card is clicked!');
         // find out how far the user has scrolled down in the Y direction
         const yAmountScrolled = window.scrollY;
         // console.log(`Amount scrolled in Y direction: ${yAmountScrolled}`);

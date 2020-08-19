@@ -23,7 +23,7 @@ const Cards = (props) => {
     // let filename = "indexBackground.png";
     // let filename = "2XM.jpg";
     let filename = `${props.setForBackground}.jpg`;
-    console.log(`Set name for background from props: ${props.setForBackground}.jpg`);
+    // console.log(`Set name for background from props: ${props.setForBackground}.jpg`);
 
     // let backgroundImgPath = require("../../components/images/background/indexBackground.png");
     let backgroundImgPath = require(`../../components/images/background/${filename}`);

@@ -88,7 +88,7 @@ class Header extends Component {
         } else { //if the user clicked 'Colorless' or 'Lands'
             //set all the colors' checked values to false
             if(switchName === 'colorlessSwitch'){
-                console.log('e.target.checked value:', e.target.checked)
+                // console.log('e.target.checked value:', e.target.checked)
                 if(e.target.checked === true){
                     oldColors = ['C'];
                 } else {
@@ -132,28 +132,32 @@ class Header extends Component {
         }
     } // End of Local Color State / Selected Switches on Navbar
 
+
     //===========================================================================================================
     //                                    User Selects a Set From Dropdown list
     //===========================================================================================================
     setsForAPIHandler = (sets) => { //this is passed down via props to the DropDown component
-        console.log(`This is the set value but in our <Header />`);
-        console.log(sets);
-        console.log(`Number of Sets User has selected: ${sets.length}`);
-
+        const listOfSetsWithCustomArtwork = [
+            '2XM','AER','C20','ELD','IKO','JMP','KLD','M21','MH1','THB','WAR'
+        ];
         if(sets.length > 0){ //if the user has selected at least one set
             //==========================================
             //take care of the shorthand first
             //==========================================
             if(sets.length === 1){
-                this.setState({
-                    setShortHandForBackgrounds: sets[0].setCode.toUpperCase()
-                },() => {
-                    console.log(`header local state for background ${this.state.setShortHandForBackgrounds}`);
-                });
+                let setUserSelected = sets[0].setCode.toUpperCase();
+                if(listOfSetsWithCustomArtwork.includes(setUserSelected)){
+                    this.setState({
+                        setShortHandForBackgrounds: setUserSelected
+                    });
+                } else {
+                    this.setState({
+                        setShortHandForBackgrounds: "DEFAULT"
+                    });
+                }
             } else {
                 this.setState({
                     setShortHandForBackgrounds: 'DEFAULT'
-                },() => {
                 });
             }
 
@@ -179,15 +183,13 @@ class Header extends Component {
             this.setState({
                 setsForAPI: newSetsForAPI
             },() => {
-                console.log(`Local State in Header Updated with new set string for API call`);
-                console.log(this.state.setsForAPI);
+                // console.log(`Local State in Header Updated with new set string for API call`);
+                // console.log(this.state.setsForAPI);
                 // console.log('current local state in Header.js:');
                 // console.log(this.state);
                 // console.log(this.state.colorsForAPI);
             });  
-            
         }
-
     }
 
     //===========================================================================================================
@@ -202,7 +204,7 @@ class Header extends Component {
         if(this.state.colorsForAPI.length > 0 && this.state.setsForAPI.length > 0){
             this.props.findCards(this.state.colorsForAPI, this.state.setsForAPI, this.state.setShortHandForBackgrounds)
         } else {
-            console.log(`Choose a color or set`);
+            // console.log(`Choose a color or set`);
         }
     }
 
@@ -210,7 +212,7 @@ class Header extends Component {
 
         return (
         <>
-            <HeaderBackground />
+            <HeaderBackground setForBannerBackground={this.props.setForBannerBackground} />
             <Navbar onSubmit={this.handleSubmit} onColorSelection={this.handleCheckBoxClick} {...this.state} onSetSelection={this.setsForAPIHandler}/>
         </>                
         )
@@ -220,7 +222,14 @@ class Header extends Component {
 //========================================================
                     //mapStateToProps
 //========================================================
-//***we ended up only using a local state in this container, not the global state, and sending the information off, so no need for mapStateToProps */
+// 'state' below is the global state stored in Redux
+const mapStateToProps = state => {
+    // Here we are saying "Give me the value of 'cards' stored in our global state, and store it as a property called 'cardsFromAPI' that we can then use here in the Home component"
+    return {
+        setForBannerBackground: state.setsForBackgrounds //the value after 'state.' must match the value in our reducer
+    }
+}
+// export default connect(mapStateToProps, null)(HeaderBackground);
 
 //========================================================
                     //mapDispatchToProps
@@ -235,5 +244,5 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
 

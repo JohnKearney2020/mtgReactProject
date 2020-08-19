@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 // import moduleName from './components/layouts/Footer';
-import Home from '../Home';
+// import Home from '../Home';
 
 const BaseLayout = (props) => {
     return (

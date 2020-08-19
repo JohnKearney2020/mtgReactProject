@@ -109,21 +109,21 @@ const Modal = (props) => {
     let yOffsetForModal  = "";
     let currentWindowWidth = window.innerWidth;
     let pixelsFromTopOnMobile = 0;
-    console.log(`Scrolled Value from mouse click ${props.yOffSetValue}`);
+    // console.log(`Scrolled Value from mouse click ${props.yOffSetValue}`);
     if(currentWindowWidth > 576) {
         // yOffsetForModal = props.yOffSetValue + 0.10*window.innerHeight;
         yOffsetForModal = 0.10*window.innerHeight;
-        console.log(`Modified Y offset for modal: ${yOffsetForModal}`);
+        // console.log(`Modified Y offset for modal: ${yOffsetForModal}`);
     } else if(currentWindowWidth > 360) {
         pixelsFromTopOnMobile = 25;
         // yOffsetForModal = props.yOffSetValue + pixelsFromTopOnMobile;
         yOffsetForModal = pixelsFromTopOnMobile;
-        console.log(`Modified Y offset for modal: ${yOffsetForModal}`);
+        // console.log(`Modified Y offset for modal: ${yOffsetForModal}`);
     } else {
         pixelsFromTopOnMobile = 8;
         // yOffsetForModal = props.yOffSetValue + pixelsFromTopOnMobile;
         yOffsetForModal = pixelsFromTopOnMobile;
-        console.log(`Modified Y offset for modal: ${yOffsetForModal}`);
+        // console.log(`Modified Y offset for modal: ${yOffsetForModal}`);
     }
     // console.log(`Y offset for Modal is: ${yOffsetForModal}`);
     const styleTop = {
