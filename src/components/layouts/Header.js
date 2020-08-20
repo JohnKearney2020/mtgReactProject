@@ -202,6 +202,7 @@ class Header extends Component {
         e.preventDefault(); //prefent default behavior of a form navigating somewhere else
         //send out a dispatch if the user has made any selections, otherwise do nothing
         if(this.state.colorsForAPI.length > 0 && this.state.setsForAPI.length > 0){
+            //trigger the fade out effect on the background header
             this.props.findCards(this.state.colorsForAPI, this.state.setsForAPI, this.state.setShortHandForBackgrounds)
         } else {
             // console.log(`Choose a color or set`);
