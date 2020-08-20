@@ -131,7 +131,7 @@ const Modal = (props) => {
     }
     // console.log(`props.show for Modal: ${props.show}`);
     return (
-        <CSSTransition in={props.show} mountOnEnter unmountOnExit timeout={200} classNames="card-modal-animate">
+        <CSSTransition in={props.show} mountOnEnter unmountOnExit timeout={400} classNames="card-modal-animate">
         {/* the ...props forwards all props sent to our exported component, Modal, to the ModalOverlay */}
         {/* the spread operator takes all the key: value pairs on the props object and puts them as attributes on ModalOverlay */} 
             {/* <ModalOverlay {...props} style={styleTop} /> */}
