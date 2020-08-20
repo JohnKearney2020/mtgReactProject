@@ -1,3 +1,16 @@
 body {
   font-family: 'Nunito', sans-serif;
+  background-color: black;
+  animation: fadeInAnimationBody ease 1.5s; 
+  animation-iteration-count: 1; 
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimationBody { 
+  0% { 
+      opacity: 0; 
+  } 
+  100% { 
+      opacity: 1; 
+  } 
 }
