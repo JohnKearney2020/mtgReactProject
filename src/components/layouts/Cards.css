@@ -40,8 +40,16 @@
     transform: scale(1.05);
 }
 
-#noCardFound {
-    
+/* Animations for the background of cards-flex-container */
+.headerFadeInCards {
+    animation: fadeInAnimation ease 1.5s; 
+    animation-iteration-count: 1; 
+    animation-fill-mode: forwards;
+}
+.headerFadeOutCards {
+    animation: fadeOutAnimation ease 1s; 
+    animation-iteration-count: 1; 
+    animation-fill-mode: forwards;
 }
 
 @media screen and (max-width: 768px){
