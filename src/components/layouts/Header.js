@@ -199,6 +199,7 @@ class Header extends Component {
         // This gets passed down via props to:
         // 1. <Navbar />
         //      a. <Navlinks />
+        console.log(`submit called`);
         e.preventDefault(); //prefent default behavior of a form navigating somewhere else
         //send out a dispatch if the user has made any selections, otherwise do nothing
         if(this.state.colorsForAPI.length > 0 && this.state.setsForAPI.length > 0){
