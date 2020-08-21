@@ -13,6 +13,7 @@ class Home extends Component {
         super(props);
         this.state = {
             cardClicked: false,
+            renderAllCards: true,
             yOffset: 0,
             artist: "",
             card_name: "",
@@ -41,25 +42,9 @@ class Home extends Component {
         event.preventDefault();
         // console.log('close overlay clicked!');
         this.setState({
-            cardClicked: false
+            cardClicked: false,
+            renderAllCards: true
         })
-        // this.setState({ 
-        //     cardClicked: false,
-        //     card_name: "",
-        //     artist: "",
-        //     cmc: "",
-        //     flavor_text: "",
-        //     image_url: "",
-        //     mana_cost: "",
-        //     oracle_text: "",
-        //     rarity: "",
-        //     set_name: "",
-        //     power: "",
-        //     toughness: "",
-        //     edh_rec_link: "",
-        //     gatherer_link: "",
-        //     card_type_line: ""
-        // });
         this.changeScroll(); // re-enable mouse scrollinh
     }
 
@@ -71,6 +56,7 @@ class Home extends Component {
         // console.log(`Card name pulled from the card image element is ${event.target.dataset.card_name}`);
         this.setState({  
             cardClicked: true,
+            // renderAllCards: false,
             yOffset: yAmountScrolled, 
             artist: event.target.dataset.artist,
             card_name: event.target.dataset.card_name,
@@ -193,7 +179,7 @@ class Home extends Component {
                 >
                 </Modal>
                 {/* End of Modal */}
-                <Cards cardsToRender={filteredCards}/>
+                <Cards cardsToRender={filteredCards} cardClicked={this.state.cardClicked} />
                 {/* <div className="cards-flex-container">
                     {filteredCards}
                 </div> */}

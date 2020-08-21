@@ -17,8 +17,17 @@ export class Cards extends Component {
         }
     }
     
-    componentDidUpdate(prevProps){
-        // if the user has selected a new set
+    componentDidUpdate(prevProps,prevState){
+
+        // IMPORTANT - when users click the cards, a modal pops up. For some reason, that causes this component to update, causing all the cards to
+        // animate fading in and out, both when the modal first appears and when it is closed. The logic below prevents that by looking at the previous
+        // prop value for cardClicked and the current prop value for cardClicked. If those values don't match, it's because a modal either popped up or
+        // was closed, so we should NOT animate on those updates. This boolean is used below in the else if() statement.
+        let stopAnimationsForCardModal = false;
+        if(prevProps.cardClicked !== this.props.cardClicked){
+            stopAnimationsForCardModal = true;
+        }
+        // If the user changed sets, requiring us to change the backgrounds
         if(this.props.setForCardBackground !== prevProps.setForCardBackground) {
             console.log(`in the component did update: 1st part`);
             this.setState({
@@ -38,8 +47,8 @@ export class Cards extends Component {
                     })
                 }, 1000);
             })
-        } else if(this.props.cardsToRender !== prevProps.cardsToRender) { //if they didn't change sets, but did request new cards
-            console.log(`in the component did update: 1st part`);
+        // if the user did not change sets, but did choose new colored cards, causing the cards to rerender. stopAnimation boolean is described above where it's declared.
+        } else if(this.props.cardsToRender !== prevProps.cardsToRender && stopAnimationsForCardModal === false) {
             this.setState({
                 fadeOutClassToggle: "headerFadeOutCards",
                 prevImgFileName: prevProps.setForCardBackground,
