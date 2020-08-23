@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import NavLinks from './NavLinks';
 import SideDrawer from './SideDrawer';
 import './Navbar.css';
-import DropDown from './DropDown';
+import SetDropDown from './SetDropDown';
 
 const Navbar = (props) => {
 
@@ -27,22 +27,23 @@ const Navbar = (props) => {
                     <NavLinks onSubmit={props.onSubmit} onMobileSubmit={mobileSubmit} onColorSelection={props.onColorSelection} show={navbarIsExpanded} {...props}/>
                 </nav>
             </SideDrawer>
-            <nav>
-                {/* ...props passes down the props we sent to <Navbar /> from <Header /> */}
-                <DropDown {...props} onSetSelection={props.onSetSelection}/>
-                {/* <div className="logo">
-                    <img src="/images/setSymbol/THB.png" alt="" height="42" width="42"></img>
-                    <h4 id="setName">Theros - Beyond Death</h4>
-                </div> */}
-                <div className="mainNavLinks">
-                    <NavLinks onSubmit={props.onSubmit} onMobileSubmit={mobileSubmit} onColorSelection={props.onColorSelection} show={navbarIsExpanded} {...props}/>
-                </div>
-                <div onClick={expandNavbarHandler} className={navbarIsExpanded ? "burger toggle" : "burger"}>
-                    <div className="line1"></div>
-                    <div className="line2"></div>
-                    <div className="line3"></div>
-                </div>
-            </nav>
+            <div id="semanticUIOverride">
+                <nav>
+                    {/* ...props passes down the props we sent to <Navbar /> from <Header /> */}
+                    {/* <DropDown {...props} onSetSelection={props.onSetSelection}/> */}
+                    <div id="dropDownContainer">
+                        <SetDropDown onSetSelection={props.onSetSelection}/>
+                    </div>
+                    <div className="mainNavLinks">
+                        <NavLinks onSubmit={props.onSubmit} onMobileSubmit={mobileSubmit} onColorSelection={props.onColorSelection} show={navbarIsExpanded} {...props}/>
+                    </div>
+                    <div onClick={expandNavbarHandler} className={navbarIsExpanded ? "burger toggle" : "burger"}>
+                        <div className="line1"></div>
+                        <div className="line2"></div>
+                        <div className="line3"></div>
+                    </div>
+                </nav>
+            </div>
         </React.Fragment>
     )
 }

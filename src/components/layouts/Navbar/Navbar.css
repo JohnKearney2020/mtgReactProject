@@ -29,12 +29,14 @@
 }
 /* end of navbar animations on mobile */
 
-nav {
+#semanticUIOverride nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    min-height: 8vh;
-    /* max-height: 8vh; */
+    /* min-height: 7vh; */
+    height: 7vh;
+    /* max-height: 7vh; */
+    /* max-height: 6vh; */
     /* max-height: 10vh; */
     /* font-family: 'Poppins', sans-serif; */
     background-color: rgb(24, 24, 24);
@@ -42,33 +44,14 @@ nav {
     /* font-family: 'Nunito', sans-serif; */
     /* font-family: 'Lato', sans-serif; */
 }
-
+#dropDownContainer {
+    width: 35%;
+    margin: 0rem 1rem;
+}
+/* #semanticUIOverride nav * { */
 nav * {
     padding: 0;
     /* margin: 0 */
-}
-
-/* parent to logo is the nav element */
-.logo {
-    display: flex;
-    /* color: rgb(241, 229, 13); */
-    /* color: white; */
-    /* color: lightsteelblue; */
-    color: #d0d0d0;
-    letter-spacing: 2px;
-    /* text-shadow: .05rem .05 .2rem #f9c2a6; */
-    /* text-shadow: 1px 1px 1px rgb(240, 228, 65); */
-    /* text-shadow: 2px 2px 4px #f9c2a6; */
-    /* text-shadow: 2px 2px 4px #F26722; */
-    /* text-shadow: 1px 1px 4px #F26722; */
-}
-
-#setName {
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 8px;
-    font-size: 1.5rem;
-    /* font-weight: 700; */
 }
 
 .mainNavLinks {
