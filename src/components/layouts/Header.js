@@ -137,15 +137,18 @@ class Header extends Component {
     //                                    User Selects a Set From Dropdown list
     //===========================================================================================================
     setsForAPIHandler = (sets) => { //this is passed down via props to the DropDown component
+        // These are the sets we have custom backgrounds for
         const listOfSetsWithCustomArtwork = [
             '2XM','AER','C20','ELD','IKO','JMP','KLD','M21','MH1','THB','WAR'
         ];
+        console.log(`Sets sent to Header from the DropDown menu:`)
+        console.log(sets);
         if(sets.length > 0){ //if the user has selected at least one set
             //==========================================
             //take care of the shorthand first
             //==========================================
             if(sets.length === 1){
-                let setUserSelected = sets[0].setCode.toUpperCase();
+                let setUserSelected = sets[0].toUpperCase();
                 if(listOfSetsWithCustomArtwork.includes(setUserSelected)){
                     this.setState({
                         setShortHandForBackgrounds: setUserSelected
@@ -169,14 +172,14 @@ class Header extends Component {
             for(let eachSetObject of sets){
                 if(sets.length === 1){ //if we only have one set
                     // newSetsForAPI += 'set:' + eachSetObject.setCode;
-                    newSetsForAPI += `set:${eachSetObject.setCode}`;
+                    newSetsForAPI += `set:${eachSetObject}`;
                 }
                 else if(firstSetTextCreated === false) { //if we have multiple sets, but are working on the first of those sets
                     // '(set:thb or set:iko)'
                     firstSetTextCreated = true;
-                    newSetsForAPI += `set:${eachSetObject.setCode}`;
+                    newSetsForAPI += `set:${eachSetObject}`;
                 } else { // any sets after the first set
-                    newSetsForAPI = newSetsForAPI + ` or set:${eachSetObject.setCode}`;
+                    newSetsForAPI = newSetsForAPI + ` or set:${eachSetObject}`;
                 }
             }
             newSetsForAPI += ')'; // add the closing parenthesis

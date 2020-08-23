@@ -90,7 +90,6 @@ const  DropDown = (props) => {
         // findSetShorthand();
         props.onSetSelection(value); //this function comes all the way to here via props from the <Header /> component
         // Here, make a function that updates the local state for the API Call
-
     }
 
     let ListItem = ({ item }) => {

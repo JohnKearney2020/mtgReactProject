@@ -5,10 +5,8 @@
     /* ============================================================== */
     /* This is the width and height of the 'track' the ball slides in */
     /* ===============================================================*/
-    /* width: 60px; */
     width: 35px;
-    /* height: 34px; */
-    height: 16px;
+    height: 17px;
     /* z-index: 100; */
 }
 /* Hide default HTML checkbox */
@@ -17,6 +15,7 @@ opacity: 0;
 width: 0;
 height: 0;
 }
+
 /* The slider */
 /* -- the slider is the 'ball' that slide across the 'track' */
 .slider {
@@ -29,7 +28,6 @@ bottom: 0;
 /* ================================================ */
 /* This is the color of the 'track' before clicking */
 /* ================================================ */
-/* background-color: rgb(241, 229, 13); */
 background-color: white;
 /* ===================================================================== */
 /* This is the transition speed of the 'track' and 'ball' changing color */
@@ -44,22 +42,18 @@ transition: .2s;
     /* ================================================ */
     /* this is the height and width of the ball */
     /* ================================================ */
-    /* height: 26px; */
-    height: 12px;
-    /* width: 26px; */
-    width: 12px;
+    height: 13px;
+    width: 13px;
+    /* ================================================ */
+    /* This is the starting position of the ball */
+    /* ================================================ */
     left: 2px;
-    bottom: 1px;
+    bottom: 1.5px;
     /* ================================================ */
     /* this is the color of the 'ball' before clicking */
     /* ================================================ */
-    /* background-color: rgb(22, 161, 74); */
-    /* background-color: white; */
-    /* background-color: rgb(143, 148, 145); */
     background-color: rgb(126, 126, 126);
     border: 1.2px solid black;
-    /* border: 1.2px groove black; */
-    /* border: 1.2px ridge black; */
     /* ==================================================================== */
     /* This is the transition speed of the 'ball' moving from right to left */
     /* ==================================================================== */
@@ -70,29 +64,22 @@ input:checked + .slider {
     /* ================================================ */
     /* This is the color of the 'track' after clicking */
     /* ================================================ */
-    /* background-color: rgb(22, 161, 74); */
-    /* background-color: rgb(143, 148, 145); */
-    /* background-color: lightsteelblue; */
-    /* background-color: #bfcfe4; */
-    /* background-color: #292929; */
-    /* background-color: #535353; */
-    /* #d0d0d0 */
     background-color: #7C7C7C;
-    
 }
 input:focus + .slider {
     /* box-shadow: 0 0 1px #2196F3; */
     box-shadow: 0 0 1px rgb(22, 161, 74);
 }
 input:checked + .slider:before {
-    /* this controls how far to the right the slider slides to */
-    -webkit-transform: translateX(16px);
-    -ms-transform: translateX(16px);
-    transform: translateX(16px);
+    /* ==============================================================*/
+    /*   this controls how far to the right the slider slides to */
+    /* ============================================================== */
+    -webkit-transform: translateX(18px);
+    -ms-transform: translateX(18px);
+    transform: translateX(18px);
     /* ================================================ */
     /* this is the color of the 'ball' after it slides */
     /* ================================================ */
-    /* background-color: rgb(241, 229, 13); */
     border: 1px solid white;
     background-color: black;
 }

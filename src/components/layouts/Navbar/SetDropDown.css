@@ -1,0 +1,30 @@
+.optionContainer {
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: flex-start; */
+    /* height: 50px; */
+}
+
+.optionContainer span {
+    display: flex;
+    align-items: center;
+}
+
+.optionContainer img {
+    width: 25px;
+    height: auto;
+    margin-right: 0.5rem;
+}
+
+.dropDownSetName {
+    margin-right: 2rem;
+}
+
+.optionContainer em {
+    font-weight: 300;
+    /* font-size: 0.8rem; */
+    /* color: rgb(126, 126, 126); */
+    /* color: rgb(226, 226, 226); */
+    /* color: rgb(143, 148, 145); */
+    color: #d0d0d0;
+}
