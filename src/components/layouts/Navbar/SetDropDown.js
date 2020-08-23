@@ -41,7 +41,15 @@ class SetDropDown extends Component {
                 return eachSetObj.digital === false;
             });
             // Extract the set names and set icons and create an array for our drop-down menu
+            let currentDate = new Date();
             setsForDropDownList = filteredSetObjectsArray.map((eachSetObj, index) => {
+                let releaseDateOfSet = eachSetObj.released_at;
+                releaseDateOfSet = new Date(releaseDateOfSet);
+                console.log(`Release date of set: ${releaseDateOfSet}`)
+                let dateDifference = currentDate - releaseDateOfSet; // in milliseconds
+                let daysSinceRelease = Math.floor(dateDifference/(1000*60*60*24)); // converted to days
+                // negative daysSinceRelease are sets that will release in the future
+                let newValue = daysSinceRelease <= 28 ? "New" : "";
                 return {
                     key: eachSetObj.name,
                     text: eachSetObj.name, //The text value is what is displayed in the input field after a user selects an option
@@ -50,7 +58,7 @@ class SetDropDown extends Component {
                     content: (
                         // <div className="optionContainer" onClick={setHandler}>
                         <div className="optionContainer">
-                            <span><img src={eachSetObj.icon_svg_uri} alt=""></img><span className="dropDownSetName">{eachSetObj.name}</span><em>New</em></span>
+                            <span><img src={eachSetObj.icon_svg_uri} alt=""></img><span className="dropDownSetName">{eachSetObj.name}</span><em>{newValue}</em></span>
                         </div>
                     )
                 };

@@ -17,10 +17,14 @@
 }
 
 .dropDownSetName {
-    margin-right: 1rem;
+    margin-right: 2rem;
 }
 
 .optionContainer em {
-    /* font-weight: 300; */
-    font-size: 0.8rem;
+    font-weight: 300;
+    /* font-size: 0.8rem; */
+    /* color: rgb(126, 126, 126); */
+    /* color: rgb(226, 226, 226); */
+    /* color: rgb(143, 148, 145); */
+    color: #d0d0d0;
 }
