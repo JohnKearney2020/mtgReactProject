@@ -92,10 +92,13 @@ class Home extends Component {
         //eachCardObj.image_uris.small
         // more info w/ examples at https://scryfall.com/docs/api/images
         // *** Make sure to update the no response object that gets sent here on no results ***
-
+        let testForWBIxalan = "";
+        console.log(this.props.cardsFromAPI);
         let filteredCards = this.props.cardsFromAPI.map((eachCardObj,index) => {
             // console.log(`cardsFromApi Object is: ${this.props.cardsFromAPI}`);
             // console.log(`cardsFromApi Object is: ${eachCardObj}`);
+            testForWBIxalan = eachCardObj.name;
+            console.log(testForWBIxalan);
             if(eachCardObj.name !== "No Cards Found"){
                 return (
                     <LazyLoad
