@@ -51,6 +51,7 @@ export class Cards extends Component {
         } else if(this.props.cardsToRender !== prevProps.cardsToRender && stopAnimationsForCardModal === false) {
             this.setState({
                 fadeOutClassToggle: "headerFadeOutCards",
+                fadeInClassToggle: "",
                 prevImgFileName: prevProps.setForCardBackground,
                 oldCardsToRender: prevProps.cardsToRender,
                 showOldCards: true,
@@ -62,7 +63,7 @@ export class Cards extends Component {
                         fadeOutClassToggle: "",
                         showOldCards: false,
                         showNewCards: true,
-                        fadeInClassToggle: "headerFadeInCards",
+                        fadeInClassToggle: "headerFadeInCards"
                     })
                 }, 1000);
             })

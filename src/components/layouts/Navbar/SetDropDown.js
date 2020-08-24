@@ -45,7 +45,7 @@ class SetDropDown extends Component {
             setsForDropDownList = filteredSetObjectsArray.map((eachSetObj, index) => {
                 let releaseDateOfSet = eachSetObj.released_at;
                 releaseDateOfSet = new Date(releaseDateOfSet);
-                console.log(`Release date of set: ${releaseDateOfSet}`)
+                // console.log(`Release date of set: ${releaseDateOfSet}`)
                 let dateDifference = currentDate - releaseDateOfSet; // in milliseconds
                 let daysSinceRelease = Math.floor(dateDifference/(1000*60*60*24)); // converted to days
                 // negative daysSinceRelease are sets that will release in the future
