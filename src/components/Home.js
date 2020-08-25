@@ -6,6 +6,7 @@ import Backdrop from './layouts/Modals/Backdrop';
 import Modal from './layouts/Modals/Modal';
 import Cards from './layouts/Cards';
 import './cardLayout.css'
+import FlipCard from './layouts/FlipCard';
 
 class Home extends Component {
     
@@ -96,7 +97,7 @@ class Home extends Component {
         let filteredCards = this.props.cardsFromAPI.map((eachCardObj,index) => {
             // console.log(`cardsFromApi Object is: ${this.props.cardsFromAPI}`);
             // console.log(`cardsFromApi Object is: ${eachCardObj}`);
-            if(eachCardObj.name !== "No Cards Found"){
+            if(eachCardObj.name !== "No Cards Found" && eachCardObj.image_uris){
                 return (
                     <LazyLoad
                         offsetVertical={200}
@@ -134,7 +135,7 @@ class Home extends Component {
                         </img>
                     </LazyLoad>
                 )
-            } else {
+            } else if(eachCardObj.name === "No Cards Found") {
                 return (
                     <LazyLoad
                         offsetVertical={200}
@@ -145,6 +146,23 @@ class Home extends Component {
                         >
                         <img id="noCardFound" src={eachCardObj.image_uris.border_crop} alt="" key={index}></img>
                     </LazyLoad>
+                )
+                // }
+            } else if (eachCardObj.card_faces){
+                return (
+                    <LazyLoad
+                    offsetVertical={200}
+                    debounce={false}
+                    height={480}
+                    width={345}
+                    key={index}
+                    >
+                        <FlipCard cardObject={eachCardObj} index={index}/>
+                    </LazyLoad>
+                )
+            } else {
+                return (
+                    <div>failed</div>
                 )
             }
         });
