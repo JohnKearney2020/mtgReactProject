@@ -46,51 +46,54 @@ transform: rotateY(180deg);
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-    background-color: #bbb;
-    color: black;
+    /* background-color: #bbb; */
+    /* color: black; */
+    /* transform: rotateY(180deg); */
 }
 
 /* Style the back side */
 .flip-card-back {
-    background-color: #bbb;
-    color: black;
+    /* background-color: #bbb; */
+    /* color: black; */
     transform: rotateY(180deg);
 }
 
-/* .fa-sync {
-    font-size: 3rem;
-    color: rgb(255,215,0);
-    position: absolute;
-    top: 0;
-    right: 0
-} */
 .fa-creative-commons-share {
-    font-size: 3rem;
-    /* color: rgb(255,215,0); */
-    /* color: red; */
-    /* color: rgba(255,215,0,0.75); */
-    color:white;
-    /* color:black; */
-    /* text-shadow: .1rem .1rem .8rem black; */
-    /* text-shadow: 2px 2px 8px red; */
-    /* position: absolute; */
-    /* top: 0; */
-    /* bottom: 10%; */
-    /* bottom: 50px; */
-    /* top: -10px; */
-    /* right: 0; */
-    /* left: -10px; */
-    /* margin-right: 4px; */
+    font-size: 3.8rem;
+    color: rgb(24, 24, 24);
 }
+
 .fa-circle {
-    font-size: 2.9rem;
+    font-size: 3.25rem;
+    color: white;
 }
 
 .frontFlipIcon {
     position: absolute;
-    top: -20px;
-    left: -30px;
+    top: -15px;
+    left: -20px;
+    transition: transform .4s ease;
+}
 
+.frontFlipIcon:hover {
+    /* transform: scale(.95); */
+    transform: rotate(0.5turn);
+    /* transform: rotateY(180deg); */
+    /* animation-iteration-count: 1; */
+}
+
+.backFlipIcon {
+    position: absolute;
+    top: -15px;
+    left: -20px;
+    transition: transform .4s ease;
+}
+.backFlipIcon:hover {
+    transform: rotate(0.5turn);
+}
+
+.hideFlipIcon {
+    display: none;
 }
 
 
@@ -105,6 +108,12 @@ transform: rotateY(180deg);
     }
     .flip-card:hover {
         transform: scale(1.00);
+    }
+    .frontFlipIcon:hover {
+        transform: none;
+    }
+    .backFlipIcon:hover {
+        transform: none;
     }
 
 }
