@@ -1,0 +1,119 @@
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+    background-color: transparent;
+    width: 345px;
+    height: 480px;
+    /* Remove this if you don't want the 3D effect */
+    perspective: 1000px; 
+    transition: transform .4s ease;
+}
+
+.flip-card:hover {
+    transform: scale(1.05);
+}
+
+/* This is the same CSS normal images get */
+.flipCardImg {
+    border: 0;
+    max-width: 345px;
+    height: auto;
+    border-radius: 5% / 3.75%;
+}
+
+  /* This container is needed to position the front and back side */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+  /* Do a horizontal flip when users click the flip icon */
+.flip-toggle {
+transform: rotateY(180deg);
+}
+
+  /* Position the front and back side */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+    /* background-color: #bbb; */
+    /* color: black; */
+    /* transform: rotateY(180deg); */
+}
+
+/* Style the back side */
+.flip-card-back {
+    /* background-color: #bbb; */
+    /* color: black; */
+    transform: rotateY(180deg);
+}
+
+.fa-creative-commons-share {
+    font-size: 3.8rem;
+    color: rgb(24, 24, 24);
+}
+
+.fa-circle {
+    font-size: 3.25rem;
+    color: white;
+}
+
+.frontFlipIcon {
+    position: absolute;
+    top: -15px;
+    left: -20px;
+    transition: transform .4s ease;
+}
+
+.frontFlipIcon:hover {
+    /* transform: scale(.95); */
+    transform: rotate(0.5turn);
+    /* transform: rotateY(180deg); */
+    /* animation-iteration-count: 1; */
+}
+
+.backFlipIcon {
+    position: absolute;
+    top: -15px;
+    left: -20px;
+    transition: transform .4s ease;
+}
+.backFlipIcon:hover {
+    transform: rotate(0.5turn);
+}
+
+.hideFlipIcon {
+    display: none;
+}
+
+
+@media screen and (max-width: 768px){
+    .flip-card {
+        /* remove the 3D flip effect on mobile */
+        perspective: 0px;
+    }
+    .flipCardImg {
+        max-width: 80vw;
+        height: auto;
+    }
+    .flip-card:hover {
+        transform: scale(1.00);
+    }
+    .frontFlipIcon:hover {
+        transform: none;
+    }
+    .backFlipIcon:hover {
+        transform: none;
+    }
+
+}
