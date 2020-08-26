@@ -14,22 +14,35 @@ class Home extends Component {
         super(props);
         this.state = {
             cardClicked: false,
+            type_of_card: "",
             renderAllCards: true,
             yOffset: 0,
             artist: "",
             card_name: "",
             cmc: "",
             flavor_text: "",
+            front_flavor_text: "",
+            back_flavor_text: "",
             image_url: "",
+            front_image_url: "",
+            back_image_url: "",
             mana_cost: "",
             oracle_text: "",
+            front_oracle_text: "",
+            back_oracle_text: "",
+            price: "",
+            price_foil: "",
             rarity: "",
             set_name: "",
             power: "",
             toughness: "",
+            front_power: "",
+            front_toughness: "",
+            back_power: "",
+            back_toughness: "",
             edh_rec_link: "",
             gatherer_link: "",
-            tcgplayer_link: "",
+            tcg_player_link: "",
             card_type_line: ""
         };
     }
@@ -41,12 +54,12 @@ class Home extends Component {
 
     closeCardInfo = (event) => {
         event.preventDefault();
-        // console.log('close overlay clicked!');
         this.setState({
             cardClicked: false,
-            renderAllCards: true
+            renderAllCards: true,
+            type_of_card: ""
         })
-        this.changeScroll(); // re-enable mouse scrollinh
+        this.changeScroll(); // re-enable mouse scrolling
     }
 
     onCardClick = (event) => {
@@ -55,27 +68,62 @@ class Home extends Component {
         const yAmountScrolled = window.scrollY;
         // console.log(`Amount scrolled in Y direction: ${yAmountScrolled}`);
         // console.log(`Card name pulled from the card image element is ${event.target.dataset.card_name}`);
-        this.setState({  
+        this.setState({ 
             cardClicked: true,
-            // renderAllCards: false,
-            yOffset: yAmountScrolled, 
+            type_of_card: event.target.dataset.card_type,
+            renderAllCards: true,
+            yOffset: yAmountScrolled,
             artist: event.target.dataset.artist,
             card_name: event.target.dataset.card_name,
             cmc: event.target.dataset.cmc,
             flavor_text: event.target.dataset.flavor_text,
+            front_flavor_text: "",
+            back_flavor_text: "",
             image_url: event.target.src,
+            front_image_url: "",
+            back_image_url: "",
             mana_cost: event.target.dataset.mana_cost,
             oracle_text: event.target.dataset.oracle_text,
+            front_oracle_text: "",
+            back_oracle_text: "",
             price: event.target.dataset.price,
             price_foil: event.target.dataset.price_foil,
             rarity: event.target.dataset.rarity,
             set_name: event.target.dataset.set_name,
             power: event.target.dataset.power,
             toughness: event.target.dataset.toughness,
+            front_power: "",
+            front_toughness: "",
+            back_power: "",
+            back_toughness: "",
             edh_rec_link: event.target.dataset.edh_rec_link,
             gatherer_link: event.target.dataset.gatherer_link,
             tcg_player_link: event.target.dataset.tcg_player_link,
-            card_type_line: event.target.dataset.card_type_line,
+            card_type_line: event.target.dataset.card_type_line          
+            
+            // cardClicked: true,
+            // type_of_card: event.target.dataset.card_type,
+            // renderAllCards: false,
+            // yOffset: yAmountScrolled, 
+            // artist: event.target.dataset.artist,
+            // card_name: event.target.dataset.card_name,
+            // cmc: event.target.dataset.cmc,
+            // flavor_text: event.target.dataset.flavor_text,
+            // image_url: event.target.src,
+            // mana_cost: event.target.dataset.mana_cost,
+            // oracle_text: event.target.dataset.oracle_text,
+            // price: event.target.dataset.price,
+            // price_foil: event.target.dataset.price_foil,
+            // rarity: event.target.dataset.rarity,
+            // set_name: event.target.dataset.set_name,
+            // power: event.target.dataset.power,
+            // toughness: event.target.dataset.toughness,
+            // edh_rec_link: event.target.dataset.edh_rec_link,
+            // gatherer_link: event.target.dataset.gatherer_link,
+            // tcg_player_link: event.target.dataset.tcg_player_link,
+            // card_type_line: event.target.dataset.card_type_line,
+        }, () => {
+            console.log(`Type of card for Modal: ${this.state.type_of_card}`);
         });
         this.changeScroll(); //stop mouse scrolling
     }
@@ -109,10 +157,12 @@ class Home extends Component {
                         <img 
                             className="card" 
                             key={index} 
+                            
                             // src={eachCardObj.image_uris.border_crop} 
                             src={eachCardObj.image_uris.normal} 
                             title={eachCardObj.name} 
                             alt=""
+                            data-card_type="normal"
                             data-artist={eachCardObj.artist}
                             data-card_name={eachCardObj.name}
                             data-cmc={eachCardObj.cmc}
@@ -177,6 +227,7 @@ class Home extends Component {
                 }
                 <Modal 
                     show={this.state.cardClicked}
+                    typeOfCard={this.state.type_of_card}
                     onCloseModal={this.closeCardInfo}
                     header={this.state.card_name}
                     contentClass="card-item__modal-content"
@@ -194,6 +245,7 @@ class Home extends Component {
                     gathererLink={this.state.gatherer_link}
                     tcgPlayerLink={this.state.tcg_player_link}
                     card_rarity={this.state.rarity}
+                    {...this.state}
                 >
                 </Modal>
                 {/* End of Modal */}

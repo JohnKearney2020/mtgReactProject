@@ -5,13 +5,23 @@ import { CSSTransition } from 'react-transition-group';
 import '../../../index.css';
 import './Modal.css';
 
-const ModalOverlay = (props) => {
+//============================================================================================================================
+//                                          Modal for Normal Cards
+//============================================================================================================================
+let oracleText;
+let rarityCapitalized;
+let flavorText;
+let powerAndToughness;
+let price;
+let content;
 
-    const rarityCapitalized = props.card_rarity.charAt(0).toUpperCase() + props.card_rarity.slice(1);
-    // console.log(`modal overlay clg`);
-    // console.log(props.cardOracleText);
+const ModalOverlayNormalCards = (props) => {
 
-    let oracleText = (<>
+    rarityCapitalized = props.card_rarity.charAt(0).toUpperCase() + props.card_rarity.slice(1);
+    console.log(`props sent to modal:`);
+    console.log(props);
+
+    oracleText = (<>
         <h5>
             <span className="modal-span">Oracle Text: </span>
             <br/>
@@ -20,7 +30,7 @@ const ModalOverlay = (props) => {
         <hr /></>
     );
     //if the card has Flavor Text
-    let flavorText = "";
+    flavorText = "";
     if(props.cardFlavorText){
         flavorText = (
             <>
@@ -30,7 +40,7 @@ const ModalOverlay = (props) => {
         )
     };
     //if the card is a creature with power and toughness
-    let powerAndToughness = "";
+    powerAndToughness = "";
     if(props.cardPower){
         powerAndToughness = (
             <>
@@ -40,7 +50,7 @@ const ModalOverlay = (props) => {
         )
     };
     // Card Price
-    let price = (<>
+    price = (<>
         <div id="price-container">
             <h5>
                 <span className="modal-span">Price (USD): </span> 
@@ -62,9 +72,8 @@ const ModalOverlay = (props) => {
         <hr />
     </>
     )
-
     // All the html content we created above goes here:
-    const content = (
+    content = (
         <div id="modal-container" style={props.style}>
             <div id="heading-container">
                 <h3>{props.header} - <em>{rarityCapitalized}</em></h3>
@@ -85,13 +94,8 @@ const ModalOverlay = (props) => {
                     {powerAndToughness}
                     {price}
                     <div id="linkContainer">
-                        {/* <button className="modalButton dark"><a href={props.edhRecLink} target="_blank" rel="noopener noreferrer"><i className="fab fa-searchengin"></i>View on EDHREC</a></button> */}
                         <a href={props.edhRecLink} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-searchengin"></i>View on EDHREC</a>
-                        {/* <button className="modalButton dark"><a href={props.gathererLink} target="_blank" rel="noopener noreferrer"><i className="fab fa-wizards-of-the-coast"></i>View on Gatherer</a></button> */}
                         <a href={props.gathererLink} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-wizards-of-the-coast"></i>View on Gatherer</a>
-                        {/* <button className="modalButton dark"><a href={props.gathererLink} target="_blank" rel="noopener noreferrer"><i className="fab fa-wizards-of-the-coast"></i>View on Gatherer</a></button> */}
-                        {/* <i class="far fa-money-bill-alt"></i> */}
-                        {/* <button className="modalButton light"><a href={props.tcgPlayerLink} target="_blank" rel="noopener noreferrer"><i className="fas fa-dollar-sign"></i>Buy on TCGPlayer</a></button> */}
                         <a href={props.tcgPlayerLink} target="_blank" rel="noopener noreferrer" className="modalButton light"><i className="fas fa-dollar-sign"></i>Buy on TCGPlayer</a>
                     </div>
                 </div>
@@ -100,6 +104,101 @@ const ModalOverlay = (props) => {
     );
     return ReactDOM.createPortal(content, document.getElementById('modal-hook'));
 };
+
+//============================================================================================================================
+//                                          Modal for Flip Cards
+//============================================================================================================================
+const ModalOverlayFlipCards = (props) => {
+
+    rarityCapitalized = props.card_rarity.charAt(0).toUpperCase() + props.card_rarity.slice(1);
+    console.log(`props sent to modal:`);
+    console.log(props);
+
+    oracleText = (<>
+        <h5>
+            <span className="modal-span">Oracle Text: </span>
+            <br/>
+            {props.cardOracleText}
+        </h5>
+        <hr /></>
+    );
+    //if the card has Flavor Text
+    flavorText = "";
+    if(props.cardFlavorText){
+        flavorText = (
+            <>
+            <h5><span className="modal-span">Flavor Text: </span><em>{props.cardFlavorText}</em></h5>
+            <hr />
+            </>
+        )
+    };
+    //if the card is a creature with power and toughness
+    powerAndToughness = "";
+    if(props.cardPower){
+        powerAndToughness = (
+            <>
+            <h5><span className="modal-span">Power/Toughness:</span> {props.cardPower}/{props.cardToughness}</h5>
+            <hr />
+            </>
+        )
+    };
+    // Card Price
+    price = (<>
+        <div id="price-container">
+            <h5>
+                <span className="modal-span">Price (USD): </span> 
+                {/* <br/>
+                <em>Normal</em> - ${props.cardPriceNormal}
+                <br/>
+                <em>Foil</em> - ${props.cardPriceFoil} */}
+                <div id="priceListContainer">
+                    <div>
+                        <em>Normal</em> - ${props.cardPriceNormal}
+                    </div>
+                    <div>
+                        <em>Foil</em> - ${props.cardPriceFoil}
+                    </div>
+                </div>
+            </h5>
+
+        </div>
+        <hr />
+    </>
+    )
+    // All the html content we created above goes here:
+    content = (
+        <div id="modal-container" style={props.style}>
+            <div id="heading-container">
+                <h3>{props.header} - <em>{rarityCapitalized}</em></h3>
+                {/* Modal Close Button */}
+                {/* <div onClick={props.onCloseModal}>
+                    <i className="fas fa-times" id="modalCloseButton"></i>
+                </div> */}
+                <a href="/#" onClick={props.onCloseModal} id="modalCloseButton"><i className="fas fa-times" ></i></a>
+            </div> {/* end of heading-container */}
+            <hr id="topHR"/>
+            <div id="content-container">
+                <div id="modal-image-container">
+                    <img src={props.image_url__for_card_modal} alt="" id="modal-image"/>
+                </div>
+                <div id="text-container">
+                    {oracleText}
+                    {flavorText}
+                    {powerAndToughness}
+                    {price}
+                    <div id="linkContainer">
+                        <a href={props.edhRecLink} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-searchengin"></i>View on EDHREC</a>
+                        <a href={props.gathererLink} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-wizards-of-the-coast"></i>View on Gatherer</a>
+                        <a href={props.tcgPlayerLink} target="_blank" rel="noopener noreferrer" className="modalButton light"><i className="fas fa-dollar-sign"></i>Buy on TCGPlayer</a>
+                    </div>
+                </div>
+            </div> {/* end of content-container */}
+        </div> // end of modal-container
+    );
+    return ReactDOM.createPortal(content, document.getElementById('modal-hook'));
+};
+
+
 
 const Modal = (props) => {
     // Animation Library - npm install --save react-transition-group
@@ -131,12 +230,20 @@ const Modal = (props) => {
     }
     // console.log(`props.show for Modal: ${props.show}`);
     return (
-        <CSSTransition in={props.show} mountOnEnter unmountOnExit timeout={400} classNames="card-modal-animate">
-        {/* the ...props forwards all props sent to our exported component, Modal, to the ModalOverlay */}
-        {/* the spread operator takes all the key: value pairs on the props object and puts them as attributes on ModalOverlay */} 
-            {/* <ModalOverlay {...props} style={styleTop} /> */}
-            <ModalOverlay {...props} style={styleTop}/>
-        </CSSTransition>
+        <>
+            <CSSTransition in={props.typeOfCard === "normal"} mountOnEnter unmountOnExit timeout={400} classNames="card-modal-animate">
+            {/* the ...props forwards all props sent to our exported component, Modal, to the ModalOverlay */}
+            {/* the spread operator takes all the key: value pairs on the props object and puts them as attributes on ModalOverlay */} 
+                {/* <ModalOverlay {...props} style={styleTop} /> */}
+                <ModalOverlayNormalCards {...props} style={styleTop}/>
+            </CSSTransition>
+            <CSSTransition in={props.typeOfCard === "flip"} mountOnEnter unmountOnExit timeout={400} classNames="card-modal-animate">
+            {/* the ...props forwards all props sent to our exported component, Modal, to the ModalOverlay */}
+            {/* the spread operator takes all the key: value pairs on the props object and puts them as attributes on ModalOverlay */} 
+                {/* <ModalOverlay {...props} style={styleTop} /> */}
+                <ModalOverlayFlipCards {...props} style={styleTop}/>
+            </CSSTransition>
+        </>
     )
 }
 
