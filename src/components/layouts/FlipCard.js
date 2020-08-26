@@ -39,7 +39,7 @@ const FlipCard = (props) => {
                             data-gatherer_link={props.cardObject.related_uris.gatherer}
                             data-tcg_player_link={props.cardObject.purchase_uris.tcgplayer}
                             data-card_type_line={props.cardObject.type_line}
-                            // onClick={this.onCardClick}
+                            onClick={props.onCardClick}
                         >
                         </img>
                         <div onClick={toggleFlipAnimation}>
@@ -70,6 +70,7 @@ const FlipCard = (props) => {
                             data-gatherer_link={props.cardObject.related_uris.gatherer}
                             data-tcg_player_link={props.cardObject.purchase_uris.tcgplayer}
                             data-card_type_line={props.cardObject.type_line}
+                            onClick={props.onCardClick}
                         ></img>
                         <div onClick={toggleFlipAnimation}>
                                 <span className={`fa-stack fa-2x backFlipIcon`}>
