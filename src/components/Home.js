@@ -157,7 +157,7 @@ class Home extends Component {
                     width={345}
                     key={index}
                     >
-                        <FlipCard cardObject={eachCardObj} index={index}/>
+                        <FlipCard cardObject={eachCardObj}/>
                     </LazyLoad>
                 )
             } else {
