@@ -31,8 +31,8 @@ class SetDropDown extends Component {
             let response = await fetch(`https://api.scryfall.com/sets/`);
             let setObjects = await response.json();
             setsFromApi = setObjects.data;
-            console.log(`set objects return from the API:`);
-            console.log({setsFromApi});
+            // console.log(`set objects return from the API:`);
+            // console.log({setsFromApi});
             // ******************************************
             //            Filter Function
             // ******************************************
@@ -78,8 +78,8 @@ class SetDropDown extends Component {
         this.setState({ 
             value: value
         }, () => {
-            console.log(`state after user selects a set`);
-            console.log(this.state.value);
+            // console.log(`state after user selects a set`);
+            // console.log(this.state.value);
         })
     }
 

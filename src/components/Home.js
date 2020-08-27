@@ -14,22 +14,35 @@ class Home extends Component {
         super(props);
         this.state = {
             cardClicked: false,
-            renderAllCards: true,
+            type_of_card: "",
+            // renderAllCards: true,
             yOffset: 0,
             artist: "",
             card_name: "",
             cmc: "",
             flavor_text: "",
+            front_flavor_text: "",
+            back_flavor_text: "",
             image_url: "",
+            front_image_url: "",
+            back_image_url: "",
             mana_cost: "",
             oracle_text: "",
-            rarity: "",
+            front_oracle_text: "",
+            back_oracle_text: "",
+            price: "",
+            price_foil: "",
+            card_rarity: "",
             set_name: "",
             power: "",
             toughness: "",
+            front_power: "",
+            front_toughness: "",
+            back_power: "",
+            back_toughness: "",
             edh_rec_link: "",
             gatherer_link: "",
-            tcgplayer_link: "",
+            tcg_player_link: "",
             card_type_line: ""
         };
     }
@@ -41,43 +54,160 @@ class Home extends Component {
 
     closeCardInfo = (event) => {
         event.preventDefault();
-        // console.log('close overlay clicked!');
-        this.setState({
-            cardClicked: false,
-            renderAllCards: true
-        })
-        this.changeScroll(); // re-enable mouse scrollinh
+        // this.setState({
+        //     type_of_card: ""
+        // })
+        // setTimeout(() => {
+            this.setState({
+                cardClicked: false,
+                type_of_card: "",
+                // renderAllCards: true,
+                // yOffset: 0,
+                // artist: "",
+                // card_name: "",
+                // cmc: "",
+                // flavor_text: "",
+                // front_flavor_text: "",
+                // back_flavor_text: "",
+                // image_url: "",
+                // front_image_url: "",
+                // back_image_url: "",
+                // mana_cost: "",
+                // oracle_text: "",
+                // front_oracle_text: "",
+                // back_oracle_text: "",
+                // price: "",
+                // price_foil: "",
+                // card_rarity: "",
+                // set_name: "",
+                // power: "",
+                // toughness: "",
+                // front_power: "",
+                // front_toughness: "",
+                // back_power: "",
+                // back_toughness: "",
+                // edh_rec_link: "",
+                // gatherer_link: "",
+                // tcg_player_link: "",
+                // card_type_line: ""
+            })
+        // }, 400);
+        
+        this.changeScroll(); // re-enable mouse scrolling
     }
 
     onCardClick = (event) => {
-        // console.log('card is clicked!');
+        console.log('card is clicked!');
         // find out how far the user has scrolled down in the Y direction
         const yAmountScrolled = window.scrollY;
-        // console.log(`Amount scrolled in Y direction: ${yAmountScrolled}`);
-        // console.log(`Card name pulled from the card image element is ${event.target.dataset.card_name}`);
-        this.setState({  
-            cardClicked: true,
-            // renderAllCards: false,
-            yOffset: yAmountScrolled, 
-            artist: event.target.dataset.artist,
-            card_name: event.target.dataset.card_name,
-            cmc: event.target.dataset.cmc,
-            flavor_text: event.target.dataset.flavor_text,
-            image_url: event.target.src,
-            mana_cost: event.target.dataset.mana_cost,
-            oracle_text: event.target.dataset.oracle_text,
-            price: event.target.dataset.price,
-            price_foil: event.target.dataset.price_foil,
-            rarity: event.target.dataset.rarity,
-            set_name: event.target.dataset.set_name,
-            power: event.target.dataset.power,
-            toughness: event.target.dataset.toughness,
-            edh_rec_link: event.target.dataset.edh_rec_link,
-            gatherer_link: event.target.dataset.gatherer_link,
-            tcg_player_link: event.target.dataset.tcg_player_link,
-            card_type_line: event.target.dataset.card_type_line,
-        });
-        this.changeScroll(); //stop mouse scrolling
+        let cardType = event.target.dataset.card_type;
+        // console.log(`test for Bruna:`);
+        // console.log(`card type: ${cardType}`);
+        // console.log(`oracle text: ${event.target.dataset.oracle_text}`);
+        if(cardType === "normal") {
+            this.setState({ 
+                cardClicked: true,
+                type_of_card: event.target.dataset.card_type,
+                // renderAllCards: true,
+                yOffset: yAmountScrolled,
+                artist: event.target.dataset.artist,
+                card_name: event.target.dataset.card_name,
+                cmc: event.target.dataset.cmc,
+                flavor_text: event.target.dataset.flavor_text,
+                front_flavor_text: "",
+                back_flavor_text: "",
+                image_url: event.target.src,
+                front_image_url: "",
+                back_image_url: "",
+                mana_cost: event.target.dataset.mana_cost,
+                oracle_text: event.target.dataset.oracle_text,
+                front_oracle_text: "",
+                back_oracle_text: "",
+                price: event.target.dataset.price,
+                price_foil: event.target.dataset.price_foil,
+                card_rarity: event.target.dataset.rarity,
+                set_name: event.target.dataset.set_name,
+                power: event.target.dataset.power,
+                toughness: event.target.dataset.toughness,
+                front_power: "",
+                front_toughness: "",
+                back_power: "",
+                back_toughness: "",
+                edh_rec_link: event.target.dataset.edh_rec_link,
+                gatherer_link: event.target.dataset.gatherer_link,
+                tcg_player_link: event.target.dataset.tcg_player_link,
+                card_type_line: event.target.dataset.card_type_line          
+                
+                // cardClicked: true,
+                // type_of_card: event.target.dataset.card_type,
+                // renderAllCards: false,
+                // yOffset: yAmountScrolled, 
+                // artist: event.target.dataset.artist,
+                // card_name: event.target.dataset.card_name,
+                // cmc: event.target.dataset.cmc,
+                // flavor_text: event.target.dataset.flavor_text,
+                // image_url: event.target.src,
+                // mana_cost: event.target.dataset.mana_cost,
+                // oracle_text: event.target.dataset.oracle_text,
+                // price: event.target.dataset.price,
+                // price_foil: event.target.dataset.price_foil,
+                // card_rarity: event.target.dataset.rarity,
+                // set_name: event.target.dataset.set_name,
+                // power: event.target.dataset.power,
+                // toughness: event.target.dataset.toughness,
+                // edh_rec_link: event.target.dataset.edh_rec_link,
+                // gatherer_link: event.target.dataset.gatherer_link,
+                // tcg_player_link: event.target.dataset.tcg_player_link,
+                // card_type_line: event.target.dataset.card_type_line,
+            }, () => {
+                // console.log(`Type of card for Modal: ${this.state.type_of_card}`);
+                console.log(`normal card setState called`);
+            });
+            this.changeScroll(); //stop mouse scrolling
+        } else {
+            // console.log(`in the card clicked function for flip cards:`);
+            // console.log(`front flavor text: ${event.target.dataset.front_flavor_text}`);
+            // console.log(`back flavor text: ${event.target.dataset.back_flavor_text}`);
+            // console.log(`front oracle text: ${event.target.dataset.front_oracle_text}`);
+            // console.log(`back oracle text: ${event.target.dataset.back_oracle_text}`);
+            this.setState({ 
+                cardClicked: true,
+                type_of_card: event.target.dataset.card_type,
+                yOffset: yAmountScrolled,
+                artist: event.target.dataset.artist,
+                card_name: event.target.dataset.card_name,
+                cmc: event.target.dataset.cmc,
+                flavor_text: "",
+                front_flavor_text: event.target.dataset.front_flavor_text,
+                back_flavor_text: event.target.dataset.back_flavor_text,
+                image_url: "",
+                front_image_url: event.target.dataset.front_image_url,
+                back_image_url: event.target.dataset.back_image_url,
+                mana_cost: event.target.dataset.mana_cost,
+                oracle_text: "",
+                front_oracle_text: event.target.dataset.front_oracle_text,
+                back_oracle_text: event.target.dataset.back_oracle_text,
+                price: event.target.dataset.price,
+                price_foil: event.target.dataset.price_foil,
+                card_rarity: event.target.dataset.rarity,
+                set_name: event.target.dataset.set_name,
+                power: "",
+                toughness: "",
+                front_power: event.target.dataset.front_power,
+                front_toughness: event.target.dataset.front_toughness,
+                back_power: event.target.dataset.back_power,
+                back_toughness: event.target.dataset.back_toughness,
+                edh_rec_link: event.target.dataset.edh_rec_link,
+                gatherer_link: event.target.dataset.gatherer_link,
+                tcg_player_link: event.target.dataset.tcg_player_link,
+                card_type_line: event.target.dataset.card_type_line          
+            }, () => {
+                // console.log(`Type of card for Modal: ${this.state.type_of_card}`);
+                console.log(`flip card setState called`);
+            });
+            this.changeScroll(); //stop mouse scrolling
+        }
+
     }
 
     render() {
@@ -93,10 +223,13 @@ class Home extends Component {
         //eachCardObj.image_uris.small
         // more info w/ examples at https://scryfall.com/docs/api/images
         // *** Make sure to update the no response object that gets sent here on no results ***
-        console.log(this.props.cardsFromAPI);
+        // console.log(this.props.cardsFromAPI);
         let filteredCards = this.props.cardsFromAPI.map((eachCardObj,index) => {
             // console.log(`cardsFromApi Object is: ${this.props.cardsFromAPI}`);
             // console.log(`cardsFromApi Object is: ${eachCardObj}`);
+            //=========================================================================
+            //                             Normal Cards
+            //=========================================================================
             if(eachCardObj.name !== "No Cards Found" && eachCardObj.image_uris){
                 return (
                     <LazyLoad
@@ -109,10 +242,12 @@ class Home extends Component {
                         <img 
                             className="card" 
                             key={index} 
+                            
                             // src={eachCardObj.image_uris.border_crop} 
                             src={eachCardObj.image_uris.normal} 
                             title={eachCardObj.name} 
                             alt=""
+                            data-card_type="normal"
                             data-artist={eachCardObj.artist}
                             data-card_name={eachCardObj.name}
                             data-cmc={eachCardObj.cmc}
@@ -135,6 +270,9 @@ class Home extends Component {
                         </img>
                     </LazyLoad>
                 )
+            //=========================================================================
+            //                          If no cards are found
+            //=========================================================================
             } else if(eachCardObj.name === "No Cards Found") {
                 return (
                     <LazyLoad
@@ -148,6 +286,9 @@ class Home extends Component {
                     </LazyLoad>
                 )
                 // }
+            //=========================================================================
+            //                             Flip Cards
+            //=========================================================================
             } else if (eachCardObj.card_faces){
                 return (
                     <LazyLoad
@@ -175,8 +316,9 @@ class Home extends Component {
                         <Backdrop yOffSetValue={this.state.yOffset} onClick={this.closeCardInfo}/>    
                     </React.Fragment>
                 }
-                <Modal 
+                {/* <Modal 
                     show={this.state.cardClicked}
+                    typeOfCard={this.state.type_of_card}
                     onCloseModal={this.closeCardInfo}
                     header={this.state.card_name}
                     contentClass="card-item__modal-content"
@@ -194,8 +336,42 @@ class Home extends Component {
                     gathererLink={this.state.gatherer_link}
                     tcgPlayerLink={this.state.tcg_player_link}
                     card_rarity={this.state.rarity}
+                    {...this.state}
+                > */}
+                <Modal 
+                    show={this.state.cardClicked}
+                    typeOfCard={this.state.type_of_card}
+                    onCloseModal={this.closeCardInfo}
+                    {...this.state}
                 >
                 </Modal>
+                {/* <Modal 
+                    show={this.state.cardClicked}
+                    typeOfCard={this.state.type_of_card}
+                    onCloseModal={this.closeCardInfo}
+                    card_rarity={this.state.card_rarity}
+                    oracle_text={this.state.oracle_text}
+                    front_oracle_text={this.state.front_oracle_text}
+                    back_oracle_text={this.state.back_oracle_text}
+                    flavor_text={this.state.flavor_text}
+                    front_flavor_text={this.state.front_flavor_text}
+                    back_flavor_text={this.state.back_flavor_text}
+                    power={this.state.power}
+                    toughness={this.state.toughness}
+                    front_power={this.state.front_power}
+                    front_toughness={this.state.front_toughness}
+                    back_power={this.state.back_power}
+                    back_toughness={this.state.back_toughness}
+                    price={this.state.price}
+                    price_foil={this.state.price_foil}
+                    card_name={this.state.card_name}
+                    image_url={this.state.image_url}
+                    front_image_url={this.state.front_image_url}
+                    edh_rec_link={this.state.edh_rec_link}
+                    gatherer_link={this.state.gatherer_link}
+                    tcg_player_link={this.state.tcg_player_link}
+                >
+                </Modal> */}
                 {/* End of Modal */}
                 <Cards cardsToRender={filteredCards} cardClicked={this.state.cardClicked} />
                 {/* <div className="cards-flex-container">

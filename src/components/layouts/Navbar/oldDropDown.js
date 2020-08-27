@@ -31,8 +31,8 @@ const  DropDown = (props) => {
             let setsFromApi = [];
 
             setsFromApi = setObjects.data;
-            console.log(`set objects return from the API:`);
-            console.log({setsFromApi});
+            // console.log(`set objects return from the API:`);
+            // console.log({setsFromApi});
             // ******************************************
             //            Filter Function
             // ******************************************

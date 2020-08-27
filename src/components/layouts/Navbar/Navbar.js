@@ -15,7 +15,7 @@ const Navbar = (props) => {
     //Here, we want to call two functions with the onSubmit of the "Find Cards" button, but only on mobile
     //So, we wrap them both into a new function and pass it via the onMobileSubmit below in the <SideDrawer> component
     const mobileSubmit = (e) => {
-        console.log(`mobile submit pressed.`);
+        // console.log(`mobile submit pressed.`);
         props.onSubmit(e); //first function call, expects 'e' as an argument b/c it's first line it e.preventDefault();
         expandNavbarHandler(); //second function call
     }

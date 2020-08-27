@@ -40,12 +40,12 @@ export class HeaderBackground extends Component {
     //         return true;
     //     }
     // }
-    componentWillUnmount(){
-        console.log(`in component will unmount`);
-    }
-    componentDidMount(){
-        console.log(`in component did mount`);
-    }
+    // componentWillUnmount(){
+    //     console.log(`in component will unmount`);
+    // }
+    // componentDidMount(){
+    //     console.log(`in component did mount`);
+    // }
 
     // componentDidUpdate(prevProps){
     //     if(this.props.setForBannerBackground !== prevProps.setForBannerBackground) {
@@ -64,7 +64,7 @@ export class HeaderBackground extends Component {
     // }
     componentDidUpdate(prevProps){
         if(this.props.setForBannerBackground !== prevProps.setForBannerBackground) {
-            console.log(`in the component did update`);
+            // console.log(`in the component did update`);
             this.setState({
                 fadeOutClassToggle: "headerFadeOut",
                 prevImgFilePath: prevProps.setForBannerBackground,
@@ -84,7 +84,7 @@ export class HeaderBackground extends Component {
     }
 
     render() {
-        console.log(`in the render function`);
+        // console.log(`in the render function`);
         let backgroundImgPath = require(`../images/banner/${this.props.setForBannerBackground}.jpg`);
         let prevBackgroundImgPath = require(`../images/banner/${this.state.prevImgFilePath}.jpg`);
         return (

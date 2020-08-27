@@ -25,7 +25,6 @@ transition: all 400ms;
 
 /* End of Modal Animations */
 
-
 #modal-container {
   z-index: 100;
   position: fixed;
@@ -39,6 +38,11 @@ transition: all 400ms;
   border-radius: 15px!important;
   white-space: pre-wrap;
   width: 60vw;
+
+}
+#semanticFontOverride #modal-container div{
+  /* Semantic UI wants this to be Lato */
+  font-family: 'Nunito';   
 }
 
 #heading-container {
@@ -93,12 +97,15 @@ transition: all 400ms;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255,215,0,0.75), rgba(0, 0, 0, 0));
 }
 
-.modal-span {
+.modal-heading {
   font-weight: 700;
   letter-spacing: 1.5px;
   color: white;
   /* color: rgb(143, 148, 145); */
   font-size: 1.2rem;
+}
+.top-modal-text {
+  margin-bottom: 1rem;
 }
 
 #content-container {

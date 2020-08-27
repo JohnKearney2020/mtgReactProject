@@ -141,8 +141,8 @@ class Header extends Component {
         const listOfSetsWithCustomArtwork = [
             '2XM','AER','C20','ELD','IKO','JMP','KLD','M21','MH1','THB','WAR'
         ];
-        console.log(`Sets sent to Header from the DropDown menu:`)
-        console.log(sets);
+        // console.log(`Sets sent to Header from the DropDown menu:`)
+        // console.log(sets);
         if(sets.length > 0){ //if the user has selected at least one set
             //==========================================
             //take care of the shorthand first
@@ -202,7 +202,7 @@ class Header extends Component {
         // This gets passed down via props to:
         // 1. <Navbar />
         //      a. <Navlinks />
-        console.log(`submit called`);
+        // console.log(`submit called`);
         e.preventDefault(); //prefent default behavior of a form navigating somewhere else
         //send out a dispatch if the user has made any selections, otherwise do nothing
         if(this.state.colorsForAPI.length > 0 && this.state.setsForAPI.length > 0){

@@ -29,7 +29,7 @@ export class Cards extends Component {
         }
         // If the user changed sets, requiring us to change the backgrounds
         if(this.props.setForCardBackground !== prevProps.setForCardBackground) {
-            console.log(`in the component did update: 1st part`);
+            // console.log(`in the component did update: 1st part`);
             this.setState({
                 fadeOutClassToggle: "headerFadeOutCards",
                 prevImgFileName: prevProps.setForCardBackground,
@@ -38,7 +38,7 @@ export class Cards extends Component {
                 showNewCards: false
             }, () => {
                 setTimeout(() => {
-                    console.log(`in the component did update: 2nd part`);
+                    // console.log(`in the component did update: 2nd part`);
                     this.setState({
                         fadeOutClassToggle: "",
                         showOldCards: false,
@@ -58,7 +58,7 @@ export class Cards extends Component {
                 showNewCards: false
             }, () => {
                 setTimeout(() => {
-                    console.log(`in the component did update: 2nd part`);
+                    // console.log(`in the component did update: 2nd part`);
                     this.setState({
                         fadeOutClassToggle: "",
                         showOldCards: false,
