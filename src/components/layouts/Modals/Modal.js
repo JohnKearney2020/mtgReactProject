@@ -304,7 +304,7 @@ const ModalOverlayFlipCards = (props) => {
         // if both the front and back have power and toughness, we want a divider
         if(props.front_power !== undefined && props.back_power !== undefined ){
             pTDivider = (
-                <strong> // </strong>
+                <strong> || </strong>
             )
         } else {
             pTDivider = "";
