@@ -62,34 +62,34 @@ class Home extends Component {
                 cardClicked: false,
                 type_of_card: "",
                 // renderAllCards: true,
-                yOffset: 0,
-                artist: "",
-                card_name: "",
-                cmc: "",
-                flavor_text: "",
-                front_flavor_text: "",
-                back_flavor_text: "",
-                image_url: "",
-                front_image_url: "",
-                back_image_url: "",
-                mana_cost: "",
-                oracle_text: "",
-                front_oracle_text: "",
-                back_oracle_text: "",
-                price: "",
-                price_foil: "",
-                card_rarity: "",
-                set_name: "",
-                power: "",
-                toughness: "",
-                front_power: "",
-                front_toughness: "",
-                back_power: "",
-                back_toughness: "",
-                edh_rec_link: "",
-                gatherer_link: "",
-                tcg_player_link: "",
-                card_type_line: ""
+                // yOffset: 0,
+                // artist: "",
+                // card_name: "",
+                // cmc: "",
+                // flavor_text: "",
+                // front_flavor_text: "",
+                // back_flavor_text: "",
+                // image_url: "",
+                // front_image_url: "",
+                // back_image_url: "",
+                // mana_cost: "",
+                // oracle_text: "",
+                // front_oracle_text: "",
+                // back_oracle_text: "",
+                // price: "",
+                // price_foil: "",
+                // card_rarity: "",
+                // set_name: "",
+                // power: "",
+                // toughness: "",
+                // front_power: "",
+                // front_toughness: "",
+                // back_power: "",
+                // back_toughness: "",
+                // edh_rec_link: "",
+                // gatherer_link: "",
+                // tcg_player_link: "",
+                // card_type_line: ""
             })
         // }, 400);
         
@@ -97,13 +97,13 @@ class Home extends Component {
     }
 
     onCardClick = (event) => {
-        // console.log('card is clicked!');
+        console.log('card is clicked!');
         // find out how far the user has scrolled down in the Y direction
         const yAmountScrolled = window.scrollY;
         let cardType = event.target.dataset.card_type;
-        console.log(`test for Bruna:`);
-        console.log(`card type: ${cardType}`);
-        console.log(`oracle text: ${event.target.dataset.oracle_text}`);
+        // console.log(`test for Bruna:`);
+        // console.log(`card type: ${cardType}`);
+        // console.log(`oracle text: ${event.target.dataset.oracle_text}`);
         if(cardType === "normal") {
             this.setState({ 
                 cardClicked: true,
@@ -160,15 +160,16 @@ class Home extends Component {
                 // tcg_player_link: event.target.dataset.tcg_player_link,
                 // card_type_line: event.target.dataset.card_type_line,
             }, () => {
-                console.log(`Type of card for Modal: ${this.state.type_of_card}`);
+                // console.log(`Type of card for Modal: ${this.state.type_of_card}`);
+                console.log(`normal card setState called`);
             });
             this.changeScroll(); //stop mouse scrolling
         } else {
-            console.log(`in the card clicked function for flip cards:`);
-            console.log(`front flavor text: ${event.target.dataset.front_flavor_text}`);
-            console.log(`back flavor text: ${event.target.dataset.back_flavor_text}`);
-            console.log(`front oracle text: ${event.target.dataset.front_oracle_text}`);
-            console.log(`back oracle text: ${event.target.dataset.back_oracle_text}`);
+            // console.log(`in the card clicked function for flip cards:`);
+            // console.log(`front flavor text: ${event.target.dataset.front_flavor_text}`);
+            // console.log(`back flavor text: ${event.target.dataset.back_flavor_text}`);
+            // console.log(`front oracle text: ${event.target.dataset.front_oracle_text}`);
+            // console.log(`back oracle text: ${event.target.dataset.back_oracle_text}`);
             this.setState({ 
                 cardClicked: true,
                 type_of_card: event.target.dataset.card_type,
@@ -201,7 +202,8 @@ class Home extends Component {
                 tcg_player_link: event.target.dataset.tcg_player_link,
                 card_type_line: event.target.dataset.card_type_line          
             }, () => {
-                console.log(`Type of card for Modal: ${this.state.type_of_card}`);
+                // console.log(`Type of card for Modal: ${this.state.type_of_card}`);
+                console.log(`flip card setState called`);
             });
             this.changeScroll(); //stop mouse scrolling
         }
@@ -221,7 +223,7 @@ class Home extends Component {
         //eachCardObj.image_uris.small
         // more info w/ examples at https://scryfall.com/docs/api/images
         // *** Make sure to update the no response object that gets sent here on no results ***
-        console.log(this.props.cardsFromAPI);
+        // console.log(this.props.cardsFromAPI);
         let filteredCards = this.props.cardsFromAPI.map((eachCardObj,index) => {
             // console.log(`cardsFromApi Object is: ${this.props.cardsFromAPI}`);
             // console.log(`cardsFromApi Object is: ${eachCardObj}`);
@@ -336,14 +338,14 @@ class Home extends Component {
                     card_rarity={this.state.rarity}
                     {...this.state}
                 > */}
-                {/* <Modal 
+                <Modal 
                     show={this.state.cardClicked}
                     typeOfCard={this.state.type_of_card}
                     onCloseModal={this.closeCardInfo}
                     {...this.state}
                 >
-                </Modal> */}
-                <Modal 
+                </Modal>
+                {/* <Modal 
                     show={this.state.cardClicked}
                     typeOfCard={this.state.type_of_card}
                     onCloseModal={this.closeCardInfo}
@@ -369,7 +371,7 @@ class Home extends Component {
                     gatherer_link={this.state.gatherer_link}
                     tcg_player_link={this.state.tcg_player_link}
                 >
-                </Modal>
+                </Modal> */}
                 {/* End of Modal */}
                 <Cards cardsToRender={filteredCards} cardClicked={this.state.cardClicked} />
                 {/* <div className="cards-flex-container">

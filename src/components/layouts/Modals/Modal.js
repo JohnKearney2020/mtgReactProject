@@ -107,6 +107,100 @@ const ModalOverlayNormalCards = (props) => {
     return ReactDOM.createPortal(content, document.getElementById('modal-hook'));
 };
 
+//4536756784666************************************************************************************
+// const ModalOverlayFlipCards = (props) => {
+
+//     rarityCapitalized = props.card_rarity.charAt(0).toUpperCase() + props.card_rarity.slice(1);
+//     console.log(`props sent to modal:`);
+//     console.log(props);
+
+//     oracleText = (<>
+//         <h5>
+//             <span className="modal-heading">Oracle Text: </span>
+//             <br/>
+//             {props.oracle_text}
+//         </h5>
+//         <hr /></>
+//     );
+//     //if the card has Flavor Text
+//     if(props.flavor_text){
+//         flavorText = (
+//             <>
+//             <h5><span className="modal-heading">Flavor Text: </span><em>{props.flavor_text}</em></h5>
+//             <hr />
+//             </>
+//         )
+//     };
+//     //if the card is a creature with power and toughness
+//     powerAndToughness = "";
+//     if(props.power){
+//         powerAndToughness = (
+//             <>
+//             <h5><span className="modal-heading">Power/Toughness:</span> {props.power}/{props.toughness}</h5>
+//             <hr />
+//             </>
+//         )
+//     };
+//     // Card Price
+//     normalPrice = props.price ? `$${props.price}` : " N/A";
+//     foilPrice = props.price_foil ?  `$${props.price_foil}` : " N/A";
+//     price = (<>
+//         <div id="price-container">
+//             <h5>
+//                 <span className="modal-heading">Price (USD): </span> 
+//                 {/* <br/>
+//                 <em>Normal</em> - ${props.cardPriceNormal}
+//                 <br/>
+//                 <em>Foil</em> - ${props.cardPriceFoil} */}
+//                 <div id="priceListContainer">
+//                     <div>
+//                         <em>Normal</em> - {normalPrice}
+//                     </div>
+//                     <div>
+//                         <em>Foil</em> - {foilPrice}
+//                     </div>
+//                 </div>
+//             </h5>
+//         </div>
+//         <hr />
+//     </>
+//     )
+//     // All the html content we created above goes here:
+//     content = (
+//         <div id="modal-container" style={props.style}>
+//             <div id="heading-container">
+//                 <h3>{props.card_name} - <em>{rarityCapitalized}</em></h3>
+//                 {/* Modal Close Button */}
+//                 {/* <div onClick={props.onCloseModal}>
+//                     <i className="fas fa-times" id="modalCloseButton"></i>
+//                 </div> */}
+//                 <a href="/#" onClick={props.onCloseModal} id="modalCloseButton"><i className="fas fa-times" ></i></a>
+//             </div> {/* end of heading-container */}
+//             <hr id="topHR"/>
+//             <div id="content-container">
+//                 <div id="modal-image-container">
+//                     <img src={props.front_image_url} alt="" id="modal-image"/>
+//                 </div>
+//                 <div id="text-container">
+//                     {oracleText}
+//                     {flavorText}
+//                     {powerAndToughness}
+//                     {price}
+//                     <div id="linkContainer">
+//                         <a href={props.edh_rec_link} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-searchengin"></i>View on EDHREC</a>
+//                         <a href={props.gatherer_link} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-wizards-of-the-coast"></i>View on Gatherer</a>
+//                         <a href={props.tcg_player_link} target="_blank" rel="noopener noreferrer" className="modalButton light"><i className="fas fa-dollar-sign"></i>Buy on TCGPlayer</a>
+//                     </div>
+//                 </div>
+//             </div> {/* end of content-container */}
+//         </div> // end of modal-container
+//     );
+//     return ReactDOM.createPortal(content, document.getElementById('modal-hook'));
+// };
+
+
+
+
 //============================================================================================================================
 //                                          Modal for Flip Cards
 //============================================================================================================================
@@ -185,9 +279,6 @@ const ModalOverlayFlipCards = (props) => {
             <hr />
             </>
         )
-    } else {
-        console.log(`4 test`);
-        flavorText = "";
     };
     //if the card is a creature with power and toughness
     let frontPowerToughness;
@@ -289,7 +380,7 @@ const ModalOverlayFlipCards = (props) => {
                         </div>
                     </div>
                 </div> {/* end of content-container */}
-            </div> // end of modal-container
+            </div> {/* end of modal-container */} 
         </div>
     );
     return ReactDOM.createPortal(content, document.getElementById('modal-hook'));
