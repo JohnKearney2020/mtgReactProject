@@ -52,47 +52,12 @@ class Home extends Component {
         document.body.style.overflow = (style === 'hidden') ? 'auto':'hidden';
     }
 
-    closeCardInfo = (event) => {
+    closeCardModal = (event) => {
         event.preventDefault();
-        // this.setState({
-        //     type_of_card: ""
-        // })
-        // setTimeout(() => {
-            this.setState({
-                cardClicked: false,
-                type_of_card: "",
-                // renderAllCards: true,
-                // yOffset: 0,
-                // artist: "",
-                // card_name: "",
-                // cmc: "",
-                // flavor_text: "",
-                // front_flavor_text: "",
-                // back_flavor_text: "",
-                // image_url: "",
-                // front_image_url: "",
-                // back_image_url: "",
-                // mana_cost: "",
-                // oracle_text: "",
-                // front_oracle_text: "",
-                // back_oracle_text: "",
-                // price: "",
-                // price_foil: "",
-                // card_rarity: "",
-                // set_name: "",
-                // power: "",
-                // toughness: "",
-                // front_power: "",
-                // front_toughness: "",
-                // back_power: "",
-                // back_toughness: "",
-                // edh_rec_link: "",
-                // gatherer_link: "",
-                // tcg_player_link: "",
-                // card_type_line: ""
-            })
-        // }, 400);
-        
+        this.setState({
+            cardClicked: false,
+            type_of_card: "",
+        })
         this.changeScroll(); // re-enable mouse scrolling
     }
 
@@ -100,118 +65,47 @@ class Home extends Component {
         console.log('card is clicked!');
         // find out how far the user has scrolled down in the Y direction
         const yAmountScrolled = window.scrollY;
-        let cardType = event.target.dataset.card_type;
-        // console.log(`test for Bruna:`);
-        // console.log(`card type: ${cardType}`);
-        // console.log(`oracle text: ${event.target.dataset.oracle_text}`);
-        if(cardType === "normal") {
-            this.setState({ 
-                cardClicked: true,
-                type_of_card: event.target.dataset.card_type,
-                // renderAllCards: true,
-                yOffset: yAmountScrolled,
-                artist: event.target.dataset.artist,
-                card_name: event.target.dataset.card_name,
-                cmc: event.target.dataset.cmc,
-                flavor_text: event.target.dataset.flavor_text,
-                front_flavor_text: "",
-                back_flavor_text: "",
-                image_url: event.target.src,
-                front_image_url: "",
-                back_image_url: "",
-                mana_cost: event.target.dataset.mana_cost,
-                oracle_text: event.target.dataset.oracle_text,
-                front_oracle_text: "",
-                back_oracle_text: "",
-                price: event.target.dataset.price,
-                price_foil: event.target.dataset.price_foil,
-                card_rarity: event.target.dataset.rarity,
-                set_name: event.target.dataset.set_name,
-                power: event.target.dataset.power,
-                toughness: event.target.dataset.toughness,
-                front_power: "",
-                front_toughness: "",
-                back_power: "",
-                back_toughness: "",
-                edh_rec_link: event.target.dataset.edh_rec_link,
-                gatherer_link: event.target.dataset.gatherer_link,
-                tcg_player_link: event.target.dataset.tcg_player_link,
-                card_type_line: event.target.dataset.card_type_line          
-                
-                // cardClicked: true,
-                // type_of_card: event.target.dataset.card_type,
-                // renderAllCards: false,
-                // yOffset: yAmountScrolled, 
-                // artist: event.target.dataset.artist,
-                // card_name: event.target.dataset.card_name,
-                // cmc: event.target.dataset.cmc,
-                // flavor_text: event.target.dataset.flavor_text,
-                // image_url: event.target.src,
-                // mana_cost: event.target.dataset.mana_cost,
-                // oracle_text: event.target.dataset.oracle_text,
-                // price: event.target.dataset.price,
-                // price_foil: event.target.dataset.price_foil,
-                // card_rarity: event.target.dataset.rarity,
-                // set_name: event.target.dataset.set_name,
-                // power: event.target.dataset.power,
-                // toughness: event.target.dataset.toughness,
-                // edh_rec_link: event.target.dataset.edh_rec_link,
-                // gatherer_link: event.target.dataset.gatherer_link,
-                // tcg_player_link: event.target.dataset.tcg_player_link,
-                // card_type_line: event.target.dataset.card_type_line,
-            }, () => {
-                // console.log(`Type of card for Modal: ${this.state.type_of_card}`);
-                console.log(`normal card setState called`);
-            });
-            this.changeScroll(); //stop mouse scrolling
-        } else {
-            // console.log(`in the card clicked function for flip cards:`);
-            // console.log(`front flavor text: ${event.target.dataset.front_flavor_text}`);
-            // console.log(`back flavor text: ${event.target.dataset.back_flavor_text}`);
-            // console.log(`front oracle text: ${event.target.dataset.front_oracle_text}`);
-            // console.log(`back oracle text: ${event.target.dataset.back_oracle_text}`);
-            this.setState({ 
-                cardClicked: true,
-                type_of_card: event.target.dataset.card_type,
-                yOffset: yAmountScrolled,
-                artist: event.target.dataset.artist,
-                card_name: event.target.dataset.card_name,
-                cmc: event.target.dataset.cmc,
-                flavor_text: "",
-                front_flavor_text: event.target.dataset.front_flavor_text,
-                back_flavor_text: event.target.dataset.back_flavor_text,
-                image_url: "",
-                front_image_url: event.target.dataset.front_image_url,
-                back_image_url: event.target.dataset.back_image_url,
-                mana_cost: event.target.dataset.mana_cost,
-                oracle_text: "",
-                front_oracle_text: event.target.dataset.front_oracle_text,
-                back_oracle_text: event.target.dataset.back_oracle_text,
-                price: event.target.dataset.price,
-                price_foil: event.target.dataset.price_foil,
-                card_rarity: event.target.dataset.rarity,
-                set_name: event.target.dataset.set_name,
-                power: "",
-                toughness: "",
-                front_power: event.target.dataset.front_power,
-                front_toughness: event.target.dataset.front_toughness,
-                back_power: event.target.dataset.back_power,
-                back_toughness: event.target.dataset.back_toughness,
-                edh_rec_link: event.target.dataset.edh_rec_link,
-                gatherer_link: event.target.dataset.gatherer_link,
-                tcg_player_link: event.target.dataset.tcg_player_link,
-                card_type_line: event.target.dataset.card_type_line          
-            }, () => {
-                // console.log(`Type of card for Modal: ${this.state.type_of_card}`);
-                console.log(`flip card setState called`);
-            });
-            this.changeScroll(); //stop mouse scrolling
+        this.setState({ 
+            cardClicked: true,
+            type_of_card: event.target.dataset.card_type,
+            // renderAllCards: true,
+            yOffset: yAmountScrolled,
+            artist: event.target.dataset.artist,
+            card_name: event.target.dataset.card_name,
+            cmc: event.target.dataset.cmc,
+            flavor_text: event.target.dataset.flavor_text,
+            front_flavor_text: event.target.dataset.front_flavor_text,
+            back_flavor_text: event.target.dataset.back_flavor_text,
+            image_url: event.target.src,
+            front_image_url: event.target.dataset.front_image_url,
+            back_image_url: event.target.dataset.back_image_url,
+            mana_cost: event.target.dataset.mana_cost,
+            oracle_text: event.target.dataset.oracle_text,
+            front_oracle_text: event.target.dataset.front_oracle_text,
+            back_oracle_text: event.target.dataset.back_oracle_text,
+            price: event.target.dataset.price,
+            price_foil: event.target.dataset.price_foil,
+            card_rarity: event.target.dataset.rarity,
+            set_name: event.target.dataset.set_name,
+            power: event.target.dataset.power,
+            toughness: event.target.dataset.toughness,
+            front_power: event.target.dataset.front_power,
+            front_toughness: event.target.dataset.front_toughness,
+            back_power: event.target.dataset.back_power,
+            back_toughness: event.target.dataset.back_toughness,
+            edh_rec_link: event.target.dataset.edh_rec_link,
+            gatherer_link: event.target.dataset.gatherer_link,
+            tcg_player_link: event.target.dataset.tcg_player_link,
+            card_type_line: event.target.dataset.card_type_line          
+        }, () => {
+            // console.log(`Type of card for Modal: ${this.state.type_of_card}`);
+            console.log(`normal card setState called`);
+        });
+        this.changeScroll(); //stop mouse scrolling
         }
 
-    }
-
     render() {
-
+        console.log(`Home Render Function Called`);
         //=======================================================================
         //                          Image Link Options
         //=======================================================================
@@ -313,17 +207,17 @@ class Home extends Component {
                 {/* // Modal - Appears when users click on a card */}
                 {this.state.cardClicked && 
                     <React.Fragment>
-                        <Backdrop yOffSetValue={this.state.yOffset} onClick={this.closeCardInfo}/>    
+                        <Backdrop yOffSetValue={this.state.yOffset} onClick={this.closeCardModal}/>    
                     </React.Fragment>
                 }
                 {/* <Modal 
                     show={this.state.cardClicked}
                     typeOfCard={this.state.type_of_card}
-                    onCloseModal={this.closeCardInfo}
+                    onCloseModal={this.closeCardModal}
                     header={this.state.card_name}
                     contentClass="card-item__modal-content"
                     footerClass="card-item__modal-actions"
-                    // footer={<button onClick={this.closeCardInfo}>CLOSE</button>}
+                    // footer={<button onClick={this.closeCardModal}>CLOSE</button>}
                     yOffSetValue={this.state.yOffset}
                     image_url__for_card_modal={this.state.image_url}
                     cardOracleText={this.state.oracle_text}
@@ -339,16 +233,16 @@ class Home extends Component {
                     {...this.state}
                 > */}
                 <Modal 
-                    show={this.state.cardClicked}
+                    // show={this.state.cardClicked}
                     typeOfCard={this.state.type_of_card}
-                    onCloseModal={this.closeCardInfo}
+                    onCloseModal={this.closeCardModal}
                     {...this.state}
                 >
                 </Modal>
                 {/* <Modal 
                     show={this.state.cardClicked}
                     typeOfCard={this.state.type_of_card}
-                    onCloseModal={this.closeCardInfo}
+                    onCloseModal={this.closeCardModal}
                     card_rarity={this.state.card_rarity}
                     oracle_text={this.state.oracle_text}
                     front_oracle_text={this.state.front_oracle_text}
