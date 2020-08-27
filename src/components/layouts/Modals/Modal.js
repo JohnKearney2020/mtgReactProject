@@ -67,7 +67,6 @@ const ModalOverlayNormalCards = (props) => {
                     </div>
                 </div>
             </h5>
-
         </div>
         <hr />
     </>
@@ -114,20 +113,36 @@ const ModalOverlayFlipCards = (props) => {
     console.log(`props sent to modal:`);
     console.log(props);
 
-    oracleText = (<>
-        <h5>
-            <span className="modal-span">Oracle Text: </span>
-            <br/>
-            {props.cardOracleText}
-        </h5>
-        <hr /></>
+    oracleText = (
+        <>
+            <h5>
+                <span className="modal-span">Oracle Text: </span>
+                <br/>
+                {/* {props.front_oracle_text} */}
+                {props.frontOracleText}
+                <br />
+                <strong>//</strong>
+                <br />
+                {props.backOracleText}
+            </h5>
+            <hr />
+        </>
     );
     //if the card has Flavor Text
-    flavorText = "";
-    if(props.cardFlavorText){
+    if(props.frontFlavorText || props.backFlavorText){
+        console.log(`flavor text props:`);
+        console.log(props.frontFlavorText);
+        console.log(props.backFlavorText);
         flavorText = (
             <>
-            <h5><span className="modal-span">Flavor Text: </span><em>{props.cardFlavorText}</em></h5>
+            <h5>
+                {/* <span className="modal-span">Flavor Text: </span><em>{props.front_flavor_text}</em> */}
+                <span className="modal-span">Flavor Text: </span><em>{props.frontFlavorText}</em>
+                <br />
+                <strong>//</strong>
+                <br />
+                <em>{props.backFlavorText}</em>
+            </h5>
             <hr />
             </>
         )
