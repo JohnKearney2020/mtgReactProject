@@ -1,9 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import Switch from './Switch';
 import './NavLinks.css';
+import loadingWheel from '../../images/loading.svg';
+// import '../../images/'
 
 const NavLinks = (props) => {
+    // const[isLoading, setIsLoading] = useState("hideLoading")
     // if we are on mobile, we want to run mobileSubmit which does exactly what props.onSubmit does PLUS it closes the
     // navbar after a user hits sumbit
     let localOnSubmit = "";
@@ -12,6 +16,7 @@ const NavLinks = (props) => {
     } else {
         localOnSubmit = props.onSubmit;
     }
+    const isLoadingToggle = useSelector(state => state.isLoading);
 
     return (
         <ul className="nav-links">
@@ -44,7 +49,18 @@ const NavLinks = (props) => {
             <Switch onColorSelection={props.onColorSelection} color="L" checkedState={props.landsSwitch.checked} nameForName="landsSwitch"/>
         </li>
         <li>
-            <button id="submitButton" type="submit" value="Find Cards" onClick={localOnSubmit} >Find Cards</button>
+            <div>
+                <img src={loadingWheel} alt="" id="loadingWheel" className={isLoadingToggle}></img>
+            </div>
+        </li>
+        <li>
+            <button 
+                id="submitButton" 
+                type="submit" 
+                value="Find Cards" 
+                onClick={localOnSubmit}>
+                    <span>Find Cards</span>
+            </button>
         </li>
     </ul>
     )

@@ -58,6 +58,18 @@
     transition: all .6s ease;
 }
 
+#loadingWheel {
+    width: 32px;
+    height: auto;
+}
+
+.hideLoading {
+    display: none;
+}
+.showLoading {
+    display: block;
+}
+
 @media only screen and (max-width: 1200px){
 
     .nav-links .selectorText{

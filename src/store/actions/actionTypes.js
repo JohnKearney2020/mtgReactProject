@@ -7,3 +7,4 @@
 // export const LANDS = "LANDS";
 export const GETCARDS = "GETCARDS";
 export const NORESULTS = "NORESULTS";
+export const ISLOADING = "ISLOADING"

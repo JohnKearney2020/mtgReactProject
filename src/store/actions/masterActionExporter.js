@@ -2,5 +2,6 @@
 //this will be done mostly in various 'mapDispatchToProps' functions in each container 
 export {
     getCards,
-    noResultsDispatch
+    noResultsDispatch,
+    showLoadingWheelDispatch
 } from './actions';
