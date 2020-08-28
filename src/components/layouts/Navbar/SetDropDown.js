@@ -31,6 +31,17 @@ class SetDropDown extends Component {
             let response = await fetch(`https://api.scryfall.com/sets/`);
             let setObjects = await response.json();
             setsFromApi = setObjects.data;
+            //Local Storage:
+            let currentTimeAndDate = new Date(); // get the current date and time
+            console.log(`date/time test: ${currentTimeAndDate}`);
+            setObjects.time_created = currentTimeAndDate; // add the "time_created" key and current date and time value to the setObjects object return from the api
+            localStorage.setItem("setsForDropDown", JSON.stringify(setObjects)); //convert the setObjects object to a string and store in local storage
+            console.log(`Local Storage Test:`);
+            let localSetApis = localStorage.getItem("setsForDropDown"); // retrieve the setObjects data as a string from local storage
+            console.log(localSetApis);
+            console.log(`converting local storage to an object:`);
+            let localSetApisObject = await JSON.parse(localSetApis); // convert the local storage data we retrieved back to a javascript object we can use
+            console.log(localSetApisObject);
             // console.log(`set objects return from the API:`);
             // console.log({setsFromApi});
             // ******************************************
