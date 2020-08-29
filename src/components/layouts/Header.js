@@ -233,7 +233,8 @@ class Header extends Component {
 const mapStateToProps = state => {
     // Here we are saying "Give me the value of 'cards' stored in our global state, and store it as a property called 'cardsFromAPI' that we can then use here in the Home component"
     return {
-        setForBannerBackground: state.setsForBackgrounds //the value after 'state.' must match the value in our reducer
+        setForBannerBackground: state.setsForBackgrounds, //the value after 'state.' must match the value in our reducer
+        cardAPICallInProgress: state.isLoading
     }
 }
 // export default connect(mapStateToProps, null)(HeaderBackground);

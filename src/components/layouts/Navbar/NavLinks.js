@@ -7,16 +7,27 @@ import loadingWheel from '../../images/loading.svg';
 // import '../../images/'
 
 const NavLinks = (props) => {
-    // const[isLoading, setIsLoading] = useState("hideLoading")
+
+    let isLoadingToggleWheel = useSelector(state => state.isLoading);
+    
+    let dummyFunction = () => {
+        console.log(`Api call currently in progress, wait until it finishes`);
+    }
     // if we are on mobile, we want to run mobileSubmit which does exactly what props.onSubmit does PLUS it closes the
     // navbar after a user hits sumbit
     let localOnSubmit = "";
-    if(props.show === true){
-        localOnSubmit = props.onMobileSubmit;
+    if(isLoadingToggleWheel === "hideLoading"){
+        if(props.show === true){
+            localOnSubmit = props.onMobileSubmit;
+        } else {
+            localOnSubmit = props.onSubmit;
+        }
     } else {
-        localOnSubmit = props.onSubmit;
+        localOnSubmit = dummyFunction;
     }
-    let isLoadingToggleWheel = useSelector(state => state.isLoading);
+
+
+
     let hideSubmitTextToggle;
     if(isLoadingToggleWheel === "showLoading"){
         hideSubmitTextToggle = "hideSubmitText";

@@ -81,6 +81,7 @@ async function getCardData(colorsArrayForAPICall, setsStringForAPICall, setShort
     // console.log('colorsArrayForAPICall from click:');
     // console.log(colorsArrayForAPICall);
     // console.log(`dispatch variable in actions.js line 75: ${dispatch}`);
+    console.log(`card API in progress`);
     let apiURLInsert = createApiURL(colorsArrayForAPICall);
     try{
         let response = await fetch(`https://api.scryfall.com/cards/search?&q=${setsStringForAPICall}+${apiURLInsert}`);

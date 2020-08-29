@@ -105,7 +105,6 @@ class Home extends Component {
         }
 
     render() {
-        console.log(`Home Render Function Called`);
         //=======================================================================
         //                          Image Link Options
         //=======================================================================
