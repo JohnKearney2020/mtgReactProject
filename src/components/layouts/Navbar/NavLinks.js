@@ -16,7 +16,13 @@ const NavLinks = (props) => {
     } else {
         localOnSubmit = props.onSubmit;
     }
-    const isLoadingToggle = useSelector(state => state.isLoading);
+    let isLoadingToggleWheel = useSelector(state => state.isLoading);
+    let hideSubmitTextToggle;
+    if(isLoadingToggleWheel === "showLoading"){
+        hideSubmitTextToggle = "hideSubmitText";
+    } else {
+        hideSubmitTextToggle = "showSubmitText";
+    }
 
     return (
         <ul className="nav-links">
@@ -48,18 +54,19 @@ const NavLinks = (props) => {
             <div className="selectorText">Lands</div>
             <Switch onColorSelection={props.onColorSelection} color="L" checkedState={props.landsSwitch.checked} nameForName="landsSwitch"/>
         </li>
+        {/* <li> */}
+
+        {/* </li> */}
         <li>
-            <div>
-                <img src={loadingWheel} alt="" id="loadingWheel" className={isLoadingToggle}></img>
-            </div>
-        </li>
-        <li>
-            <button 
+            <button
                 id="submitButton" 
                 type="submit" 
                 value="Find Cards" 
                 onClick={localOnSubmit}>
-                    <span>Find Cards</span>
+                    <span className={hideSubmitTextToggle}>Find Cards</span>
+                    <div>
+                        <img src={loadingWheel} alt="" id="loadingWheel" className={isLoadingToggleWheel}></img>
+                    </div>
             </button>
         </li>
     </ul>
