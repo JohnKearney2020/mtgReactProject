@@ -20,7 +20,7 @@ class Header extends Component {
             redSwitch: { checked: false },
             greenSwitch: { checked: false },
             colorlessSwitch: { checked: false },
-            landsSwitch: { checked: false },
+            landsSwitch: { checked: false }
         }
     }
     
@@ -206,8 +206,10 @@ class Header extends Component {
         e.preventDefault(); //prefent default behavior of a form navigating somewhere else
         //send out a dispatch if the user has made any selections, otherwise do nothing
         if(this.state.colorsForAPI.length > 0 && this.state.setsForAPI.length > 0){
+            //show the loading wheel on the navbar
+            this.props.showLoadingWheel();
             //trigger the fade out effect on the background header
-            this.props.findCards(this.state.colorsForAPI, this.state.setsForAPI, this.state.setShortHandForBackgrounds)
+            this.props.findCards(this.state.colorsForAPI, this.state.setsForAPI, this.state.setShortHandForBackgrounds);
         } else {
             // console.log(`Choose a color or set`);
         }
@@ -231,7 +233,8 @@ class Header extends Component {
 const mapStateToProps = state => {
     // Here we are saying "Give me the value of 'cards' stored in our global state, and store it as a property called 'cardsFromAPI' that we can then use here in the Home component"
     return {
-        setForBannerBackground: state.setsForBackgrounds //the value after 'state.' must match the value in our reducer
+        setForBannerBackground: state.setsForBackgrounds, //the value after 'state.' must match the value in our reducer
+        cardAPICallInProgress: state.isLoading
     }
 }
 // export default connect(mapStateToProps, null)(HeaderBackground);
@@ -242,12 +245,12 @@ const mapStateToProps = state => {
 //here we define what actions we want to use in this container
 //findCards is a property that will allow us to make API calls
 //we can call this action with 'this.props.findCards' in the code above
-const mapDispatchToProps = dispatch => {
-    return {
+const mapDispatchToProps = dispatch => ({
         //this is called in our handleSubmit function
-        findCards: (colorArray, setsStringForApi, setShorthandForBackgrounds) => dispatch(actionCreators.getCards(colorArray,setsStringForApi, setShorthandForBackgrounds))
-    }
-}
+        findCards: (colorArray, setsStringForApi, setShorthandForBackgrounds) => dispatch(actionCreators.getCards(colorArray,setsStringForApi, setShorthandForBackgrounds)),
+        showLoadingWheel: () => dispatch(actionCreators.showLoadingWheelDispatch())
+
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
 

@@ -42,6 +42,9 @@
     border-radius: 6px 6px;
     margin-top: auto;
     margin-bottom: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #submitButton:hover {
@@ -56,6 +59,24 @@
     -webkit-appearance: none;
     box-shadow: none;
     transition: all .6s ease;
+}
+
+#loadingWheel {
+    width: 32px;
+    height: auto;
+}
+
+.hideLoading {
+    display: none;
+}
+.showLoading {
+    display: block;
+}
+.hideSubmitText {
+    display: none;
+}
+.showSubmitText {
+    display: block;
 }
 
 @media only screen and (max-width: 1200px){

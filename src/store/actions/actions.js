@@ -13,7 +13,8 @@ export const executeDispatch = (actionType, cards, setStringForApiCall, setShort
     return {
         type: actionType,
         cardsToPassToGlobalState: cards,
-        setShorthandForBackgrounds: setShorthandForBackgrounds
+        setShorthandForBackgrounds: setShorthandForBackgrounds,
+        isLoading: "hideLoading"
     };
 }
 
@@ -25,8 +26,16 @@ export const noResultsDispatch = (noResultsCardObject) => {
     let actionType = actionTypes.NORESULTS;
     return {
         type: actionType,
-        fakeCardObjectNoResults: noResultsCardObject
+        fakeCardObjectNoResults: noResultsCardObject,
+        isLoading: "hideLoading"
     };
+}
+
+export const showLoadingWheelDispatch = () => {
+    let actionType = actionTypes.ISLOADING;
+    return {
+        type: actionType
+    }
 }
 
 
@@ -42,6 +51,8 @@ export const getCards = (colors,sets,setShorthand) => {
         getCardData(colorsArrayForAPICall, setsStringForAPICall, setShorthandForBackgrounds, dispatch, actionType);
     }
 };
+
+
 
 //=========================================================================================
 //                                      Sets for ApiPull
@@ -70,6 +81,7 @@ async function getCardData(colorsArrayForAPICall, setsStringForAPICall, setShort
     // console.log('colorsArrayForAPICall from click:');
     // console.log(colorsArrayForAPICall);
     // console.log(`dispatch variable in actions.js line 75: ${dispatch}`);
+    console.log(`card API in progress`);
     let apiURLInsert = createApiURL(colorsArrayForAPICall);
     try{
         let response = await fetch(`https://api.scryfall.com/cards/search?&q=${setsStringForAPICall}+${apiURLInsert}`);
@@ -131,7 +143,7 @@ async function getCardData(colorsArrayForAPICall, setsStringForAPICall, setShort
 //=========================================================================================
 //                          API Call function for cases with Pagination
 //=========================================================================================
-async function getCardDataPagination(dispatch, actionType, pagURL, setsStringForAPICall, setShortHand) {
+async function getCardDataPagination(dispatch, actionType, pagURL, setsStringForAPICall, setShortHand, isLoading) {
     try{
         let response = await fetch(pagURL);
         let cardObjects = await response.json();

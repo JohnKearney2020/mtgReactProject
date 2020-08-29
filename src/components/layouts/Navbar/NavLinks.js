@@ -1,16 +1,38 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import Switch from './Switch';
 import './NavLinks.css';
+import loadingWheel from '../../images/loading.svg';
+// import '../../images/'
 
 const NavLinks = (props) => {
+
+    let isLoadingToggleWheel = useSelector(state => state.isLoading);
+    
+    let dummyFunction = () => {
+        console.log(`Api call currently in progress, wait until it finishes`);
+    }
     // if we are on mobile, we want to run mobileSubmit which does exactly what props.onSubmit does PLUS it closes the
     // navbar after a user hits sumbit
     let localOnSubmit = "";
-    if(props.show === true){
-        localOnSubmit = props.onMobileSubmit;
+    if(isLoadingToggleWheel === "hideLoading"){
+        if(props.show === true){
+            localOnSubmit = props.onMobileSubmit;
+        } else {
+            localOnSubmit = props.onSubmit;
+        }
     } else {
-        localOnSubmit = props.onSubmit;
+        localOnSubmit = dummyFunction;
+    }
+
+
+
+    let hideSubmitTextToggle;
+    if(isLoadingToggleWheel === "showLoading"){
+        hideSubmitTextToggle = "hideSubmitText";
+    } else {
+        hideSubmitTextToggle = "showSubmitText";
     }
 
     return (
@@ -43,8 +65,20 @@ const NavLinks = (props) => {
             <div className="selectorText">Lands</div>
             <Switch onColorSelection={props.onColorSelection} color="L" checkedState={props.landsSwitch.checked} nameForName="landsSwitch"/>
         </li>
+        {/* <li> */}
+
+        {/* </li> */}
         <li>
-            <button id="submitButton" type="submit" value="Find Cards" onClick={localOnSubmit} >Find Cards</button>
+            <button
+                id="submitButton" 
+                type="submit" 
+                value="Find Cards" 
+                onClick={localOnSubmit}>
+                    <span className={hideSubmitTextToggle}>Find Cards</span>
+                    <div>
+                        <img src={loadingWheel} alt="" id="loadingWheel" className={isLoadingToggleWheel}></img>
+                    </div>
+            </button>
         </li>
     </ul>
     )

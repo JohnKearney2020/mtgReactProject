@@ -2,7 +2,8 @@ import * as actionTypes from '../actions/actionTypes';
 
 const intitialState = {
     cards: [],
-    setForBackgrounds: "DEFAULT"
+    setForBackgrounds: "DEFAULT",
+    isLoading: "hideLoading"
 }
 
 const reducer = (state = intitialState, action) => {
@@ -12,14 +13,20 @@ const reducer = (state = intitialState, action) => {
             return {
                 ...state,
                 cards: action.cardsToPassToGlobalState,
-                setForBackgrounds: action.setShorthandForBackgrounds
+                setForBackgrounds: action.setShorthandForBackgrounds,
+                isLoading: action.isLoading
             }
         case actionTypes.NORESULTS:
             return {
                 ...state,
-                cards: action.fakeCardObjectNoResults
+                cards: action.fakeCardObjectNoResults,
+                isLoading: action.isLoading
             }
-        
+        case actionTypes.ISLOADING:
+            return {
+                ...state,
+                isLoading: "showLoading"
+            }
         default:
             return state;
     }
