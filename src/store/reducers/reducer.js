@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 const intitialState = {
     cards: [],
     setForBackgrounds: "DEFAULT",
-    isLoading: "hideLoading"
+    isLoading: "hideLoading",
+    showContentPolicy: "showContentPolicy"
 }
 
 const reducer = (state = intitialState, action) => {
@@ -26,6 +27,11 @@ const reducer = (state = intitialState, action) => {
             return {
                 ...state,
                 isLoading: "showLoading"
+            }
+        case actionTypes.SHOWCONTENTPOLICY:
+            return {
+                ...state,
+                showContentPolicy: "hideContentPolicy"
             }
         default:
             return state;
