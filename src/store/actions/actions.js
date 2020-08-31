@@ -37,6 +37,12 @@ export const showLoadingWheelDispatch = () => {
         type: actionType
     }
 }
+export const showContentPolicyDispatch = () => {
+    let actionType = actionTypes.SHOWCONTENTPOLICY;
+    return {
+        type: actionType
+    }
+}
 
 
 

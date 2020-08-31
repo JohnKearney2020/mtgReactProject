@@ -59,6 +59,7 @@ class SetDropDown extends Component {
     filterSetsForDropDown = (setsObjectToFilter) => {
         //this function first filters out the digital only sets, then it creates a new array using .map that will contain all the components
         //that will be displayed in the set dropdown
+        console.log(setsObjectToFilter);
         let filteredSetObjectsArray = setsObjectToFilter.filter((eachSetObj, index) => {
             return eachSetObj.digital === false;
         });

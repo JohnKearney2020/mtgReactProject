@@ -4,4 +4,6 @@ export {
     getCards,
     noResultsDispatch,
     showLoadingWheelDispatch
+    // showContentPolicyDispatch //this doesn't seem to work b/c it's dispatched is called in a functional component, unlike the clas
+    // based components the others are called in using mapDispatchToProps
 } from './actions';
