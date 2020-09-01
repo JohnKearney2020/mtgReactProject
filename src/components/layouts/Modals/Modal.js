@@ -289,10 +289,10 @@ const Modal = (props) => {
     if(currentWindowWidth > 576) {
         yOffsetForModal = 0.10*window.innerHeight;
     } else if(currentWindowWidth > 360) {
-        pixelsFromTopOnMobile = 25;
+        pixelsFromTopOnMobile = 10;
         yOffsetForModal = pixelsFromTopOnMobile;
     } else {
-        pixelsFromTopOnMobile = 8;
+        pixelsFromTopOnMobile = 0;
         yOffsetForModal = pixelsFromTopOnMobile;
     }
     const styleTop = {
