@@ -26,7 +26,7 @@ transition: all 400ms;
 /* End of Modal Animations */
 
 #modal-container {
-  z-index: 100;
+  z-index: 1000;
   position: fixed;
   left: 50%!important;
   transform: translate(-50%)!important;

@@ -5,7 +5,8 @@
     justify-content: center;
     /* margin-top: 1rem; */
     padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-bottom: 6vh;
+    /* margin-bottom: 4vh; */
     /* width: 100vw; */
     /* background-color: red; */
     min-height: 100vh;
@@ -55,15 +56,16 @@
 @media screen and (max-width: 768px){
     .LazyLoad {
         /* margin: 0.5rem 0.5rem; */
-        margin: 0.3rem 0.5rem;
-        max-width: 80vw;
-        height: auto!important;
+        margin: 0.7rem 0.5rem;
+        /* max-width: 80vw; */
+        /* height: auto!important; */
     }
     
     .card {
         /* margin: 0.3rem 0.5rem; top and bottom margin: 2px, left and right margin: 5px */
-        max-width: 80vw;
-        height: auto;
+        /* max-width: 80vw; */
+        /* height: auto; */
+        /* margin-bottom: 3rem; */
     }
     .card:hover {
         transform: scale(1.00);

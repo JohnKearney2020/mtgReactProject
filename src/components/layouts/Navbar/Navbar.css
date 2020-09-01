@@ -5,36 +5,17 @@
 /* ======================================================== */
 /* CSSTransitions Animation for the Navbar on Mobile */
 /* ======================================================== */
-.slide-in-left-enter {
-    /* transform: translateX(-100%); */
-    transform: translateX(100%);
-}
 
-.slide-in-left-enter-active {
-    transform: translateX(0);
-    opacity: 1;
-    transition: all 200ms;
-}
+/* NOTE: these were moved to the SideDrawer.css file! */
 
-.slide-in-left-exit {
-    transform: translateX(0%);
-    opacity: 1;
-}
-
-.slide-in-left-exit-active {
-    /* transform: translateX(-100%); */
-    transform: translateX(100%);
-    opacity: 0;
-    transition: all 200ms;
-}
 /* end of navbar animations on mobile */
 
 #semanticUIOverride nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    /* min-height: 7vh; */
-    height: 7vh;
+    min-height: 7vh;
+    /* height: 7vh; */
     /* max-height: 7vh; */
     /* max-height: 6vh; */
     /* max-height: 10vh; */
@@ -46,7 +27,11 @@
 }
 #dropDownContainer {
     width: 35%;
+    /* max-height: 95%; */
     margin: 0rem 1rem;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
 }
 /* #semanticUIOverride nav * { */
 nav * {
@@ -95,7 +80,26 @@ nav * {
     .burger {
         display: block;
     }
+    #dropDownContainer {
+        width: 85vw;
+        /* height: 80%; */
+        margin: 0rem 0.4rem;
+        /* margin-top: 0rem;
+        margin-bottom: 0rem;
+        margin-left: 0.4rem;
+        margin-right: 0.2rem; */
+    }
 }
+
+/* @media only screen and (max-width: 330px){
+    .burger {
+        display: block;
+    }
+    #dropDownContainer {
+        height: 95%;
+    }
+} */
+
 
 /* ================================================================== */
 /* Burger Animations - trigger when users click the burger on mobile */
