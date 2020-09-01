@@ -14,8 +14,8 @@ const FanContentPolicy = () => {
     }
 
     return (
-        <div id="contentPolicy" className={closeContentPolicyClass}>
-            <div>
+        <div id="contentPolicyContainer" className={closeContentPolicyClass}>
+            <div id="contentPolicyText">
                 <span>MTG React Project is unofficial Fan Content permitted under the <a href="https://company.wizards.com/fancontentpolicy" target="_blank" rel="noopener noreferrer">Fan Content Policy</a>. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.</span>
             </div>
             <div id="contentPolicyClose">
