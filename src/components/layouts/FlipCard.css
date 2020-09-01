@@ -120,5 +120,17 @@ transform: rotateY(180deg);
     .backFlipIcon:hover {
         transform: none;
     }
+}
 
+@media screen and (max-width: 330px){
+    .flip-card {
+        /* base ratio is 345/480, modified here */
+        width: 300px;
+        height: 417.4px
+    }
+    
+    .flipCardImg {
+        width: 100%;
+        height: auto
+    }
 }

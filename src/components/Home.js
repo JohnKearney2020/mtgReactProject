@@ -134,9 +134,7 @@ class Home extends Component {
                         >
                         <img 
                             className="card" 
-                            key={index} 
-                            
-                            // src={eachCardObj.image_uris.border_crop} 
+                            key={index}  
                             src={eachCardObj.image_uris.normal} 
                             title={eachCardObj.name} 
                             alt=""

@@ -267,11 +267,9 @@ transition: all 400ms;
 }
 
 @media only screen and (max-width: 576px){
-  #heading-container {
-    font-size: 0.8rem;
-  }
   #heading-container h3 {
     margin: 0.2rem 0.7rem 0;
+    font-size: 0.9rem;
   }
   #modalCloseButton {
     font-size: 1.55rem;
@@ -321,6 +319,10 @@ transition: all 400ms;
   }
   #priceListContainer div{
     margin-right: 0.5rem;
+  }
+  .modal-heading {
+    letter-spacing: 1.2px;
+    font-size: 0.9rem;
   }
 }
 
