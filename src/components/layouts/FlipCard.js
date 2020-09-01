@@ -85,7 +85,7 @@ const FlipCard = (props) => {
                             onClick={props.onCardClick}
                         ></img>
                         <div onClick={toggleFlipAnimation}>
-                                <span className={`fa-stack fa-2x backFlipIcon`}>
+                                <span className="fa-stack fa-2x backFlipIcon">
                                     <i className="fas fa-circle fa-stack-1x"></i>
                                     <i className="fab fa-creative-commons-share fa-stack-1x"></i>
                                 </span>
