@@ -38,7 +38,7 @@ transition: all 400ms;
   border-radius: 15px!important;
   white-space: pre-wrap;
   width: 60vw;
-
+  overflow-y: scroll;
 }
 #semanticFontOverride #modal-container div{
   /* Semantic UI wants this to be Lato */
