@@ -28,6 +28,10 @@ transition: all 400ms;
 #modal-container {
   z-index: 1000;
   position: fixed;
+  /* position: absolute; */
+  /* position: relative; */
+  /* position: sticky; */
+  /* position: static; */
   left: 50%!important;
   transform: translate(-50%)!important;
   color: white;
@@ -38,7 +42,8 @@ transition: all 400ms;
   border-radius: 15px!important;
   white-space: pre-wrap;
   width: 60vw;
-  overflow-y: scroll;
+  height: auto;
+  /* overflow-y: scroll; */
 }
 #semanticFontOverride #modal-container div{
   /* Semantic UI wants this to be Lato */
@@ -116,6 +121,10 @@ transition: all 400ms;
   justify-content: center;
   align-items: center;
 }
+#modal-image-container {
+  width: 100%;
+  height: 100%;
+}
 
 #modal-image {
   padding: 2rem;
@@ -170,7 +179,6 @@ transition: all 400ms;
 }
 
 #linkContainer .modalButton {
-  width: 80%;
   margin-bottom: 0.5rem;
   padding: 0.2rem;
   transition: transform .3s ease;
@@ -178,6 +186,7 @@ transition: all 400ms;
   width: 90%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 #linkContainer .modalButton:hover {
@@ -296,6 +305,9 @@ transition: all 400ms;
     letter-spacing: 1px;
     font-size: 0.8rem;
   }
+  #text-container {
+    padding: 0.2rem;
+  }
   #text-container h5{
     font-size: 0.8rem;
     padding: 0.2rem;
@@ -324,11 +336,24 @@ transition: all 400ms;
     letter-spacing: 1.2px;
     font-size: 0.9rem;
   }
+  .top-modal-text {
+    margin-bottom: 0.5rem;
+  }
 }
 
-@media only screen and (max-width: 320px){
+@media only screen and (max-width: 330px){
   #heading-container {
     font-size: 0.7rem;
+  }
+  .modal-heading {
+    letter-spacing: 1px;
+    font-size: 0.7rem;
+  }
+  .top-modal-text {
+    margin-bottom: 0.25rem;
+  }
+  #linkContainer .modalButton {
+    height: 22px;
   }
 }
 

@@ -49,7 +49,7 @@ class Home extends Component {
 
     changeScroll = () => { 
         const style = document.body.style.overflow; 
-        document.body.style.overflow = (style === 'hidden') ? 'auto':'hidden';
+        // document.body.style.overflow = (style === 'hidden') ? 'auto':'hidden';
     }
 
     closeCardModal = (event) => {
