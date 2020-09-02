@@ -47,10 +47,10 @@ class Home extends Component {
         };
     }
 
-    changeScroll = () => { 
-        const style = document.body.style.overflow; 
+    // changeScroll = () => { 
+        // const style = document.body.style.overflow; 
         // document.body.style.overflow = (style === 'hidden') ? 'auto':'hidden';
-    }
+    // }
 
     closeCardModal = (event) => {
         event.preventDefault();
@@ -58,7 +58,7 @@ class Home extends Component {
             cardClicked: false,
             type_of_card: "",
         })
-        this.changeScroll(); // re-enable mouse scrolling
+        // this.changeScroll(); // re-enable mouse scrolling
     }
 
     onCardClick = (event) => {
@@ -101,7 +101,7 @@ class Home extends Component {
             // console.log(`Type of card for Modal: ${this.state.type_of_card}`);
             console.log(`normal card setState called`);
         });
-        this.changeScroll(); //stop mouse scrolling
+        // this.changeScroll(); //stop mouse scrolling
         }
 
     render() {
