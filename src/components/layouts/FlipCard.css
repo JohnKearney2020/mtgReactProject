@@ -7,9 +7,26 @@
     perspective: 1000px; 
     transition: transform .4s ease;
 }
-
+/* #flipCardOverride {
+    width: 100%;
+    height: 100%;
+} */
+/* #flipCardOverride.flip-card {
+    width: 100%;
+    height: 100%;
+} */
 .flip-card:hover {
     transform: scale(1.05);
+}
+.flip-card-modal {
+    width: 521.79px;
+    /* width: 100%; */
+    /* width: calc(100% - 80px); */
+    
+    height: 713.59px;
+    /* height: inherit; */
+    /* height: calc(100% - 80px); */
+    padding: 1.2rem
 }
 
 /* This is the same CSS normal images get */
@@ -71,12 +88,12 @@ transform: rotateY(180deg);
 
 .frontFlipIcon {
     position: absolute;
-    /* top: -15px; */
-    /* top: -3%; */
-    /* left: -20px; */
-    /* left: -5%; */
     top: -15px;
+    /* top: -2%; */
     left: -20px;
+    /* left: -4%; */
+    /* top: -15px; */
+    /* left: -20px; */
     transition: transform .4s ease;
 }
 
@@ -90,7 +107,9 @@ transform: rotateY(180deg);
 .backFlipIcon {
     position: absolute;
     top: -15px;
+    /* top: -2%; */
     left: -20px;
+    /* left: -4%; */
     transition: transform .4s ease;
 }
 .backFlipIcon:hover {
@@ -100,6 +119,88 @@ transform: rotateY(180deg);
 .hideFlipIcon {
     display: none;
 }
+
+/* ========================================================== */
+                    /* Flip Card for Modal */
+/* ========================================================== */
+.flip-card-modal {
+    width: 521.79px;
+    height: 713.59px;
+}
+
+@media screen and (max-width: 1700px){
+    .flip-card-modal {
+        width: 530px;
+        height: 722px;
+    }
+}
+@media screen and (max-width: 1600px){
+    .flip-card-modal {
+        width: 521.59px;
+        height: 713.59px;
+    }
+}
+@media screen and (max-width: 992px){
+    .flip-card-modal {
+        width: 406.7px;
+        height: 561.2px;
+    }
+}
+@media screen and (max-width: 768px){
+    .flip-card-modal {
+        width: 335.66px;
+        height: 462.2px;
+        padding: 1rem;
+    }
+}
+@media screen and (max-width: 576px){
+    .flip-card-modal {
+        width: 254.19px;
+        height: 351.98px;
+        padding: 0.8rem;
+    }
+    .fa-creative-commons-share {
+        font-size: 3.2rem;
+    }
+    .fa-circle {
+        font-size: 2.8rem;
+    }
+}
+@media screen and (max-width: 450px){
+    .flip-card-modal {
+        width: 202.5px;
+        height: 279.97px;
+    }
+    /* .fa-creative-commons-share {
+        font-size: 3.2rem;
+    }
+    .fa-circle {
+        font-size: 2.8rem;
+    } */
+}
+
+@media screen and (max-width: 375px){
+    .flip-card-modal {
+        width: 163.75px;
+        height: 225.97px;
+        padding: 0.5rem;
+    }
+}
+@media screen and (max-width: 330px){
+    .flip-card-modal {
+        width: 143.5px;
+        height: 197.75px;
+    }
+    .fa-creative-commons-share {
+        font-size: 2.4rem;
+    }
+    .fa-circle {
+        font-size: 2rem;
+    }
+}
+
+/* End of flip-card for modal */
+
 
 
 @media screen and (max-width: 768px){

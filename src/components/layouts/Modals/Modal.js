@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 
 import '../../../index.css';
 import './Modal.css';
+import FlipCardForModal from './FlipCardForModal';
 
 //============================================================================================================================
 //                                          Modal for Normal Cards
@@ -171,7 +172,7 @@ const ModalOverlayFlipCards = (props) => {
             <hr />
             </>
         )
-    // if the front card does not have flavor text, but the front card does
+    // if the front card does not have flavor text, but the back card does
     } else if(props.front_flavor_text === undefined && props.back_flavor_text !== undefined){
         flavorText = (
             <>
@@ -243,6 +244,7 @@ const ModalOverlayFlipCards = (props) => {
         <hr />
     </>
     )
+    
 
     // All the html content we created above goes here:
     content = (
@@ -258,7 +260,8 @@ const ModalOverlayFlipCards = (props) => {
             <hr id="topHR"/>
             <div id="content-container">
                 <div id="modal-image-container">
-                    <img src={props.front_image_url} alt="" id="modal-image"/>
+                    {/* <img src={props.front_image_url} alt="" id="modal-image"/> */}
+                    <FlipCardForModal {...props}/>
                 </div>
                 <div id="text-container">
                     {oracleText}
