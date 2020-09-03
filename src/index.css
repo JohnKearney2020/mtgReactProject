@@ -5,7 +5,8 @@
 } */
 
 body {
-  font-family: 'Nunito', sans-serif;
+  /* font-family: 'Nunito', sans-serif; */
+  font-family: 'Nunito'!important;
   background-color: black;
   /* background-color: white; */
   /* animation: fadeInAnimationBody ease 1.5s; 

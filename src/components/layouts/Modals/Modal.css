@@ -45,7 +45,12 @@ transition: all 400ms;
   height: auto;
   /* overflow-y: scroll; */
 }
-#semanticFontOverride #modal-container div{
+#modal-container h3,h5{
+  /* Semantic UI wants this to be Lato */
+  font-family: 'Nunito';
+  /* margin: 1rem 1rem;    */
+}
+#heading-container h3,h5{
   /* Semantic UI wants this to be Lato */
   font-family: 'Nunito';   
 }
