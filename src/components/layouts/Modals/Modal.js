@@ -66,15 +66,7 @@ const ModalOverlayNormalCards = (props) => {
     price = (<>
         <div id="price-container">
             <h5>
-                <span className="modal-heading">Price (USD): </span> 
-                <div id="priceListContainer">
-                    <div>
-                        <em>Normal</em> - {normalPrice}
-                    </div>
-                    <div>
-                        <em>Foil</em> - {foilPrice}
-                    </div>
-                </div>
+                <span className="modal-heading">Price (USD): </span><span id="normalPrice"><em>Normal</em> - {normalPrice},</span><span><em>Foil</em> - {foilPrice}</span>
             </h5>
         </div>
         <hr />
@@ -197,7 +189,7 @@ const ModalOverlayFlipCards = (props) => {
         if(props.front_power !== undefined){
             frontPowerToughness = (
                 <>
-                    {props.front_power}<strong>/</strong>{props.front_toughness}
+                    [{props.front_power}<strong>/</strong>{props.front_toughness}]
                 </>
             )
         }
@@ -205,7 +197,7 @@ const ModalOverlayFlipCards = (props) => {
             console.log(`back power toughness here: ${props.back_power} ${props.back_toughness}`);
             backPowerToughness = (
                 <>
-                    {props.back_power}<strong>/</strong>{props.back_toughness}
+                    [{props.back_power}<strong>/</strong>{props.back_toughness}]
                 </>
             )
         }
@@ -218,7 +210,7 @@ const ModalOverlayFlipCards = (props) => {
         powerAndToughness = (
             <>
                 <h5>
-                    <span><span className="modal-heading">Power/Toughness: </span>[{frontPowerToughness}]{pTDivider}[{backPowerToughness}]</span>
+                    <span><span className="modal-heading">Power/Toughness: </span>{frontPowerToughness}{pTDivider}{backPowerToughness}</span>
                 </h5>
                 <hr />
             </>
@@ -230,22 +222,13 @@ const ModalOverlayFlipCards = (props) => {
     price = (<>
         <div id="price-container">
             <h5>
-                <div className="modal-heading">Price (USD): </div> 
-                <div id="priceListContainer">
-                    <div>
-                        <em>Normal</em> - {normalPrice}
-                    </div>
-                    <div>
-                        <em>Foil</em> - {foilPrice}
-                    </div>
-                </div>
+                <span className="modal-heading">Price (USD): </span><span id="normalPrice"><em>Normal</em> - {normalPrice},</span><span><em>Foil</em> - {foilPrice}</span>
             </h5>
         </div>
         <hr />
     </>
     )
     
-
     // All the html content we created above goes here:
     content = (
         <div id="modal-container" style={props.style}>
