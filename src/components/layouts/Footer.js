@@ -14,7 +14,6 @@ const Footer = () => {
                     <a className="contactIcons" href="https://github.com/JohnKearney2020/mtgReactReduxProject" target="_blank" rel="noopener noreferrer"><i className="fab fa-github-square"></i></a>
                     <a className="contactIcons" href="https://www.linkedin.com/in/johnkearneydev/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a>
                 </div>
-                {/* <div></div> */}
             </div>
         </>
     )
