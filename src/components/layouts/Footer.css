@@ -1,10 +1,7 @@
 #footer {
     display: flex;
     align-items: center;
-    /* justify-content: space-around; */
     justify-content: space-between;
-    /* justify-content: space-evenly; */
-    /* justify-content: center; */
     width: 100%;
     height: 4vh;
     background-color: rgb(24,24,24);
@@ -24,23 +21,15 @@
     color: #7c7c7c;
 }
 
-#contactIconsContainer a{
-    /* font-size: 2rem; */
-    /* margin: 0 0.5rem; */
-    /* color: #D0D0D0; */
-    transition: color 0.4s ease;
-}
-
 .contactIcons {
     font-size: 2rem;
     margin: 0 0.4rem;
     transition: color 0.4s ease;
     color: #D0D0D0;
 }
-.contactIcons a:hover{
+.contactIcons:hover{
     color: #7c7c7c;
 }
-
 
 @media only screen and (max-width: 768px){
     .contactIcons {
