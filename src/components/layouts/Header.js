@@ -139,7 +139,7 @@ class Header extends Component {
     setsForAPIHandler = (sets) => { //this is passed down via props to the DropDown component
         // These are the sets we have custom backgrounds for
         const listOfSetsWithCustomArtwork = [
-            '2XM','AER','C20','ELD','IKO','JMP','KLD','M21','MH1','THB','WAR'
+            '2XM','AER','C20','ELD','IKO','JMP','KLD','M21','MH1','THB','WAR','ZNR'
         ];
         // console.log(`Sets sent to Header from the DropDown menu:`)
         // console.log(sets);
