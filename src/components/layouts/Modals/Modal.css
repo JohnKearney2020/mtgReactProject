@@ -166,11 +166,14 @@ transition: all 400ms;
   /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(170,169,173,0.75), rgba(0, 0, 0, 0)); */
 }
 
-#priceContainer {
+/* #priceContainer {
   display: flex;
   width: 100%;
   height: 100%;
   flex-direction: column;
+} */
+#normalPrice {
+  margin-right: 0.8rem;
 }
 
 #linkContainer {
@@ -180,7 +183,7 @@ transition: all 400ms;
   width: 100%;
   margin: 2rem 0;
   align-items: center;
-
+  justify-content: center;
 }
 
 #linkContainer .modalButton {
@@ -358,7 +361,8 @@ transition: all 400ms;
     margin-bottom: 0.25rem;
   }
   #linkContainer .modalButton {
-    height: 22px;
+    height: 20px;
+    font-size: 0.8rem;
   }
 }
 
