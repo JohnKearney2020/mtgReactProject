@@ -10,7 +10,7 @@ const FanContentPolicy = () => {
 
     const closeContentPolicy = (e) => {
         e.preventDefault();
-        dispatch(showContentPolicyDispatch())
+        dispatch(showContentPolicyDispatch());
     }
 
     return (
