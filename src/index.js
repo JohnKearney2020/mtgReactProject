@@ -4,7 +4,7 @@ import { createStore, applyMiddleware,  compose} from 'redux';
 import thunk from 'redux-thunk'; //for executing asyncronous API calls
 import reducer from './store/reducers/reducer';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 //import layouts
 import BaseLayout from './components/layouts/BaseLayout';
@@ -27,6 +27,7 @@ ReactDOM.render(
       <BaseLayout>
           <Switch>
                 <Route path="/" component={Home} />
+                <Redirect to="/" />
           </Switch>
       </BaseLayout>
     </BrowserRouter>
