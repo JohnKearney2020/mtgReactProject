@@ -18,7 +18,7 @@ const Backdrop = (props) => {
 
     return ReactDom.createPortal(
         // <div className="backdrop" style={styleTop} onClick={props.onClick}></div>,
-        <div className="backdrop" onClick={props.onClick}></div>,
+        <div className="backdrop" onClick={props.onClick} style={props.style}></div>,
         document.getElementById('backdrop-hook')
     )
 }

@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 
 import NavLinks from './NavLinks';
 import SideDrawer from './SideDrawer';
-import './Navbar.css';
 import SetDropDown from './SetDropDown';
+import Backdrop from '../Modals/Backdrop';
+import './Navbar.css';
 
 const Navbar = (props) => {
 
@@ -22,6 +23,7 @@ const Navbar = (props) => {
 
     return (
         <React.Fragment>
+            {navbarIsExpanded && <Backdrop  style={{zIndex: 99}}/>}
             <SideDrawer show={navbarIsExpanded}>
                 <nav className="main-navigation__drawer-nav">
                     <NavLinks onSubmit={props.onSubmit} onMobileSubmit={mobileSubmit} onColorSelection={props.onColorSelection} show={navbarIsExpanded} {...props}/>
