@@ -26,8 +26,6 @@ const NavLinks = (props) => {
         localOnSubmit = dummyFunction;
     }
 
-
-
     let hideSubmitTextToggle;
     if(isLoadingToggleWheel === "showLoading"){
         hideSubmitTextToggle = "hideSubmitText";

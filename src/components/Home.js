@@ -204,7 +204,7 @@ class Home extends Component {
                 {/* // Modal - Appears when users click on a card */}
                 {this.state.cardClicked && 
                     <React.Fragment>
-                        <Backdrop yOffSetValue={this.state.yOffset} onClick={this.closeCardModal}/>    
+                        <Backdrop yOffSetValue={this.state.yOffset} onClick={this.closeCardModal} style={{zIndex:1000}}/>    
                     </React.Fragment>
                 }
                 {/* <Modal 
