@@ -102,7 +102,7 @@ class Home extends Component {
             console.log(`normal card setState called`);
         });
         // this.changeScroll(); //stop mouse scrolling
-        }
+    }
 
     render() {
         //=======================================================================
