@@ -76,7 +76,7 @@
 
 
 
-/* .hideLoading {
+.hideLoading {
     display: none;
 }
 .showLoading {
@@ -87,7 +87,7 @@
 }
 .showSubmitText {
     display: block;
-} */
+}
 
 @media only screen and (max-width: 1200px){
 

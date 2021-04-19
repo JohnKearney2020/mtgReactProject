@@ -33,6 +33,6 @@
 /* 18rem fits a little over 5 sets at a time */
 @media only screen and (max-width: 767px){
   .ui.search.dropdown .menu {
-    max-height: 18rem !important 
+    max-height: 14rem !important 
   } 
 }
