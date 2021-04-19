@@ -26,12 +26,12 @@ const NavLinks = (props) => {
         localOnSubmit = dummyFunction;
     }
 
-    let hideSubmitTextToggle;
-    if(isLoadingToggleWheel === "showLoading"){
-        hideSubmitTextToggle = "hideSubmitText";
-    } else {
-        hideSubmitTextToggle = "showSubmitText";
-    }
+    // let hideSubmitTextToggle;
+    // if(isLoadingToggleWheel === "showLoading"){
+    //     // hideSubmitTextToggle = "hideSubmitText";
+    // } else {
+    //     // hideSubmitTextToggle = "showSubmitText";
+    // }
 
     return (
         <ul className="nav-links">
@@ -68,14 +68,21 @@ const NavLinks = (props) => {
         {/* </li> */}
         <li>
             <button
-                id="submitButton" 
-                type="submit" 
-                value="Find Cards" 
-                onClick={localOnSubmit}>
-                    <span className={hideSubmitTextToggle}>Find Cards</span>
-                    <div>
-                        <img src={loadingWheel} alt="" id="loadingWheel" className={isLoadingToggleWheel}></img>
-                    </div>
+              id="submitButton" 
+              type="submit" 
+              value="Find Cards" 
+              onClick={localOnSubmit}
+            >
+              {isLoadingToggleWheel === 'showLoading' ?
+              <div className='submitLoadingWheelContainer'>
+                <img src={loadingWheel} alt="" id="loadingWheel"></img> 
+              </div>
+              : 'Find Cards'
+              }
+              {/* <span className={hideSubmitTextToggle}>Find Cards</span>
+              <div>
+                  <img src={loadingWheel} alt="" id="loadingWheel" className={isLoadingToggleWheel}></img>
+              </div> */}
             </button>
         </li>
     </ul>
