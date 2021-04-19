@@ -29,8 +29,10 @@
     color: #d0d0d0;
 }
 
-/* @media only screen and (max-width: 768px){
-    #dropDownContainer {
-
-    }
-} */
+/* This controls the size of the expanded set dropdown menu on mobile */
+/* 18rem fits a little over 5 sets at a time */
+@media only screen and (max-width: 767px){
+  .ui.search.dropdown .menu {
+    max-height: 18rem !important 
+  } 
+}
