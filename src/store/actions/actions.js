@@ -131,8 +131,8 @@ async function getCardData(colorsArrayForAPICall, setsStringForAPICall, setShort
                     getCardDataPagination(dispatch, actionType, pagURL, setsStringForAPICall, setShortHand) //call the API fetch() function 
                 }, 100); //Scryfall API documentation asks for 100 ms break between calls
             } else {
-                // console.log('cards before final dispatch:');
-                // console.log(cards);
+                console.log('cards before final dispatch:');
+                console.log(cards);
                 //We are done calling the Api for cards, now we can look at setsStringForAPICall and determine what string we need to update 
                 //the global state with for the header and card container backgrounds.
                 dispatch(executeDispatch(actionType, cards, setsStringForAPICall, setShortHand));
