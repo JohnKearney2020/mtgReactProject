@@ -1,0 +1,2 @@
+Main Banner: 1600W x 440H
+Set Logo: Size Varies. Crop closely to letters. Place ~215px from the top of the banner, centered horizontally. See image for drop shadows.
