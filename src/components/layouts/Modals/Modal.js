@@ -1,381 +1,286 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
-import parse from 'html-react-parser';
 
 import '../../../index.css';
 import './Modal.css';
 import FlipCardForModal from './FlipCardForModal';
-// import tapSymbol from '../../../../public/images/manaSymbols/tapSymbol.jpg'
+import parse from 'html-react-parser';
+
 //============================================================================================================================
 //                                          Modal for Normal Cards
 //============================================================================================================================
+let oracleText;
+let rarityCapitalized;
+let flavorText;
+let powerAndToughness;
+let price;
+let normalPrice;
+let foilPrice;
+let content;
+
+const ModalOverlayNormalCards = (props) => {
+
+    oracleText="";
+    rarityCapitalized="";
+    flavorText="";
+    powerAndToughness="";
+    price="";
+    normalPrice="";
+    foilPrice="";
+    content="";
+
+    rarityCapitalized = props.card_rarity.charAt(0).toUpperCase() + props.card_rarity.slice(1);
+    // console.log(`props sent to modal:`);
+    // console.log(props);
+
+    // oracleText = (<>
+    //     <h5>
+    //         <span className="modal-heading">Oracle Text: </span>
+    //         <br/>
+    //         {props.oracle_text}
+    //     </h5>
+    //     <hr /></>
+    // );
+
+    oracleText = (<>
+      <h5 >
+          <span className="modal-heading">Oracle Text: </span>
+          <br/>
+          {/* {props.oracle_text} */}
+          {/* {curatedOracleText} */}
+          {/* <div id="testString"></div> */}
+          <span className='oracleTextContainer'>{parse(props.oracle_text)}</span>
+      </h5>
+      <hr /></>
+    );
+    //if the card has Flavor Text
+    if(props.flavor_text){
+        flavorText = (
+            <>
+            <h5><span className="modal-heading">Flavor Text: </span><em>{props.flavor_text}</em></h5>
+            <hr />
+            </>
+        )
+    };
+    //if the card is a creature with power and toughness
+    powerAndToughness = "";
+    if(props.power){
+        powerAndToughness = (
+            <>
+            <h5><span className="modal-heading">Power/Toughness:</span> {props.power}/{props.toughness}</h5>
+            <hr />
+            </>
+        )
+    };
+    // Card Price
+    normalPrice = props.price ? `$${props.price}` : " N/A";
+    foilPrice = props.price_foil ?  `$${props.price_foil}` : " N/A";
+    price = (<>
+        <div id="price-container">
+            <h5>
+                <span className="modal-heading">Price (USD): </span><span id="normalPrice"><em>Normal</em> - {normalPrice},</span><span><em>Foil</em> - {foilPrice}</span>
+            </h5>
+        </div>
+        <hr />
+    </>
+    )
+    // All the html content we created above goes here:
+    content = (
+        <div id="modal-container" style={props.style}>
+            <div id="heading-container">
+                <h3>{props.card_name} - <em>{rarityCapitalized}</em></h3>
+                <a href="/#" onClick={props.onCloseModal} id="modalCloseButton"><i className="fas fa-times" ></i></a>
+            </div> {/* end of heading-container */}
+            <hr id="topHR"/>
+            <div id="content-container">
+                <div id="modal-image-container">
+                    <img src={props.image_url} alt="" id="modal-image"/>
+                </div>
+                <div id="text-container">
+                    {oracleText}
+                    {flavorText}
+                    {powerAndToughness}
+                    {price}
+                    <div id="linkContainer">
+                        <a href={props.edh_rec_link} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-searchengin"></i>View on EDHREC</a>
+                        <a href={props.gatherer_link} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-wizards-of-the-coast"></i>View on Gatherer</a>
+                        <a href={props.tcg_player_link} target="_blank" rel="noopener noreferrer" className="modalButton light"><i className="fas fa-dollar-sign"></i>Buy on TCGPlayer</a>
+                    </div>
+                </div>
+            </div> {/* end of content-container */}
+        </div> // end of modal-container
+    );
+    return ReactDOM.createPortal(content, document.getElementById('modal-hook'));
+};
 
 
-const Modal = (props) => {
-  let oracleText;
-  let rarityCapitalized;
-  let flavorText;
-  let powerAndToughness;
-  let price;
-  let normalPrice;
-  let foilPrice;
-  let content;
-  
-  const findSymbol = (char) => {
-    switch (char) {
-      //Colored Mana
-      case 'W':
-        return `<img className='testStringImage' src='../../images/manaSymbols/white.jpg'></img>`
-      case 'U':
-        return `<img className='testStringImage' src='../../images/manaSymbols/blue.jpg'></img>`
-      case 'B':
-        return `<img className='testStringImage' src='../../images/manaSymbols/black.jpg'></img>`
-      case 'R':
-        return `<img className='testStringImage' src='../../images/manaSymbols/red.jpg'></img>`
-      case 'G':
-        return `<img className='testStringImage' src='../../images/manaSymbols/green.jpg'></img>`
+//============================================================================================================================
+//                                          Modal for Flip Cards
+//============================================================================================================================
+const ModalOverlayFlipCards = (props) => {
 
-      // ColorLess Mana
-      case 'C':
-        return `<img className='testStringImage' src='../../images/manaSymbols/colorless.jpg'></img>`
+    oracleText="";
+    rarityCapitalized="";
+    flavorText="";
+    powerAndToughness="";
+    price="";
+    normalPrice="";
+    foilPrice="";
+    content="";
+    rarityCapitalized = props.card_rarity.charAt(0).toUpperCase() + props.card_rarity.slice(1);
 
-      // Snow Mana
-      case 'S':
-        return `<img className='testStringImage' src='../../images/manaSymbols/snow.jpg'></img>`
+    oracleText = (
+        <>
+            <h5>
+                <div className="modal-heading">Oracle Text: </div>
+                <div className="top-modal-text">
+                    <span className='oracleTextContainer'>{parse(props.front_oracle_text)}</span>
+                    {/* {props.front_oracle_text} */}
+                </div>
+                <div className="modal-heading">Oracle Text: </div>
+                <div>
+                  <span className='oracleTextContainer'>{parse(props.back_oracle_text)}</span>
+                    {/* {props.back_oracle_text} */}
+                </div>
+            </h5>
+            <hr />
+        </>
+    );
 
-      // Generic Mana
-      case '0':
-        return `<img className='testStringImage' src='../../images/manaSymbols/zeroGeneric.jpg'></img>`
-      case '1':
-        return `<img className='testStringImage' src='../../images/manaSymbols/oneGeneric.jpg'></img>`
-      case '2':
-        return `<img className='testStringImage' src='../../images/manaSymbols/twoGeneric.jpg'></img>`
-      case '3': 
-        return `<img className='testStringImage' src='../../images/manaSymbols/threeGeneric.jpg'></img>`
-      case '4':
-        return `<img className='testStringImage' src='../../images/manaSymbols/fourGeneric.jpg'></img>`
-      case '5':
-        return `<img className='testStringImage' src='../../images/manaSymbols/fiveGeneric.jpg'></img>`
-      case '6':
-        return `<img className='testStringImage' src='../../images/manaSymbols/sixGeneric.jpg'></img>`
-      case '7':
-        return `<img className='testStringImage' src='../../images/manaSymbols/sevenGeneric.jpg'></img>`
-      case '8':
-        return `<img className='testStringImage' src='../../images/manaSymbols/eightGeneric.jpg'></img>`
-      case 'X':
-        return `<img className='testStringImage' src='../../images/manaSymbols/xGeneric.jpg'></img>`
-      case '/': //For Hybrid Mana Symbols & Phyrexian Mana Symbols
-        return `/`
+    // if the card has Flavor Text
+    if(props.front_flavor_text !== undefined && props.back_flavor_text !== undefined ){
+        flavorText = (
+            <>
+            <h5>
+                {/* <span className="modal-heading">Flavor Text: </span><em>{props.front_flavor_text}</em> */}
+                <div className="modal-heading">Flavor Text: </div>
+                <div className="top-modal-text">
+                    <em>{props.front_flavor_text}</em>
+                </div>
+                <div className="modal-heading">Flavor Text: </div>
+                <div>
+                    <em>{props.back_flavor_text}</em>
+                </div>
+            </h5>
+            <hr />
+            </>
+        )
+    // if the front card has flavor text but the back card does not
+    } else if(props.front_flavor_text !== undefined && props.back_flavor_text === undefined){
+        flavorText = (
+            <>
+            <h5>
+                <div className="modal-heading">Flavor Text: </div>
+                <div>
+                    <em>{props.front_flavor_text}</em>
+                </div>
+            </h5>
+            <hr />
+            </>
+        )
+    // if the front card does not have flavor text, but the back card does
+    } else if(props.front_flavor_text === undefined && props.back_flavor_text !== undefined){
+        flavorText = (
+            <>
+            <h5>
+                <div className="modal-heading">Flavor Text: </div>
+                <div>
+                    <em>{props.back_flavor_text}</em>
+                </div>
+            </h5>
+            <hr />
+            </>
+        )
+    // they are === undefined b/c there is no front or back flavor text
+    };
 
-      //Phyrexian Mana
-      case 'W/P': //White 
-        return `<img className='testStringImage' src='../../images/manaSymbols/phyrexianWhite.jpg'></img>`
-      case 'U/P': //Blue
-        return `<img className='testStringImage' src='../../images/manaSymbols/phyrexianBlue.jpg'></img>`
-      case 'B/P': //Black
-        return `<img className='testStringImage' src='../../images/manaSymbols/phyrexianBlack.jpg'></img>`
-      case 'R/P': //Red
-        return `<img className='testStringImage' src='../../images/manaSymbols/phyrexianRed.jpg'></img>`
-      case 'G/P': //Red
-        return `<img className='testStringImage' src='../../images/manaSymbols/phyrexianGreen.jpg'></img>`
-
-      //Regular Hybrid Mana
-      case 'W/U': //White/Blue
-        return `<img className='testStringImage' src='../../images/manaSymbols/hybridWhiteBlue.jpg'></img>`
-      case 'U/B': //Blue/Black
-        return `<img className='testStringImage' src='../../images/manaSymbols/hybridBlueBlack.jpg'></img>`
-      case 'B/R': //Black/Red
-        return `<img className='testStringImage' src='../../images/manaSymbols/hybridBlackRed.jpg'></img>`
-      case 'R/G': //Red/Green
-        return `<img className='testStringImage' src='../../images/manaSymbols/hybridRedGreen.jpg'></img>`
-      case 'G/W': //Green/White
-        return `<img className='testStringImage' src='../../images/manaSymbols/hybridGreenWhite.jpg'></img>`
-      case 'W/B': //White/Black
-        return `<img className='testStringImage' src='../../images/manaSymbols/hybridWhiteBlack.jpg'></img>`
-      case 'U/R': //Blue/Red
-        return `<img className='testStringImage' src='../../images/manaSymbols/hybridBlueRed.jpg'></img>`
-      case 'B/G': //Black/Green
-        return `<img className='testStringImage' src='../../images/manaSymbols/hybridBlackGreen.jpg'></img>`
-      case 'R/W': //Red/White
-        return `<img className='testStringImage' src='../../images/manaSymbols/hybridRedWhite.jpg'></img>`
-      case 'G/U': //Green/Blue
-        return `<img className='testStringImage' src='../../images/manaSymbols/hybridGreenBlue.jpg'></img>`
-
-      //Hybrid Mana with Generic
-      case '2/W': //White
-        return `<img className='testStringImage' src='../../images/manaSymbols/hybridGenericWhite.jpg'></img>`
-      case '2/U': //Blue
-        return `<img className='testStringImage' src='../../images/manaSymbols/hybridGenericBlue.jpg'></img>`
-      case '2/B': //Black
-        return `<img className='testStringImage' src='../../images/manaSymbols/hybridGenericBlack.jpg'></img>`
-      case '2/R': //Red
-        return `<img className='testStringImage' src='../../images/manaSymbols/hybridGenericRed.jpg'></img>`
-      case '2/G': //Green
-        return `<img className='testStringImage' src='../../images/manaSymbols/hybridGenericGreen.jpg'></img>`
-
-
-      //General Symbols
-      case 'T': //Tap Symbol
-        return `<img className='testStringImage' src='../../images/manaSymbols/tapSymbol.jpg'></img>`
-      case 'Q': //Untap Symbol
-        return `<img className='testStringImage' src='../../images/manaSymbols/untapSymbol.jpg'></img>`
-      default:
-        return '';
-    }
-  }
-  
-
-  const ModalOverlayNormalCards = (props) => {
-  
-      oracleText="";
-      rarityCapitalized="";
-      flavorText="";
-      powerAndToughness="";
-      price="";
-      normalPrice="";
-      foilPrice="";
-      content="";
-  
-      // let curatedOracleText = curateOracleText(props.oracle_text);
-  
-      // addTextSymbols(props.oracle_text);
-      rarityCapitalized = props.card_rarity.charAt(0).toUpperCase() + props.card_rarity.slice(1);
-      // console.log(`props sent to modal:`);
-      // console.log(props);
-  
-      oracleText = (<>
-          <h5 >
-              <span className="modal-heading">Oracle Text: </span>
-              <br/>
-              {/* {props.oracle_text} */}
-              {/* {curatedOracleText} */}
-              {/* <div id="testString"></div> */}
-              <span className='oracleTextContainer'>{parse(frontOracleText)}</span>
-          </h5>
-          <hr /></>
-      );
-      //if the card has Flavor Text
-      if(props.flavor_text){
-          flavorText = (
-              <>
-              <h5><span className="modal-heading">Flavor Text: </span><em>{props.flavor_text}</em></h5>
-              <hr />
-              </>
-          )
-      };
-      //if the card is a creature with power and toughness
-      powerAndToughness = "";
-      if(props.power){
-          powerAndToughness = (
-              <>
-              <h5><span className="modal-heading">Power/Toughness:</span> {props.power}/{props.toughness}</h5>
-              <hr />
-              </>
-          )
-      };
-      // Card Price
-      normalPrice = props.price ? `$${props.price}` : " N/A";
-      foilPrice = props.price_foil ?  `$${props.price_foil}` : " N/A";
-      price = (<>
-          <div id="price-container">
-              <h5>
-                  <span className="modal-heading">Price (USD): </span><span id="normalPrice"><em>Normal</em> - {normalPrice},</span><span><em>Foil</em> - {foilPrice}</span>
-              </h5>
-          </div>
-          <hr />
-      </>
-      )
-      // All the html content we created above goes here:
-      content = (
-          <div id="modal-container" style={props.style}>
-              <div id="heading-container">
-                  <h3>{props.card_name} - <em>{rarityCapitalized}</em></h3>
-                  <a href="/#" onClick={props.onCloseModal} id="modalCloseButton"><i className="fas fa-times" ></i></a>
-              </div> {/* end of heading-container */}
-              <hr id="topHR"/>
-              <div id="content-container">
-                  <div id="modal-image-container">
-                      <img src={props.image_url} alt="" id="modal-image"/>
-                  </div>
-                  <div id="text-container">
-                      {oracleText}
-                      {flavorText}
-                      {powerAndToughness}
-                      {price}
-                      <div id="linkContainer">
-                          <a href={props.edh_rec_link} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-searchengin"></i>View on EDHREC</a>
-                          <a href={props.gatherer_link} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-wizards-of-the-coast"></i>View on Gatherer</a>
-                          <a href={props.tcg_player_link} target="_blank" rel="noopener noreferrer" className="modalButton light"><i className="fas fa-dollar-sign"></i>Buy on TCGPlayer</a>
-                      </div>
-                  </div>
-              </div> {/* end of content-container */}
-          </div> // end of modal-container
-      );
-      return ReactDOM.createPortal(content, document.getElementById('modal-hook'));
-  };
-  
-  
-  //============================================================================================================================
-  //                                          Modal for Flip Cards
-  //============================================================================================================================
-  const ModalOverlayFlipCards = (props) => {
-  
-        oracleText="";
-        rarityCapitalized="";
-        flavorText="";
-        powerAndToughness="";
-        price="";
-        normalPrice="";
-        foilPrice="";
-        content="";
-        rarityCapitalized = props.card_rarity.charAt(0).toUpperCase() + props.card_rarity.slice(1);
-    
-        oracleText = (
+    //if the card is a creature with power and toughness
+    let frontPowerToughness;
+    let backPowerToughness;
+    let pTDivider;
+    //if either the front or back card is a creature 
+    if(props.front_power !== undefined || props.back_power !== undefined ){
+        if(props.front_power !== undefined){
+            frontPowerToughness = (
+                <>
+                    [{props.front_power}<strong>/</strong>{props.front_toughness}]
+                </>
+            )
+        }
+        if(props.back_power !== undefined){
+            console.log(`back power toughness here: ${props.back_power} ${props.back_toughness}`);
+            backPowerToughness = (
+                <>
+                    [{props.back_power}<strong>/</strong>{props.back_toughness}]
+                </>
+            )
+        }
+        // if both the front and back have power and toughness, we want a divider
+        if(props.front_power !== undefined && props.back_power !== undefined ){
+            pTDivider = `  /  `;
+        } else {
+            pTDivider = "";
+        }
+        powerAndToughness = (
             <>
                 <h5>
-                    <div className="modal-heading">Oracle Text: </div>
-                    <div className="top-modal-text">
-                        {props.front_oracle_text}
-                    </div>
-                    <div className="modal-heading">Oracle Text: </div>
-                    <div>
-                        {props.back_oracle_text}
-                    </div>
+                    <span><span className="modal-heading">Power/Toughness: </span>{frontPowerToughness}{pTDivider}{backPowerToughness}</span>
                 </h5>
                 <hr />
             </>
-        );
-    
-        // if the card has Flavor Text
-        if(props.front_flavor_text !== undefined && props.back_flavor_text !== undefined ){
-            flavorText = (
-                <>
-                <h5>
-                    {/* <span className="modal-heading">Flavor Text: </span><em>{props.front_flavor_text}</em> */}
-                    <div className="modal-heading">Flavor Text: </div>
-                    <div className="top-modal-text">
-                        <em>{props.front_flavor_text}</em>
-                    </div>
-                    <div className="modal-heading">Flavor Text: </div>
-                    <div>
-                        <em>{props.back_flavor_text}</em>
-                    </div>
-                </h5>
-                <hr />
-                </>
-            )
-        // if the front card has flavor text but the back card does not
-        } else if(props.front_flavor_text !== undefined && props.back_flavor_text === undefined){
-            flavorText = (
-                <>
-                <h5>
-                    <div className="modal-heading">Flavor Text: </div>
-                    <div>
-                        <em>{props.front_flavor_text}</em>
-                    </div>
-                </h5>
-                <hr />
-                </>
-            )
-        // if the front card does not have flavor text, but the back card does
-        } else if(props.front_flavor_text === undefined && props.back_flavor_text !== undefined){
-            flavorText = (
-                <>
-                <h5>
-                    <div className="modal-heading">Flavor Text: </div>
-                    <div>
-                        <em>{props.back_flavor_text}</em>
-                    </div>
-                </h5>
-                <hr />
-                </>
-            )
-        // they are === undefined b/c there is no front or back flavor text
-        };
-    
-        //if the card is a creature with power and toughness
-        let frontPowerToughness;
-        let backPowerToughness;
-        let pTDivider;
-        //if either the front or back card is a creature 
-        if(props.front_power !== undefined || props.back_power !== undefined ){
-            if(props.front_power !== undefined){
-                frontPowerToughness = (
-                    <>
-                        [{props.front_power}<strong>/</strong>{props.front_toughness}]
-                    </>
-                )
-            }
-            if(props.back_power !== undefined){
-                console.log(`back power toughness here: ${props.back_power} ${props.back_toughness}`);
-                backPowerToughness = (
-                    <>
-                        [{props.back_power}<strong>/</strong>{props.back_toughness}]
-                    </>
-                )
-            }
-            // if both the front and back have power and toughness, we want a divider
-            if(props.front_power !== undefined && props.back_power !== undefined ){
-                pTDivider = `  /  `;
-            } else {
-                pTDivider = "";
-            }
-            powerAndToughness = (
-                <>
-                    <h5>
-                        <span><span className="modal-heading">Power/Toughness: </span>{frontPowerToughness}{pTDivider}{backPowerToughness}</span>
-                    </h5>
-                    <hr />
-                </>
-            )
-        };
-        // Card Price
-        normalPrice = props.price ? `$${props.price}` : " N/A";
-        foilPrice = props.price_foil ?  `$${props.price_foil}` : " N/A";
-        price = (<>
-            <div id="price-container">
-                <h5>
-                    <span className="modal-heading">Price (USD): </span><span id="normalPrice"><em>Normal</em> - {normalPrice},</span><span><em>Foil</em> - {foilPrice}</span>
-                </h5>
-            </div>
-            <hr />
-        </>
         )
-        
-        // All the html content we created above goes here:
-        content = (
-            <div id="modal-container" style={props.style}>
-                <div id="heading-container">
-                    <h3>{props.card_name} - <em>{rarityCapitalized}</em></h3>
-                    {/* Modal Close Button */}
-                    {/* <div onClick={props.onCloseModal}>
-                        <i className="fas fa-times" id="modalCloseButton"></i>
-                    </div> */}
-                    <a href="/#" onClick={props.onCloseModal} id="modalCloseButton"><i className="fas fa-times" ></i></a>
-                </div> {/* end of heading-container */}
-                <hr id="topHR"/>
-                <div id="content-container">
-                    <div id="modal-image-container">
-                        {/* <img src={props.front_image_url} alt="" id="modal-image"/> */}
-                        <FlipCardForModal {...props}/>
-                    </div>
-                    <div id="text-container">
-                        {oracleText}
-                        {flavorText}
-                        {powerAndToughness}
-                        {price}
-                        <div id="linkContainer">
-                            <a href={props.edh_rec_link} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-searchengin"></i>View on EDHREC</a>
-                            <a href={props.gatherer_link} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-wizards-of-the-coast"></i>View on Gatherer</a>
-                            <a href={props.tcg_player_link} target="_blank" rel="noopener noreferrer" className="modalButton light"><i className="fas fa-dollar-sign"></i>Buy on TCGPlayer</a>
-                        </div>
-                    </div>
-                </div> {/* end of content-container */}
-            </div> // end of modal-container
-        );
-        return ReactDOM.createPortal(content, document.getElementById('modal-hook'));
     };
+    // Card Price
+    normalPrice = props.price ? `$${props.price}` : " N/A";
+    foilPrice = props.price_foil ?  `$${props.price_foil}` : " N/A";
+    price = (<>
+        <div id="price-container">
+            <h5>
+                <span className="modal-heading">Price (USD): </span><span id="normalPrice"><em>Normal</em> - {normalPrice},</span><span><em>Foil</em> - {foilPrice}</span>
+            </h5>
+        </div>
+        <hr />
+    </>
+    )
+    
+    // All the html content we created above goes here:
+    content = (
+        <div id="modal-container" style={props.style}>
+            <div id="heading-container">
+                <h3>{props.card_name} - <em>{rarityCapitalized}</em></h3>
+                {/* Modal Close Button */}
+                {/* <div onClick={props.onCloseModal}>
+                    <i className="fas fa-times" id="modalCloseButton"></i>
+                </div> */}
+                <a href="/#" onClick={props.onCloseModal} id="modalCloseButton"><i className="fas fa-times" ></i></a>
+            </div> {/* end of heading-container */}
+            <hr id="topHR"/>
+            <div id="content-container">
+                <div id="modal-image-container">
+                    {/* <img src={props.front_image_url} alt="" id="modal-image"/> */}
+                    <FlipCardForModal {...props}/>
+                </div>
+                <div id="text-container">
+                    {oracleText}
+                    {flavorText}
+                    {powerAndToughness}
+                    {price}
+                    <div id="linkContainer">
+                        <a href={props.edh_rec_link} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-searchengin"></i>View on EDHREC</a>
+                        <a href={props.gatherer_link} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-wizards-of-the-coast"></i>View on Gatherer</a>
+                        <a href={props.tcg_player_link} target="_blank" rel="noopener noreferrer" className="modalButton light"><i className="fas fa-dollar-sign"></i>Buy on TCGPlayer</a>
+                    </div>
+                </div>
+            </div> {/* end of content-container */}
+        </div> // end of modal-container
+    );
+    return ReactDOM.createPortal(content, document.getElementById('modal-hook'));
+};
+
+
+
+const Modal = (props) => {
     // Animation Library - npm install --save react-transition-group
     // we want to offset the top of our modal by whatever the current y-offset is from scrolling + X% of the window height so it is
     // roughly centered in the screen
@@ -394,47 +299,6 @@ const Modal = (props) => {
     const styleTop = {
         top: yOffsetForModal
     }
-
-    const [frontOracleText, setFrontOracleText] = useState('');
-    
-    
-    useEffect(() => {
-      console.log('in Modal useEffect')
-      const curateOracleText = (oracleText, setFrontOracleText) => {
-        let newString = '';
-        for(let i=0; i<oracleText.length; i++){
-          if(oracleText[i] === '{'){ //We find an opening bracket
-            // currentIndex++;
-            let nextCharSymbol = findSymbol(oracleText[i + 1]); //Look at the next char and see what symbol it is
-            let charSymbolAfterThat = findSymbol(oracleText[i + 2]) //Check for Hybrid Mana and Phyrexian Mana
-            if(charSymbolAfterThat !== '/'){ //It's a standard symbol, not hybrid or Phyrexian
-              newString += nextCharSymbol;
-              i = i + 1; //Increment i by 1 since we skipped the '{' character
-              continue;
-            } else { //It is Hybrid or Phyrexian
-              let finalCharSymbol = findSymbol(`${oracleText[i + 1]}${oracleText[i + 2]}${oracleText[i + 3]}`); //This would be the 'P' in {B/P} for black phyrexian mana
-              newString += finalCharSymbol;
-              i = i + 3;
-              continue;
-            }
-            //Put conditionals here for hybrid mana
-          } else if(oracleText[i] === '}'){ //We find a closing bracket
-            continue; //move on to the next character
-          }
-          //If we aren't looking at '{' or '}' characters or the characters in between those
-          newString += oracleText[i];
-        }
-        setFrontOracleText(newString);
-      }
-
-      if(props.oracle_text){
-        console.log('in first conditional')
-        curateOracleText(props.oracle_text, setFrontOracleText);
-      }
-      return () => {
-        // curateOracleText();
-      }
-    }, [props.oracle_text])
 
     return (
         <>
