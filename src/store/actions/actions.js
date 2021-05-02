@@ -264,8 +264,14 @@ async function getCardData(colorsArrayForAPICall, setsStringForAPICall, setShort
                 //Loop thru the cards objects and parse the card text
                 for(let eachCard of cards){
                   if(eachCard.oracle_text){
-                    console.log('in first conditional')
                     eachCard.oracle_text = curateOracleText(eachCard.oracle_text);
+                  }
+                  if(eachCard.card_faces){ //If it's a flip card
+                    for(let eachFace of eachCard.card_faces){
+                      if(eachFace.oracle_text){
+                        eachFace.oracle_text = curateOracleText(eachFace.oracle_text);
+                      }
+                    }
                   }
                 }
                 // if(props.oracle_text){

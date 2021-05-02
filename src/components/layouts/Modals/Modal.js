@@ -135,11 +135,13 @@ const ModalOverlayFlipCards = (props) => {
             <h5>
                 <div className="modal-heading">Oracle Text: </div>
                 <div className="top-modal-text">
-                    {props.front_oracle_text}
+                    <span className='oracleTextContainer'>{parse(props.front_oracle_text)}</span>
+                    {/* {props.front_oracle_text} */}
                 </div>
                 <div className="modal-heading">Oracle Text: </div>
                 <div>
-                    {props.back_oracle_text}
+                  <span className='oracleTextContainer'>{parse(props.back_oracle_text)}</span>
+                    {/* {props.back_oracle_text} */}
                 </div>
             </h5>
             <hr />
