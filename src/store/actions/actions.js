@@ -58,6 +58,136 @@ export const getCards = (colors,sets,setShorthand) => {
     }
 };
 
+const findSymbol = (char) => {
+  switch (char) {
+    //Colored Mana
+    case 'W':
+      return `<img className='testStringImage' src='../../images/manaSymbols/white.jpg'></img>`
+    case 'U':
+      return `<img className='testStringImage' src='../../images/manaSymbols/blue.jpg'></img>`
+    case 'B':
+      return `<img className='testStringImage' src='../../images/manaSymbols/black.jpg'></img>`
+    case 'R':
+      return `<img className='testStringImage' src='../../images/manaSymbols/red.jpg'></img>`
+    case 'G':
+      return `<img className='testStringImage' src='../../images/manaSymbols/green.jpg'></img>`
+
+    // ColorLess Mana
+    case 'C':
+      return `<img className='testStringImage' src='../../images/manaSymbols/colorless.jpg'></img>`
+
+    // Snow Mana
+    case 'S':
+      return `<img className='testStringImage' src='../../images/manaSymbols/snow.jpg'></img>`
+
+    // Generic Mana
+    case '0':
+      return `<img className='testStringImage' src='../../images/manaSymbols/zeroGeneric.jpg'></img>`
+    case '1':
+      return `<img className='testStringImage' src='../../images/manaSymbols/oneGeneric.jpg'></img>`
+    case '2':
+      return `<img className='testStringImage' src='../../images/manaSymbols/twoGeneric.jpg'></img>`
+    case '3': 
+      return `<img className='testStringImage' src='../../images/manaSymbols/threeGeneric.jpg'></img>`
+    case '4':
+      return `<img className='testStringImage' src='../../images/manaSymbols/fourGeneric.jpg'></img>`
+    case '5':
+      return `<img className='testStringImage' src='../../images/manaSymbols/fiveGeneric.jpg'></img>`
+    case '6':
+      return `<img className='testStringImage' src='../../images/manaSymbols/sixGeneric.jpg'></img>`
+    case '7':
+      return `<img className='testStringImage' src='../../images/manaSymbols/sevenGeneric.jpg'></img>`
+    case '8':
+      return `<img className='testStringImage' src='../../images/manaSymbols/eightGeneric.jpg'></img>`
+    case 'X':
+      return `<img className='testStringImage' src='../../images/manaSymbols/xGeneric.jpg'></img>`
+    case '/': //For Hybrid Mana Symbols & Phyrexian Mana Symbols
+      return `/`
+
+    //Phyrexian Mana
+    case 'W/P': //White 
+      return `<img className='testStringImage' src='../../images/manaSymbols/phyrexianWhite.jpg'></img>`
+    case 'U/P': //Blue
+      return `<img className='testStringImage' src='../../images/manaSymbols/phyrexianBlue.jpg'></img>`
+    case 'B/P': //Black
+      return `<img className='testStringImage' src='../../images/manaSymbols/phyrexianBlack.jpg'></img>`
+    case 'R/P': //Red
+      return `<img className='testStringImage' src='../../images/manaSymbols/phyrexianRed.jpg'></img>`
+    case 'G/P': //Red
+      return `<img className='testStringImage' src='../../images/manaSymbols/phyrexianGreen.jpg'></img>`
+
+    //Regular Hybrid Mana
+    case 'W/U': //White/Blue
+      return `<img className='testStringImage' src='../../images/manaSymbols/hybridWhiteBlue.jpg'></img>`
+    case 'U/B': //Blue/Black
+      return `<img className='testStringImage' src='../../images/manaSymbols/hybridBlueBlack.jpg'></img>`
+    case 'B/R': //Black/Red
+      return `<img className='testStringImage' src='../../images/manaSymbols/hybridBlackRed.jpg'></img>`
+    case 'R/G': //Red/Green
+      return `<img className='testStringImage' src='../../images/manaSymbols/hybridRedGreen.jpg'></img>`
+    case 'G/W': //Green/White
+      return `<img className='testStringImage' src='../../images/manaSymbols/hybridGreenWhite.jpg'></img>`
+    case 'W/B': //White/Black
+      return `<img className='testStringImage' src='../../images/manaSymbols/hybridWhiteBlack.jpg'></img>`
+    case 'U/R': //Blue/Red
+      return `<img className='testStringImage' src='../../images/manaSymbols/hybridBlueRed.jpg'></img>`
+    case 'B/G': //Black/Green
+      return `<img className='testStringImage' src='../../images/manaSymbols/hybridBlackGreen.jpg'></img>`
+    case 'R/W': //Red/White
+      return `<img className='testStringImage' src='../../images/manaSymbols/hybridRedWhite.jpg'></img>`
+    case 'G/U': //Green/Blue
+      return `<img className='testStringImage' src='../../images/manaSymbols/hybridGreenBlue.jpg'></img>`
+
+    //Hybrid Mana with Generic
+    case '2/W': //White
+      return `<img className='testStringImage' src='../../images/manaSymbols/hybridGenericWhite.jpg'></img>`
+    case '2/U': //Blue
+      return `<img className='testStringImage' src='../../images/manaSymbols/hybridGenericBlue.jpg'></img>`
+    case '2/B': //Black
+      return `<img className='testStringImage' src='../../images/manaSymbols/hybridGenericBlack.jpg'></img>`
+    case '2/R': //Red
+      return `<img className='testStringImage' src='../../images/manaSymbols/hybridGenericRed.jpg'></img>`
+    case '2/G': //Green
+      return `<img className='testStringImage' src='../../images/manaSymbols/hybridGenericGreen.jpg'></img>`
+
+
+    //General Symbols
+    case 'T': //Tap Symbol
+      return `<img className='testStringImage' src='../../images/manaSymbols/tapSymbol.jpg'></img>`
+    case 'Q': //Untap Symbol
+      return `<img className='testStringImage' src='../../images/manaSymbols/untapSymbol.jpg'></img>`
+    default:
+      return '';
+  }
+}
+
+const curateOracleText = (oracleText) => {
+  let newString = '';
+  for(let i=0; i<oracleText.length; i++){
+    if(oracleText[i] === '{'){ //We find an opening bracket
+      // currentIndex++;
+      let nextCharSymbol = findSymbol(oracleText[i + 1]); //Look at the next char and see what symbol it is
+      let charSymbolAfterThat = findSymbol(oracleText[i + 2]) //Check for Hybrid Mana and Phyrexian Mana
+      if(charSymbolAfterThat !== '/'){ //It's a standard symbol, not hybrid or Phyrexian
+        newString += nextCharSymbol;
+        i = i + 1; //Increment i by 1 since we skipped the '{' character
+        continue;
+      } else { //It is Hybrid or Phyrexian
+        let finalCharSymbol = findSymbol(`${oracleText[i + 1]}${oracleText[i + 2]}${oracleText[i + 3]}`); //This would be the 'P' in {B/P} for black phyrexian mana
+        newString += finalCharSymbol;
+        i = i + 3;
+        continue;
+      }
+      //Put conditionals here for hybrid mana
+    } else if(oracleText[i] === '}'){ //We find a closing bracket
+      continue; //move on to the next character
+    }
+    //If we aren't looking at '{' or '}' characters or the characters in between those
+    newString += oracleText[i];
+  }
+  // setFrontOracleText(newString);
+  return newString;
+}
 
 
 //=========================================================================================
@@ -131,6 +261,18 @@ async function getCardData(colorsArrayForAPICall, setsStringForAPICall, setShort
                     getCardDataPagination(dispatch, actionType, pagURL, setsStringForAPICall, setShortHand) //call the API fetch() function 
                 }, 100); //Scryfall API documentation asks for 100 ms break between calls
             } else {
+                //Loop thru the cards objects and parse the card text
+                for(let eachCard of cards){
+                  if(eachCard.oracle_text){
+                    console.log('in first conditional')
+                    eachCard.oracle_text = curateOracleText(eachCard.oracle_text);
+                  }
+                }
+                // if(props.oracle_text){
+                //   console.log('in first conditional')
+                //   curateOracleText(props.oracle_text, setFrontOracleText);
+                // }
+
                 console.log('cards before final dispatch:');
                 console.log(cards);
                 //We are done calling the Api for cards, now we can look at setsStringForAPICall and determine what string we need to update 
