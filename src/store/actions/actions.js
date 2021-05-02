@@ -99,6 +99,10 @@ const findSymbol = (char) => {
       return `<img className='testStringImage' src='../../images/manaSymbols/sevenGeneric.jpg'></img>`
     case '8':
       return `<img className='testStringImage' src='../../images/manaSymbols/eightGeneric.jpg'></img>`
+    case '9':
+      return `<img className='testStringImage' src='../../images/manaSymbols/nineGeneric.jpg'></img>`
+    case '10':
+      return `<img className='testStringImage' src='../../images/manaSymbols/tenGeneric.jpg'></img>`
     case 'X':
       return `<img className='testStringImage' src='../../images/manaSymbols/xGeneric.jpg'></img>`
     case '/': //For Hybrid Mana Symbols & Phyrexian Mana Symbols
