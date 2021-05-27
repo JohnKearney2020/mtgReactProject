@@ -52,7 +52,7 @@ MtG React Project uses the [Scryfall API](https://scryfall.com/docs/api) from [S
   <img width="806" src="/public/markdown/searchableDropdown.png">
 </p>
 <p align="center">
-  <img width="806" src="/public/markdown/mutipleSelections.png">
+  <img width="806" src="/public/markdown/multipleSelections.png">
 </p>
  
 *Animated Dual-faced Cards*
