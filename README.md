@@ -39,7 +39,9 @@ MtG React Project uses the [Scryfall API](https://scryfall.com/docs/api) from [S
   - *Modern Horizons*
   - *War of the Spark*
 
-
+<p align="center">
+  <img width="" src="/public/markdown/dynBackgroundGif2.gif">
+</p>
  
  *Animated Dual-faced Cards*
  - Cards with both a front and back are fully animated allowing the user to quickly switch between them
