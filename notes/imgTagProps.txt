@@ -15,23 +15,23 @@ type_line
 
 
 
-                key={index} 
-                src={eachCardObj.image_uris.border_crop} 
-                title={eachCardObj.name} 
-                alt=""
-                artist={eachCardObj.artist}
-                cmc={eachCardObj.cmc}
-                flavor_text={eachCardObj.flavor_text}
-                mana_cost={eachCardObj.mana_cost}
-                oracle_text={eachCardObj.oracle_text}
-                rarity={eachCardObj.rarity}
-                set_name={eachCardObj.set_name}
-                power={eachCardObj.power}
-                toughness={eachCardObj.toughness}
-                edh_rec_link={eachCardObj.related_uris.edhrec}
-                gatherer_link={eachCardObj.related_uris.gatherer}
-                card_type_line={eachCardObj.type_line}
-                onClick={this.onCardClick}
+  key={index} 
+  src={eachCardObj.image_uris.border_crop} 
+  title={eachCardObj.name} 
+  alt=""
+  artist={eachCardObj.artist}
+  cmc={eachCardObj.cmc}
+  flavor_text={eachCardObj.flavor_text}
+  mana_cost={eachCardObj.mana_cost}
+  oracle_text={eachCardObj.oracle_text}
+  rarity={eachCardObj.rarity}
+  set_name={eachCardObj.set_name}
+  power={eachCardObj.power}
+  toughness={eachCardObj.toughness}
+  edh_rec_link={eachCardObj.related_uris.edhrec}
+  gatherer_link={eachCardObj.related_uris.gatherer}
+  card_type_line={eachCardObj.type_line}
+  onClick={this.onCardClick}
 				
 Image component attributes:
 
