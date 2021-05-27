@@ -38,14 +38,27 @@ MtG React Project uses the [Scryfall API](https://scryfall.com/docs/api) from [S
   - *Core Set 2020*
   - *Modern Horizons*
   - *War of the Spark*
+  - *Aether Revolt*
+  - *Kaladesh*
 
 <p align="center">
   <img width="" src="/public/markdown/dynBackgroundGif2.gif">
 </p>
+
+*Searchable Dropdown*
+- Users can search for sets by name and make multiple set selections
+
+<p align="center">
+  <img width="806" src="/public/markdown/searchableDropdown.png">
+</p>
+<p align="center">
+  <img width="806" src="/public/markdown/mutipleSelections.png">
+</p>
  
- *Animated Dual-faced Cards*
+*Animated Dual-faced Cards*
  - Cards with both a front and back are fully animated allowing the user to quickly switch between them
  
 <p align="center">
   <img width="" src="/public/markdown/flipcard1Gif.gif">
 </p>
+
