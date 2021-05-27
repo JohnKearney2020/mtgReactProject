@@ -4,6 +4,8 @@ This frontend project allows users to quickly and easily browse the 20,000+ uniq
 
 ![Landing Page](/public/markdown/1.png)
 
+![Landing Page](/public/markdown/homepage.png)
+
 ### Built With
 This project was built using React and Redux. All styling and animations are done with CSS. No frontend styling frameworks were used (Bootstrap, Material UI, etc.) with the exceptions of **Semantic UI** (dropdown menu), **React Transition Group** (modal entrance and exit animations), and **React Lazy Load** (lazy loading of images).
 
