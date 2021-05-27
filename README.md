@@ -2,9 +2,7 @@
 
 This frontend project allows users to quickly and easily browse the 20,000+ unique cards from the 28 year history of the popular card game *Magic the Gathering*. Users can select mutiple sets and filter cards by color / card type and then be presented with every card matching that criteria.
 
-![Landing Page](/public/markdown/1.png)
-
-![Landing Page](/public/markdown/homepage.png)
+![Landing Page](/public/markdown/homepage1.png)
 
 ### Built With
 This project was built using React and Redux. All styling and animations are done with CSS. No frontend styling frameworks were used (Bootstrap, Material UI, etc.) with the exceptions of **Semantic UI** (dropdown menu), **React Transition Group** (modal entrance and exit animations), and **React Lazy Load** (lazy loading of images).
