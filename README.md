@@ -89,7 +89,6 @@ Checkout all these features on the live website [here](https://mtgreactproject.n
 ### Open Work
 Modal
 - The modal currently accomodates 99.99% of cards. A few of the wordier, dual faced cards (cards with both a front and back) do have trouble fitting on the modal. This needs to be addressed.
-<br />
 
 ### What I Would do Differently
 This was my first major React project. I started it while first learning React and kept working on it as I learned React and Redux. If I were to start from scratch with the knowledge I have now I would:
