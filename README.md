@@ -35,7 +35,7 @@ MtG React Project uses the [Scryfall API](https://scryfall.com/docs/api) from [S
   - *Double Masters*
   - *Jumpstart*
   - *Ikoria: Lair of Behemoths*
-  - *Commander 2020*
+  - *Commander 2021*
   - *Theros Beyond Death*
   - *Throne of Eldraine*
   - *Core Set 2020*
