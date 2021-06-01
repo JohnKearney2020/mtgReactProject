@@ -5,7 +5,6 @@ import LazyLoad from 'react-lazy-load';
 import Backdrop from './layouts/Modals/Backdrop';
 import Modal from './layouts/Modals/Modal';
 import Cards from './layouts/Cards';
-import './cardLayout.css'
 import FlipCard from './layouts/FlipCard';
 
 class Home extends Component {
@@ -166,15 +165,16 @@ class Home extends Component {
             //=========================================================================
             } else if(eachCardObj.name === "No Cards Found") {
                 return (
-                    <LazyLoad
-                        offsetVertical={200}
-                        debounce={false}
-                        height={452}
-                        width={616}
-                        key={index}
-                        >
-                        <img id="noCardFound" src={eachCardObj.image_uris.border_crop} alt="" key={index}></img>
-                    </LazyLoad>
+                    // <LazyLoad
+                    //     offsetVertical={200}
+                    //     debounce={false}
+                    //     height={452}
+                    //     width={616}
+                    //     key={index}
+                    //     >
+                    //     <img id="noCardFound" src={eachCardObj.image_uris.border_crop} alt="" key={index}></img>
+                    // </LazyLoad>
+                    <img id="noCardFound" src={eachCardObj.image_uris.border_crop} alt="" key={index}></img>
                 )
                 // }
             //=========================================================================
