@@ -28,22 +28,16 @@ class SetDropDown extends Component {
         if(localSetsFromApiAsString !== null){ //if we have any api data stored locally
             let localSetsFromApiAsObject = JSON.parse(localSetsFromApiAsString); //convert local storage from a string to an object we can use
             let currentDateTime = new Date(); // Get the current time
-            console.log(`Current date and time: ${currentDateTime}`);
-            console.log('type of time from local storage:');
             let timeStampFromLocalStorage = new Date(localSetsFromApiAsObject.time_created)
-            console.log(typeof timeStampFromLocalStorage);
             let dateDifference = currentDateTime - timeStampFromLocalStorage; //in milliseconds
             let hoursOld = Math.floor(dateDifference/(1000*60*60)) //in hours
-            console.log(`Hours old: ${hoursOld}`);
             if(hoursOld >= 24){
                 //delete local storage
-                console.log(`Local storage > 24 hours old, deleting and doing an api call for set dropdown`);
                 localStorage.removeItem("setsForDropDown");
                 //do a new api call
                 this.setDropDownApiCall();
             } else {
                 //set state equal to local storage sets object
-                console.log(`setting state equal to local storage and skipping api call`);
                 let filteredSetsForDropDown = this.filterSetsForDropDown(localSetsFromApiAsObject.data);
                 this.setState({
                     setDropDownIsLoading: false, // The DropDown menu is loaded, this turns off the loading symbol
@@ -51,7 +45,6 @@ class SetDropDown extends Component {
                 })
             }
         } else { //if we do not have any set data stored locally
-            console.log(`no sets stored locally, doing an api call for new sets`);
             this.setDropDownApiCall();
         }
     }
@@ -59,7 +52,6 @@ class SetDropDown extends Component {
     filterSetsForDropDown = (setsObjectToFilter) => {
         //this function first filters out the digital only sets, then it creates a new array using .map that will contain all the components
         //that will be displayed in the set dropdown
-        console.log(setsObjectToFilter);
         let filteredSetObjectsArray = setsObjectToFilter.filter((eachSetObj, index) => {
             return eachSetObj.digital === false;
         });
@@ -90,7 +82,6 @@ class SetDropDown extends Component {
     // Our API call function
     //====================================================
     setDropDownApiCall = async () => {
-        console.log(`Making API call for sets`);
         let filteredSetsForDropDownMenu = []; // This contains ALL sets returned from the API call. We filter this set later.
         try {
             let response = await fetch(`https://api.scryfall.com/sets/`);
@@ -98,7 +89,6 @@ class SetDropDown extends Component {
 
             //Local Storage:
             let currentTimeAndDate = new Date(); // get the current date and time
-            console.log(`date/time test: ${currentTimeAndDate}`);
             setObjects.time_created = currentTimeAndDate; // add the "time_created" key and current date and time value to the setObjects object return from the api
             localStorage.setItem("setsForDropDown", JSON.stringify(setObjects)); //convert the setObjects object to a string and store in 
             

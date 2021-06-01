@@ -3,7 +3,6 @@ import * as actionTypes from './actionTypes';
 //=================================================
             //Action Creators
 //=================================================           
-
 let cards = [];
 
 //==========================================================================
@@ -37,6 +36,7 @@ export const showLoadingWheelDispatch = () => {
         type: actionType
     }
 }
+
 export const showContentPolicyDispatch = () => {
     let actionType = actionTypes.SHOWCONTENTPOLICY;
     return {
@@ -44,14 +44,11 @@ export const showContentPolicyDispatch = () => {
     }
 }
 
-
-
 export const getCards = (colors,sets,setShorthand) => {
     let actionType = actionTypes.GETCARDS;
     let colorsArrayForAPICall = colors;
     let setsStringForAPICall = sets;
-        // Make a function call to find what the set shorthand value(s) should be
-    // let setShorthandForBackgrounds = getSetShorthand(setShorthand)
+    // Make a function call to find what the set shorthand value(s) should be
     let setShorthandForBackgrounds = setShorthand;
     return (dispatch) => {
         getCardData(colorsArrayForAPICall, setsStringForAPICall, setShorthandForBackgrounds, dispatch, actionType);
@@ -71,15 +68,12 @@ const findSymbol = (char) => {
       return `<img className='testStringImage' src='../../images/manaSymbols/red.jpg'></img>`
     case 'G':
       return `<img className='testStringImage' src='../../images/manaSymbols/green.jpg'></img>`
-
     // ColorLess Mana
     case 'C':
       return `<img className='testStringImage' src='../../images/manaSymbols/colorless.jpg'></img>`
-
     // Snow Mana
     case 'S':
       return `<img className='testStringImage' src='../../images/manaSymbols/snow.jpg'></img>`
-
     // Generic Mana
     case '0':
       return `<img className='testStringImage' src='../../images/manaSymbols/zeroGeneric.jpg'></img>`
@@ -107,7 +101,6 @@ const findSymbol = (char) => {
       return `<img className='testStringImage' src='../../images/manaSymbols/xGeneric.jpg'></img>`
     case '/': //For Hybrid Mana Symbols & Phyrexian Mana Symbols
       return `/`
-
     //Phyrexian Mana
     case 'W/P': //White 
       return `<img className='testStringImage' src='../../images/manaSymbols/phyrexianWhite.jpg'></img>`
@@ -119,7 +112,6 @@ const findSymbol = (char) => {
       return `<img className='testStringImage' src='../../images/manaSymbols/phyrexianRed.jpg'></img>`
     case 'G/P': //Red
       return `<img className='testStringImage' src='../../images/manaSymbols/phyrexianGreen.jpg'></img>`
-
     //Regular Hybrid Mana
     case 'W/U': //White/Blue
       return `<img className='testStringImage' src='../../images/manaSymbols/hybridWhiteBlue.jpg'></img>`
@@ -141,7 +133,6 @@ const findSymbol = (char) => {
       return `<img className='testStringImage' src='../../images/manaSymbols/hybridRedWhite.jpg'></img>`
     case 'G/U': //Green/Blue
       return `<img className='testStringImage' src='../../images/manaSymbols/hybridGreenBlue.jpg'></img>`
-
     //Hybrid Mana with Generic
     case '2/W': //White
       return `<img className='testStringImage' src='../../images/manaSymbols/hybridGenericWhite.jpg'></img>`
@@ -153,8 +144,6 @@ const findSymbol = (char) => {
       return `<img className='testStringImage' src='../../images/manaSymbols/hybridGenericRed.jpg'></img>`
     case '2/G': //Green
       return `<img className='testStringImage' src='../../images/manaSymbols/hybridGenericGreen.jpg'></img>`
-
-
     //General Symbols
     case 'T': //Tap Symbol
       return `<img className='testStringImage' src='../../images/manaSymbols/tapSymbol.jpg'></img>`
@@ -169,7 +158,6 @@ const curateOracleText = (oracleText) => {
   let newString = '';
   for(let i=0; i<oracleText.length; i++){
     if(oracleText[i] === '{'){ //We find an opening bracket
-      // currentIndex++;
       let nextCharSymbol = findSymbol(oracleText[i + 1]); //Look at the next char and see what symbol it is
       let charSymbolAfterThat = findSymbol(oracleText[i + 2]) //Check for Hybrid Mana and Phyrexian Mana
       if(charSymbolAfterThat !== '/'){ //It's a standard symbol, not hybrid or Phyrexian
@@ -189,7 +177,6 @@ const curateOracleText = (oracleText) => {
     //If we aren't looking at '{' or '}' characters or the characters in between those
     newString += oracleText[i];
   }
-  // setFrontOracleText(newString);
   return newString;
 }
 
@@ -218,10 +205,6 @@ const curateOracleText = (oracleText) => {
 //                            Main API Call function
 //=========================================================================================
 async function getCardData(colorsArrayForAPICall, setsStringForAPICall, setShortHand, dispatch, actionType) {
-    // console.log('colorsArrayForAPICall from click:');
-    // console.log(colorsArrayForAPICall);
-    // console.log(`dispatch variable in actions.js line 75: ${dispatch}`);
-    console.log(`card API in progress`);
     let apiURLInsert = createApiURL(colorsArrayForAPICall);
     try{
         let response = await fetch(`https://api.scryfall.com/cards/search?&q=${setsStringForAPICall}+${apiURLInsert}`);
@@ -248,7 +231,6 @@ async function getCardData(colorsArrayForAPICall, setsStringForAPICall, setShort
         //the returned object will look like below and mimics what we'd normally return so as to not cause errors with the .filter() array in the render() function of our Home.js component
         /* {object: "error", code: "not_found", status: 404, details: "Your query didn’t match any cards. Adjust your sea…ntax guide at https://scryfall.com/docs/reference"} */
         if(cardObjects.object === 'error') {
-            // console.log('sucessfully triggered an error response from API');
             let errorCardObject =
                 [
                     {
@@ -278,13 +260,6 @@ async function getCardData(colorsArrayForAPICall, setsStringForAPICall, setShort
                     }
                   }
                 }
-                // if(props.oracle_text){
-                //   console.log('in first conditional')
-                //   curateOracleText(props.oracle_text, setFrontOracleText);
-                // }
-
-                console.log('cards before final dispatch:');
-                console.log(cards);
                 //We are done calling the Api for cards, now we can look at setsStringForAPICall and determine what string we need to update 
                 //the global state with for the header and card container backgrounds.
                 dispatch(executeDispatch(actionType, cards, setsStringForAPICall, setShortHand));
@@ -305,8 +280,6 @@ async function getCardDataPagination(dispatch, actionType, pagURL, setsStringFor
     try{
         let response = await fetch(pagURL);
         let cardObjects = await response.json();
-        // console.log('card objects sucessfully pulled from API:');
-        // console.log(cardObjects);
         cards = cards.concat(cardObjects.data); //this is at minimum our 2nd call for cards so we need to concat onto earlier array
         if(cardObjects.has_more === true) {
             setTimeout(() => {
@@ -314,8 +287,6 @@ async function getCardDataPagination(dispatch, actionType, pagURL, setsStringFor
             getCardDataPagination(dispatch, actionType, pagURL, setsStringForAPICall, setShortHand) //call the API fetch() function 
             }, 100);
         } else {
-            // console.log('cards before final dispatch:');
-            // console.log(cards);
             dispatch(executeDispatch(actionType, cards, setsStringForAPICall, setShortHand));
             return cardObjects;
         }
@@ -359,10 +330,4 @@ function createApiURL(arrayOfColors){
     }
     return stringForAPIURL;
 }
-
-
-// function getSetShorthand(setStringFromUsers) {
-//     console.log(`In our getSetShortHandFunction: ${setStringFromUsers}`);
-//     return setStringFromUsers;
-// }
 

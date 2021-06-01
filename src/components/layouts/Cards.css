@@ -3,15 +3,9 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    /* margin-top: 1rem; */
     padding-top: 1rem;
     padding-bottom: 6vh;
-    /* margin-bottom: 4vh; */
-    /* width: 100vw; */
-    /* background-color: red; */
     min-height: 100vh;
-    /* background: url('../components/images/background/indexBackground.png'); */
-    /* height: 100%; */
     width: 100%;
     background-size: cover;
     background-position: center center;
@@ -64,16 +58,16 @@
         transform: scale(1.00);
     }
     #noCardFound {
-      height: 367px;
-      width: 500px;
+        height: 367px;
+        width: 500px;
     }
 }
 
 @media screen and (max-width: 576px){
     #noCardFound {
-      height: 257px;
-      width: 350px;
-      transition: none;
+        height: 257px;
+        width: 350px;
+        transition: none;
     }
     #noCardFound:hover {
         transform: none;
@@ -90,7 +84,7 @@
         height: auto
     }
     #noCardFound {
-      height: 213px;
-      width: 290px;
+        height: 213px;
+        width: 290px;
     }
 }

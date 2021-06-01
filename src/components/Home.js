@@ -46,22 +46,15 @@ class Home extends Component {
         };
     }
 
-    // changeScroll = () => { 
-        // const style = document.body.style.overflow; 
-        // document.body.style.overflow = (style === 'hidden') ? 'auto':'hidden';
-    // }
-
     closeCardModal = (event) => {
         event.preventDefault();
         this.setState({
             cardClicked: false,
             type_of_card: "",
         })
-        // this.changeScroll(); // re-enable mouse scrolling
     }
 
     onCardClick = (event) => {
-        console.log('card is clicked!');
         // find out how far the user has scrolled down in the Y direction
         const yAmountScrolled = window.scrollY;
         this.setState({ 
@@ -98,7 +91,7 @@ class Home extends Component {
             card_type_line: event.target.dataset.card_type_line          
         }, () => {
             // console.log(`Type of card for Modal: ${this.state.type_of_card}`);
-            console.log(`normal card setState called`);
+            // console.log(`normal card setState called`);
         });
         // this.changeScroll(); //stop mouse scrolling
     }
@@ -165,18 +158,8 @@ class Home extends Component {
             //=========================================================================
             } else if(eachCardObj.name === "No Cards Found") {
                 return (
-                    // <LazyLoad
-                    //     offsetVertical={200}
-                    //     debounce={false}
-                    //     height={452}
-                    //     width={616}
-                    //     key={index}
-                    //     >
-                    //     <img id="noCardFound" src={eachCardObj.image_uris.border_crop} alt="" key={index}></img>
-                    // </LazyLoad>
                     <img id="noCardFound" src={eachCardObj.image_uris.border_crop} alt="" key={index}></img>
                 )
-                // }
             //=========================================================================
             //                             Flip Cards
             //=========================================================================
@@ -207,67 +190,13 @@ class Home extends Component {
                         <Backdrop yOffSetValue={this.state.yOffset} onClick={this.closeCardModal} style={{zIndex:1000}}/>    
                     </React.Fragment>
                 }
-                {/* <Modal 
-                    show={this.state.cardClicked}
-                    typeOfCard={this.state.type_of_card}
-                    onCloseModal={this.closeCardModal}
-                    header={this.state.card_name}
-                    contentClass="card-item__modal-content"
-                    footerClass="card-item__modal-actions"
-                    // footer={<button onClick={this.closeCardModal}>CLOSE</button>}
-                    yOffSetValue={this.state.yOffset}
-                    image_url__for_card_modal={this.state.image_url}
-                    cardOracleText={this.state.oracle_text}
-                    cardFlavorText={this.state.flavor_text}
-                    cardPower={this.state.power}
-                    cardToughness={this.state.toughness}
-                    cardPriceNormal={this.state.price}
-                    cardPriceFoil={this.state.price_foil}
-                    edhRecLink={this.state.edh_rec_link}
-                    gathererLink={this.state.gatherer_link}
-                    tcgPlayerLink={this.state.tcg_player_link}
-                    card_rarity={this.state.rarity}
-                    {...this.state}
-                > */}
                 <Modal 
-                    // show={this.state.cardClicked}
                     typeOfCard={this.state.type_of_card}
                     onCloseModal={this.closeCardModal}
                     {...this.state}
                 >
                 </Modal>
-                {/* <Modal 
-                    show={this.state.cardClicked}
-                    typeOfCard={this.state.type_of_card}
-                    onCloseModal={this.closeCardModal}
-                    card_rarity={this.state.card_rarity}
-                    oracle_text={this.state.oracle_text}
-                    front_oracle_text={this.state.front_oracle_text}
-                    back_oracle_text={this.state.back_oracle_text}
-                    flavor_text={this.state.flavor_text}
-                    front_flavor_text={this.state.front_flavor_text}
-                    back_flavor_text={this.state.back_flavor_text}
-                    power={this.state.power}
-                    toughness={this.state.toughness}
-                    front_power={this.state.front_power}
-                    front_toughness={this.state.front_toughness}
-                    back_power={this.state.back_power}
-                    back_toughness={this.state.back_toughness}
-                    price={this.state.price}
-                    price_foil={this.state.price_foil}
-                    card_name={this.state.card_name}
-                    image_url={this.state.image_url}
-                    front_image_url={this.state.front_image_url}
-                    edh_rec_link={this.state.edh_rec_link}
-                    gatherer_link={this.state.gatherer_link}
-                    tcg_player_link={this.state.tcg_player_link}
-                >
-                </Modal> */}
-                {/* End of Modal */}
                 <Cards cardsToRender={filteredCards} cardClicked={this.state.cardClicked} />
-                {/* <div className="cards-flex-container">
-                    {filteredCards}
-                </div> */}
             </>
         )
     }

@@ -9,8 +9,6 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 //import layouts
 import BaseLayout from './components/layouts/BaseLayout';
 
-// import TestComponent from './components/SetSearchTest'
-// import TestComponent from './components/ApiTest';
 import Home from './components/Home';
 
 import './index.css';
@@ -19,7 +17,6 @@ import './index.css';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
-// const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
   <Provider store={store}>

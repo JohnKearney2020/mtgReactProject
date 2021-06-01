@@ -1,23 +1,15 @@
 #contentPolicyContainer {
     display: flex;
     align-items: center;
-    /* justify-content: space-around; */
-    /* justify-content: space-between; */
-    /* justify-content: space-evenly; */
     justify-content: center;
     width: 100%;
     min-height: 4vh;
     background-color: rgb(24,24,24);
     position: fixed;
-    /* position: relative; */
     right: 0;
     bottom: 4vh;
     color: #D0D0D0;
     border: 1px solid #D0D0D0;
-}
-
-#contentPolicyContainer div {
-    /* margin: 0 1rem; */
 }
 
 #contentPolicyContainer.showContentPolicy {
@@ -35,42 +27,22 @@
 }
 
 .fa-times {
-    /* color: red; */
     color: #C80815;
     font-size: 2rem;
 }
 
 @media only screen and (max-width: 1200px){
-    #contentPolicyContainer {
-        /* padding: 0.4rem; */
-    }
     #contentPolicyText {
-        /* padding:0.2rem 0.8rem; */
         margin-top: 0.4rem;
         margin-bottom: 0.4rem;
         margin-left: 0.4rem;
         margin-right: 2rem;
     }
-    #contentPolicyClose {
-        /* margin: 0; */
-        /* padding: 0.4rem; */
-    }
 }
 
 
 @media only screen and (max-width: 768px){
-    #contentPolicyContainer {
-        /* padding: 0.4rem; */
-    }
-    #contentPolicyText {
-        /* padding:0.2rem 0.8rem; */
-        /* margin-top: 0.4rem;
-        margin-bottom: 0.4rem;
-        margin-left: 0.4rem;
-        margin-right: 2rem; */
-    }
     #contentPolicyClose {
-        /* margin: 0; */
         margin-right: 0.3rem;
         padding: 0.4rem;
     }

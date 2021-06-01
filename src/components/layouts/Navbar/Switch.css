@@ -7,33 +7,32 @@
     /* ===============================================================*/
     width: 35px;
     height: 17px;
-    /* z-index: 100; */
 }
 /* Hide default HTML checkbox */
 .switch input {
-opacity: 0;
-width: 0;
-height: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 /* The slider */
 /* -- the slider is the 'ball' that slide across the 'track' */
 .slider {
-position: absolute;
-cursor: pointer;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-/* ================================================ */
-/* This is the color of the 'track' before clicking */
-/* ================================================ */
-background-color: white;
-/* ===================================================================== */
-/* This is the transition speed of the 'track' and 'ball' changing color */
-/* ===================================================================== */
--webkit-transition: .2s;
-transition: .2s;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* ================================================ */
+    /* This is the color of the 'track' before clicking */
+    /* ================================================ */
+    background-color: white;
+    /* ===================================================================== */
+    /* This is the transition speed of the 'track' and 'ball' changing color */
+    /* ===================================================================== */
+    -webkit-transition: .2s;
+    transition: .2s;
 }
 
 .slider:before {

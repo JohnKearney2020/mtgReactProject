@@ -2,14 +2,11 @@
     height: 50vh;
     width: 100%;
     background: no-repeat 100% 5%;
-    /* background: url(../images/banner/ELDb.jpg) no-repeat 100% 5%; */
-    /* background: url(../images/banner/ELDc.jpg) no-repeat 100% 5%; */
     background-size: cover;
 	background-position: center center;
 	padding: 0px;
     margin: 0px;
     display: block;
-
 }
 
 .headerFadeIn {
@@ -17,6 +14,7 @@
     animation-iteration-count: 1; 
     animation-fill-mode: forwards;
 }
+
 .headerFadeOut {
     animation: fadeOutAnimation ease 1s; 
     animation-iteration-count: 1; 

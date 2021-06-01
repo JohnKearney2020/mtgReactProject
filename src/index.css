@@ -1,28 +1,7 @@
-/* html {
-  animation: fadeInAnimationBody ease 1.5s; 
-  animation-iteration-count: 1; 
-  animation-fill-mode: forwards;
-} */
-
 body {
-  /* font-family: 'Nunito', sans-serif; */
   font-family: 'Nunito'!important;
   background-color: black;
-  /* background-color: white; */
-  /* animation: fadeInAnimationBody ease 1.5s; 
-  animation-iteration-count: 1; 
-  animation-fill-mode: forwards; */
-  /* min-height: 100vh; */
 }
-
-/* @keyframes fadeInAnimationBody { 
-  0% { 
-      opacity: 0; 
-  } 
-  100% { 
-      opacity: 1; 
-  } 
-} */
 
 #preload {
   display: none;

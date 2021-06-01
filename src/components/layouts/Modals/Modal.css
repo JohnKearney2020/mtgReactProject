@@ -1,30 +1,22 @@
-/* .oracleTextContainer {
-  line-height: 25px
-} */
-
 /* ====================================================================================================== */
                                         /* CSSTransitions Animations  */
 /* ====================================================================================================== */
 .card-modal-animate-enter {
-  /* transform: translateY(-10rem); */
   opacity: 0;
 }
 
 .card-modal-animate-enter-active {
-/* transform: translateY(0); */
-opacity: 1;
-transition: all 400ms;
+  opacity: 1;
+  transition: all 400ms;
 }
 
 .card-modal-animate-exit {
-/* transform: translateY(0); */
-opacity: 1;
+  opacity: 1;
 }
 
 .card-modal-animate-exit-active {
-/* transform: translateY(-10rem); */
-opacity: 0;
-transition: all 400ms;
+  opacity: 0;
+  transition: all 400ms;
 }
 
 /* End of Modal Animations */
@@ -32,10 +24,6 @@ transition: all 400ms;
 #modal-container {
   z-index: 1000;
   position: fixed;
-  /* position: absolute; */
-  /* position: relative; */
-  /* position: sticky; */
-  /* position: static; */
   left: 50%!important;
   transform: translate(-50%)!important;
   color: white;
@@ -52,7 +40,6 @@ transition: all 400ms;
 #modal-container h3,h5{
   /* Semantic UI wants this to be Lato */
   font-family: 'Nunito';
-  /* margin: 1rem 1rem;    */
 }
 #heading-container h3,h5{
   /* Semantic UI wants this to be Lato */
@@ -65,32 +52,16 @@ transition: all 400ms;
   height: 100%;
   width: 100%;
   border-radius: 25px!important;
-  /* justify-content: space-around; */
   justify-content: space-between;
   align-items: center;
   font-size: 1.2rem;
   font-weight: 700;
 }
-/* #heading-container div { 
-  display: flex;
-  align-items: center;
-} */
 /* The Close Button on the Heading */
 #modalCloseButton {
-  /* position: absolute; */
-  /* right: 20px; */
   font-size: 2rem;
-  /* color: red; */
-  /* color: #850505; */
-  /* color: #c80815; */
-  /* color: rgb(255,215,0); */
   color: #d0d0d0;
-  /* color: rgb(143, 148, 145); */
-  /* color: #8b0000; */
-  /* color: #800020; */
-  /* color: #9b111e; */
   transition: transform .3s ease;
-  /* border: 2px solid #9b111e; */
   margin-right: 0.7rem;
 }
 
@@ -115,7 +86,6 @@ transition: all 400ms;
   font-weight: 700;
   letter-spacing: 1.5px;
   color: white;
-  /* color: rgb(143, 148, 145); */
   font-size: 1.2rem;
 }
 .top-modal-text {
@@ -137,9 +107,6 @@ transition: all 400ms;
 
 #modal-image {
   padding: 2rem;
-  /* height: auto; */
-  /* max-width: 100%; */
-  /* border-radius: 5% / 3.75%; */
   border-radius: 11% / 8%;
 }
 
@@ -148,11 +115,7 @@ transition: all 400ms;
   height: 100%;
   width: 100%;
   padding: 2rem;
-  /* color: #b6b6b6; */
-  /* color: #cecece; */
-  /* color: #e6e6e6; */
   color: #d0d0d0;
-  /* font-weight: 400; */
 }
 
 #text-container h5{
@@ -164,18 +127,9 @@ transition: all 400ms;
   border: 0;
   height: 2px;
   width: 100%;
-  /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); */
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255,215,0,0.75), rgba(0, 0, 0, 0));
-  /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(192,192,192,0.75), rgba(0, 0, 0, 0)); */
-  /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(170,169,173,0.75), rgba(0, 0, 0, 0)); */
 }
 
-/* #priceContainer {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
-} */
 #normalPrice {
   margin-right: 0.8rem;
 }
@@ -294,8 +248,6 @@ transition: all 400ms;
   }
   #modalCloseButton {
     font-size: 1.55rem;
-    /* right: 10px; */
-
   }
   #modalCloseButton:hover {
     transform: scale(1.0);

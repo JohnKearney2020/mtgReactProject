@@ -29,30 +29,15 @@ const ModalOverlayNormalCards = (props) => {
     normalPrice="";
     foilPrice="";
     content="";
-
     rarityCapitalized = props.card_rarity.charAt(0).toUpperCase() + props.card_rarity.slice(1);
-    // console.log(`props sent to modal:`);
-    // console.log(props);
-
-    // oracleText = (<>
-    //     <h5>
-    //         <span className="modal-heading">Oracle Text: </span>
-    //         <br/>
-    //         {props.oracle_text}
-    //     </h5>
-    //     <hr /></>
-    // );
 
     oracleText = (<>
-      <h5 >
-          <span className="modal-heading">Oracle Text: </span>
-          <br/>
-          {/* {props.oracle_text} */}
-          {/* {curatedOracleText} */}
-          {/* <div id="testString"></div> */}
-          <span className='oracleTextContainer'>{parse(props.oracle_text)}</span>
-      </h5>
-      <hr /></>
+        <h5 >
+            <span className="modal-heading">Oracle Text: </span>
+            <br/>
+            <span className='oracleTextContainer'>{parse(props.oracle_text)}</span>
+        </h5>
+        <hr /></>
     );
     //if the card has Flavor Text
     if(props.flavor_text){
@@ -136,12 +121,10 @@ const ModalOverlayFlipCards = (props) => {
                 <div className="modal-heading">Oracle Text: </div>
                 <div className="top-modal-text">
                     <span className='oracleTextContainer'>{parse(props.front_oracle_text)}</span>
-                    {/* {props.front_oracle_text} */}
                 </div>
                 <div className="modal-heading">Oracle Text: </div>
                 <div>
-                  <span className='oracleTextContainer'>{parse(props.back_oracle_text)}</span>
-                    {/* {props.back_oracle_text} */}
+                    <span className='oracleTextContainer'>{parse(props.back_oracle_text)}</span>
                 </div>
             </h5>
             <hr />
@@ -153,7 +136,6 @@ const ModalOverlayFlipCards = (props) => {
         flavorText = (
             <>
             <h5>
-                {/* <span className="modal-heading">Flavor Text: </span><em>{props.front_flavor_text}</em> */}
                 <div className="modal-heading">Flavor Text: </div>
                 <div className="top-modal-text">
                     <em>{props.front_flavor_text}</em>
@@ -180,6 +162,7 @@ const ModalOverlayFlipCards = (props) => {
             </>
         )
     // if the front card does not have flavor text, but the back card does
+    // they are === undefined b/c there is no front or back flavor text
     } else if(props.front_flavor_text === undefined && props.back_flavor_text !== undefined){
         flavorText = (
             <>
@@ -192,9 +175,7 @@ const ModalOverlayFlipCards = (props) => {
             <hr />
             </>
         )
-    // they are === undefined b/c there is no front or back flavor text
     };
-
     //if the card is a creature with power and toughness
     let frontPowerToughness;
     let backPowerToughness;
@@ -209,7 +190,7 @@ const ModalOverlayFlipCards = (props) => {
             )
         }
         if(props.back_power !== undefined){
-            console.log(`back power toughness here: ${props.back_power} ${props.back_toughness}`);
+            // console.log(`back power toughness here: ${props.back_power} ${props.back_toughness}`);
             backPowerToughness = (
                 <>
                     [{props.back_power}<strong>/</strong>{props.back_toughness}]
@@ -249,16 +230,11 @@ const ModalOverlayFlipCards = (props) => {
         <div id="modal-container" style={props.style}>
             <div id="heading-container">
                 <h3>{props.card_name} - <em>{rarityCapitalized}</em></h3>
-                {/* Modal Close Button */}
-                {/* <div onClick={props.onCloseModal}>
-                    <i className="fas fa-times" id="modalCloseButton"></i>
-                </div> */}
                 <a href="/#" onClick={props.onCloseModal} id="modalCloseButton"><i className="fas fa-times" ></i></a>
             </div> {/* end of heading-container */}
             <hr id="topHR"/>
             <div id="content-container">
                 <div id="modal-image-container">
-                    {/* <img src={props.front_image_url} alt="" id="modal-image"/> */}
                     <FlipCardForModal {...props}/>
                 </div>
                 <div id="text-container">
