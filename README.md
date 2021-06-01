@@ -38,7 +38,7 @@ MtG React Project uses the [Scryfall API](https://scryfall.com/docs/api) from [S
   - *Commander 2020*
   - *Theros Beyond Death*
   - *Throne of Eldraine*
-  - *Core Set 2020*
+  - *Core Set 2021*
   - *Modern Horizons*
   - *War of the Spark*
   - *Aether Revolt*
