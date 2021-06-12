@@ -25,8 +25,7 @@ const ScrollToTop = () => {
   return (
     <CSSTransition in={showButton} unmountOnExit timeout={500} classNames="scrolltop-animate">
       <div id="scrollToTopButton" onClick={scrollToTopHandler}>
-        {/* <img src="./images/plus1.png" alt="Scroll to top button."></img> */}
-        <img src="./images/plus1_3.png" alt="Scroll to top button."></img>
+        <img src="./images/scrollTop.png" alt="Scroll to top button."></img>
       </div>
     </CSSTransition>
   )
