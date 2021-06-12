@@ -11,7 +11,7 @@ const ScrollToTop = () => {
   window.onscroll = function() {scrollFunction()};
 
   const scrollFunction = () => {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
       if(showButton === false) setShowButton(true);
     } else {
       if(showButton === true) setShowButton(false);

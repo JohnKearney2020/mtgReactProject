@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 #scrollToTopButton {
   position: fixed ;
   /* bottom: 60px; */
@@ -8,7 +12,7 @@
 }
 
 #scrollToTopButton img {
-  width: 140px;
+  width: 110px;
   height: auto;
   transition: transform .4s ease;
 }
@@ -42,7 +46,7 @@
 
 @media screen and (max-width: 768px){
   #scrollToTopButton img {
-    width: 120px;
+    width: 100px;
     height: auto;
     transition: transform .4s ease;
   }
