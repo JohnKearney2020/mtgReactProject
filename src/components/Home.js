@@ -6,6 +6,7 @@ import Backdrop from './layouts/Modals/Backdrop';
 import Modal from './layouts/Modals/Modal';
 import Cards from './layouts/Cards';
 import FlipCard from './layouts/FlipCard';
+import ScrollToTop from './ScrollToTop';
 
 class Home extends Component {
     
@@ -197,6 +198,7 @@ class Home extends Component {
                 >
                 </Modal>
                 <Cards cardsToRender={filteredCards} cardClicked={this.state.cardClicked} />
+                <ScrollToTop />
             </>
         )
     }
