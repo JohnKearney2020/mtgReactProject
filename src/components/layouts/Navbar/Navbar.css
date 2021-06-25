@@ -16,6 +16,7 @@
     align-items: center;
     min-height: 7vh;
     background-color: rgb(24, 24, 24);
+    padding: 10px 0px;
 }
 #dropDownContainer {
     width: 35%;
