@@ -5,8 +5,6 @@ import './FlipCard.css';
 const FlipCard = (props) => {
     const[flipToggleClass, setFlipToggleClass] = useState("");
     const[hideFrontFlipIconToggle, setHideFrontFlipIconToggle] = useState("");
-    console.log('in flip card:');
-    console.log(props.cardObject);
     // let imgUrlFront = props.cardObject.card_faces[0].image_uris.normal || "https://i.imgur.com/Qx6AMQQ.jpg";
     let imgUrlFront = props.cardObject.card_faces[0].hasOwnProperty('image_uris') ? props.cardObject.card_faces[0].image_uris.normal : "https://i.imgur.com/Qx6AMQQ.jpg";
     
