@@ -72,7 +72,8 @@ const ModalOverlayNormalCards = (props) => {
     )
     // All the html content we created above goes here:
     content = (
-        <div id="modal-container" style={props.style}>
+        // <div id="modal-container" style={props.style}>
+        <div id="modal-container">
             <div id="heading-container">
                 <h3>{props.card_name} - <em>{rarityCapitalized}</em></h3>
                 <a href="/#" onClick={props.onCloseModal} id="modalCloseButton"><i className="fas fa-times" ></i></a>
@@ -227,7 +228,8 @@ const ModalOverlayFlipCards = (props) => {
     
     // All the html content we created above goes here:
     content = (
-        <div id="modal-container" style={props.style}>
+        // <div id="modal-container" style={props.style}>
+        <div id="modal-container">
             <div id="heading-container">
                 <h3>{props.card_name} - <em>{rarityCapitalized}</em></h3>
                 <a href="/#" onClick={props.onCloseModal} id="modalCloseButton"><i className="fas fa-times" ></i></a>
