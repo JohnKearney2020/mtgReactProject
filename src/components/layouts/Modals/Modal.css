@@ -36,6 +36,7 @@
   white-space: pre-wrap;
   width: 60vw;
   height: auto;
+  margin-bottom: 40px;
   /* overflow-y: scroll; */
 }
 #modal-container h3,h5{
