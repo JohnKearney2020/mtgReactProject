@@ -17,14 +17,13 @@
     min-height: 7vh;
     background-color: rgb(24, 24, 24);
     padding: 10px 0px;
-    z-index: 100;
 }
 #dropDownContainer {
     width: 35%;
     margin: 0rem 1rem;
     display: flex;
     justify-content: center;
-    z-index: 100;
+    z-index: 10;
 }
 
 nav * {
