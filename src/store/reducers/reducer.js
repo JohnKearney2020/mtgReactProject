@@ -4,7 +4,8 @@ const intitialState = {
     cards: [],
     setForBackgrounds: "DEFAULT",
     isLoading: "hideLoading",
-    showContentPolicy: "showContentPolicy"
+    showContentPolicy: "showContentPolicy",
+    cardFlipped: false
 }
 
 const reducer = (state = intitialState, action) => {
@@ -32,6 +33,16 @@ const reducer = (state = intitialState, action) => {
             return {
                 ...state,
                 showContentPolicy: "hideContentPolicy"
+            }
+        case actionTypes.CARD_FLIPPED_TRUE:
+            return {
+                ...state,
+                cardFlipped: true
+            }
+        case actionTypes.CARD_FLIPPED_FALSE:
+            return {
+                ...state,
+                cardFlipped: false
             }
         default:
             return state;

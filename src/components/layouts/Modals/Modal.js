@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
+import { CARD_FLIPPED_TRUE, CARD_FLIPPED_FALSE } from '../../../store/actions/actionTypes';
 
 import '../../../index.css';
 import './Modal.css';
@@ -104,8 +106,10 @@ const ModalOverlayNormalCards = (props) => {
 //============================================================================================================================
 //                                          Modal for Flip Cards
 //============================================================================================================================
+// const ModalOverlayFlipCards = (props, {cardFlipped, cardFlipHandler }) => {
 const ModalOverlayFlipCards = (props) => {
-
+    const { cardFlipped } = props;
+    console.log(`Card Flipped Status: ${cardFlipped}`);
     oracleText="";
     rarityCapitalized="";
     flavorText="";
@@ -119,14 +123,22 @@ const ModalOverlayFlipCards = (props) => {
     oracleText = (
         <>
             <h5>
-                <div className="modal-heading">Oracle Text: </div>
-                <div className="top-modal-text">
-                    <span className='oracleTextContainer'>{parse(props.front_oracle_text)}</span>
-                </div>
-                <div className="modal-heading">Oracle Text: </div>
-                <div>
-                    <span className='oracleTextContainer'>{parse(props.back_oracle_text)}</span>
-                </div>
+                {!cardFlipped &&
+                  <>
+                    <div className="modal-heading">Oracle Text: </div>
+                    <div className="top-modal-text">
+                        <span className='oracleTextContainer'>{parse(props.front_oracle_text)}</span>
+                    </div>
+                  </>
+                }
+                {cardFlipped && 
+                  <>
+                    <div className="modal-heading">Oracle Text: </div>
+                    <div>
+                        <span className='oracleTextContainer'>{parse(props.back_oracle_text)}</span>
+                    </div>
+                  </>
+                }
             </h5>
             <hr />
         </>
@@ -137,14 +149,22 @@ const ModalOverlayFlipCards = (props) => {
         flavorText = (
             <>
             <h5>
-                <div className="modal-heading">Flavor Text: </div>
-                <div className="top-modal-text">
-                    <em>{props.front_flavor_text}</em>
-                </div>
-                <div className="modal-heading">Flavor Text: </div>
-                <div>
-                    <em>{props.back_flavor_text}</em>
-                </div>
+                {!cardFlipped &&
+                  <>
+                    <div className="modal-heading">Flavor Text: </div>
+                    <div className="top-modal-text">
+                        <em>{props.front_flavor_text}</em>
+                    </div>
+                  </>
+                }
+                {cardFlipped && 
+                  <>
+                    <div className="modal-heading">Flavor Text: </div>
+                    <div>
+                        <em>{props.back_flavor_text}</em>
+                    </div>
+                  </>
+                }
             </h5>
             <hr />
             </>
@@ -153,13 +173,17 @@ const ModalOverlayFlipCards = (props) => {
     } else if(props.front_flavor_text !== undefined && props.back_flavor_text === undefined){
         flavorText = (
             <>
-            <h5>
-                <div className="modal-heading">Flavor Text: </div>
-                <div>
-                    <em>{props.front_flavor_text}</em>
-                </div>
-            </h5>
-            <hr />
+                {!cardFlipped &&
+                  <>
+                    <h5>
+                        <div className="modal-heading">Flavor Text: </div>
+                        <div>
+                            <em>{props.front_flavor_text}</em>
+                        </div>
+                    </h5>
+                    <hr />
+                  </>
+                }
             </>
         )
     // if the front card does not have flavor text, but the back card does
@@ -167,13 +191,17 @@ const ModalOverlayFlipCards = (props) => {
     } else if(props.front_flavor_text === undefined && props.back_flavor_text !== undefined){
         flavorText = (
             <>
-            <h5>
-                <div className="modal-heading">Flavor Text: </div>
-                <div>
-                    <em>{props.back_flavor_text}</em>
-                </div>
-            </h5>
-            <hr />
+              {cardFlipped &&
+                <>
+                  <h5>
+                      <div className="modal-heading">Flavor Text: </div>
+                      <div>
+                          <em>{props.back_flavor_text}</em>
+                      </div>
+                  </h5>
+                  <hr />
+                </>
+              }
             </>
         )
     };
@@ -228,7 +256,6 @@ const ModalOverlayFlipCards = (props) => {
     
     // All the html content we created above goes here:
     content = (
-        // <div id="modal-container" style={props.style}>
         <div id="modal-container">
             <div id="heading-container">
                 <h3>{props.card_name} - <em>{rarityCapitalized}</em></h3>
@@ -237,7 +264,7 @@ const ModalOverlayFlipCards = (props) => {
             <hr id="topHR"/>
             <div id="content-container">
                 <div id="modal-image-container">
-                    <FlipCardForModal {...props}/>
+                    <FlipCardForModal {...props} />
                 </div>
                 <div id="text-container">
                     {oracleText}
@@ -260,22 +287,14 @@ const ModalOverlayFlipCards = (props) => {
 
 const Modal = (props) => {
     // Animation Library - npm install --save react-transition-group
-    // we want to offset the top of our modal by whatever the current y-offset is from scrolling + X% of the window height so it is
-    // roughly centered in the screen
-    let yOffsetForModal  = "";
-    let currentWindowWidth = window.innerWidth;
-    let pixelsFromTopOnMobile = 0;
-    if(currentWindowWidth > 576) {
-        yOffsetForModal = 0.10*window.innerHeight;
-    } else if(currentWindowWidth > 360) {
-        pixelsFromTopOnMobile = 10;
-        yOffsetForModal = pixelsFromTopOnMobile;
-    } else {
-        pixelsFromTopOnMobile = 0;
-        yOffsetForModal = pixelsFromTopOnMobile;
-    }
-    const styleTop = {
-        top: yOffsetForModal
+    const dispatch = useDispatch();
+    // Get data from the Global State
+    const cardFlipped = useSelector(state => state.cardFlipped);
+    const cardFlipHandler = () => {
+      console.log('Clicked Card Flip Button');
+      // setCardFlipped(!cardFlipped);
+      const typeForFlip = cardFlipped === false ? CARD_FLIPPED_TRUE : CARD_FLIPPED_FALSE;
+      dispatch({type: typeForFlip});
     }
 
     return (
@@ -283,16 +302,15 @@ const Modal = (props) => {
             <CSSTransition in={props.typeOfCard === "normal"} mountOnEnter unmountOnExit timeout={400} classNames="card-modal-animate">
             {/* the ...props forwards all props sent to our exported component, Modal, to the ModalOverlay */}
             {/* the spread operator takes all the key: value pairs on the props object and puts them as attributes on ModalOverlay  */}
-                <ModalOverlayNormalCards {...props} style={styleTop}/>
+                <ModalOverlayNormalCards {...props} />
             </CSSTransition>
             <CSSTransition in={props.typeOfCard === "flip"} mountOnEnter unmountOnExit timeout={400} classNames="card-modal-animate">
             {/* the ...props forwards all props sent to our exported component, Modal, to the ModalOverlay */}
             {/* the spread operator takes all the key: value pairs on the props object and puts them as attributes on ModalOverlay */} 
-                <ModalOverlayFlipCards {...props} style={styleTop}/>
+                <ModalOverlayFlipCards {...props} cardFlipped={cardFlipped} cardFlipHandler={cardFlipHandler}/>
             </CSSTransition>
         </>
     )
 }
 
-// export default React.memo(Modal);
 export default Modal;
