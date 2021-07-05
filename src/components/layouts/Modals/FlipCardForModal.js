@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 const FlipCardForModal = (props) => {
     const[flipToggleClass, setFlipToggleClass] = useState("");
     const[hideFrontFlipIconToggle, setHideFrontFlipIconToggle] = useState("");
-
     const toggleFlipAnimation = () => {
         (flipToggleClass === "flip-toggle") ? setFlipToggleClass("") : setFlipToggleClass("flip-toggle");
         (hideFrontFlipIconToggle === "hideFlipIcon") ? setHideFrontFlipIconToggle("") : setHideFrontFlipIconToggle("hideFlipIcon");
+        props.cardFlipHandler();
     }
 
     return (

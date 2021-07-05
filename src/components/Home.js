@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LazyLoad from 'react-lazy-load';
 
+import { CARD_FLIPPED_FALSE } from '../store/actions/actionTypes';
 import Backdrop from './layouts/Modals/Backdrop';
 import Modal from './layouts/Modals/Modal';
 import Cards from './layouts/Cards';
@@ -52,7 +53,8 @@ class Home extends Component {
         this.setState({
             cardClicked: false,
             type_of_card: "",
-        })
+        });
+        this.props.flippedCardFalse(); // Reset cardFlipped in the global state to be false. This is necessary b/c if we leave this value at true while viewing a modal it causes problems later
     }
 
     onCardClick = (event) => {
@@ -215,5 +217,16 @@ const mapStateToProps = state => {
     }
 
 }
+//========================================================
+                    //mapDispatchToProps
+//========================================================
+//here we define what actions we want to use in this container
+//we can call this action with 'this.props.findCards' in the code above
+const mapDispatchToProps = dispatch => ({
+  //this is called in our handleSubmit function
+  flippedCardFalse: () => dispatch(dispatch({type: CARD_FLIPPED_FALSE}))
+  // findCards: (colorArray, setsStringForApi, setShorthandForBackgrounds) => dispatch(actionCreators.getCards(colorArray,setsStringForApi, setShorthandForBackgrounds)),
+  // showLoadingWheel: () => dispatch(actionCreators.showLoadingWheelDispatch())
+})
 
-export default connect(mapStateToProps, null)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
