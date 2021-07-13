@@ -19,7 +19,7 @@
   .cards-flex-container {
       /* background: center top no-repeat scroll; */
       background: no-repeat 100% 5% scroll;
-      /* background-size: auto 100vh; */
+      -webkit-background-size: cover;
   }    
 }
 
