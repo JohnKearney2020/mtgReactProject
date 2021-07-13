@@ -14,11 +14,17 @@
     margin: 0;
 }
 
-@supports (-webkit-touch-callout: inherit) {
+@media (hover: none) {
+  .cards-flex-container {
+      background-attachment: initial;
+  }
+}
+
+/* @supports (-webkit-touch-callout: inherit) {
   .cards-flex-container {
   background-attachment: scroll;
   }
-}
+} */
 
 .LazyLoad {
     margin: 0.5rem 0.5rem;
