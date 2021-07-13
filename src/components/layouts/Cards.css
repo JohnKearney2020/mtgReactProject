@@ -15,13 +15,13 @@
     margin: 0;
 }
 
-@supports (-webkit-touch-callout: none) {
+/* @supports (-webkit-touch-callout: none) {
   .cards-flex-container {
-      /* background: center top no-repeat scroll; */
+      background: center top no-repeat scroll;
       background: no-repeat 100% 5% scroll;
       -webkit-background-size: cover;
   }    
-}
+} */
 
 /* @supports (-webkit-touch-callout: inherit) {
   .cards-flex-container {
