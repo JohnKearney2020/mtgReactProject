@@ -7,11 +7,16 @@
     padding-bottom: 6vh;
     min-height: 100vh;
     width: 100%;
-    background: no-repeat 100% 5%;
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
     margin: 0;
+}
+
+@supports (-webkit-touch-callout: inherit) {
+  .cards-flex-container {
+  background-attachment: scroll;
+  }
 }
 
 .LazyLoad {
