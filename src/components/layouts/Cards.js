@@ -89,20 +89,47 @@ export class Cards extends Component {
         let prevBackgroundImgPath = require(`../../components/images/background/${this.state.prevImgFileName}.jpg`);
         return (
             <>
-                {this.state.showOldCards && 
-                    <div className={`${this.state.fadeOutClassToggle} cards-flex-container`} style={{ backgroundImage: `url(${prevBackgroundImgPath})` }} >
-                        {this.state.oldCardsToRender}
+              {this.state.showOldCards && 
+                <div className={`cardsOuterContainer ${this.state.fadeOutClassToggle}`} >
+                  {this.state.oldCardsToRender}
+                </div>
+              }
+              {this.state.showNewCards &&
+                <div className={`cardsOuterContainer ${this.state.fadeInClassToggle}`} >
+                  {this.props.cardsToRender}
+                </div>
+              }
+              <div className="cardsWrap">
+                  {this.state.showOldCards &&
+                    <div 
+                      className={`cardsBackground ${this.state.fadeOutClassToggle}`} 
+                      style={{ backgroundImage: `url(${prevBackgroundImgPath})` }}>
                     </div>
-                }
-                {this.state.showNewCards &&
-                    <div className={`${this.state.fadeInClassToggle} cards-flex-container`} style={{ backgroundImage: `url(${backgroundImgPath})` }} >
-                        {this.props.cardsToRender}
+                  }
+                  {this.state.showNewCards && 
+                    <div 
+                      className={`cardsBackground ${this.state.fadeInClassToggle}`} 
+                      style={{ backgroundImage: `url(${backgroundImgPath})` }}>
                     </div>
-                }
+                  }
+
+              </div>
             </>
         )
     }
 }
+
+
+// {this.state.showOldCards && 
+//   <div className={`${this.state.fadeOutClassToggle} cards-flex-container`} style={{ backgroundImage: `url(${prevBackgroundImgPath})` }} >
+//       {this.state.oldCardsToRender}
+//   </div>
+// }
+// {this.state.showNewCards &&
+//   <div className={`${this.state.fadeInClassToggle} cards-flex-container`} style={{ backgroundImage: `url(${backgroundImgPath})` }} >
+//       {this.props.cardsToRender}
+//   </div>
+// }
 
 //========================================================
                     //mapStateToProps

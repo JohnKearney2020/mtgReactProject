@@ -1,18 +1,41 @@
-.cards-flex-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 1rem;
-    padding-bottom: 6vh;
-    min-height: 100vh;
-    width: 100%;
-    background-size: cover;
-    background-position: center center;
-    background: no-repeat 100% 5% fixed;
-    /* background-attachment: fixed; */
-    -webkit-background-size: cover;
-    margin: 0;
+.cardsOuterContainer {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 6vh;
+}
+
+.cardsWrap {
+  clip: rect(0, auto, auto, 0);
+  position: relative;
+  height: 100%;
+  width: 100%;
+  /* to make sure this fills all corners on all devices */
+  top: 0;
+  left: 0;
+  z-index: -9999;
+}
+
+.cardsBackground {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  /* iOS specific styling */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  display: table;
 }
 
 /* @supports (-webkit-touch-callout: none) {
