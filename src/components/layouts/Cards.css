@@ -38,6 +38,20 @@
   display: table;
 }
 
+/* @supports (-webkit-touch-callout: none) {
+  .cards-flex-container {
+      background: center top no-repeat scroll;
+      background: no-repeat 100% 5% scroll;
+      -webkit-background-size: cover;
+  }    
+} */
+
+/* @supports (-webkit-touch-callout: inherit) {
+  .cards-flex-container {
+  background-attachment: scroll;
+  }
+} */
+
 .LazyLoad {
     margin: 0.5rem 0.5rem;
 }
