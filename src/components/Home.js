@@ -149,7 +149,7 @@ class Home extends Component {
                             data-price_foil={eachCardObj.prices.usd_foil}
                             data-edh_rec_link={eachCardObj.related_uris.edhrec}
                             data-gatherer_link={eachCardObj.related_uris.gatherer}
-                            data-tcg_player_link={eachCardObj.purchase_uris.tcgplayer}
+                            data-tcg_player_link={eachCardObj.purchase_uris ? eachCardObj.purchase_uris.tcgplayer : ''}
                             data-card_type_line={eachCardObj.type_line}
                             onClick={this.onCardClick}
                             >
