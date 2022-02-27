@@ -48,7 +48,7 @@ const FlipCard = (props) => {
                             data-price_foil={props.cardObject.prices.usd_foil}
                             data-edh_rec_link={props.cardObject.related_uris.edhrec}
                             data-gatherer_link={props.cardObject.related_uris.gatherer}
-                            data-tcg_player_link={props.cardObject.purchase_uris.tcgplayer}
+                            data-tcg_player_link={props.cardObject.purchase_uris ? props.cardObject.purchase_uris.tcgplayer : ''}
                             data-card_type_line={props.cardObject.type_line}
                             onClick={props.onCardClick}
                         >
@@ -87,7 +87,7 @@ const FlipCard = (props) => {
                             data-price_foil={props.cardObject.prices.usd_foil}
                             data-edh_rec_link={props.cardObject.related_uris.edhrec}
                             data-gatherer_link={props.cardObject.related_uris.gatherer}
-                            data-tcg_player_link={props.cardObject.purchase_uris.tcgplayer}
+                            data-tcg_player_link={props.cardObject.purchase_uris ? props.cardObject.purchase_uris.tcgplayer : ''}
                             data-card_type_line={props.cardObject.type_line}
                             onClick={props.onCardClick}
                         ></img>

@@ -93,7 +93,9 @@ const ModalOverlayNormalCards = (props) => {
                     <div id="linkContainer">
                         <a href={props.edh_rec_link} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-searchengin"></i>View on EDHREC</a>
                         <a href={props.gatherer_link} target="_blank" rel="noopener noreferrer" className="modalButton dark"><i className="fab fa-wizards-of-the-coast"></i>View on Gatherer</a>
-                        <a href={props.tcg_player_link} target="_blank" rel="noopener noreferrer" className="modalButton light"><i className="fas fa-dollar-sign"></i>Buy on TCGplayer</a>
+                        { props.tcg_player_link &&
+                          <a href={props.tcg_player_link} target="_blank" rel="noopener noreferrer" className="modalButton light"><i className="fas fa-dollar-sign"></i>Buy on TCGplayer</a>
+                        }
                     </div>
                 </div>
             </div> {/* end of content-container */}
