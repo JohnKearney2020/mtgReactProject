@@ -22,9 +22,6 @@ let foilPrice;
 let content;
 
 const ModalOverlayNormalCards = (props) => {
-    console.log('Props:')
-    console.log(props);
-
     oracleText="";
     rarityCapitalized="";
     flavorText="";
