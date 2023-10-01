@@ -44,7 +44,8 @@ class Home extends Component {
             edh_rec_link: "",
             gatherer_link: "",
             tcg_player_link: "",
-            card_type_line: ""
+            card_type_line: "",
+            layout: ""
         };
     }
 
@@ -91,7 +92,8 @@ class Home extends Component {
             edh_rec_link: event.target.dataset.edh_rec_link,
             gatherer_link: event.target.dataset.gatherer_link,
             tcg_player_link: event.target.dataset.tcg_player_link,
-            card_type_line: event.target.dataset.card_type_line          
+            card_type_line: event.target.dataset.card_type_line,
+            layout: event.target.dataset.layout
         }, () => {
             // console.log(`Type of card for Modal: ${this.state.type_of_card}`);
             // console.log(`normal card setState called`);
@@ -112,7 +114,7 @@ class Home extends Component {
         // more info w/ examples at https://scryfall.com/docs/api/images
         // *** Make sure to update the no response object that gets sent here on no results ***
         // console.log(this.props.cardsFromAPI);
-        let filteredCards = this.props.cardsFromAPI.map((eachCardObj,index) => {
+        let filteredCards = this.props.cardsFromAPI.map((eachCardObj, index) => {
             // console.log(`cardsFromApi Object is: ${this.props.cardsFromAPI}`);
             // console.log(`cardsFromApi Object is: ${eachCardObj}`);
             //=========================================================================
@@ -151,6 +153,7 @@ class Home extends Component {
                             data-gatherer_link={eachCardObj.related_uris.gatherer}
                             data-tcg_player_link={eachCardObj.purchase_uris ? eachCardObj.purchase_uris.tcgplayer : ''}
                             data-card_type_line={eachCardObj.type_line}
+                            data-layout={eachCardObj.layout}
                             onClick={this.onCardClick}
                             >
                         </img>
@@ -215,7 +218,6 @@ const mapStateToProps = state => {
     return {
         cardsFromAPI: state.cards //the value after 'state.' must match the value in our reducer
     }
-
 }
 //========================================================
                     //mapDispatchToProps

@@ -22,7 +22,6 @@ let foilPrice;
 let content;
 
 const ModalOverlayNormalCards = (props) => {
-
     oracleText="";
     rarityCapitalized="";
     flavorText="";
@@ -33,14 +32,19 @@ const ModalOverlayNormalCards = (props) => {
     content="";
     rarityCapitalized = props.card_rarity.charAt(0).toUpperCase() + props.card_rarity.slice(1);
 
-    oracleText = (<>
-        <h5 >
+    if(props.oracle_text){
+      oracleText = (
+        <>
+          <h5 >
             <span className="modal-heading">Oracle Text: </span>
             <br/>
             <span className='oracleTextContainer'>{parse(props.oracle_text)}</span>
-        </h5>
-        <hr /></>
-    );
+          </h5>
+          <hr />
+        </>
+      );
+    }
+
     //if the card has Flavor Text
     if(props.flavor_text){
         flavorText = (
